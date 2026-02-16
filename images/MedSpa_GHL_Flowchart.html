@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MedSpa GHL Solution — System Flow</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0f1117;
+    font-family: 'DM Sans', sans-serif;
+    color: #e0e0e0;
+    padding: 40px 20px;
+    min-height: 100vh;
+  }
+
+  .page { max-width: 1500px; margin: 0 auto; }
+
+  /* Header */
+  .header { text-align: center; margin-bottom: 48px; position: relative; }
+  .header::after {
+    content: '';
+    display: block;
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, #e879a8, #a78bfa);
+    margin: 20px auto 0;
+    border-radius: 2px;
+  }
+  .header h1 { font-size: 32px; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
+  .header p { font-size: 15px; color: #6b7280; margin-top: 8px; }
+  .header .badge {
+    display: inline-block;
+    background: rgba(232,121,168,0.1);
+    border: 1px solid rgba(232,121,168,0.25);
+    color: #e879a8;
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px;
+    padding: 4px 14px; border-radius: 20px; margin-bottom: 12px;
+  }
+
+  /* Legend */
+  .legend { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 40px; }
+  .legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #9ca3af; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+
+  /* ── Master Flow ── */
+  .master-flow {
+    background: #181a20;
+    border: 1px solid #2a2d35;
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .master-flow::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #e879a8, #a78bfa, #60a5fa);
+    border-radius: 16px 16px 0 0;
+  }
+  .master-flow h2 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px; text-align: center; }
+  .master-flow .desc { font-size: 13px; color: #6b7280; margin-bottom: 24px; text-align: center; line-height: 1.5; }
+
+  .lifecycle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    padding: 0 10px;
+  }
+  .lc-stage {
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    min-width: 120px;
+    position: relative;
+  }
+  .lc-arrow {
+    color: #3a3d45;
+    font-size: 20px;
+    padding: 0 2px;
+    flex-shrink: 0;
+  }
+  .lc-stage.stl { background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.25); color: #fbbf24; }
+  .lc-stage.book { background: rgba(96,165,250,0.1); border: 1px solid rgba(96,165,250,0.25); color: #60a5fa; }
+  .lc-stage.appt { background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.25); color: #34d399; }
+  .lc-stage.noshow { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25); color: #f87171; }
+  .lc-stage.newc { background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.25); color: #a78bfa; }
+  .lc-stage.review { background: rgba(232,121,168,0.1); border: 1px solid rgba(232,121,168,0.25); color: #e879a8; }
+  .lc-stage.react { background: rgba(251,146,60,0.1); border: 1px solid rgba(251,146,60,0.25); color: #fb923c; }
+  .lc-stage.cold { background: rgba(148,163,184,0.1); border: 1px solid rgba(148,163,184,0.25); color: #94a3b8; }
+  .lc-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.8px; opacity: 0.6; display: block; margin-bottom: 2px; }
+
+  /* ── Flow Grid ── */
+  .flow-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-bottom: 28px;
+  }
+  @media (max-width: 960px) { .flow-grid { grid-template-columns: 1fr; } }
+
+  .flow-section {
+    background: #181a20;
+    border: 1px solid #2a2d35;
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .flow-section::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    border-radius: 16px 16px 0 0;
+  }
+  .flow-section.stl::before { background: linear-gradient(90deg, #fbbf24, #f59e0b); }
+  .flow-section.book::before { background: linear-gradient(90deg, #60a5fa, #3b82f6); }
+  .flow-section.appt::before { background: linear-gradient(90deg, #34d399, #10b981); }
+  .flow-section.noshow::before { background: linear-gradient(90deg, #f87171, #ef4444); }
+  .flow-section.newc::before { background: linear-gradient(90deg, #a78bfa, #8b5cf6); }
+  .flow-section.review::before { background: linear-gradient(90deg, #e879a8, #ec4899); }
+  .flow-section.react::before { background: linear-gradient(90deg, #fb923c, #f97316); }
+  .flow-section.cold::before { background: linear-gradient(90deg, #94a3b8, #64748b); }
+
+  .flow-section h2 {
+    font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .flow-section h2 .num {
+    font-size: 11px; font-weight: 600; color: #6b7280;
+    background: #23262f; padding: 2px 8px; border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .flow-section .desc { font-size: 13px; color: #6b7280; margin-bottom: 18px; line-height: 1.5; }
+
+  /* Nodes */
+  .flow { display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .node {
+    width: 100%; max-width: 340px;
+    padding: 10px 14px; border-radius: 10px;
+    font-size: 12px; font-weight: 500;
+    text-align: center; position: relative; line-height: 1.4;
+  }
+  .node .label {
+    font-size: 9px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.8px; opacity: 0.6; display: block; margin-bottom: 2px;
+  }
+  .node.trigger { background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.25); color: #fcd34d; }
+  .node.source { background: rgba(96,165,250,0.08); border: 1px solid rgba(96,165,250,0.25); color: #93c5fd; }
+  .node.action { background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.25); color: #6ee7b7; }
+  .node.decision { background: rgba(167,139,250,0.08); border: 1px solid rgba(167,139,250,0.25); color: #c4b5fd; }
+  .node.decision::before {
+    content: '◆'; position: absolute; left: 8px; top: 50%;
+    transform: translateY(-50%); font-size: 9px; color: rgba(167,139,250,0.4);
+  }
+  .node.alert { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.25); color: #fca5a5; }
+  .node.result { background: rgba(232,121,168,0.08); border: 1px solid rgba(232,121,168,0.25); color: #f9a8d4; }
+  .node.wait { background: rgba(148,163,184,0.08); border: 1px solid rgba(148,163,184,0.25); color: #cbd5e1; }
+
+  /* Connectors */
+  .connector { display: flex; flex-direction: column; align-items: center; height: 24px; }
+  .connector .line { width: 2px; height: 16px; background: #2a2d35; }
+  .connector .arrow { width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid #2a2d35; }
+
+  /* Branch */
+  .branch { display: flex; gap: 12px; justify-content: center; width: 100%; max-width: 400px; }
+  .branch-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .branch-label {
+    font-size: 10px; font-weight: 700; color: #6b7280;
+    background: #1e2028; padding: 2px 10px; border-radius: 4px; border: 1px solid #2a2d35;
+  }
+
+  /* Full-width section */
+  .flow-full { grid-column: 1 / -1; }
+
+  /* Bottom bars */
+  .bottom-bar, .timeline, .oos {
+    background: #181a20; border: 1px solid #2a2d35; border-radius: 16px;
+    padding: 24px 28px; margin-bottom: 28px;
+  }
+  .bottom-bar h3, .timeline h3, .oos h3 {
+    font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 16px; text-align: center;
+  }
+
+  /* Timeline */
+  .timeline-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .timeline-step {
+    flex: 1; min-width: 160px; max-width: 220px; text-align: center;
+    background: #1e2028; padding: 14px; border-radius: 8px; border: 1px solid #2a2d35;
+  }
+  .timeline-step .day { font-size: 13px; font-weight: 700; color: #a78bfa; margin-bottom: 6px; }
+  .timeline-step .task { font-size: 11px; color: #9ca3af; line-height: 1.5; }
+
+  /* Out of scope */
+  .oos { border-style: dashed; border-color: #3a3d45; }
+  .oos h3 { color: #6b7280; }
+  .oos ul { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .oos ul li {
+    font-size: 12px; color: #6b7280;
+    background: #1e2028; padding: 6px 14px; border-radius: 6px; border: 1px solid #2a2d35;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="badge">Full MedSpa Automation Suite</div>
+    <h1>GHL MedSpa Automation — System Flow</h1>
+    <p>Speed to Lead · Booking · Appointments · No-Shows · New Client · Reviews · Reactivation · Cold Outreach</p>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(251,191,36,0.4);"></div> Trigger</div>
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(96,165,250,0.4);"></div> Source / GHL</div>
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(52,211,153,0.4);"></div> Action / Output</div>
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(167,139,250,0.4);"></div> Decision</div>
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(239,68,68,0.4);"></div> Alert / Escalation</div>
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(232,121,168,0.4);"></div> Result</div>
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(148,163,184,0.4);"></div> Wait / Delay</div>
+  </div>
+
+  <!-- ═══ MASTER LIFECYCLE ═══ -->
+  <div class="master-flow">
+    <h2>Client Lifecycle — Automation Map</h2>
+    <div class="desc">Every workflow connects to the next. Leads flow through the full lifecycle automatically.</div>
+    <div class="lifecycle">
+      <div class="lc-stage cold"><span class="lc-label">Outbound</span>Cold Outreach</div>
+      <div class="lc-arrow">→</div>
+      <div class="lc-stage stl"><span class="lc-label">0–5 min</span>Speed to Lead</div>
+      <div class="lc-arrow">→</div>
+      <div class="lc-stage book"><span class="lc-label">Convert</span>Booking</div>
+      <div class="lc-arrow">→</div>
+      <div class="lc-stage appt"><span class="lc-label">Confirm</span>Appointment</div>
+      <div class="lc-arrow">→</div>
+      <div class="lc-stage noshow"><span class="lc-label">Recovery</span>No-Show</div>
+      <div class="lc-arrow">→</div>
+      <div class="lc-stage newc"><span class="lc-label">Onboard</span>New Client</div>
+      <div class="lc-arrow">→</div>
+      <div class="lc-stage review"><span class="lc-label">Reputation</span>Review Request</div>
+      <div class="lc-arrow">→</div>
+      <div class="lc-stage react"><span class="lc-label">Win Back</span>Reactivation</div>
+    </div>
+  </div>
+
+  <!-- ═══ FLOW GRID ═══ -->
+  <div class="flow-grid">
+
+    <!-- ── 1. SPEED TO LEAD ── -->
+    <div class="flow-section stl">
+      <h2><span class="num">01</span> Speed to Lead</h2>
+      <p class="desc">Instant response within 60 seconds of form submission. First responder wins 78% of the time.</p>
+      <div class="flow">
+        <div class="node trigger"><span class="label">Trigger</span>New lead submits form, ad, or chat widget</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">Instant · 0 sec</span>Auto-SMS: "Thanks [Name]! We got your request for [Service]. Quick question…"</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">+30 sec</span>Auto-Email: Welcome + service menu + booking link</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node alert"><span class="label">+60 sec</span>Internal alert to front desk: "New lead — [Name] — [Service Interest]"</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node decision"><span class="label">Decision</span>Lead replies or books within 10 min?</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="branch">
+          <div class="branch-item">
+            <div class="branch-label">YES</div>
+            <div class="node result" style="font-size:11px;">→ Move to Booking workflow</div>
+          </div>
+          <div class="branch-item">
+            <div class="branch-label">NO</div>
+            <div class="node wait" style="font-size:11px;">→ Drip sequence: Day 1, 3, 7 follow-ups</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 2. BOOKING ── -->
+    <div class="flow-section book">
+      <h2><span class="num">02</span> Booking Confirmation</h2>
+      <p class="desc">Appointment booked → confirm + prep the client before they walk in.</p>
+      <div class="flow">
+        <div class="node trigger"><span class="label">Trigger</span>Appointment booked via calendar link or manual entry</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">Instant</span>SMS + Email confirmation with date, time, location, parking</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">Action</span>Add to pipeline: "Appointment Booked" stage</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">+1 hour</span>Send intake form / consent docs / pre-care instructions</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node result"><span class="label">Result</span>Client arrives prepped → smoother visit, higher conversion to treatment</div>
+      </div>
+    </div>
+
+    <!-- ── 3. APPOINTMENT REMINDERS ── -->
+    <div class="flow-section appt">
+      <h2><span class="num">03</span> Appointment Reminders</h2>
+      <p class="desc">Multi-touch reminders that reduce no-shows by up to 40%.</p>
+      <div class="flow">
+        <div class="node trigger"><span class="label">Trigger</span>Appointment exists in calendar (any status)</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">48 hours before</span>SMS: "Reminder — your appointment is in 2 days. Reply C to confirm."</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">24 hours before</span>Email reminder with pre-care checklist + directions</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">2 hours before</span>Final SMS: "See you today at [Time]! Reply R to reschedule."</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node decision"><span class="label">Decision</span>Client confirms or reschedules?</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="branch">
+          <div class="branch-item">
+            <div class="branch-label">CONFIRM</div>
+            <div class="node result" style="font-size:11px;">Tag: Confirmed ✓</div>
+          </div>
+          <div class="branch-item">
+            <div class="branch-label">RESCHED</div>
+            <div class="node action" style="font-size:11px;">Send calendar link to rebook</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 4. NO-SHOW ── -->
+    <div class="flow-section noshow">
+      <h2><span class="num">04</span> No-Show Recovery</h2>
+      <p class="desc">Automated win-back sequence when a client misses their appointment.</p>
+      <div class="flow">
+        <div class="node trigger"><span class="label">Trigger</span>Appointment status → No Show (manual or auto-detected)</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">+30 min</span>SMS: "We missed you today! Life happens — here's a link to rebook."</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">+24 hours</span>Email: Rebook link + limited-time rebooking incentive</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">+72 hours</span>Final SMS follow-up with direct booking link</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node decision"><span class="label">Decision</span>Rebooks within 7 days?</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="branch">
+          <div class="branch-item">
+            <div class="branch-label">YES</div>
+            <div class="node result" style="font-size:11px;">→ Back to Booking flow</div>
+          </div>
+          <div class="branch-item">
+            <div class="branch-label">NO</div>
+            <div class="node alert" style="font-size:11px;">Tag: No Show · Move to Reactivation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 5. NEW CLIENT ONBOARDING ── -->
+    <div class="flow-section newc">
+      <h2><span class="num">05</span> New Client Onboarding</h2>
+      <p class="desc">Post-first-visit nurture to convert one-time visitors into repeat clients.</p>
+      <div class="flow">
+        <div class="node trigger"><span class="label">Trigger</span>First appointment completed (status: Showed / Completed)</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">+1 hour</span>Thank you SMS + post-care instructions for treatment received</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">+24 hours</span>Email: "How are you feeling?" check-in + aftercare tips</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">Day 7</span>Email: Recommended next treatment + membership/package offer</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">Day 14</span>SMS: "Ready for your next visit? Book now" + calendar link</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node result"><span class="label">Result</span>New client converts to repeat client → enters Review Request flow</div>
+      </div>
+    </div>
+
+    <!-- ── 6. REVIEW REQUEST ── -->
+    <div class="flow-section review">
+      <h2><span class="num">06</span> Review Request</h2>
+      <p class="desc">Automated review collection after every completed appointment.</p>
+      <div class="flow">
+        <div class="node trigger"><span class="label">Trigger</span>Appointment completed (any visit, not just first)</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node wait"><span class="label">Wait</span>Delay 2–4 hours (let treatment settle)</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">SMS</span>"How was your visit? Tap to leave a quick review ⭐" → Google link</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node decision"><span class="label">Decision</span>Review submitted within 48h?</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="branch">
+          <div class="branch-item">
+            <div class="branch-label">YES</div>
+            <div class="node result" style="font-size:11px;">Tag: Reviewed ✓ · Thank you SMS</div>
+          </div>
+          <div class="branch-item">
+            <div class="branch-label">NO</div>
+            <div class="node action" style="font-size:11px;">Gentle reminder email with review link</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 7. LEAD REACTIVATION ── -->
+    <div class="flow-section react">
+      <h2><span class="num">07</span> Lead Reactivation</h2>
+      <p class="desc">Win back cold leads and lapsed clients who haven't booked in 60+ days.</p>
+      <div class="flow">
+        <div class="node trigger"><span class="label">Trigger</span>No activity in 60+ days OR tagged "Cold Lead" / "No Show"</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">Day 1</span>SMS: "Hey [Name], we haven't seen you in a while! We have a special for you…"</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">Day 3</span>Email: "We miss you" + seasonal offer or new treatment spotlight</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">Day 7</span>SMS: Last-chance offer with expiration date + booking link</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node decision"><span class="label">Decision</span>Engages or books?</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="branch">
+          <div class="branch-item">
+            <div class="branch-label">YES</div>
+            <div class="node result" style="font-size:11px;">→ Back to Booking flow</div>
+          </div>
+          <div class="branch-item">
+            <div class="branch-label">NO</div>
+            <div class="node wait" style="font-size:11px;">Move to long-term nurture (monthly newsletter)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 8. COLD OUTREACH ── -->
+    <div class="flow-section cold">
+      <h2><span class="num">08</span> Cold Outreach</h2>
+      <p class="desc">Outbound prospecting to new audiences — list-based or lookalike campaigns.</p>
+      <div class="flow">
+        <div class="node source"><span class="label">Source</span>Purchased list, event attendees, or referral contacts imported to GHL</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">Day 1</span>Intro SMS or email: Value-first message (tip, guide, or free consultation offer)</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">Day 3</span>Follow-up: Social proof (before/after, testimonials, star rating)</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">Day 7</span>Direct CTA: "Book a free consultation" with calendar link</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node decision"><span class="label">Decision</span>Responds or books?</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="branch">
+          <div class="branch-item">
+            <div class="branch-label">YES</div>
+            <div class="node result" style="font-size:11px;">→ Speed to Lead flow</div>
+          </div>
+          <div class="branch-item">
+            <div class="branch-label">NO</div>
+            <div class="node wait" style="font-size:11px;">Tag: Cold · Retry in 90 days</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /flow-grid -->
+
+  <!-- ═══ DEPLOYMENT TIMELINE ═══ -->
+  <div class="timeline">
+    <h3>Deployment Timeline</h3>
+    <div class="timeline-row">
+      <div class="timeline-step">
+        <div class="day">Day 1</div>
+        <div class="task">Discovery call · Service menu mapping · GHL account setup</div>
+      </div>
+      <div class="timeline-step">
+        <div class="day">Day 2–3</div>
+        <div class="task">Speed to Lead · Booking · Appointment Reminder workflows</div>
+      </div>
+      <div class="timeline-step">
+        <div class="day">Day 4–5</div>
+        <div class="task">No-Show · New Client · Review Request workflows</div>
+      </div>
+      <div class="timeline-step">
+        <div class="day">Day 6–7</div>
+        <div class="task">Reactivation · Cold Outreach · Pipeline config</div>
+      </div>
+      <div class="timeline-step">
+        <div class="day">Day 8–10</div>
+        <div class="task">Testing · Copy review · Staff training · Go live</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ OUT OF SCOPE ═══ -->
+  <div class="oos">
+    <h3>Available as Add-Ons (Not Included in Base Build)</h3>
+    <ul>
+      <li>Membership / package upsell automation</li>
+      <li>Birthday & anniversary campaigns</li>
+      <li>Referral program workflow</li>
+      <li>Google Ads / Meta Ads integration</li>
+      <li>Custom branded mobile app</li>
+      <li>Advanced reporting / analytics dashboard</li>
+      <li>AI chatbot / conversational booking</li>
+      <li>SMS blast campaigns (seasonal promos)</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>
