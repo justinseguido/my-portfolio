@@ -75,7 +75,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap&font-display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #F4F1EB;
@@ -92,8 +92,8 @@
       --border-strong: rgba(26,26,23,0.15);
       --glass: rgba(255,255,255,0.45);
       --glass-border: rgba(255,255,255,0.6);
-      --serif: 'Instrument Serif', Georgia, serif;
-      --sans: 'Hanken Grotesk', system-ui, sans-serif;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
       --radius: 16px;
       --radius-sm: 10px;
     }
@@ -429,6 +429,66 @@
 
     .bento-card.dark-card .bento-big-num { color: var(--bg); }
 
+    /* ===== WHY WORK WITH ME ===== */
+    .why-me { padding: 8rem 3rem; background: var(--text); color: var(--bg); }
+
+    .why-me-inner { max-width: 1280px; margin: 0 auto; }
+
+    .why-me .section-label { color: rgba(244,241,235,0.4); }
+    .why-me .section-label::before { background: var(--accent); }
+
+    .why-me-inner h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      line-height: 1.05; font-weight: 400;
+      margin-bottom: 3.5rem;
+    }
+
+    .why-me-inner h2 em { font-style: italic; color: var(--accent); }
+
+    .why-me-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .why-me-card {
+      background: rgba(244,241,235,0.05);
+      border: 1px solid rgba(244,241,235,0.08);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.4s;
+    }
+
+    .why-me-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(244,241,235,0.15);
+    }
+
+    .why-me-card-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: rgba(200,75,49,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; margin-bottom: 1.25rem;
+    }
+
+    .why-me-card h3 {
+      font-family: var(--serif);
+      font-size: 1.3rem; font-weight: 400;
+      line-height: 1.25; margin-bottom: 0.6rem;
+      color: var(--bg);
+    }
+
+    .why-me-card p {
+      font-size: 0.88rem; color: rgba(244,241,235,0.6);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 768px) {
+      .why-me { padding: 5rem 1.5rem; }
+      .why-me-grid { grid-template-columns: 1fr; }
+    }
+
     /* ===== CERTIFICATIONS ===== */
     .certifications {
       padding: 6rem 3rem;
@@ -715,90 +775,6 @@
     }
 
 
-    /* ===== BLOG / RESOURCES ===== */
-    .blog { padding: 8rem 3rem; background: var(--bg-warm); }
-
-    .blog-header {
-      max-width: 1280px; margin: 0 auto;
-      margin-bottom: 3rem;
-    }
-
-    .blog-header h2 {
-      font-family: var(--serif);
-      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
-      line-height: 1.05; font-weight: 400;
-    }
-
-    .blog-header h2 em { font-style: italic; color: var(--accent); }
-
-    .blog-header p {
-      max-width: 520px;
-      font-size: 0.92rem; color: var(--text-mid);
-      line-height: 1.65; margin-top: 1rem;
-    }
-
-    .blog-grid {
-      max-width: 1280px; margin: 0 auto;
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-
-    .blog-card {
-      background: var(--surface-solid);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 2rem;
-      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
-      display: flex; flex-direction: column;
-    }
-
-    .blog-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.06);
-    }
-
-    .blog-card-icon {
-      width: 44px; height: 44px; border-radius: 10px;
-      background: var(--accent-light);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem; margin-bottom: 1.25rem;
-    }
-
-    .blog-card h3 {
-      font-family: var(--serif);
-      font-size: 1.2rem; font-weight: 400;
-      line-height: 1.3; margin-bottom: 0.75rem;
-    }
-
-    .blog-card h3 a { transition: color 0.3s; }
-    .blog-card h3 a:hover { color: var(--accent); }
-
-    .blog-card p {
-      font-size: 0.85rem; color: var(--text-mid);
-      line-height: 1.7; flex-grow: 1;
-    }
-
-    .blog-card-tags {
-      display: flex; gap: 0.4rem; flex-wrap: wrap;
-      margin-top: 1.25rem; padding-top: 1.25rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .blog-card-tags span {
-      font-size: 0.65rem; font-weight: 500;
-      padding: 0.25rem 0.6rem; border-radius: 100px;
-      background: var(--accent-light); color: var(--accent);
-    }
-
-    @media (max-width: 1024px) {
-      .blog-grid { grid-template-columns: 1fr 1fr; }
-    }
-
-    @media (max-width: 768px) {
-      .blog { padding: 5rem 1.5rem; }
-      .blog-grid { grid-template-columns: 1fr; }
-    }
-
     /* ===== CTA ===== */
     .cta {
       padding: 10rem 3rem; text-align: center;
@@ -843,6 +819,88 @@
 
     .cta-btn .arrow { transition: transform 0.3s; }
     .cta-btn:hover .arrow { transform: translateX(4px); }
+
+    /* ===== HOW IT WORKS ===== */
+    .how-it-works { padding: 8rem 3rem; }
+
+    .how-it-works-inner {
+      max-width: 1280px; margin: 0 auto;
+    }
+
+    .how-it-works-inner h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      line-height: 1.05; font-weight: 400;
+      margin-bottom: 3.5rem;
+    }
+
+    .how-it-works-inner h2 em { font-style: italic; color: var(--accent); }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .step-card {
+      position: relative;
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
+    }
+
+    .step-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+    }
+
+    .step-num {
+      font-family: var(--serif);
+      font-size: 3rem; line-height: 1;
+      color: var(--accent); opacity: 0.2;
+      margin-bottom: 1rem;
+    }
+
+    .step-card h3 {
+      font-family: var(--serif);
+      font-size: 1.25rem; font-weight: 400;
+      line-height: 1.25; margin-bottom: 0.75rem;
+    }
+
+    .step-card p {
+      font-size: 0.88rem; color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    .step-connector {
+      display: none;
+    }
+
+    @media (min-width: 769px) {
+      .step-connector {
+        display: block;
+        position: absolute;
+        top: 2.8rem; right: -1.1rem;
+        font-size: 1rem; color: var(--accent);
+        z-index: 1;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .steps-grid { grid-template-columns: 1fr 1fr; }
+      .step-card:nth-child(2) .step-connector,
+      .step-card:nth-child(4) .step-connector { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      .how-it-works { padding: 5rem 1.5rem; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .step-connector { display: none; }
+    }
 
     /* ===== CONTACT ===== */
     .contact { padding: 6rem 3rem 4rem; background: var(--bg-warm); }
@@ -965,7 +1023,6 @@
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#projects">Work</a>
-      <a href="#resources">Resources</a>
       <a href="#contact" class="nav-cta">Let's Talk</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
@@ -980,20 +1037,20 @@
     <div class="hero-bg-text">Design</div>
     <div class="hero-content">
       <div class="hero-top-row">
-        <div class="hero-availability"><span class="pulse-dot"></span> Available for Q2 2026</div>
+        <div class="hero-availability"><span class="pulse-dot"></span> Currently Accepting Projects</div>
         <div class="scroll-hint-text"><span class="bounce-arrow">&#8595;</span> Scroll to explore</div>
       </div>
       <h1>
-        <span class="line"><span class="line-inner">I design &amp; build</span></span>
-        <span class="line"><span class="line-inner">websites that</span></span>
-        <span class="line"><span class="line-inner"><em>convert.</em></span></span>
+        <span class="line"><span class="line-inner">I build GoHighLevel</span></span>
+        <span class="line"><span class="line-inner">systems that book</span></span>
+        <span class="line"><span class="line-inner">appointments <em>on autopilot.</em></span></span>
       </h1>
       <div class="hero-bottom">
         <p class="hero-intro">GoHighLevel certified freelancer building landing pages, sales funnels, and CRM automations for real estate agents, medspa owners, and service-based businesses ready to capture more leads on autopilot.</p>
         <div class="hero-stats-row">
-          <div class="hero-stat"><div class="num">10+</div><div class="label">Projects</div></div>
+          <div class="hero-stat"><div class="num">10+</div><div class="label">Workflows Built</div></div>
           <div class="hero-stat"><div class="num">GHL</div><div class="label">Certified</div></div>
-          <div class="hero-stat"><div class="num">24h</div><div class="label">Turnaround</div></div>
+          <div class="hero-stat"><div class="num">24h</div><div class="label">Response Time</div></div>
         </div>
       </div>
     </div>
@@ -1038,6 +1095,36 @@
         <div class="bento-icon">&#129309;</div>
         <h3>Fast turnaround</h3>
         <p>Async-first, self-directed, and built for speed. Most projects delivered within days, not weeks.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY WORK WITH ME -->
+  <section class="why-me">
+    <div class="why-me-inner">
+      <div class="section-label">Why Me</div>
+      <h2>Why work <em>with me.</em></h2>
+      <div class="why-me-grid">
+        <div class="why-me-card reveal">
+          <div class="why-me-card-icon">&#127919;</div>
+          <h3>Niche-focused, not a generalist</h3>
+          <p>I specialize in real estate and medspa businesses. That means I already know your audience, your sales cycle, and the exact pages and automations that move leads to booked appointments.</p>
+        </div>
+        <div class="why-me-card reveal reveal-d1">
+          <div class="why-me-card-icon">&#128295;</div>
+          <h3>Full-system builds, not just pages</h3>
+          <p>You get the complete package &#8212; landing pages, sales funnels, CRM pipelines, and workflow automations &#8212; all built together inside GoHighLevel as one connected system.</p>
+        </div>
+        <div class="why-me-card reveal">
+          <div class="why-me-card-icon">&#9889;</div>
+          <h3>GHL Certified Admin</h3>
+          <p>Not just a designer who knows GoHighLevel &#8212; I'm a certified admin with skills badges in funnel building, paid ads, A2P, HIPAA, and more. I know the platform inside out.</p>
+        </div>
+        <div class="why-me-card reveal reveal-d1">
+          <div class="why-me-card-icon">&#128640;</div>
+          <h3>Async &amp; fast &#8212; no micromanagement</h3>
+          <p>I'm self-directed and async-first. Send me the brief, I handle the rest. Most projects are delivered within days, and you'll never have to chase me for updates.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1163,88 +1250,44 @@
   </section>
 
 
-  <!-- BLOG / RESOURCES -->
-  <section class="blog" id="resources">
-    <div class="blog-header">
-      <div class="section-label">Resources</div>
-      <h2>GoHighLevel tips for <em>your niche.</em></h2>
-      <p>Actionable guides on building funnels, automations, and lead capture systems inside GoHighLevel for real estate agents and medspa owners.</p>
-    </div>
-    <div class="blog-grid">
-      <article class="blog-card reveal">
-        <div class="blog-card-icon">&#127968;</div>
-        <h3>How to Build a GHL Real Estate Funnel That Captures Seller &amp; Buyer Leads</h3>
-        <p>A step-by-step breakdown of the real estate snapshot I build in GoHighLevel &#8212; including the landing page structure, seller lead capture form, buyer search page, and the automated follow-up workflows that nurture leads into booked appointments.</p>
-        <div class="blog-card-tags">
-          <span>GHL Real Estate Funnel</span>
-          <span>Seller Leads</span>
-          <span>Buyer Leads</span>
-          <span>GoHighLevel Snapshot</span>
-        </div>
-      </article>
-      <article class="blog-card reveal reveal-d1">
-        <div class="blog-card-icon">&#10024;</div>
-        <h3>The Complete MedSpa Automation System: From Cold Lead to 5-Star Review</h3>
-        <p>How I set up an 8-workflow automation suite inside GoHighLevel for medspa clinics &#8212; covering speed to lead, smart booking, appointment reminders, no-show recovery, onboarding sequences, review requests, reactivation campaigns, and cold outreach.</p>
-        <div class="blog-card-tags">
-          <span>MedSpa Automation</span>
-          <span>GHL Workflows</span>
-          <span>Appointment Booking</span>
-          <span>Review Management</span>
-        </div>
-      </article>
-      <article class="blog-card reveal reveal-d2">
-        <div class="blog-card-icon">&#128295;</div>
-        <h3>5 GoHighLevel Automations Every Service Business Needs Running on Day One</h3>
-        <p>The five essential GHL automations I set up for every client: speed-to-lead response, missed call text-back, appointment reminder sequences, post-service review requests, and lead reactivation campaigns. Each one is plug-and-play inside any GoHighLevel sub-account.</p>
-        <div class="blog-card-tags">
-          <span>GHL Automations</span>
-          <span>Speed to Lead</span>
-          <span>Missed Call Text-Back</span>
-          <span>Lead Reactivation</span>
-        </div>
-      </article>
-      <article class="blog-card reveal">
-        <div class="blog-card-icon">&#128200;</div>
-        <h3>GoHighLevel Snapshots Explained: What They Are &amp; Why Your Agency Needs Them</h3>
-        <p>GHL snapshots let you package an entire sub-account &#8212; funnels, workflows, pipelines, email templates, and automations &#8212; into a one-click deploy. I break down how I build niche-specific snapshots for real estate and medspa businesses that agencies can white-label and resell.</p>
-        <div class="blog-card-tags">
-          <span>GHL Snapshots</span>
-          <span>White-Label</span>
-          <span>Agency</span>
-          <span>GoHighLevel Templates</span>
-        </div>
-      </article>
-      <article class="blog-card reveal reveal-d1">
-        <div class="blog-card-icon">&#128241;</div>
-        <h3>Landing Page vs. Full Website: Which One Does Your MedSpa Actually Need?</h3>
-        <p>Most medspa owners jump straight to a full website when a single high-converting landing page would generate more bookings. I compare both approaches, show real examples built in GoHighLevel, and explain when to use each one based on your marketing budget and goals.</p>
-        <div class="blog-card-tags">
-          <span>MedSpa Website</span>
-          <span>Landing Page Design</span>
-          <span>GoHighLevel Pages</span>
-          <span>Conversion Rate</span>
-        </div>
-      </article>
-      <article class="blog-card reveal reveal-d2">
-        <div class="blog-card-icon">&#128640;</div>
-        <h3>How Real Estate Agents Can Automate Lead Follow-Up in GoHighLevel</h3>
-        <p>The biggest deal-killer in real estate is slow follow-up. I walk through how to set up a speed-to-lead workflow in GHL that responds to new leads within 60 seconds via SMS and email, then nurtures them through a 14-day drip sequence until they book a call.</p>
-        <div class="blog-card-tags">
-          <span>Real Estate Automation</span>
-          <span>Speed to Lead</span>
-          <span>GHL SMS Workflow</span>
-          <span>Lead Nurture</span>
-        </div>
-      </article>
-    </div>
-  </section>
-
   <!-- CTA -->
   <section class="cta">
     <h2 class="reveal">Ready for a website<br>that actually<br><em>works?</em></h2>
     <p class="reveal reveal-d1">I take on a limited number of projects each month. If you need a site that converts, let's talk.</p>
     <a href="#contact" class="cta-btn reveal reveal-d2">Start a Project <span class="arrow">&#8594;</span></a>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" id="process">
+    <div class="how-it-works-inner">
+      <div class="section-label">Process</div>
+      <h2>How it <em>works.</em></h2>
+      <div class="steps-grid">
+        <div class="step-card reveal">
+          <span class="step-connector">&#8594;</span>
+          <div class="step-num">01</div>
+          <h3>Discovery</h3>
+          <p>We hop on a quick call to scope your project and goals.</p>
+        </div>
+        <div class="step-card reveal reveal-d1">
+          <span class="step-connector">&#8594;</span>
+          <div class="step-num">02</div>
+          <h3>Wireframe &amp; Strategy</h3>
+          <p>I map out the site structure, funnel flow, and automation logic.</p>
+        </div>
+        <div class="step-card reveal reveal-d2">
+          <span class="step-connector">&#8594;</span>
+          <div class="step-num">03</div>
+          <h3>Build</h3>
+          <p>I build everything inside GoHighLevel &#8212; pages, workflows, pipelines.</p>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-num">04</div>
+          <h3>Launch &amp; Optimize</h3>
+          <p>We go live, test everything, and I hand off full access.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- CONTACT -->
