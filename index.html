@@ -761,6 +761,19 @@
     .project-link .arrow { transition: transform 0.3s; font-size: 0.7rem; }
     .project-link:hover .arrow { transform: translateX(3px); }
 
+    .project-link.cs-link {
+      background: transparent; color: var(--text);
+      border: 1.5px solid var(--border-strong);
+    }
+
+    .project-link.cs-link:hover {
+      background: transparent;
+      border-color: var(--accent); color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .project-card-links { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+
     .project-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
 
     .tag {
@@ -1214,7 +1227,10 @@
             <p>Complete GoHighLevel snapshot for real estate agents featuring a landing page, dedicated seller page, buyer page, and full automation workflows.</p>
             <div class="project-result">Landing + Seller + Buyer Pages &#183; Full Automations</div>
             <div class="project-tags"><span class="tag">GoHighLevel</span><span class="tag">Landing Page</span><span class="tag">Automations</span><span class="tag">Real Estate</span></div>
-            <a href="https://realstatesample.sapphirecarwash.com" class="project-link" target="_blank" rel="noopener noreferrer">View Live Site <span class="arrow">&#8594;</span></a>
+            <div class="project-card-links">
+              <a href="https://realstatesample.sapphirecarwash.com" class="project-link" target="_blank" rel="noopener noreferrer">View Live Site <span class="arrow">&#8594;</span></a>
+              <a href="projects/real-estate-ghl-snapshot.html" class="project-link cs-link">Case Study <span class="arrow">&#8594;</span></a>
+            </div>
           </div>
         </div>
         <div class="project-card">
@@ -1227,7 +1243,10 @@
             <p>Designed a premium, modern website for a medical spa with service pages, online booking integration, and automated appointment reminders.</p>
             <div class="project-result">Website + Booking Flow + Follow-up Automations</div>
             <div class="project-tags"><span class="tag">GoHighLevel</span><span class="tag">Web Design</span><span class="tag">Booking</span><span class="tag">MedSpa</span></div>
-            <a href="https://medspa.sapphirecarwash.com" class="project-link" target="_blank" rel="noopener noreferrer">View Live Site <span class="arrow">&#8594;</span></a>
+            <div class="project-card-links">
+              <a href="https://medspa.sapphirecarwash.com" class="project-link" target="_blank" rel="noopener noreferrer">View Live Site <span class="arrow">&#8594;</span></a>
+              <a href="projects/medspa-website-booking.html" class="project-link cs-link">Case Study <span class="arrow">&#8594;</span></a>
+            </div>
           </div>
         </div>
         <div class="project-card">
@@ -1242,6 +1261,7 @@
             <p>Complete 8-workflow automation suite: speed to lead, booking, appointment reminders, no-show recovery, onboarding, reviews, reactivation, and cold outreach.</p>
             <div class="project-result">8 Workflows &#183; Full Client Lifecycle &#183; 10-Day Deploy</div>
             <div class="project-tags"><span class="tag">GoHighLevel</span><span class="tag">Automations</span><span class="tag">MedSpa</span><span class="tag">CRM</span></div>
+            <a href="projects/medspa-ghl-automation.html" class="project-link cs-link">Case Study <span class="arrow">&#8594;</span></a>
           </div>
         </div>
       </div>
