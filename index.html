@@ -789,6 +789,84 @@
       color: var(--text-muted); margin-top: 1.5rem;
     }
 
+    /* ===== BLOG ===== */
+    .blog { padding: 6rem 3rem; background: var(--bg-warm); }
+
+    .blog-inner { max-width: 1280px; margin: 0 auto; }
+
+    .blog-inner h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      line-height: 1.05; font-weight: 400;
+      margin-bottom: 3rem;
+    }
+
+    .blog-inner h2 em { font-style: italic; color: var(--accent); }
+
+    .blog-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .blog-card {
+      background: var(--surface-solid);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: flex; flex-direction: column;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+    }
+
+    .blog-card-meta {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .blog-card-category {
+      font-size: 0.65rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 0.25rem 0.6rem; border-radius: 100px;
+      background: var(--accent-light); color: var(--accent);
+    }
+
+    .blog-card-date {
+      font-size: 0.72rem; color: var(--text-muted);
+    }
+
+    .blog-card h3 {
+      font-family: var(--serif);
+      font-size: 1.25rem; font-weight: 400;
+      line-height: 1.3; margin-bottom: 0.75rem;
+    }
+
+    .blog-card h3 a { transition: color 0.3s; }
+    .blog-card h3 a:hover { color: var(--accent); }
+
+    .blog-card p {
+      font-size: 0.88rem; color: var(--text-mid);
+      line-height: 1.7; flex-grow: 1;
+      margin-bottom: 1.25rem;
+    }
+
+    .blog-card-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.8rem; font-weight: 600;
+      color: var(--accent); transition: gap 0.3s;
+    }
+
+    .blog-card-link:hover { gap: 0.75rem; }
+
+    .blog-card-link .arrow { transition: transform 0.3s; font-size: 0.7rem; }
+
+    @media (max-width: 768px) {
+      .blog { padding: 4rem 1.5rem; }
+      .blog-grid { grid-template-columns: 1fr; }
+    }
 
     /* ===== CTA ===== */
     .cta {
@@ -1038,6 +1116,7 @@
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#projects">Work</a>
+      <a href="#blog">Blog</a>
       <a href="#contact" class="nav-cta">Let's Talk</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
@@ -1271,6 +1350,33 @@
     <div class="scroll-hint-bottom">&#8592; Drag or scroll to explore &#8594;</div>
   </section>
 
+  <!-- BLOG -->
+  <section class="blog" id="blog">
+    <div class="blog-inner">
+      <div class="section-label reveal">Blog</div>
+      <h2 class="reveal">Latest <em>insights.</em></h2>
+      <div class="blog-grid">
+        <article class="blog-card reveal">
+          <div class="blog-card-meta">
+            <span class="blog-card-category">Real Estate Automations</span>
+            <span class="blog-card-date">Feb 19, 2026 &#183; 3 min read</span>
+          </div>
+          <h3><a href="https://realstatesample.sapphirecarwash.com/post/real-estate-automation-snapshot-ghl" target="_blank" rel="noopener noreferrer">How to Put Your Real Estate Business on Autopilot with a GoHighLevel Snapshot</a></h3>
+          <p>Most real estate agents lose deals not because of bad leads &#8212; but because of slow follow-up, inconsistent nurturing, and manual processes that fall apart the moment things get busy. Here's how a single GHL snapshot solves it all.</p>
+          <a href="https://realstatesample.sapphirecarwash.com/post/real-estate-automation-snapshot-ghl" class="blog-card-link" target="_blank" rel="noopener noreferrer">Read Article <span class="arrow">&#8594;</span></a>
+        </article>
+        <article class="blog-card reveal reveal-d1">
+          <div class="blog-card-meta">
+            <span class="blog-card-category">MedSpa Automations</span>
+            <span class="blog-card-date">Feb 19, 2026 &#183; 3 min read</span>
+          </div>
+          <h3><a href="https://medspa.sapphirecarwash.com/post/medspa-automation-snapshot-ghl" target="_blank" rel="noopener noreferrer">How to Fill Your MedSpa's Calendar on Autopilot with a GoHighLevel Snapshot</a></h3>
+          <p>Most medspas don't have a lead problem &#8212; they have a follow-up problem. Without a system to respond instantly and nurture consistently, those leads book with a competitor who got back to them first. Here's how a GHL snapshot fixes that.</p>
+          <a href="https://medspa.sapphirecarwash.com/post/medspa-automation-snapshot-ghl" class="blog-card-link" target="_blank" rel="noopener noreferrer">Read Article <span class="arrow">&#8594;</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
 
   <!-- CTA -->
   <section class="cta">
