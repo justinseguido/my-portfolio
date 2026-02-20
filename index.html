@@ -711,6 +711,170 @@
 
     .service-row:hover .service-arrow { opacity: 1; transform: translateX(0); }
 
+    /* ===== PRICING ===== */
+    .pricing { padding: 8rem 3rem; }
+
+    .pricing-inner { max-width: 1280px; margin: 0 auto; }
+
+    .pricing-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 3.5rem;
+    }
+
+    .pricing-header h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      line-height: 1.05; font-weight: 400;
+    }
+
+    .pricing-header h2 em { font-style: italic; color: var(--accent); }
+
+    .pricing-header p {
+      max-width: 320px; font-size: 0.88rem; color: var(--text-mid);
+      line-height: 1.65; text-align: right;
+    }
+
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; align-items: start;
+    }
+
+    .pricing-card {
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
+      position: relative;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 70px rgba(0,0,0,0.07);
+    }
+
+    .pricing-card.featured {
+      background: var(--text); color: var(--bg);
+      border-color: transparent;
+    }
+
+    .pricing-badge {
+      position: absolute; top: -12px; right: 1.5rem;
+      background: var(--accent); color: white;
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.3rem 0.85rem; border-radius: 100px;
+    }
+
+    .pricing-tier {
+      font-size: 0.7rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--accent); margin-bottom: 0.75rem;
+    }
+
+    .pricing-card.featured .pricing-tier { color: var(--accent); }
+
+    .pricing-name {
+      font-family: var(--serif);
+      font-size: 1.5rem; font-weight: 400;
+      line-height: 1.2; margin-bottom: 0.5rem;
+    }
+
+    .pricing-desc {
+      font-size: 0.85rem; color: var(--text-mid);
+      line-height: 1.6; margin-bottom: 1.5rem;
+    }
+
+    .pricing-card.featured .pricing-desc { color: rgba(244,241,235,0.6); }
+
+    .pricing-price {
+      display: flex; align-items: baseline; gap: 0.35rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .pricing-amount {
+      font-family: var(--serif);
+      font-size: 2.8rem; line-height: 1; letter-spacing: -0.02em;
+    }
+
+    .pricing-card.featured .pricing-amount { color: var(--bg); }
+
+    .pricing-note {
+      font-size: 0.72rem; color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .pricing-card.featured .pricing-note { color: rgba(244,241,235,0.45); }
+
+    .pricing-divider {
+      width: 100%; height: 1px;
+      background: var(--border-strong);
+      margin-bottom: 1.5rem;
+    }
+
+    .pricing-card.featured .pricing-divider { background: rgba(244,241,235,0.1); }
+
+    .pricing-features { list-style: none; margin-bottom: 2rem; }
+
+    .pricing-features li {
+      font-size: 0.85rem; color: var(--text-mid);
+      line-height: 1.5; padding: 0.4rem 0;
+      display: flex; align-items: flex-start; gap: 0.6rem;
+    }
+
+    .pricing-card.featured .pricing-features li { color: rgba(244,241,235,0.7); }
+
+    .pricing-features li::before {
+      content: '\2713'; color: var(--accent);
+      font-weight: 700; font-size: 0.8rem;
+      flex-shrink: 0; margin-top: 0.1rem;
+    }
+
+    .pricing-cta {
+      display: block; text-align: center;
+      padding: 0.85rem 1.5rem; border-radius: 100px;
+      font-size: 0.85rem; font-weight: 500;
+      font-family: var(--sans);
+      border: 1.5px solid var(--border-strong);
+      color: var(--text); background: transparent;
+      transition: all 0.3s;
+    }
+
+    .pricing-cta:hover {
+      border-color: var(--accent); color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .pricing-card.featured .pricing-cta {
+      background: var(--accent); color: white;
+      border-color: var(--accent);
+    }
+
+    .pricing-card.featured .pricing-cta:hover {
+      background: #d4593f; border-color: #d4593f;
+      transform: translateY(-2px);
+    }
+
+    .pricing-footer {
+      text-align: center; margin-top: 2.5rem;
+      font-size: 0.82rem; color: var(--text-muted);
+    }
+
+    @media (max-width: 1024px) {
+      .pricing-grid { grid-template-columns: 1fr 1fr; }
+      .pricing-card:last-child { grid-column: span 2; max-width: 50%; margin: 0 auto; }
+    }
+
+    @media (max-width: 768px) {
+      .pricing { padding: 5rem 1.5rem; }
+      .pricing-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .pricing-header p { text-align: left; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .pricing-card:last-child { grid-column: span 1; max-width: 100%; }
+    }
+
     /* ===== PROJECTS ===== */
     .projects { padding: 8rem 0; }
 
@@ -1573,6 +1737,87 @@
       <div class="service-row reveal"><div class="service-num">04</div><div class="service-name">Sales Funnels</div><div class="service-desc">Seller pages, buyer pages, booking funnels, and opt-in flows designed to move leads through your pipeline.</div><div class="service-arrow">&#8594;</div></div>
       <div class="service-row reveal"><div class="service-num">05</div><div class="service-name">Snapshots &amp; Templates</div><div class="service-desc">Ready-to-deploy GoHighLevel snapshots for real estate, medspa, and service businesses &#8212; fully customizable.</div><div class="service-arrow">&#8594;</div></div>
       <div class="service-row reveal"><div class="service-num">06</div><div class="service-name">UI/UX Design</div><div class="service-desc">Clean, professional interface design focused on usability, brand consistency, and conversion optimization.</div><div class="service-arrow">&#8594;</div></div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="pricing-inner">
+      <div class="pricing-header">
+        <div>
+          <div class="section-label reveal">Pricing</div>
+          <h2 class="reveal">Packages that <em>fit.</em></h2>
+        </div>
+        <p class="reveal">Clear pricing, no surprises. Pick the package that matches your goals &#8212; or let's build something custom.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Starter -->
+        <div class="pricing-card reveal">
+          <div class="pricing-tier">Starter</div>
+          <div class="pricing-name">Landing Page</div>
+          <div class="pricing-desc">A single high-converting page to capture leads and book appointments.</div>
+          <div class="pricing-price">
+            <span class="pricing-amount">$497</span>
+          </div>
+          <div class="pricing-note">One-time &#183; Delivered in 3&#8211;5 days</div>
+          <div class="pricing-divider"></div>
+          <ul class="pricing-features">
+            <li>1 GoHighLevel landing page</li>
+            <li>Mobile-responsive design</li>
+            <li>Lead capture form + CTA</li>
+            <li>Basic SEO setup</li>
+            <li>1 round of revisions</li>
+          </ul>
+          <a href="#contact" class="pricing-cta">Get Started</a>
+        </div>
+
+        <!-- Growth (Featured) -->
+        <div class="pricing-card featured reveal reveal-d1">
+          <div class="pricing-badge">Most Popular</div>
+          <div class="pricing-tier">Growth</div>
+          <div class="pricing-name">Website + Automations</div>
+          <div class="pricing-desc">A full website with CRM automations that turn visitors into booked calls.</div>
+          <div class="pricing-price">
+            <span class="pricing-amount">$1,497</span>
+          </div>
+          <div class="pricing-note">One-time &#183; Delivered in 7&#8211;10 days</div>
+          <div class="pricing-divider"></div>
+          <ul class="pricing-features">
+            <li>Multi-page GHL website</li>
+            <li>Sales funnel or booking flow</li>
+            <li>CRM pipeline setup</li>
+            <li>Email/SMS follow-up workflows</li>
+            <li>Appointment booking integration</li>
+            <li>2 rounds of revisions</li>
+          </ul>
+          <a href="#contact" class="pricing-cta">Get Started</a>
+        </div>
+
+        <!-- Scale -->
+        <div class="pricing-card reveal reveal-d2">
+          <div class="pricing-tier">Scale</div>
+          <div class="pricing-name">Full GHL System</div>
+          <div class="pricing-desc">The complete build &#8212; website, funnels, pipelines, and every automation your business needs.</div>
+          <div class="pricing-price">
+            <span class="pricing-amount">$2,997</span>
+          </div>
+          <div class="pricing-note">One-time &#183; Delivered in 10&#8211;14 days</div>
+          <div class="pricing-divider"></div>
+          <ul class="pricing-features">
+            <li>Everything in Growth</li>
+            <li>Full CRM &amp; pipeline automation</li>
+            <li>Lead routing &amp; assignment</li>
+            <li>Review request workflows</li>
+            <li>Reactivation &amp; nurture campaigns</li>
+            <li>GHL snapshot (portable template)</li>
+            <li>Ongoing support (30 days)</li>
+          </ul>
+          <a href="#contact" class="pricing-cta">Get Started</a>
+        </div>
+      </div>
+
+      <p class="pricing-footer reveal">Need something custom? <a href="#contact" style="color:var(--accent);font-weight:600;">Let's talk</a> &#8212; I'll build a package around your exact needs.</p>
     </div>
   </section>
 
