@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K22T0XCQ2K"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-K22T0XCQ2K');
-  </script>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="GHL Certified Admin building high-converting websites, funnels, and CRM automations for real estate and medspa businesses.">
@@ -136,9 +127,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" as="style">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="preload" href="https://www.googletagmanager.com/gtag/js?id=G-K22T0XCQ2K" as="script">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #F4F1EB;
@@ -763,7 +753,7 @@
     .pricing-badge {
       position: absolute; top: -12px; right: 1.5rem;
       background: var(--accent); color: white;
-      font-size: 0.65rem; font-weight: 700;
+      font-size: 0.65rem; font-weight: 600;
       letter-spacing: 0.08em; text-transform: uppercase;
       padding: 0.3rem 0.85rem; border-radius: 100px;
     }
@@ -828,7 +818,7 @@
 
     .pricing-features li::before {
       content: '\2713'; color: var(--accent);
-      font-weight: 700; font-size: 0.8rem;
+      font-weight: 600; font-size: 0.8rem;
       flex-shrink: 0; margin-top: 0.1rem;
     }
 
@@ -1254,7 +1244,7 @@
     }
 
     .lm-check {
-      color: var(--accent); font-weight: 700;
+      color: var(--accent); font-weight: 600;
       font-size: 0.85rem; flex-shrink: 0; margin-top: 0.1rem;
     }
 
@@ -1833,7 +1823,7 @@
       <div class="projects-track">
         <div class="project-card">
           <div class="project-thumb">
-            <img src="images/re_gig_image_1.png" alt="Real Estate Automation Snapshot — GoHighLevel template with lead capture, speed to lead, nurture campaigns, and pipeline tracking" loading="lazy">
+            <img src="images/re_gig_image_1.webp" alt="Real Estate Automation Snapshot — GoHighLevel template with lead capture, speed to lead, nurture campaigns, and pipeline tracking" loading="lazy">
             <span class="category-pill">Real Estate</span>
           </div>
           <div class="project-body">
@@ -1849,7 +1839,7 @@
         </div>
         <div class="project-card">
           <div class="project-thumb">
-            <img src="images/gig_image_1.png" alt="MedSpa Automation Snapshot — GoHighLevel template with lead reactivation, smart booking, appointment reminders, and review management" loading="lazy">
+            <img src="images/gig_image_1.webp" alt="MedSpa Automation Snapshot — GoHighLevel template with lead reactivation, smart booking, appointment reminders, and review management" loading="lazy">
             <span class="category-pill">MedSpa</span>
           </div>
           <div class="project-body">
@@ -2197,7 +2187,16 @@
       }, { passive: true });
     }
   </script>
-  <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+  <script src="https://link.msgsndr.com/js/form_embed.js" defer></script>
+
+  <!-- Google Analytics (deferred to not block rendering) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K22T0XCQ2K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-K22T0XCQ2K');
+  </script>
 
 </body>
 </html>
