@@ -85,14 +85,14 @@
     a { color: inherit; text-decoration: none; }
 
     /* ===== NAV ===== */
-    nav {
+    #navbar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       padding: 1.5rem 3rem;
       display: flex; justify-content: space-between; align-items: center;
       transition: all 0.4s ease;
     }
 
-    nav.scrolled {
+    #navbar.scrolled {
       padding: 1rem 3rem;
       background: rgba(244,241,235,0.85);
       backdrop-filter: blur(20px);
@@ -638,7 +638,7 @@
     }
 
     @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
+      #navbar { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .nav-links.open {
@@ -690,11 +690,11 @@
 
   <!-- HERO -->
   <section class="cs-hero">
-    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+    <div class="cs-breadcrumb" aria-label="Breadcrumb">
       <a href="../index.html">Portfolio</a>
       <span class="sep">/</span>
       <span>Real Estate Snapshot</span>
-    </nav>
+    </div>
     <span class="cs-category">Real Estate</span>
     <h1>Real Estate Snapshots &#8212; <em>Full GHL Template</em></h1>
     <p class="cs-subtitle">A complete GoHighLevel snapshot built for real estate agents &#8212; featuring a landing page, dedicated seller page, buyer page, and full automation workflows that capture and nurture leads on autopilot.</p>

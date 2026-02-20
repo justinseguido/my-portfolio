@@ -83,14 +83,14 @@
 
     a { color: inherit; text-decoration: none; }
 
-    nav {
+    #navbar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       padding: 1.5rem 3rem;
       display: flex; justify-content: space-between; align-items: center;
       transition: all 0.4s ease;
     }
 
-    nav.scrolled {
+    #navbar.scrolled {
       padding: 1rem 3rem;
       background: rgba(244,241,235,0.85);
       backdrop-filter: blur(20px);
@@ -646,7 +646,7 @@
     }
 
     @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
+      #navbar { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .nav-links.open {
@@ -699,11 +699,11 @@
 
   <!-- HERO -->
   <section class="cs-hero">
-    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+    <div class="cs-breadcrumb" aria-label="Breadcrumb">
       <a href="../index.html">Portfolio</a>
       <span class="sep">/</span>
       <span>MedSpa Automation</span>
-    </nav>
+    </div>
     <span class="cs-category">MedSpa</span>
     <h1>MedSpa GHL Automation &#8212; <em>Full System Flow</em></h1>
     <p class="cs-subtitle">A complete 8-workflow automation suite built inside GoHighLevel &#8212; covering the entire client lifecycle from first contact to 5-star review and reactivation.</p>
