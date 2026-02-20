@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K22T0XCQ2K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-K22T0XCQ2K');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Case study: Automated CRM & Lead Routing system built in GoHighLevel — instant lead assignment, qualification scoring, follow-up sequences, and pipeline management.">
+  <meta name="keywords" content="CRM automation, lead routing, GoHighLevel CRM, round-robin lead assignment, lead qualification, automated follow-up, pipeline management, lead scoring, GHL automation, GoHighLevel certified">
+  <meta name="author" content="Justine Seguido">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#F4F1EB">
+
+  <meta property="og:title" content="Automated CRM & Lead Routing — Case Study | Justine Seguido">
+  <meta property="og:description" content="Automated intake, qualification, and follow-up system built in GoHighLevel to prevent lead loss and speed up response time.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://justineportfolio.sapphirecarwash.com/projects/crm-lead-routing.html">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Justine Seguido — Freelance Designer &amp; Developer">
+  <link rel="canonical" href="https://justineportfolio.sapphirecarwash.com/projects/crm-lead-routing.html">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Automated CRM & Lead Routing — Case Study | Justine Seguido">
+  <meta name="twitter:description" content="Automated intake, qualification, and follow-up system built in GoHighLevel to prevent lead loss and speed up response time.">
+
+  <title>Automated CRM &amp; Lead Routing — Case Study | Justine Seguido</title>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Automated CRM & Lead Routing",
+    "description": "Automated intake, qualification, and follow-up to prevent lead loss and speed up response time.",
+    "author": { "@type": "Person", "name": "Justine Seguido" },
+    "url": "https://justineportfolio.sapphirecarwash.com/projects/crm-lead-routing.html",
+    "keywords": ["GoHighLevel", "CRM", "Lead Routing", "Automations", "Round-Robin Assignment"],
+    "datePublished": "2026-02-20"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://www.googletagmanager.com/gtag/js?id=G-K22T0XCQ2K" as="script">
+  <style>
+    :root {
+      --bg: #F4F1EB;
+      --bg-warm: #EDE8DF;
+      --surface: rgba(255,255,255,0.55);
+      --surface-solid: #FFFFFF;
+      --text: #1A1A17;
+      --text-mid: #4A4A42;
+      --text-muted: #8B8B80;
+      --accent: #C84B31;
+      --accent-light: rgba(200,75,49,0.08);
+      --accent-glow: rgba(200,75,49,0.15);
+      --border: rgba(26,26,23,0.08);
+      --border-strong: rgba(26,26,23,0.15);
+      --glass: rgba(255,255,255,0.45);
+      --glass-border: rgba(255,255,255,0.6);
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    ::selection { background: var(--accent); color: white; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.5rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: all 0.4s ease;
+    }
+
+    nav.scrolled {
+      padding: 1rem 3rem;
+      background: rgba(244,241,235,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-style: italic;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+
+    .nav-links a {
+      font-size: 0.8rem; font-weight: 500;
+      color: var(--text-mid);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 1.5px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      font-size: 0.8rem !important; font-weight: 500 !important;
+      background: var(--text); color: var(--bg) !important;
+      padding: 0.6rem 1.4rem; border-radius: 100px;
+      transition: background 0.3s, transform 0.2s !important;
+    }
+
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
+
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      background: var(--text); color: var(--bg);
+      padding: 0.6rem 1.2rem; border-radius: 0 0 8px 8px;
+      font-size: 0.85rem; font-weight: 500; z-index: 200;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 0; }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+
+    .hamburger span { width: 24px; height: 2px; background: var(--text); transition: 0.3s; display: block; }
+
+    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .section-label {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-size: 0.7rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.18em;
+      color: var(--text-muted); margin-bottom: 1.5rem;
+    }
+
+    .section-label::before {
+      content: ''; width: 24px; height: 1px; background: var(--accent);
+    }
+
+    .cs-hero {
+      padding: 9rem 3rem 4rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .cs-breadcrumb {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.75rem; font-weight: 500;
+      color: var(--text-muted); margin-bottom: 2rem;
+    }
+
+    .cs-breadcrumb a { transition: color 0.3s; }
+    .cs-breadcrumb a:hover { color: var(--accent); }
+    .cs-breadcrumb .sep { color: var(--border-strong); }
+
+    .cs-category {
+      display: inline-block;
+      font-size: 0.65rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      padding: 0.35rem 0.75rem; border-radius: 100px;
+      background: var(--accent-light); color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .cs-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.05; font-weight: 400;
+      margin-bottom: 1.25rem;
+    }
+
+    .cs-hero h1 em { font-style: italic; color: var(--accent); }
+
+    .cs-subtitle {
+      font-size: 1.05rem; color: var(--text-mid);
+      line-height: 1.7; max-width: 640px;
+      margin-bottom: 2rem;
+    }
+
+    .cs-meta {
+      display: flex; gap: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-strong);
+    }
+
+    .cs-meta-label {
+      font-size: 0.65rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-muted); margin-bottom: 0.3rem;
+    }
+
+    .cs-meta-value {
+      font-size: 0.9rem; font-weight: 500; color: var(--text);
+    }
+
+    .cs-hero-image {
+      max-width: 1280px; margin: 0 auto 0;
+      padding: 0 3rem;
+    }
+
+    .cs-hero-iframe-wrap {
+      width: 100%;
+      height: 600px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #0f1117;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+
+    .cs-hero-iframe-wrap iframe {
+      width: 100%; height: 100%;
+      border: none;
+    }
+
+    .cs-flowchart-hint {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .cs-flowchart-hint a {
+      color: var(--accent);
+      font-weight: 500;
+      transition: opacity 0.3s;
+    }
+
+    .cs-flowchart-hint a:hover { opacity: 0.8; }
+
+    .cs-overview {
+      padding: 6rem 3rem;
+      max-width: 1280px; margin: 0 auto;
+    }
+
+    .cs-overview-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .cs-overview-text h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 400; line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .cs-overview-text h2 em { font-style: italic; color: var(--accent); }
+
+    .cs-overview-text p {
+      font-size: 0.95rem; color: var(--text-mid);
+      line-height: 1.8; margin-bottom: 1rem;
+    }
+
+    .cs-facts {
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+
+    .cs-facts h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem; font-weight: 400;
+      margin-bottom: 1.5rem;
+    }
+
+    .cs-fact-row {
+      display: flex; justify-content: space-between;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+
+    .cs-fact-row:last-child { border-bottom: none; }
+
+    .cs-fact-key { color: var(--text-muted); font-weight: 500; }
+    .cs-fact-val { color: var(--text); font-weight: 600; text-align: right; }
+
+    .cs-challenge {
+      padding: 6rem 3rem;
+      background: var(--text); color: var(--bg);
+    }
+
+    .cs-challenge-inner {
+      max-width: 1280px; margin: 0 auto;
+    }
+
+    .cs-challenge .section-label { color: rgba(244,241,235,0.4); }
+    .cs-challenge .section-label::before { background: var(--accent); }
+
+    .cs-challenge h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400; line-height: 1.15;
+      margin-bottom: 2rem; max-width: 700px;
+    }
+
+    .cs-challenge h2 em { font-style: italic; color: var(--accent); }
+
+    .cs-challenge p {
+      font-size: 0.95rem; color: rgba(244,241,235,0.65);
+      line-height: 1.8; max-width: 700px;
+      margin-bottom: 1rem;
+    }
+
+    .cs-challenge-list {
+      list-style: none; margin-top: 1.5rem;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .cs-challenge-list li {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      font-size: 0.9rem; color: rgba(244,241,235,0.6);
+      line-height: 1.6;
+    }
+
+    .cs-challenge-list li::before {
+      content: '\2717';
+      color: var(--accent); font-weight: 700;
+      flex-shrink: 0; margin-top: 0.1rem;
+    }
+
+    .cs-solution { padding: 6rem 3rem; }
+
+    .cs-solution-inner {
+      max-width: 1280px; margin: 0 auto;
+    }
+
+    .cs-solution h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400; line-height: 1.15;
+      margin-bottom: 3rem;
+    }
+
+    .cs-solution h2 em { font-style: italic; color: var(--accent); }
+
+    .cs-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .cs-step {
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
+    }
+
+    .cs-step:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+    }
+
+    .cs-step-num {
+      font-family: var(--serif);
+      font-size: 2.5rem; line-height: 1;
+      color: var(--accent); opacity: 0.25;
+      margin-bottom: 1rem;
+    }
+
+    .cs-step h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem; font-weight: 400;
+      line-height: 1.3; margin-bottom: 0.75rem;
+    }
+
+    .cs-step p {
+      font-size: 0.88rem; color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    .cs-features {
+      padding: 6rem 3rem;
+      background: var(--bg-warm);
+    }
+
+    .cs-features-inner {
+      max-width: 1280px; margin: 0 auto;
+    }
+
+    .cs-features h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400; line-height: 1.15;
+      margin-bottom: 3rem;
+    }
+
+    .cs-features h2 em { font-style: italic; color: var(--accent); }
+
+    .cs-features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .cs-feature-card {
+      background: var(--surface-solid);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
+    }
+
+    .cs-feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+    }
+
+    .cs-feature-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--accent-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; margin-bottom: 1.25rem;
+    }
+
+    .cs-feature-card h3 {
+      font-family: var(--serif);
+      font-size: 1.1rem; font-weight: 400;
+      line-height: 1.3; margin-bottom: 0.6rem;
+    }
+
+    .cs-feature-card p {
+      font-size: 0.85rem; color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    .cs-results { padding: 6rem 3rem; }
+
+    .cs-results-inner {
+      max-width: 1280px; margin: 0 auto;
+      text-align: center;
+    }
+
+    .cs-results h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400; line-height: 1.15;
+      margin-bottom: 3rem;
+    }
+
+    .cs-results h2 em { font-style: italic; color: var(--accent); }
+
+    .cs-results-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .cs-result-card {
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 2.5rem 1.5rem;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
+    }
+
+    .cs-result-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+    }
+
+    .cs-result-num {
+      font-family: var(--serif);
+      font-size: 2.8rem; line-height: 1;
+      color: var(--accent); margin-bottom: 0.5rem;
+    }
+
+    .cs-result-label {
+      font-size: 0.78rem; font-weight: 500;
+      color: var(--text-mid); text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .cs-tech {
+      padding: 4rem 3rem;
+      background: var(--bg-warm);
+      text-align: center;
+    }
+
+    .cs-tech-inner {
+      max-width: 1280px; margin: 0 auto;
+    }
+
+    .cs-tech .section-label { justify-content: center; }
+
+    .cs-tech-tags {
+      display: flex; gap: 0.6rem;
+      flex-wrap: wrap; justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .cs-tech-tags .tag {
+      font-size: 0.78rem; font-weight: 500;
+      padding: 0.4rem 1rem; border-radius: 100px;
+      background: var(--accent-light); color: var(--accent);
+    }
+
+    .cs-cta {
+      padding: 8rem 3rem; text-align: center;
+      position: relative; overflow: hidden;
+    }
+
+    .cs-cta::before {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, var(--accent-glow), transparent 70%);
+      pointer-events: none;
+    }
+
+    .cs-cta h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 400; line-height: 1.05;
+      max-width: 600px; margin: 0 auto 1.5rem;
+      position: relative;
+    }
+
+    .cs-cta h2 em { color: var(--accent); }
+
+    .cs-cta p {
+      font-size: 1rem; color: var(--text-mid);
+      max-width: 440px; margin: 0 auto 2.5rem;
+      line-height: 1.7; position: relative;
+    }
+
+    .cs-cta-buttons {
+      display: flex; gap: 1rem;
+      justify-content: center; flex-wrap: wrap;
+      position: relative;
+    }
+
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: var(--text); color: var(--bg);
+      padding: 1rem 2.25rem; border-radius: 100px;
+      font-weight: 500; font-size: 0.95rem;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+      border: none; cursor: pointer; font-family: var(--sans);
+    }
+
+    .cta-btn:hover {
+      background: var(--accent); transform: translateY(-3px);
+      box-shadow: 0 15px 50px rgba(200,75,49,0.2);
+    }
+
+    .cta-btn .arrow { transition: transform 0.3s; }
+    .cta-btn:hover .arrow { transform: translateX(4px); }
+
+    .cta-btn-outline {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: transparent; color: var(--text);
+      padding: 1rem 2.25rem; border-radius: 100px;
+      font-weight: 500; font-size: 0.95rem;
+      border: 1.5px solid var(--border-strong);
+      transition: transform 0.3s, border-color 0.3s, color 0.3s;
+      font-family: var(--sans);
+    }
+
+    .cta-btn-outline:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent); color: var(--accent);
+    }
+
+    .cta-btn-outline .arrow { transition: transform 0.3s; }
+    .cta-btn-outline:hover .arrow { transform: translateX(4px); }
+
+    footer {
+      padding: 2.5rem 3rem; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.78rem; color: var(--text-muted); background: var(--bg-warm);
+    }
+
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { transition: color 0.25s; }
+    .footer-links a:hover { color: var(--accent); }
+
+    .reveal {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+
+    @media (max-width: 1024px) {
+      .cs-steps { grid-template-columns: 1fr 1fr; }
+      .cs-features-grid { grid-template-columns: 1fr 1fr; }
+      .cs-results-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: var(--bg); padding: 1.5rem;
+        border-bottom: 1px solid var(--border); gap: 1rem;
+      }
+      .nav-cta { align-self: flex-start; }
+
+      .cs-hero { padding: 7rem 1.5rem 3rem; }
+      .cs-hero-image { padding: 0 1.5rem; }
+      .cs-hero-iframe-wrap { height: 350px; }
+      .cs-meta { flex-wrap: wrap; gap: 1.5rem; }
+      .cs-overview { padding: 4rem 1.5rem; }
+      .cs-overview-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .cs-challenge { padding: 4rem 1.5rem; }
+      .cs-challenge-list { grid-template-columns: 1fr; }
+      .cs-solution { padding: 4rem 1.5rem; }
+      .cs-steps { grid-template-columns: 1fr; }
+      .cs-features { padding: 4rem 1.5rem; }
+      .cs-features-grid { grid-template-columns: 1fr; }
+      .cs-results { padding: 4rem 1.5rem; }
+      .cs-results-grid { grid-template-columns: 1fr 1fr; }
+      .cs-tech { padding: 3rem 1.5rem; }
+      .cs-cta { padding: 5rem 1.5rem; }
+      .cs-cta-buttons { flex-direction: column; align-items: center; }
+
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav id="navbar" aria-label="Main navigation">
+    <a href="../index.html" class="nav-logo">Justine.</a>
+    <div class="nav-links" id="navLinks">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#services">Services</a>
+      <a href="../index.html#projects">Work</a>
+      <a href="../index.html#contact" class="nav-cta">Let's Talk</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <main id="main-content">
+
+  <!-- HERO -->
+  <section class="cs-hero">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Portfolio</a>
+      <span class="sep">/</span>
+      <span>CRM &amp; Lead Routing</span>
+    </nav>
+    <span class="cs-category">CRM</span>
+    <h1>Automated CRM &amp; <em>Lead Routing</em></h1>
+    <p class="cs-subtitle">Automated intake, qualification, and follow-up system built inside GoHighLevel &#8212; designed to prevent lead loss and speed up response time with instant lead assignment.</p>
+    <div class="cs-meta">
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">Industry</div>
+        <div class="cs-meta-value">Multi-Industry</div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">Platform</div>
+        <div class="cs-meta-value">GoHighLevel</div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">Workflows</div>
+        <div class="cs-meta-value">6 Automations</div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">Timeline</div>
+        <div class="cs-meta-value">7-Day Deploy</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HERO IMAGE — FLOWCHART IFRAME -->
+  <div class="cs-hero-image reveal">
+    <div class="cs-hero-iframe-wrap">
+      <iframe src="../images/CRM_Lead_Routing_Flowchart.html" title="CRM Lead Routing Automation System Flow" loading="lazy"></iframe>
+    </div>
+    <p class="cs-flowchart-hint">Interactive system flowchart &#8212; <a href="../images/CRM_Lead_Routing_Flowchart.html" target="_blank" rel="noopener noreferrer">open full view &#8594;</a></p>
+  </div>
+
+  <!-- OVERVIEW -->
+  <section class="cs-overview">
+    <div class="cs-overview-grid">
+      <div class="cs-overview-text reveal">
+        <div class="section-label">Overview</div>
+        <h2>Instant lead assignment that <em>prevents lead loss.</em></h2>
+        <p>Most businesses lose leads not because of bad marketing, but because of slow response times and manual processes. When a new lead comes in, it sits in a queue until someone manually checks, assigns it, and follows up &#8212; by then, the lead has already moved on.</p>
+        <p>This system solves that by automating the entire lead routing process inside GoHighLevel. From the moment a lead enters the CRM, it&#8217;s automatically tagged, scored, assigned to the right team member via round-robin, and placed into a follow-up sequence &#8212; all within seconds.</p>
+        <p>The result is zero leads lost, faster response times, and a pipeline that moves itself forward without manual intervention.</p>
+      </div>
+      <div class="cs-facts reveal reveal-d1">
+        <h3>Quick Facts</h3>
+        <div class="cs-fact-row">
+          <span class="cs-fact-key">Industry</span>
+          <span class="cs-fact-val">Multi-Industry</span>
+        </div>
+        <div class="cs-fact-row">
+          <span class="cs-fact-key">Platform</span>
+          <span class="cs-fact-val">GoHighLevel</span>
+        </div>
+        <div class="cs-fact-row">
+          <span class="cs-fact-key">Workflows</span>
+          <span class="cs-fact-val">6 Automations</span>
+        </div>
+        <div class="cs-fact-row">
+          <span class="cs-fact-key">Type</span>
+          <span class="cs-fact-val">Internal System</span>
+        </div>
+        <div class="cs-fact-row">
+          <span class="cs-fact-key">Deploy Time</span>
+          <span class="cs-fact-val">7 Days</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHALLENGE -->
+  <section class="cs-challenge">
+    <div class="cs-challenge-inner">
+      <div class="section-label reveal">The Challenge</div>
+      <h2 class="reveal">Leads were falling through the cracks at <em>every step.</em></h2>
+      <p class="reveal">The team was generating leads from multiple sources &#8212; ads, forms, referrals &#8212; but had no system to route them quickly. Manual assignment meant delays, missed follow-ups, and zero visibility into who was handling what.</p>
+      <ul class="cs-challenge-list reveal">
+        <li>New leads sat unassigned for hours or days before anyone reached out</li>
+        <li>No round-robin system &#8212; some agents overloaded, others with empty pipelines</li>
+        <li>No lead scoring &#8212; hot leads treated the same as cold inquiries</li>
+        <li>Follow-up was manual and inconsistent across the team</li>
+        <li>No pipeline visibility &#8212; management couldn't track lead status or agent performance</li>
+        <li>Stale leads piled up with no automated re-engagement system</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="cs-solution">
+    <div class="cs-solution-inner">
+      <div class="section-label reveal">The Solution</div>
+      <h2 class="reveal">6 workflows. <em>Instant assignment.</em></h2>
+      <div class="cs-steps">
+        <div class="cs-step reveal">
+          <div class="cs-step-num">01</div>
+          <h3>Lead Capture &amp; Intake</h3>
+          <p>Centralized intake from all channels &#8212; forms, ads, chat, and manual entry &#8212; into one CRM with automatic source tagging and UTM tracking.</p>
+        </div>
+        <div class="cs-step reveal reveal-d1">
+          <div class="cs-step-num">02</div>
+          <h3>Instant Lead Assignment</h3>
+          <p>Round-robin routing assigns each lead to the next available agent within seconds, with instant SMS and email alerts to the assigned team member.</p>
+        </div>
+        <div class="cs-step reveal reveal-d2">
+          <div class="cs-step-num">03</div>
+          <h3>Lead Qualification</h3>
+          <p>Automated scoring based on lead source, form data, and engagement level &#8212; hot leads get priority alerts, warm leads enter nurture, cold leads get long-term drip.</p>
+        </div>
+        <div class="cs-step reveal">
+          <div class="cs-step-num">04</div>
+          <h3>Automated Follow-up</h3>
+          <p>Multi-channel drip sequences via SMS and email on Days 1, 2, 4, and 7 &#8212; personalized messaging that keeps leads warm without manual effort.</p>
+        </div>
+        <div class="cs-step reveal reveal-d1">
+          <div class="cs-step-num">05</div>
+          <h3>Pipeline Management</h3>
+          <p>Visual pipeline with automated stage movement based on real actions &#8212; replies, calls, bookings &#8212; plus stale lead alerts and daily summary reports.</p>
+        </div>
+        <div class="cs-step reveal reveal-d2">
+          <div class="cs-step-num">06</div>
+          <h3>Appointment &amp; Handoff</h3>
+          <p>Qualified leads are guided to book with automated confirmations, multi-touch reminders at 24h and 2h, and no-show recovery sequences built in.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="cs-features">
+    <div class="cs-features-inner">
+      <div class="section-label reveal">Key Features</div>
+      <h2 class="reveal">What makes this system <em>work.</em></h2>
+      <div class="cs-features-grid">
+        <div class="cs-feature-card reveal">
+          <div class="cs-feature-icon">&#9889;</div>
+          <h3>5-Second Assignment</h3>
+          <p>Leads are assigned to the right agent in under 5 seconds &#8212; no manual intervention, no delays.</p>
+        </div>
+        <div class="cs-feature-card reveal reveal-d1">
+          <div class="cs-feature-icon">&#128260;</div>
+          <h3>Round-Robin Routing</h3>
+          <p>Fair, even distribution across the team so no agent is overloaded and no lead sits unassigned.</p>
+        </div>
+        <div class="cs-feature-card reveal reveal-d2">
+          <div class="cs-feature-icon">&#127919;</div>
+          <h3>Lead Scoring</h3>
+          <p>Automated qualification scores leads as hot, warm, or cold &#8212; agents focus on the highest-value opportunities first.</p>
+        </div>
+        <div class="cs-feature-card reveal">
+          <div class="cs-feature-icon">&#128172;</div>
+          <h3>Multi-Channel Nurture</h3>
+          <p>SMS and email sequences work together across a 7-day follow-up window to convert leads who don't respond immediately.</p>
+        </div>
+        <div class="cs-feature-card reveal reveal-d1">
+          <div class="cs-feature-icon">&#128200;</div>
+          <h3>Pipeline Visibility</h3>
+          <p>Real-time pipeline view with automated stage movement &#8212; management always knows where every lead stands.</p>
+        </div>
+        <div class="cs-feature-card reveal reveal-d2">
+          <div class="cs-feature-icon">&#128276;</div>
+          <h3>Stale Lead Alerts</h3>
+          <p>If a lead sits in one stage for 48+ hours, the assigned agent gets an automatic nudge to take action.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="cs-results">
+    <div class="cs-results-inner">
+      <div class="section-label reveal">Results</div>
+      <h2 class="reveal">Faster response, <em>zero leads lost.</em></h2>
+      <div class="cs-results-grid">
+        <div class="cs-result-card reveal">
+          <div class="cs-result-num">&lt;5s</div>
+          <div class="cs-result-label">Lead Assignment</div>
+        </div>
+        <div class="cs-result-card reveal reveal-d1">
+          <div class="cs-result-num">0</div>
+          <div class="cs-result-label">Leads Lost</div>
+        </div>
+        <div class="cs-result-card reveal reveal-d2">
+          <div class="cs-result-num">6</div>
+          <div class="cs-result-label">Workflows Built</div>
+        </div>
+        <div class="cs-result-card reveal">
+          <div class="cs-result-num">7</div>
+          <div class="cs-result-label">Day Deployment</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section class="cs-tech">
+    <div class="cs-tech-inner">
+      <div class="section-label reveal">Tech Stack</div>
+      <div class="cs-tech-tags reveal">
+        <span class="tag">GoHighLevel</span>
+        <span class="tag">CRM Pipelines</span>
+        <span class="tag">Round-Robin Assignment</span>
+        <span class="tag">Workflow Automation</span>
+        <span class="tag">Lead Scoring</span>
+        <span class="tag">SMS Sequences</span>
+        <span class="tag">Email Automation</span>
+        <span class="tag">Pipeline Management</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cs-cta">
+    <h2 class="reveal">Ready to stop<br>losing <em>leads?</em></h2>
+    <p class="reveal reveal-d1">I build automated lead routing systems inside GoHighLevel &#8212; so every lead gets assigned, followed up with, and tracked.</p>
+    <div class="cs-cta-buttons reveal reveal-d2">
+      <a href="../index.html#contact" class="cta-btn">Start a Project <span class="arrow">&#8594;</span></a>
+      <a href="../index.html#projects" class="cta-btn-outline">View More Work <span class="arrow">&#8594;</span></a>
+    </div>
+  </section>
+
+  </main>
+
+  <footer>
+    <div>
+      <span>&#169; 2026 Justine Seguido. All rights reserved.</span>
+      <p style="font-size:0.68rem;color:var(--text-muted);margin-top:0.35rem;">GoHighLevel Certified Admin &#183; Freelance Web Designer &amp; Developer &#183; Real Estate &amp; MedSpa Specialist</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/justine-seguido-1ba3b4132" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:jbseguido@gmail.com">Email</a>
+    </div>
+  </footer>
+
+  <script>
+    var nav = document.getElementById('navbar');
+    window.addEventListener('scroll', function() {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    var hamburger = document.getElementById('hamburger');
+    var navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', function() {
+      var isOpen = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('active', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+    var anchors = navLinks.querySelectorAll('a');
+    for (var i = 0; i < anchors.length; i++) {
+      anchors[i].addEventListener('click', function() {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    var revealEls = document.querySelectorAll('.reveal');
+    var obs = new IntersectionObserver(function(entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].isIntersecting) entries[i].target.classList.add('visible');
+      }
+    }, { threshold: 0.08 });
+    for (var i = 0; i < revealEls.length; i++) obs.observe(revealEls[i]);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automated Booking & CRM — OwnerRez → GoHighLevel System Flow</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0f1117;
+    font-family: 'DM Sans', sans-serif;
+    color: #e0e0e0;
+    padding: 40px 20px;
+    min-height: 100vh;
+  }
+
+  .page { max-width: 1500px; margin: 0 auto; }
+
+  /* Header */
+  .header { text-align: center; margin-bottom: 48px; position: relative; }
+  .header::after {
+    content: '';
+    display: block;
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, #38bdf8, #34d399);
+    margin: 20px auto 0;
+    border-radius: 2px;
+  }
+  .header h1 { font-size: 32px; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
+  .header p { font-size: 15px; color: #6b7280; margin-top: 8px; }
+  .header .badge {
+    display: inline-block;
+    background: rgba(56,189,248,0.1);
+    border: 1px solid rgba(56,189,248,0.25);
+    color: #38bdf8;
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px;
+    padding: 4px 14px; border-radius: 20px; margin-bottom: 12px;
+  }
+
+  /* Legend */
+  .legend { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 40px; }
+  .legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #9ca3af; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+
+  /* ── Master Flow ── */
+  .master-flow {
+    background: #181a20;
+    border: 1px solid #2a2d35;
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .master-flow::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #38bdf8, #34d399, #fbbf24);
+    border-radius: 16px 16px 0 0;
+  }
+  .master-flow h2 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px; text-align: center; }
+  .master-flow .desc { font-size: 13px; color: #6b7280; margin-bottom: 24px; text-align: center; line-height: 1.5; }
+
+  .lifecycle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    padding: 0 10px;
+  }
+  .lc-stage {
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    min-width: 120px;
+    position: relative;
+  }
+  .lc-arrow {
+    color: #3a3d45;
+    font-size: 20px;
+    padding: 0 2px;
+    flex-shrink: 0;
+  }
+  .lc-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.8px; opacity: 0.6; display: block; margin-bottom: 2px; }
+
+  .lc-stage.sync { background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.25); color: #38bdf8; }
+  .lc-stage.intake { background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.25); color: #34d399; }
+  .lc-stage.prearr { background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.25); color: #a78bfa; }
+  .lc-stage.instay { background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.25); color: #fbbf24; }
+  .lc-stage.poststay { background: rgba(232,121,168,0.1); border: 1px solid rgba(232,121,168,0.25); color: #e879a8; }
+  .lc-stage.leads { background: rgba(251,146,60,0.1); border: 1px solid rgba(251,146,60,0.25); color: #fb923c; }
+
+  /* ── Flow Grid ── */
+  .flow-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-bottom: 28px;
+  }
+  @media (max-width: 960px) { .flow-grid { grid-template-columns: 1fr; } }
+
+  .flow-section {
+    background: #181a20;
+    border: 1px solid #2a2d35;
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .flow-section::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    border-radius: 16px 16px 0 0;
+  }
+  .flow-section.sync::before { background: linear-gradient(90deg, #38bdf8, #0ea5e9); }
+  .flow-section.intake::before { background: linear-gradient(90deg, #34d399, #10b981); }
+  .flow-section.prearr::before { background: linear-gradient(90deg, #a78bfa, #8b5cf6); }
+  .flow-section.instay::before { background: linear-gradient(90deg, #fbbf24, #f59e0b); }
+  .flow-section.poststay::before { background: linear-gradient(90deg, #e879a8, #ec4899); }
+  .flow-section.leads::before { background: linear-gradient(90deg, #fb923c, #f97316); }
+
+  .flow-section h2 {
+    font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .flow-section h2 .num {
+    font-size: 11px; font-weight: 600; color: #6b7280;
+    background: #23262f; padding: 2px 8px; border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .flow-section .desc { font-size: 13px; color: #6b7280; margin-bottom: 18px; line-height: 1.5; }
+
+  /* Nodes */
+  .flow { display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .node {
+    width: 100%; max-width: 340px;
+    padding: 10px 14px; border-radius: 10px;
+    font-size: 12px; font-weight: 500;
+    text-align: center; position: relative; line-height: 1.4;
+  }
+  .node .label {
+    font-size: 9px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.8px; opacity: 0.6; display: block; margin-bottom: 2px;
+  }
+  .node.trigger { background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.25); color: #fcd34d; }
+  .node.source { background: rgba(56,189,248,0.08); border: 1px solid rgba(56,189,248,0.25); color: #7dd3fc; }
+  .node.action { background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.25); color: #6ee7b7; }
+  .node.decision { background: rgba(167,139,250,0.08); border: 1px solid rgba(167,139,250,0.25); color: #c4b5fd; }
+  .node.decision::before {
+    content: '◆'; position: absolute; left: 8px; top: 50%;
+    transform: translateY(-50%); font-size: 9px; color: rgba(167,139,250,0.4);
+  }
+  .node.alert { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.25); color: #fca5a5; }
+  .node.result { background: rgba(232,121,168,0.08); border: 1px solid rgba(232,121,168,0.25); color: #f9a8d4; }
+  .node.wait { background: rgba(148,163,184,0.08); border: 1px solid rgba(148,163,184,0.25); color: #cbd5e1; }
+  .node.sync-node { background: rgba(56,189,248,0.08); border: 1px solid rgba(56,189,248,0.25); color: #7dd3fc; }
+
+  /* Connectors */
+  .connector { display: flex; flex-direction: column; align-items: center; height: 24px; }
+  .connector .line { width: 2px; height: 16px; background: #2a2d35; }
+  .connector .arrow { width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid #2a2d35; }
+
+  /* Branch */
+  .branch { display: flex; gap: 12px; justify-content: center; width: 100%; max-width: 400px; }
+  .branch-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .branch-label {
+    font-size: 10px; font-weight: 700; color: #6b7280;
+    background: #1e2028; padding: 2px 10px; border-radius: 4px; border: 1px solid #2a2d35;
+  }
+
+  /* Bottom bars */
+  .timeline {
+    background: #181a20; border: 1px solid #2a2d35; border-radius: 16px;
+    padding: 24px 28px; margin-bottom: 28px;
+  }
+  .timeline h3 {
+    font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 16px; text-align: center;
+  }
+
+  .timeline-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .timeline-step {
+    flex: 1; min-width: 160px; max-width: 220px; text-align: center;
+    background: #1e2028; padding: 14px; border-radius: 8px; border: 1px solid #2a2d35;
+  }
+  .timeline-step .day { font-size: 13px; font-weight: 700; color: #38bdf8; margin-bottom: 6px; }
+  .timeline-step .task { font-size: 11px; color: #9ca3af; line-height: 1.5; }
+
+  .oos {
+    background: #181a20; border: 1px dashed #3a3d45; border-radius: 16px;
+    padding: 24px 28px; margin-bottom: 28px;
+  }
+  .oos h3 { font-size: 15px; font-weight: 700; color: #6b7280; margin-bottom: 16px; text-align: center; }
+  .oos ul { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .oos ul li {
+    font-size: 12px; color: #6b7280;
+    background: #1e2028; padding: 6px 14px; border-radius: 6px; border: 1px solid #2a2d35;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="badge">OwnerRez → GoHighLevel Integration</div>
+    <h1>Automated Booking &amp; CRM — System Flow</h1>
+    <p>Booking Sync · Guest Intake · Pre-Arrival · In-Stay · Post-Stay · Lead Nurture</p>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(251,191,36,0.4);"></div> Trigger</div>
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(56,189,248,0.4);"></div> Source / Sync</div>
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(52,211,153,0.4);"></div> Action / Output</div>
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(167,139,250,0.4);"></div> Decision</div>
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(239,68,68,0.4);"></div> Alert</div>
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(232,121,168,0.4);"></div> Result</div>
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(148,163,184,0.4);"></div> Wait / Delay</div>
+  </div>
+
+  <!-- ═══ MASTER LIFECYCLE ═══ -->
+  <div class="master-flow">
+    <h2>Guest Lifecycle — Automation Map</h2>
+    <div class="desc">Bookings flow from OwnerRez into GoHighLevel. Every guest touchpoint is automated — from reservation to review.</div>
+    <div class="lifecycle">
+      <div class="lc-stage sync"><span class="lc-label">Import</span>Booking Sync</div>
+      <div class="lc-arrow">→</div>
+      <div class="lc-stage intake"><span class="lc-label">CRM</span>Guest Intake</div>
+      <div class="lc-arrow">→</div>
+      <div class="lc-stage prearr"><span class="lc-label">Before</span>Pre-Arrival</div>
+      <div class="lc-arrow">→</div>
+      <div class="lc-stage instay"><span class="lc-label">During</span>In-Stay</div>
+      <div class="lc-arrow">→</div>
+      <div class="lc-stage poststay"><span class="lc-label">After</span>Post-Stay</div>
+      <div class="lc-arrow">→</div>
+      <div class="lc-stage leads"><span class="lc-label">Nurture</span>Lead Capture</div>
+    </div>
+  </div>
+
+  <!-- ═══ FLOW GRID ═══ -->
+  <div class="flow-grid">
+
+    <!-- ── 1. BOOKING SYNC ── -->
+    <div class="flow-section sync">
+      <h2><span class="num">01</span> Booking Sync (OwnerRez → GHL)</h2>
+      <p class="desc">Reservations from OwnerRez are automatically imported into GoHighLevel — no manual data entry.</p>
+      <div class="flow">
+        <div class="node trigger"><span class="label">Trigger</span>New reservation confirmed in OwnerRez (Airbnb, VRBO, direct)</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node sync-node"><span class="label">Webhook / Zapier</span>Booking data sent to GoHighLevel via API integration</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">Auto-Create</span>Contact created in GHL with guest name, email, phone, dates, property</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">Pipeline</span>Add to "Guest Journey" pipeline → "Booked" stage</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node result"><span class="label">Result</span>Every booking is in the CRM within seconds → messaging begins</div>
+      </div>
+    </div>
+
+    <!-- ── 2. GUEST INTAKE & CRM ENTRY ── -->
+    <div class="flow-section intake">
+      <h2><span class="num">02</span> Guest Intake &amp; CRM Entry</h2>
+      <p class="desc">Guest profiles are enriched with booking details, tags, and custom fields for personalized communication.</p>
+      <div class="flow">
+        <div class="node trigger"><span class="label">Trigger</span>Contact created from booking sync</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">Auto-Tag</span>Tags: booking source (Airbnb / VRBO / Direct), property name, guest type</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">Custom Fields</span>Check-in date, check-out date, number of guests, special requests</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">Confirmation</span>SMS + Email: "Your reservation at [Property] is confirmed!"</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node result"><span class="label">Result</span>Complete guest profile ready → pre-arrival sequence triggered</div>
+      </div>
+    </div>
+
+    <!-- ── 3. PRE-ARRIVAL MESSAGING ── -->
+    <div class="flow-section prearr">
+      <h2><span class="num">03</span> Pre-Arrival Messaging</h2>
+      <p class="desc">Automated messages guide guests before check-in — directions, access codes, upsells, and local tips.</p>
+      <div class="flow">
+        <div class="node trigger"><span class="label">Trigger</span>7 days before check-in date</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">7 Days Before</span>Email: "Getting ready for your stay!" + packing tips + local guide</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">3 Days Before</span>SMS: Check-in instructions, property address, parking details</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">1 Day Before</span>SMS: Door code, Wi-Fi password, emergency contact + upsell (early check-in)</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">Check-in Day</span>SMS: "Welcome! You're all set. Text us if you need anything."</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node result"><span class="label">Result</span>Guest arrives fully prepared → zero "where's the key?" messages</div>
+      </div>
+    </div>
+
+    <!-- ── 4. IN-STAY COMMUNICATION ── -->
+    <div class="flow-section instay">
+      <h2><span class="num">04</span> In-Stay Communication</h2>
+      <p class="desc">Proactive check-ins during the stay to resolve issues early and offer upgrades or extensions.</p>
+      <div class="flow">
+        <div class="node trigger"><span class="label">Trigger</span>Day after check-in</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">Day 1</span>SMS: "How's everything so far? Let us know if you need anything!"</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node decision"><span class="label">Decision</span>Guest responds with issue?</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="branch">
+          <div class="branch-item">
+            <div class="branch-label">ISSUE</div>
+            <div class="node alert" style="font-size:11px;">Alert to host + maintenance team</div>
+          </div>
+          <div class="branch-item">
+            <div class="branch-label">ALL GOOD</div>
+            <div class="node result" style="font-size:11px;">Tag: Happy Guest ✓</div>
+          </div>
+        </div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">Mid-Stay</span>Email: Local restaurant recs + activity suggestions + late checkout offer</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node result"><span class="label">Result</span>Issues caught early → better reviews, happier guests</div>
+      </div>
+    </div>
+
+    <!-- ── 5. POST-STAY FOLLOW-UP ── -->
+    <div class="flow-section poststay">
+      <h2><span class="num">05</span> Post-Stay Follow-up</h2>
+      <p class="desc">After checkout — thank the guest, request a review, and offer a rebooking discount.</p>
+      <div class="flow">
+        <div class="node trigger"><span class="label">Trigger</span>Check-out date passed</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">+2 Hours</span>SMS: "Thanks for staying with us! We hope you loved [Property]."</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">+24 Hours</span>Email: "How was your stay?" + review link (Google / Airbnb)</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node decision"><span class="label">Decision</span>Review submitted?</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="branch">
+          <div class="branch-item">
+            <div class="branch-label">YES</div>
+            <div class="node result" style="font-size:11px;">Thank you SMS + Tag: Reviewed ✓</div>
+          </div>
+          <div class="branch-item">
+            <div class="branch-label">NO</div>
+            <div class="node action" style="font-size:11px;">Gentle reminder at Day 5</div>
+          </div>
+        </div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">Day 14</span>Email: "Book again and save 10%" + direct booking link</div>
+      </div>
+    </div>
+
+    <!-- ── 6. LEAD CAPTURE & NURTURE ── -->
+    <div class="flow-section leads">
+      <h2><span class="num">06</span> Lead Capture &amp; Nurture</h2>
+      <p class="desc">Inquiries that don't convert to bookings enter a nurture sequence to win them back.</p>
+      <div class="flow">
+        <div class="node trigger"><span class="label">Trigger</span>Inquiry received (website form, direct message, phone call) — no booking</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">Instant</span>Auto-reply SMS: "Thanks for your interest in [Property]! Here's availability…"</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">+24 Hours</span>Email: Property photos + amenities + "Still looking?" CTA</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node action"><span class="label">Day 3</span>SMS: "Dates are filling up — book now to lock in your stay"</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="node decision"><span class="label">Decision</span>Lead books within 7 days?</div>
+        <div class="connector"><div class="line"></div><div class="arrow"></div></div>
+        <div class="branch">
+          <div class="branch-item">
+            <div class="branch-label">YES</div>
+            <div class="node result" style="font-size:11px;">→ Enters Guest Journey pipeline</div>
+          </div>
+          <div class="branch-item">
+            <div class="branch-label">NO</div>
+            <div class="node wait" style="font-size:11px;">Tag: Cold Lead · Seasonal promo drip</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /flow-grid -->
+
+  <!-- ═══ DEPLOYMENT TIMELINE ═══ -->
+  <div class="timeline">
+    <h3>Deployment Timeline</h3>
+    <div class="timeline-row">
+      <div class="timeline-step">
+        <div class="day">Day 1</div>
+        <div class="task">Discovery call · OwnerRez audit · GHL account & pipeline setup</div>
+      </div>
+      <div class="timeline-step">
+        <div class="day">Day 2–3</div>
+        <div class="task">OwnerRez → GHL integration · Booking sync · Guest intake automation</div>
+      </div>
+      <div class="timeline-step">
+        <div class="day">Day 4–5</div>
+        <div class="task">Pre-arrival · In-stay · Post-stay messaging sequences</div>
+      </div>
+      <div class="timeline-step">
+        <div class="day">Day 6</div>
+        <div class="task">Lead capture forms · Inquiry nurture · Review request flows</div>
+      </div>
+      <div class="timeline-step">
+        <div class="day">Day 7</div>
+        <div class="task">Testing · Message copy review · Go live</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ OUT OF SCOPE ═══ -->
+  <div class="oos">
+    <h3>Available as Add-Ons (Not Included in Base Build)</h3>
+    <ul>
+      <li>Multi-property routing logic</li>
+      <li>Dynamic pricing alerts</li>
+      <li>Guest loyalty / rewards program</li>
+      <li>Direct booking website</li>
+      <li>Channel manager integration</li>
+      <li>AI chatbot for guest inquiries</li>
+      <li>Maintenance ticket automation</li>
+      <li>Owner reporting dashboard</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>
