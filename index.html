@@ -418,7 +418,25 @@
     /* ===== ABOUT — BENTO GRID ===== */
     .about { padding: 8rem 3rem; }
 
-    .about-header { max-width: 1280px; margin: 0 auto; }
+    .about-header {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; gap: 3rem;
+    }
+
+    .about-headshot {
+      flex-shrink: 0;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--border);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    }
+
+    .about-headshot img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
 
     .about-header h2 {
       font-family: var(--serif);
@@ -427,6 +445,20 @@
     }
 
     .about-header h2 em { font-style: italic; color: var(--accent); }
+
+    .contact-avatar {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--border);
+      margin-bottom: 1.25rem;
+    }
+
+    .contact-avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
 
     .bento-grid {
       display: grid;
@@ -1521,6 +1553,8 @@
       .hero-stats-row { justify-content: flex-start; }
       .hero-stat { text-align: left; }
       .hero-top-row { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .about-header { flex-direction: column; text-align: center; gap: 1.5rem; }
+      .about-headshot { width: 130px; height: 130px; }
       .bento-grid { grid-template-columns: 1fr; }
       .bento-card.large, .bento-card.medium, .bento-card.third { grid-column: span 1; }
       .services-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
@@ -1602,9 +1636,14 @@
 
   <!-- ABOUT -->
   <section class="about" id="about">
-    <div class="about-header">
-      <div class="section-label">About</div>
-      <h2>GoHighLevel expert helping real estate &amp; medspa businesses <em>stand out and scale.</em></h2>
+    <div class="about-header reveal">
+      <div class="about-headshot">
+        <img src="images/headshot.webp" alt="Justine Seguido — GoHighLevel Expert" width="180" height="180" loading="lazy">
+      </div>
+      <div>
+        <div class="section-label">About</div>
+        <h2>GoHighLevel expert helping real estate &amp; medspa businesses <em>stand out and scale.</em></h2>
+      </div>
     </div>
     <div class="bento-grid">
       <div class="bento-card large reveal">
@@ -2059,6 +2098,9 @@
   <section class="contact" id="contact">
     <div class="contact-grid">
       <div class="contact-left reveal">
+        <div class="contact-avatar">
+          <img src="images/headshot.webp" alt="Justine Seguido" width="56" height="56" loading="lazy">
+        </div>
         <div class="section-label">Contact</div>
         <h2>Let's build<br>something<br>that converts.</h2>
         <p>Tell me about your project and I'll get back to you within 24 hours.</p>
