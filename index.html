@@ -77,6 +77,62 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is GoHighLevel?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GoHighLevel (GHL) is an all-in-one marketing and CRM platform built for agencies and service businesses. It combines website hosting, landing pages, sales funnels, email/SMS marketing, appointment booking, pipeline management, and workflow automation into a single tool — replacing the need for 5–10 separate subscriptions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does a typical project take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most projects are delivered within 3–10 days depending on scope. A single landing page or funnel can be ready in 2–3 days. Full CRM automation builds with multiple workflows typically take 7–10 days."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you work with clients outside the Philippines?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — the majority of my clients are in the US, Canada, and Australia. I work async-first, so time zones are never an issue. I deliver on schedule and communicate through Slack, email, or Loom."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What industries do you specialize in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "I specialize in real estate and medspa businesses, but I also work with service-based businesses like vacation rentals, coaching practices, and local home services. If your business relies on lead generation and appointment booking, I can help."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What's included in the free GHL audit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "I'll review your current GoHighLevel setup — workflows, pipelines, funnels, and automations — and identify gaps that could be costing you leads. You'll get a short report with actionable recommendations you can implement right away, plus a walkthrough of what a fully optimized system looks like for your niche."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer ongoing support after launch?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. After launch I provide a handoff with full documentation and a walkthrough so you or your team can manage everything independently. If you need ongoing optimization, I offer monthly retainer packages for continued support, updates, and new automation builds."
+        }
+      }
+    ]
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1137,6 +1193,70 @@
       .step-connector { display: none; }
     }
 
+    /* ===== FAQ ===== */
+    .faq { padding: 6rem 3rem; background: var(--bg-warm); }
+
+    .faq-inner { max-width: 800px; margin: 0 auto; }
+
+    .faq-inner h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      line-height: 1.05; font-weight: 400;
+      margin-bottom: 3rem;
+    }
+
+    .faq-inner h2 em { font-style: italic; color: var(--accent); }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border-strong);
+    }
+
+    .faq-item:first-child { border-top: 1px solid var(--border-strong); }
+
+    .faq-question {
+      width: 100%; display: flex; justify-content: space-between; align-items: center;
+      padding: 1.5rem 0;
+      background: none; border: none; cursor: pointer;
+      font-family: var(--serif); font-size: 1.15rem; font-weight: 400;
+      color: var(--text); text-align: left; line-height: 1.35;
+      transition: color 0.3s;
+    }
+
+    .faq-question:hover { color: var(--accent); }
+
+    .faq-icon {
+      flex-shrink: 0; width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: var(--accent);
+      transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), background 0.3s;
+      margin-left: 1.5rem;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--accent); color: white;
+    }
+
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16,1,0.3,1), padding 0.4s;
+    }
+
+    .faq-item.open .faq-answer { max-height: 300px; }
+
+    .faq-answer p {
+      font-size: 0.9rem; color: var(--text-mid);
+      line-height: 1.75; padding-bottom: 1.5rem;
+      max-width: 680px;
+    }
+
+    @media (max-width: 768px) {
+      .faq { padding: 4rem 1.5rem; }
+      .faq-question { font-size: 1.05rem; padding: 1.25rem 0; }
+    }
+
     /* ===== CONTACT ===== */
     .contact { padding: 6rem 3rem 4rem; background: var(--bg-warm); }
 
@@ -1632,6 +1752,74 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="faq-inner">
+      <div class="section-label reveal">FAQ</div>
+      <h2 class="reveal">Frequently asked <em>questions.</em></h2>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          What is GoHighLevel?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>GoHighLevel (GHL) is an all-in-one marketing and CRM platform built for agencies and service businesses. It combines website hosting, landing pages, sales funnels, email/SMS marketing, appointment booking, pipeline management, and workflow automation into a single tool &#8212; replacing the need for 5&#8211;10 separate subscriptions.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          How long does a typical project take?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Most projects are delivered within 3&#8211;10 days depending on scope. A single landing page or funnel can be ready in 2&#8211;3 days. Full CRM automation builds with multiple workflows typically take 7&#8211;10 days. I'll give you a clear timeline during our discovery call.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          Do you work with clients outside the Philippines?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes &#8212; the majority of my clients are in the US, Canada, and Australia. I work async-first, so time zones are never an issue. I deliver on schedule, communicate through Slack, email, or Loom, and I'm available during overlapping hours when needed.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          What industries do you specialize in?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>I specialize in real estate and medspa businesses, but I also work with service-based businesses like vacation rentals, coaching practices, and local home services. If your business relies on lead generation and appointment booking, I can help.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          What's included in the free GHL audit?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>I'll review your current GoHighLevel setup &#8212; workflows, pipelines, funnels, and automations &#8212; and identify gaps that could be costing you leads. You'll get a short report with actionable recommendations you can implement right away, plus a walkthrough of what a fully optimized system looks like for your niche.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          Do you offer ongoing support after launch?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. After launch I provide a handoff with full documentation and a walkthrough so you or your team can manage everything independently. If you need ongoing optimization, I offer monthly retainer packages for continued support, updates, and new automation builds.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section class="contact" id="contact">
     <div class="contact-grid">
@@ -1738,6 +1926,22 @@
       document.body.classList.remove('has-banner');
       localStorage.setItem('bannerDismissed', '1');
     });
+
+    var faqItems = document.querySelectorAll('.faq-item');
+    for (var i = 0; i < faqItems.length; i++) {
+      faqItems[i].querySelector('.faq-question').addEventListener('click', function() {
+        var item = this.parentElement;
+        var isOpen = item.classList.contains('open');
+        for (var j = 0; j < faqItems.length; j++) {
+          faqItems[j].classList.remove('open');
+          faqItems[j].querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        }
+        if (!isOpen) {
+          item.classList.add('open');
+          this.setAttribute('aria-expanded', 'true');
+        }
+      });
+    }
 
     var heroBg = document.querySelector('.hero-bg-text');
     if (heroBg) {
