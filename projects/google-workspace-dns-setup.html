@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Case study: Google Workspace setup across 9 domains with DNS/TXT verification via Namecheap — completed after a previous provider failed to deliver.">
+  <meta name="keywords" content="Google Workspace setup, DNS configuration, TXT verification, Namecheap DNS, MX records, SPF DKIM DMARC, multi-domain email, Google Workspace admin, domain verification, email routing setup">
+  <meta name="author" content="Justine Seguido">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#F4F1EB">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+
+  <meta property="og:title" content="Google Workspace DNS Setup — 9 Domains | Justine Seguido">
+  <meta property="og:description" content="Full Google Workspace configuration across 9 domains with DNS/TXT verification via Namecheap — completed after a previous provider couldn't deliver.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://justineportfolio.sapphirecarwash.com/projects/google-workspace-dns-setup.html">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Justine Seguido — Freelance Designer &amp; Developer">
+  <meta property="og:image" content="https://justineportfolio.sapphirecarwash.com/images/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="canonical" href="https://justineportfolio.sapphirecarwash.com/projects/google-workspace-dns-setup.html">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Google Workspace DNS Setup — 9 Domains | Justine Seguido">
+  <meta name="twitter:description" content="Full Google Workspace configuration across 9 domains with DNS/TXT verification via Namecheap — completed after a previous provider couldn't deliver.">
+  <meta name="twitter:image" content="https://justineportfolio.sapphirecarwash.com/images/og-card.png">
+
+  <title>Google Workspace DNS Setup &#8212; 9 Domains | Justine Seguido</title>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Google Workspace DNS Setup — 9 Domains",
+    "description": "Full Google Workspace configuration across 9 domains with DNS/TXT verification via Namecheap, completed after a previous provider failed to deliver.",
+    "author": { "@type": "Person", "name": "Justine Seguido" },
+    "url": "https://justineportfolio.sapphirecarwash.com/projects/google-workspace-dns-setup.html",
+    "keywords": ["Google Workspace", "DNS", "Namecheap", "TXT Verification", "MX Records", "SPF", "DKIM", "DMARC"],
+    "datePublished": "2026-02-21"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F4F1EB;
+      --bg-warm: #EDE8DF;
+      --surface: rgba(255,255,255,0.55);
+      --surface-solid: #FFFFFF;
+      --text: #1A1A17;
+      --text-mid: #4A4A42;
+      --text-muted: #8B8B80;
+      --accent: #C84B31;
+      --accent-light: rgba(200,75,49,0.08);
+      --accent-glow: rgba(200,75,49,0.15);
+      --border: rgba(26,26,23,0.08);
+      --border-strong: rgba(26,26,23,0.15);
+      --glass: rgba(255,255,255,0.45);
+      --glass-border: rgba(255,255,255,0.6);
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    ::selection { background: var(--accent); color: white; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.5rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: all 0.4s ease;
+    }
+
+    #navbar.scrolled {
+      padding: 1rem 3rem;
+      background: rgba(244,241,235,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-style: italic;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+
+    .nav-links a {
+      font-size: 0.8rem; font-weight: 500;
+      color: var(--text-mid);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 1.5px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      font-size: 0.8rem !important; font-weight: 500 !important;
+      background: var(--text); color: var(--bg) !important;
+      padding: 0.6rem 1.4rem; border-radius: 100px;
+      transition: background 0.3s, transform 0.2s !important;
+    }
+
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
+
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      background: var(--text); color: var(--bg);
+      padding: 0.6rem 1.2rem; border-radius: 0 0 8px 8px;
+      font-size: 0.85rem; font-weight: 500; z-index: 200;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 0; }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+
+    .hamburger span { width: 24px; height: 2px; background: var(--text); transition: 0.3s; display: block; }
+
+    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .section-label {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-size: 0.7rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.18em;
+      color: var(--text-muted); margin-bottom: 1.5rem;
+    }
+
+    .section-label::before {
+      content: ''; width: 24px; height: 1px; background: var(--accent);
+    }
+
+    .cs-hero {
+      padding: 9rem 3rem 4rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .cs-breadcrumb {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.75rem; font-weight: 500;
+      color: var(--text-muted); margin-bottom: 2rem;
+    }
+
+    .cs-breadcrumb a { transition: color 0.3s; }
+    .cs-breadcrumb a:hover { color: var(--accent); }
+    .cs-breadcrumb .sep { color: var(--border-strong); }
+
+    .cs-category {
+      display: inline-block;
+      font-size: 0.65rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      padding: 0.35rem 0.75rem; border-radius: 100px;
+      background: var(--accent-light); color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .cs-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.05; font-weight: 400;
+      margin-bottom: 1.25rem;
+    }
+
+    .cs-hero h1 em { font-style: italic; color: var(--accent); }
+
+    .cs-subtitle {
+      font-size: 1.05rem; color: var(--text-mid);
+      line-height: 1.7; max-width: 640px;
+      margin-bottom: 2rem;
+    }
+
+    .cs-meta {
+      display: flex; gap: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-strong);
+    }
+
+    .cs-meta-label {
+      font-size: 0.65rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-muted); margin-bottom: 0.3rem;
+    }
+
+    .cs-meta-value {
+      font-size: 0.9rem; font-weight: 500; color: var(--text);
+    }
+
+    .cs-overview {
+      padding: 6rem 3rem;
+      max-width: 1280px; margin: 0 auto;
+    }
+
+    .cs-overview-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .cs-overview-text h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 400; line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .cs-overview-text h2 em { font-style: italic; color: var(--accent); }
+
+    .cs-overview-text p {
+      font-size: 0.95rem; color: var(--text-mid);
+      line-height: 1.8; margin-bottom: 1rem;
+    }
+
+    .cs-facts {
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+
+    .cs-facts h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem; font-weight: 400;
+      margin-bottom: 1.5rem;
+    }
+
+    .cs-fact-row {
+      display: flex; justify-content: space-between;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+
+    .cs-fact-row:last-child { border-bottom: none; }
+
+    .cs-fact-key { color: var(--text-muted); font-weight: 500; }
+    .cs-fact-val { color: var(--text); font-weight: 600; text-align: right; }
+
+    .cs-challenge {
+      padding: 6rem 3rem;
+      background: var(--text); color: var(--bg);
+    }
+
+    .cs-challenge-inner {
+      max-width: 1280px; margin: 0 auto;
+    }
+
+    .cs-challenge .section-label { color: rgba(244,241,235,0.4); }
+    .cs-challenge .section-label::before { background: var(--accent); }
+
+    .cs-challenge h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400; line-height: 1.15;
+      margin-bottom: 2rem; max-width: 700px;
+    }
+
+    .cs-challenge h2 em { font-style: italic; color: var(--accent); }
+
+    .cs-challenge p {
+      font-size: 0.95rem; color: rgba(244,241,235,0.65);
+      line-height: 1.8; max-width: 700px;
+      margin-bottom: 1rem;
+    }
+
+    .cs-challenge-list {
+      list-style: none; margin-top: 1.5rem;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .cs-challenge-list li {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      font-size: 0.9rem; color: rgba(244,241,235,0.6);
+      line-height: 1.6;
+    }
+
+    .cs-challenge-list li::before {
+      content: '\2717';
+      color: var(--accent); font-weight: 700;
+      flex-shrink: 0; margin-top: 0.1rem;
+    }
+
+    .cs-solution { padding: 6rem 3rem; }
+
+    .cs-solution-inner {
+      max-width: 1280px; margin: 0 auto;
+    }
+
+    .cs-solution h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400; line-height: 1.15;
+      margin-bottom: 3rem;
+    }
+
+    .cs-solution h2 em { font-style: italic; color: var(--accent); }
+
+    .cs-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .cs-step {
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
+    }
+
+    .cs-step:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+    }
+
+    .cs-step-num {
+      font-family: var(--serif);
+      font-size: 2.5rem; line-height: 1;
+      color: var(--accent); opacity: 0.25;
+      margin-bottom: 1rem;
+    }
+
+    .cs-step h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem; font-weight: 400;
+      line-height: 1.3; margin-bottom: 0.75rem;
+    }
+
+    .cs-step p {
+      font-size: 0.88rem; color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    .cs-features {
+      padding: 6rem 3rem;
+      background: var(--bg-warm);
+    }
+
+    .cs-features-inner {
+      max-width: 1280px; margin: 0 auto;
+    }
+
+    .cs-features h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400; line-height: 1.15;
+      margin-bottom: 3rem;
+    }
+
+    .cs-features h2 em { font-style: italic; color: var(--accent); }
+
+    .cs-features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .cs-feature-card {
+      background: var(--surface-solid);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
+    }
+
+    .cs-feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+    }
+
+    .cs-feature-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--accent-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; margin-bottom: 1.25rem;
+    }
+
+    .cs-feature-card h3 {
+      font-family: var(--serif);
+      font-size: 1.1rem; font-weight: 400;
+      line-height: 1.3; margin-bottom: 0.6rem;
+    }
+
+    .cs-feature-card p {
+      font-size: 0.85rem; color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    .cs-results { padding: 6rem 3rem; }
+
+    .cs-results-inner {
+      max-width: 1280px; margin: 0 auto;
+      text-align: center;
+    }
+
+    .cs-results h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400; line-height: 1.15;
+      margin-bottom: 3rem;
+    }
+
+    .cs-results h2 em { font-style: italic; color: var(--accent); }
+
+    .cs-results-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .cs-result-card {
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 2.5rem 1.5rem;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
+    }
+
+    .cs-result-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+    }
+
+    .cs-result-num {
+      font-family: var(--serif);
+      font-size: 2.8rem; line-height: 1;
+      color: var(--accent); margin-bottom: 0.5rem;
+    }
+
+    .cs-result-label {
+      font-size: 0.78rem; font-weight: 500;
+      color: var(--text-mid); text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .cs-tech {
+      padding: 4rem 3rem;
+      background: var(--bg-warm);
+      text-align: center;
+    }
+
+    .cs-tech-inner {
+      max-width: 1280px; margin: 0 auto;
+    }
+
+    .cs-tech .section-label { justify-content: center; }
+
+    .cs-tech-tags {
+      display: flex; gap: 0.6rem;
+      flex-wrap: wrap; justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .cs-tech-tags .tag {
+      font-size: 0.78rem; font-weight: 500;
+      padding: 0.4rem 1rem; border-radius: 100px;
+      background: var(--accent-light); color: var(--accent);
+    }
+
+    .cs-cta {
+      padding: 8rem 3rem; text-align: center;
+      position: relative; overflow: hidden;
+    }
+
+    .cs-cta::before {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, var(--accent-glow), transparent 70%);
+      pointer-events: none;
+    }
+
+    .cs-cta h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 400; line-height: 1.05;
+      max-width: 600px; margin: 0 auto 1.5rem;
+      position: relative;
+    }
+
+    .cs-cta h2 em { color: var(--accent); }
+
+    .cs-cta p {
+      font-size: 1rem; color: var(--text-mid);
+      max-width: 440px; margin: 0 auto 2.5rem;
+      line-height: 1.7; position: relative;
+    }
+
+    .cs-cta-buttons {
+      display: flex; gap: 1rem;
+      justify-content: center; flex-wrap: wrap;
+      position: relative;
+    }
+
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: var(--text); color: var(--bg);
+      padding: 1rem 2.25rem; border-radius: 100px;
+      font-weight: 500; font-size: 0.95rem;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+      border: none; cursor: pointer; font-family: var(--sans);
+    }
+
+    .cta-btn:hover {
+      background: var(--accent); transform: translateY(-3px);
+      box-shadow: 0 15px 50px rgba(200,75,49,0.2);
+    }
+
+    .cta-btn .arrow { transition: transform 0.3s; }
+    .cta-btn:hover .arrow { transform: translateX(4px); }
+
+    .cta-btn-outline {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: transparent; color: var(--text);
+      padding: 1rem 2.25rem; border-radius: 100px;
+      font-weight: 500; font-size: 0.95rem;
+      border: 1.5px solid var(--border-strong);
+      transition: transform 0.3s, border-color 0.3s, color 0.3s;
+      font-family: var(--sans);
+    }
+
+    .cta-btn-outline:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent); color: var(--accent);
+    }
+
+    .cta-btn-outline .arrow { transition: transform 0.3s; }
+    .cta-btn-outline:hover .arrow { transform: translateX(4px); }
+
+    footer {
+      padding: 2.5rem 3rem; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.78rem; color: var(--text-muted); background: var(--bg-warm);
+    }
+
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { transition: color 0.25s; }
+    .footer-links a:hover { color: var(--accent); }
+
+    .reveal {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+
+    @media (max-width: 1024px) {
+      .cs-steps { grid-template-columns: 1fr 1fr; }
+      .cs-features-grid { grid-template-columns: 1fr 1fr; }
+      .cs-results-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      #navbar { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: var(--bg); padding: 1.5rem;
+        border-bottom: 1px solid var(--border); gap: 1rem;
+      }
+      .nav-cta { align-self: flex-start; }
+
+      .cs-hero { padding: 7rem 1.5rem 3rem; }
+      .cs-meta { flex-wrap: wrap; gap: 1.5rem; }
+      .cs-overview { padding: 4rem 1.5rem; }
+      .cs-overview-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .cs-challenge { padding: 4rem 1.5rem; }
+      .cs-challenge-list { grid-template-columns: 1fr; }
+      .cs-solution { padding: 4rem 1.5rem; }
+      .cs-steps { grid-template-columns: 1fr; }
+      .cs-features { padding: 4rem 1.5rem; }
+      .cs-features-grid { grid-template-columns: 1fr; }
+      .cs-results { padding: 4rem 1.5rem; }
+      .cs-results-grid { grid-template-columns: 1fr 1fr; }
+      .cs-tech { padding: 3rem 1.5rem; }
+      .cs-cta { padding: 5rem 1.5rem; }
+      .cs-cta-buttons { flex-direction: column; align-items: center; }
+
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav id="navbar" aria-label="Main navigation">
+    <a href="../index.html" class="nav-logo">Justine.</a>
+    <div class="nav-links" id="navLinks">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#services">Services</a>
+      <a href="../index.html#projects">Work</a>
+      <a href="../index.html#contact" class="nav-cta">Let's Talk</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <main id="main-content">
+
+  <!-- HERO -->
+  <section class="cs-hero">
+    <div class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Portfolio</a>
+      <span class="sep">/</span>
+      <span>Google Workspace DNS Setup</span>
+    </div>
+    <span class="cs-category">IT / DNS</span>
+    <h1>Google Workspace DNS Setup &#8212; <em>9 Domains</em></h1>
+    <p class="cs-subtitle">Full Google Workspace configuration across 9 domains with DNS/TXT verification via Namecheap &#8212; completed end-to-end after a previous provider couldn't deliver.</p>
+    <div class="cs-meta">
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">Industry</div>
+        <div class="cs-meta-value">Multi-Domain</div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">Platform</div>
+        <div class="cs-meta-value">Google Workspace + Namecheap</div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">Scope</div>
+        <div class="cs-meta-value">9 Domains</div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">Timeline</div>
+        <div class="cs-meta-value">Quick Turnaround</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="cs-overview">
+    <div class="cs-overview-grid">
+      <div class="cs-overview-text reveal">
+        <div class="section-label">Overview</div>
+        <h2>9 domains, one <em>seamless workspace.</em></h2>
+        <p>A client needed Google Workspace configured across 9 separate domains &#8212; each requiring DNS record updates, TXT verification, and proper email routing through Namecheap&#8217;s DNS management panel.</p>
+        <p>They had initially hired another provider to handle the setup, but the job stalled. The previous provider couldn&#8217;t complete the DNS configurations correctly, leaving domains unverified and email routing broken.</p>
+        <p>I took over the project, audited everything that had been done (and not done), and completed the full setup from scratch &#8212; DNS records, domain verification, MX routing, and email security protocols across all 9 domains.</p>
+      </div>
+      <div class="cs-facts reveal reveal-d1">
+        <h3>Quick Facts</h3>
+        <div class="cs-fact-row">
+          <span class="cs-fact-key">Industry</span>
+          <span class="cs-fact-val">Multi-Domain</span>
+        </div>
+        <div class="cs-fact-row">
+          <span class="cs-fact-key">Platform</span>
+          <span class="cs-fact-val">Google Workspace</span>
+        </div>
+        <div class="cs-fact-row">
+          <span class="cs-fact-key">DNS Provider</span>
+          <span class="cs-fact-val">Namecheap</span>
+        </div>
+        <div class="cs-fact-row">
+          <span class="cs-fact-key">Domains</span>
+          <span class="cs-fact-val">9 Domains</span>
+        </div>
+        <div class="cs-fact-row">
+          <span class="cs-fact-key">Status</span>
+          <span class="cs-fact-val">Completed</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHALLENGE -->
+  <section class="cs-challenge">
+    <div class="cs-challenge-inner">
+      <div class="section-label reveal">The Challenge</div>
+      <h2 class="reveal">Previous provider couldn't <em>deliver.</em></h2>
+      <p class="reveal">The client had already paid another provider to configure Google Workspace across their 9 domains. The job was left incomplete &#8212; DNS records were misconfigured, domains were unverified, and email wasn&#8217;t routing properly. They needed someone who could take over and get it done right.</p>
+      <ul class="cs-challenge-list reveal">
+        <li>9 domains required individual DNS/TXT verification through Namecheap</li>
+        <li>Previous provider left the setup incomplete with misconfigured records</li>
+        <li>MX records were missing or incorrect &#8212; email wasn&#8217;t routing to Google Workspace</li>
+        <li>No SPF, DKIM, or DMARC records &#8212; emails risked landing in spam</li>
+        <li>Each domain had different existing DNS configurations that needed careful handling</li>
+        <li>Client needed a fast turnaround to get their team back to work</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="cs-solution">
+    <div class="cs-solution-inner">
+      <div class="section-label reveal">The Solution</div>
+      <h2 class="reveal">End-to-end setup, <em>all 9 domains.</em></h2>
+      <div class="cs-steps">
+        <div class="cs-step reveal">
+          <div class="cs-step-num">01</div>
+          <h3>DNS Audit</h3>
+          <p>Reviewed the existing DNS configurations across all 9 domains in Namecheap to identify what the previous provider had misconfigured or left incomplete.</p>
+        </div>
+        <div class="cs-step reveal reveal-d1">
+          <div class="cs-step-num">02</div>
+          <h3>MX Record Configuration</h3>
+          <p>Updated MX records for all 9 domains to point to Google Workspace&#8217;s mail servers, ensuring proper email routing priority and delivery.</p>
+        </div>
+        <div class="cs-step reveal reveal-d2">
+          <div class="cs-step-num">03</div>
+          <h3>TXT Verification</h3>
+          <p>Added Google-generated TXT verification records to each domain&#8217;s DNS zone in Namecheap, then confirmed ownership in the Google Admin console.</p>
+        </div>
+        <div class="cs-step reveal">
+          <div class="cs-step-num">04</div>
+          <h3>SPF &amp; DKIM Setup</h3>
+          <p>Configured SPF records to authorize Google&#8217;s mail servers and generated DKIM signing keys for each domain to prevent email spoofing and improve deliverability.</p>
+        </div>
+        <div class="cs-step reveal reveal-d1">
+          <div class="cs-step-num">05</div>
+          <h3>DMARC Policy</h3>
+          <p>Added DMARC records with monitoring policies to protect against phishing, providing the client with visibility into email authentication results.</p>
+        </div>
+        <div class="cs-step reveal reveal-d2">
+          <div class="cs-step-num">06</div>
+          <h3>Testing &amp; Handoff</h3>
+          <p>Verified email send/receive on all 9 domains, confirmed DNS propagation, tested SPF/DKIM/DMARC alignment, and handed off full documentation to the client.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="cs-features">
+    <div class="cs-features-inner">
+      <div class="section-label reveal">Key Features</div>
+      <h2 class="reveal">What made this setup <em>bulletproof.</em></h2>
+      <div class="cs-features-grid">
+        <div class="cs-feature-card reveal">
+          <div class="cs-feature-icon">&#127760;</div>
+          <h3>Multi-Domain Management</h3>
+          <p>All 9 domains configured under a single Google Workspace account with proper alias and routing rules for each.</p>
+        </div>
+        <div class="cs-feature-card reveal reveal-d1">
+          <div class="cs-feature-icon">&#9989;</div>
+          <h3>TXT Domain Verification</h3>
+          <p>Each domain individually verified through DNS TXT records in Namecheap, confirming ownership in the Google Admin console.</p>
+        </div>
+        <div class="cs-feature-card reveal reveal-d2">
+          <div class="cs-feature-icon">&#128231;</div>
+          <h3>Proper MX Routing</h3>
+          <p>MX records configured with correct priority values so all inbound email routes directly to Google Workspace &#8212; no lost messages.</p>
+        </div>
+        <div class="cs-feature-card reveal">
+          <div class="cs-feature-icon">&#128274;</div>
+          <h3>SPF &amp; DKIM Authentication</h3>
+          <p>Email authentication protocols configured to prevent spoofing, improve inbox placement, and build sender reputation from day one.</p>
+        </div>
+        <div class="cs-feature-card reveal reveal-d1">
+          <div class="cs-feature-icon">&#128737;</div>
+          <h3>DMARC Protection</h3>
+          <p>DMARC policies deployed with monitoring to detect unauthorized email use and protect the client&#8217;s brand across all 9 domains.</p>
+        </div>
+        <div class="cs-feature-card reveal reveal-d2">
+          <div class="cs-feature-icon">&#128196;</div>
+          <h3>Full Documentation</h3>
+          <p>Complete handoff documentation covering every DNS record, verification step, and configuration detail for future reference.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="cs-results">
+    <div class="cs-results-inner">
+      <div class="section-label reveal">Results</div>
+      <h2 class="reveal">All domains verified, <em>email flowing.</em></h2>
+      <div class="cs-results-grid">
+        <div class="cs-result-card reveal">
+          <div class="cs-result-num">9</div>
+          <div class="cs-result-label">Domains Verified</div>
+        </div>
+        <div class="cs-result-card reveal reveal-d1">
+          <div class="cs-result-num">100%</div>
+          <div class="cs-result-label">Email Routing Live</div>
+        </div>
+        <div class="cs-result-card reveal reveal-d2">
+          <div class="cs-result-num">SPF+</div>
+          <div class="cs-result-label">DKIM + DMARC Set</div>
+        </div>
+        <div class="cs-result-card reveal">
+          <div class="cs-result-num">&#10003;</div>
+          <div class="cs-result-label">Completed After Provider Failed</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section class="cs-tech">
+    <div class="cs-tech-inner">
+      <div class="section-label reveal">Tech Stack</div>
+      <div class="cs-tech-tags reveal">
+        <span class="tag">Google Workspace</span>
+        <span class="tag">Namecheap</span>
+        <span class="tag">DNS Management</span>
+        <span class="tag">MX Records</span>
+        <span class="tag">TXT Verification</span>
+        <span class="tag">SPF</span>
+        <span class="tag">DKIM</span>
+        <span class="tag">DMARC</span>
+        <span class="tag">Google Admin Console</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cs-cta">
+    <h2 class="reveal">Need DNS or email<br>setup <em>done right?</em></h2>
+    <p class="reveal reveal-d1">I handle Google Workspace configurations, DNS setups, and email routing &#8212; so you don&#8217;t have to deal with another failed handoff.</p>
+    <div class="cs-cta-buttons reveal reveal-d2">
+      <a href="../index.html#contact" class="cta-btn">Start a Project <span class="arrow">&#8594;</span></a>
+      <a href="../index.html#projects" class="cta-btn-outline">View More Work <span class="arrow">&#8594;</span></a>
+    </div>
+  </section>
+
+  </main>
+
+  <footer>
+    <div>
+      <span>&#169; 2026 Justine Seguido. All rights reserved.</span>
+      <p style="font-size:0.68rem;color:var(--text-muted);margin-top:0.35rem;">GoHighLevel Certified Admin &#183; Freelance Web Designer &amp; Developer &#183; Real Estate &amp; MedSpa Specialist</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/justine-seguido-1ba3b4132" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:jbseguido@gmail.com">Email</a>
+    </div>
+  </footer>
+
+  <script>
+    var nav = document.getElementById('navbar');
+    window.addEventListener('scroll', function() {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    var hamburger = document.getElementById('hamburger');
+    var navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', function() {
+      var isOpen = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('active', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+    var anchors = navLinks.querySelectorAll('a');
+    for (var i = 0; i < anchors.length; i++) {
+      anchors[i].addEventListener('click', function() {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    var revealEls = document.querySelectorAll('.reveal');
+    var obs = new IntersectionObserver(function(entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].isIntersecting) entries[i].target.classList.add('visible');
+      }
+    }, { threshold: 0.08 });
+    for (var i = 0; i < revealEls.length; i++) obs.observe(revealEls[i]);
+  </script>
+
+  <!-- Google Analytics (deferred to not block rendering) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K22T0XCQ2K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-K22T0XCQ2K');
+  </script>
+
+</body>
+</html>
