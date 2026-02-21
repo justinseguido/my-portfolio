@@ -1505,6 +1505,57 @@
       .testimonial-grid { grid-template-columns: 1fr; }
     }
 
+    /* ===== NOT FOR ===== */
+    .not-for { padding: 6rem 3rem; background: var(--text); color: var(--bg); }
+
+    .not-for-inner { max-width: 1280px; margin: 0 auto; }
+
+    .not-for .section-label { color: rgba(244,241,235,0.4); }
+    .not-for .section-label::before { background: var(--accent); }
+
+    .not-for h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      line-height: 1.05; font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    .not-for h2 em { font-style: italic; color: var(--accent); }
+
+    .not-for > .not-for-inner > p {
+      font-size: 0.95rem; color: rgba(244,241,235,0.55);
+      line-height: 1.7; max-width: 600px; margin-bottom: 2.5rem;
+    }
+
+    .not-for-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .not-for-item {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      font-size: 0.9rem; color: rgba(244,241,235,0.6);
+      line-height: 1.6;
+    }
+
+    .not-for-icon {
+      color: var(--accent); font-weight: 700;
+      flex-shrink: 0; margin-top: 0.1rem;
+    }
+
+    .not-for-cta {
+      margin-top: 3rem;
+      font-size: 0.9rem; color: rgba(244,241,235,0.45);
+      line-height: 1.7;
+    }
+
+    .not-for-cta strong { color: var(--accent); font-weight: 600; }
+
+    @media (max-width: 768px) {
+      .not-for { padding: 4rem 1.5rem; }
+      .not-for-grid { grid-template-columns: 1fr; }
+    }
+
     /* ===== CONTACT ===== */
     .contact { padding: 6rem 3rem 4rem; background: var(--bg-warm); }
 
@@ -1909,6 +1960,24 @@
       </div>
 
       <p class="pricing-footer reveal">Need something custom? <a href="#contact" style="color:var(--accent);font-weight:600;">Let's talk</a> &#8212; I'll build a package around your exact needs.</p>
+    </div>
+  </section>
+
+  <!-- NOT FOR -->
+  <section class="not-for">
+    <div class="not-for-inner">
+      <div class="section-label reveal">Honest Take</div>
+      <h2 class="reveal">Who this is <em>not for.</em></h2>
+      <p class="reveal">I&#8217;d rather be upfront than waste your time. This isn&#8217;t a fit for everyone &#8212; and that&#8217;s okay.</p>
+      <div class="not-for-grid">
+        <div class="not-for-item reveal"><span class="not-for-icon">&#10007;</span> You just want the cheapest option, not the right one</div>
+        <div class="not-for-item reveal reveal-d1"><span class="not-for-icon">&#10007;</span> You need a full-time in-house hire, not a freelancer</div>
+        <div class="not-for-item reveal"><span class="not-for-icon">&#10007;</span> You&#8217;re looking for a generic WordPress site, not a GHL build</div>
+        <div class="not-for-item reveal reveal-d1"><span class="not-for-icon">&#10007;</span> You don&#8217;t have a clear offer or service to sell yet</div>
+        <div class="not-for-item reveal"><span class="not-for-icon">&#10007;</span> You want to micromanage every pixel instead of trusting the process</div>
+        <div class="not-for-item reveal reveal-d1"><span class="not-for-icon">&#10007;</span> You need ongoing daily maintenance, not a build-and-handoff project</div>
+      </div>
+      <p class="not-for-cta reveal">But if you&#8217;re a business owner who wants a <strong>done-right GHL system</strong> that captures leads and books appointments on autopilot &#8212; <a href="#contact" style="color:var(--accent);font-weight:600;">let&#8217;s talk</a>.</p>
     </div>
   </section>
 
