@@ -1447,42 +1447,62 @@
     .testimonial { padding: 6rem 3rem; }
 
     .testimonial-inner {
-      max-width: 800px; margin: 0 auto; text-align: center;
+      max-width: 1280px; margin: 0 auto;
     }
 
-    .testimonial-quote {
-      font-family: var(--serif);
-      font-size: clamp(1.3rem, 2.5vw, 1.75rem);
-      font-weight: 400; line-height: 1.5;
-      color: var(--text);
+    .testimonial-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2rem; margin-top: 3rem;
+    }
+
+    .testimonial-card {
+      background: var(--surface-solid);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
       position: relative;
-      padding: 0 1.5rem;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
     }
 
-    .testimonial-quote::before {
-      content: '\201C'; position: absolute;
-      top: -0.5rem; left: -0.5rem;
-      font-size: 4rem; color: var(--accent); opacity: 0.25;
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+    }
+
+    .testimonial-card::before {
+      content: '\201C';
+      position: absolute; top: 1.25rem; left: 1.75rem;
+      font-size: 3.5rem; color: var(--accent); opacity: 0.15;
       font-family: var(--serif); line-height: 1;
     }
 
+    .testimonial-quote {
+      font-size: 0.92rem; color: var(--text-mid);
+      line-height: 1.8; position: relative; z-index: 1;
+    }
+
+    .testimonial-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 1.5rem; padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+
     .testimonial-source {
-      margin-top: 1.75rem;
       font-size: 0.82rem; color: var(--text-muted);
       letter-spacing: 0.03em;
     }
 
     .testimonial-badge {
       display: inline-flex; align-items: center; gap: 0.5rem;
-      margin-top: 1rem;
-      font-size: 0.72rem; font-weight: 600;
+      font-size: 0.68rem; font-weight: 600;
       color: var(--accent);
-      padding: 0.35rem 0.9rem; border-radius: 100px;
+      padding: 0.3rem 0.75rem; border-radius: 100px;
       background: var(--accent-light);
     }
 
     @media (max-width: 768px) {
       .testimonial { padding: 4rem 1.5rem; }
+      .testimonial-grid { grid-template-columns: 1fr; }
     }
 
     /* ===== CONTACT ===== */
@@ -1894,11 +1914,25 @@
 
   <!-- TESTIMONIAL -->
   <section class="testimonial">
-    <div class="testimonial-inner reveal">
-      <div class="section-label">Social Proof</div>
-      <div class="testimonial-quote">A client who had initially gone with another provider came back after realizing the job required more experience than expected. We completed the full setup and they moved forward successfully.</div>
-      <div class="testimonial-source">&#8212; Real Client Experience</div>
-      <div class="testimonial-badge">&#10003; Verified Project</div>
+    <div class="testimonial-inner">
+      <div class="section-label reveal">Social Proof</div>
+      <h2 style="font-family:var(--serif);font-size:clamp(2.2rem,4.5vw,3.8rem);line-height:1.05;font-weight:400;margin-bottom:0;" class="reveal">Real projects, <em style="font-style:italic;color:var(--accent);">real results.</em></h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-quote">A client who had initially gone with another provider came back after realizing the job required more experience than expected. We completed the full setup and they moved forward successfully.</div>
+          <div class="testimonial-footer">
+            <div class="testimonial-source">&#8212; Google Workspace DNS Setup</div>
+            <div class="testimonial-badge">&#10003; Verified Project</div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-d1">
+          <div class="testimonial-quote">Stephen had an entire system built on MarketMyStr but needed to move everything over to GoHighLevel without losing what he&#8217;d already built. That meant migrating workflows, funnels, automations, calendars, pipelines, forms, templates, and custom fields. The full migration was completed within the agreed timeline. No downtime. No data loss. Stephen walked away with a fully functioning GHL account ready to scale.</div>
+          <div class="testimonial-footer">
+            <div class="testimonial-source">&#8212; Stephen &#183; Platform Migration</div>
+            <div class="testimonial-badge">&#10003; Verified Project</div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
