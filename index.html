@@ -1443,6 +1443,48 @@
       .faq-question { font-size: 1.05rem; padding: 1.25rem 0; }
     }
 
+    /* ===== TESTIMONIAL ===== */
+    .testimonial { padding: 6rem 3rem; }
+
+    .testimonial-inner {
+      max-width: 800px; margin: 0 auto; text-align: center;
+    }
+
+    .testimonial-quote {
+      font-family: var(--serif);
+      font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+      font-weight: 400; line-height: 1.5;
+      color: var(--text);
+      position: relative;
+      padding: 0 1.5rem;
+    }
+
+    .testimonial-quote::before {
+      content: '\201C'; position: absolute;
+      top: -0.5rem; left: -0.5rem;
+      font-size: 4rem; color: var(--accent); opacity: 0.25;
+      font-family: var(--serif); line-height: 1;
+    }
+
+    .testimonial-source {
+      margin-top: 1.75rem;
+      font-size: 0.82rem; color: var(--text-muted);
+      letter-spacing: 0.03em;
+    }
+
+    .testimonial-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      margin-top: 1rem;
+      font-size: 0.72rem; font-weight: 600;
+      color: var(--accent);
+      padding: 0.35rem 0.9rem; border-radius: 100px;
+      background: var(--accent-light);
+    }
+
+    @media (max-width: 768px) {
+      .testimonial { padding: 4rem 1.5rem; }
+    }
+
     /* ===== CONTACT ===== */
     .contact { padding: 6rem 3rem 4rem; background: var(--bg-warm); }
 
@@ -1850,6 +1892,16 @@
     </div>
   </section>
 
+  <!-- TESTIMONIAL -->
+  <section class="testimonial">
+    <div class="testimonial-inner reveal">
+      <div class="section-label">Social Proof</div>
+      <div class="testimonial-quote">A client who had initially gone with another provider came back after realizing the job required more experience than expected. We completed the full setup and they moved forward successfully.</div>
+      <div class="testimonial-source">&#8212; Real Client Experience</div>
+      <div class="testimonial-badge">&#10003; Verified Project</div>
+    </div>
+  </section>
+
   <!-- PROJECTS -->
   <section class="projects" id="projects">
     <div class="projects-header">
@@ -2116,7 +2168,8 @@
         <div class="contact-links">
           <a href="mailto:jbseguido@gmail.com" class="contact-link"><span class="cl-icon">&#9993;</span> jbseguido@gmail.com</a>
           <a href="https://www.linkedin.com/in/justine-seguido-1ba3b4132" class="contact-link" target="_blank" rel="noopener noreferrer"><span class="cl-icon">in</span> LinkedIn</a>
-          
+          <a href="https://www.upwork.com/freelancers/~013fa6155231d76659?mp_source=share" class="contact-link" target="_blank" rel="noopener noreferrer"><span class="cl-icon">up</span> Upwork</a>
+          <a href="https://www.fiverr.com/s/ZmrLzDj" class="contact-link" target="_blank" rel="noopener noreferrer"><span class="cl-icon">f</span> Fiverr</a>
           <a href="https://calendar.app.google/gdAmKWR4Nc82yXjQ8" class="contact-link" target="_blank" rel="noopener noreferrer"><span class="cl-icon">&#128197;</span> Google Calendar</a>
         </div>
         <div class="contact-tz">
