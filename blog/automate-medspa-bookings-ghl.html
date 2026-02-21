@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Step-by-step guide to automating MedSpa bookings with GoHighLevel — from lead capture and speed-to-lead SMS to no-show recovery and automated review requests.">
+  <meta name="keywords" content="medspa automation GoHighLevel, medspa booking system, GoHighLevel medspa, medical spa CRM automation, GHL medspa workflows, medspa appointment reminders, no-show recovery medspa">
+  <meta name="author" content="Justine Seguido">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#F4F1EB">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="How to Automate MedSpa Bookings with GoHighLevel (Step-by-Step)">
+  <meta property="og:description" content="A 6-step guide to building a fully automated MedSpa booking and follow-up system inside GoHighLevel — speed-to-lead, reminders, no-show recovery, and reviews.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://justineportfolio.sapphirecarwash.com/blog/automate-medspa-bookings-ghl.html">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Justine Seguido — Freelance Designer &amp; Developer">
+  <meta property="og:image" content="https://justineportfolio.sapphirecarwash.com/images/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="canonical" href="https://justineportfolio.sapphirecarwash.com/blog/automate-medspa-bookings-ghl.html">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Automate MedSpa Bookings with GoHighLevel (Step-by-Step)">
+  <meta name="twitter:description" content="A 6-step guide to building a fully automated MedSpa booking and follow-up system inside GoHighLevel.">
+  <meta name="twitter:image" content="https://justineportfolio.sapphirecarwash.com/images/og-card.png">
+
+  <title>How to Automate MedSpa Bookings with GoHighLevel (Step-by-Step) | Justine Seguido</title>
+
+  <!-- Structured Data: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Automate MedSpa Bookings with GoHighLevel (Step-by-Step)",
+    "description": "A step-by-step guide to building a fully automated MedSpa booking and follow-up system inside GoHighLevel — covering lead capture, speed-to-lead, appointment reminders, no-show recovery, and review requests.",
+    "author": {
+      "@type": "Person",
+      "name": "Justine Seguido",
+      "url": "https://justineportfolio.sapphirecarwash.com/"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Justine Seguido"
+    },
+    "datePublished": "2026-02-21",
+    "dateModified": "2026-02-21",
+    "url": "https://justineportfolio.sapphirecarwash.com/blog/automate-medspa-bookings-ghl.html",
+    "image": "https://justineportfolio.sapphirecarwash.com/images/og-card.png",
+    "keywords": ["medspa automation GoHighLevel", "medspa booking system", "GoHighLevel medspa", "medical spa CRM automation"],
+    "articleSection": "GoHighLevel Automation",
+    "wordCount": 1100
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is GoHighLevel worth it for a small MedSpa with only one location?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. GoHighLevel is especially effective for single-location medspas because it replaces multiple tools — your booking software, email platform, SMS tool, CRM, and review management — with one system. Most single-location clinics see ROI within the first month just from reduced no-shows and faster lead response. The $97–$297/month cost pays for itself when you recover even two or three missed appointments."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take to set up a full MedSpa automation system in GHL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A complete system with booking calendar, lead capture forms, speed-to-lead automation, appointment reminders, no-show recovery, and review requests typically takes 7–10 business days to build and test. If you use a pre-built GHL snapshot designed for medspas, the setup can be as fast as 3–5 days since the workflows, pipelines, and templates are already configured and just need customization for your clinic."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can GoHighLevel handle HIPAA compliance for medical spas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GoHighLevel offers a HIPAA-compliant version on their $497/month plan, which includes a signed Business Associate Agreement (BAA). For medspas that handle protected health information, this is the recommended tier. However, many medspa booking automations — appointment scheduling, reminders, review requests — deal with scheduling data rather than medical records, so the standard plan may suffice depending on your specific use case. Always consult your compliance officer to determine the right setup."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F4F1EB;
+      --bg-warm: #EDE8DF;
+      --surface: rgba(255,255,255,0.55);
+      --surface-solid: #FFFFFF;
+      --text: #1A1A17;
+      --text-mid: #4A4A42;
+      --text-muted: #8B8B80;
+      --accent: #C84B31;
+      --accent-light: rgba(200,75,49,0.08);
+      --accent-glow: rgba(200,75,49,0.15);
+      --border: rgba(26,26,23,0.08);
+      --border-strong: rgba(26,26,23,0.15);
+      --glass: rgba(255,255,255,0.45);
+      --glass-border: rgba(255,255,255,0.6);
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    ::selection { background: var(--accent); color: white; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== NAV ===== */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.5rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: all 0.4s ease;
+    }
+
+    #navbar.scrolled {
+      padding: 1rem 3rem;
+      background: rgba(244,241,235,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-style: italic;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+
+    .nav-links a {
+      font-size: 0.8rem; font-weight: 500;
+      color: var(--text-mid);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 1.5px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      font-size: 0.8rem !important; font-weight: 500 !important;
+      background: var(--text); color: var(--bg) !important;
+      padding: 0.6rem 1.4rem; border-radius: 100px;
+      transition: background 0.3s, transform 0.2s !important;
+    }
+
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
+
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      background: var(--text); color: var(--bg);
+      padding: 0.6rem 1.2rem; border-radius: 0 0 8px 8px;
+      font-size: 0.85rem; font-weight: 500; z-index: 200;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 0; }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+
+    .hamburger span { width: 24px; height: 2px; background: var(--text); transition: 0.3s; display: block; }
+
+    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .section-label {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-size: 0.7rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.18em;
+      color: var(--text-muted); margin-bottom: 1.5rem;
+    }
+
+    .section-label::before {
+      content: ''; width: 24px; height: 1px; background: var(--accent);
+    }
+
+    /* ===== BLOG HERO ===== */
+    .blog-hero {
+      padding: 9rem 3rem 4rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .blog-breadcrumb {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.75rem; font-weight: 500;
+      color: var(--text-muted); margin-bottom: 2rem;
+    }
+
+    .blog-breadcrumb a { transition: color 0.3s; }
+    .blog-breadcrumb a:hover { color: var(--accent); }
+    .blog-breadcrumb .sep { color: var(--border-strong); }
+
+    .blog-category {
+      display: inline-block;
+      font-size: 0.65rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      padding: 0.35rem 0.75rem; border-radius: 100px;
+      background: var(--accent-light); color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .blog-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      line-height: 1.1; font-weight: 400;
+      margin-bottom: 1.25rem;
+    }
+
+    .blog-hero h1 em { font-style: italic; color: var(--accent); }
+
+    .blog-meta {
+      display: flex; align-items: center; gap: 1.5rem;
+      font-size: 0.78rem; color: var(--text-muted);
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border-strong);
+    }
+
+    .blog-meta span { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+    /* ===== BLOG CONTENT ===== */
+    .blog-content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 3rem;
+    }
+
+    .blog-content h2 {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .blog-content h2 em { font-style: italic; color: var(--accent); }
+
+    .blog-content h3 {
+      font-family: var(--sans);
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .blog-content p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text-mid);
+      margin-bottom: 1.5rem;
+    }
+
+    .blog-content a {
+      color: var(--accent);
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: opacity 0.3s;
+    }
+
+    .blog-content a:hover { opacity: 0.75; }
+
+    .blog-content ul,
+    .blog-content ol {
+      margin: 0 0 1.5rem 1.5rem;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text-mid);
+    }
+
+    .blog-content ul li,
+    .blog-content ol li {
+      margin-bottom: 0.5rem;
+      padding-left: 0.25rem;
+    }
+
+    .blog-content ul li::marker {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .blog-content ol li::marker {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .blog-content blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      background: var(--accent-light);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text-mid);
+    }
+
+    .blog-content blockquote p { margin-bottom: 0; }
+
+    .blog-content strong { color: var(--text); font-weight: 600; }
+
+    .blog-content .step-card {
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .blog-content .step-card h3 {
+      margin-top: 0;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+
+    .blog-content .step-card .step-num {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--accent);
+      opacity: 0.5;
+      line-height: 1;
+    }
+
+    .blog-content .step-card p:last-child { margin-bottom: 0; }
+
+    .blog-content .inline-cta {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--text); color: var(--bg);
+      padding: 0.65rem 1.5rem; border-radius: 100px;
+      font-weight: 500; font-size: 0.85rem;
+      transition: background 0.3s, transform 0.2s;
+      text-decoration: none;
+      margin-top: 0.5rem;
+    }
+
+    .blog-content .inline-cta:hover {
+      background: var(--accent); transform: translateY(-2px);
+      opacity: 1;
+    }
+
+    /* ===== BLOG CTA SECTION ===== */
+    .blog-cta {
+      background: var(--text);
+      color: var(--bg);
+      padding: 5rem 3rem;
+      margin-top: 4rem;
+      text-align: center;
+    }
+
+    .blog-cta-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .blog-cta .section-label { color: rgba(244,241,235,0.4); }
+    .blog-cta .section-label::before { background: var(--accent); }
+
+    .blog-cta h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 400; line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .blog-cta h2 em { font-style: italic; color: var(--accent); }
+
+    .blog-cta p {
+      font-size: 0.95rem;
+      color: rgba(244,241,235,0.65);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .blog-cta-buttons {
+      display: flex; gap: 1rem;
+      justify-content: center; flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: var(--accent); color: var(--bg);
+      padding: 1rem 2.25rem; border-radius: 100px;
+      font-weight: 500; font-size: 0.95rem;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+      border: none; cursor: pointer; font-family: var(--sans);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 50px rgba(200,75,49,0.3);
+    }
+
+    .cta-btn .arrow { transition: transform 0.3s; }
+    .cta-btn:hover .arrow { transform: translateX(4px); }
+
+    .cta-btn-outline {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: transparent; color: rgba(244,241,235,0.8);
+      padding: 1rem 2.25rem; border-radius: 100px;
+      font-weight: 500; font-size: 0.95rem;
+      border: 1.5px solid rgba(244,241,235,0.25);
+      transition: transform 0.3s, border-color 0.3s, color 0.3s;
+      font-family: var(--sans);
+    }
+
+    .cta-btn-outline:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent); color: var(--accent);
+    }
+
+    .cta-btn-outline .arrow { transition: transform 0.3s; }
+    .cta-btn-outline:hover .arrow { transform: translateX(4px); }
+
+    /* ===== FAQ SECTION ===== */
+    .blog-faq {
+      padding: 5rem 3rem;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .blog-faq h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 400; line-height: 1.15;
+      margin-bottom: 2rem;
+    }
+
+    .blog-faq h2 em { font-style: italic; color: var(--accent); }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border-strong);
+    }
+
+    .faq-question {
+      display: flex; justify-content: space-between; align-items: center;
+      width: 100%; padding: 1.25rem 0;
+      background: none; border: none; cursor: pointer;
+      font-family: var(--sans);
+      font-size: 0.95rem; font-weight: 600;
+      color: var(--text); text-align: left;
+      line-height: 1.5;
+      transition: color 0.3s;
+    }
+
+    .faq-question:hover { color: var(--accent); }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: var(--accent);
+      transition: transform 0.3s;
+      margin-left: 1rem;
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16,1,0.3,1), padding 0.4s;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 400px;
+      padding-bottom: 1.25rem;
+    }
+
+    .faq-answer p {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--text-mid);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      padding: 2.5rem 3rem; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.78rem; color: var(--text-muted); background: var(--bg-warm);
+    }
+
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { transition: color 0.25s; }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ===== REVEAL ===== */
+    .reveal {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      #navbar { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: var(--bg); padding: 1.5rem;
+        border-bottom: 1px solid var(--border); gap: 1rem;
+      }
+      .nav-cta { align-self: flex-start; }
+
+      .blog-hero { padding: 7rem 1.5rem 3rem; }
+      .blog-meta { flex-wrap: wrap; gap: 1rem; }
+      .blog-content { padding: 0 1.5rem; }
+      .blog-cta { padding: 4rem 1.5rem; }
+      .blog-cta-buttons { flex-direction: column; align-items: center; }
+      .blog-faq { padding: 3rem 1.5rem; }
+
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav id="navbar" aria-label="Main navigation">
+    <a href="../index.html" class="nav-logo">Justine.</a>
+    <div class="nav-links" id="navLinks">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#services">Services</a>
+      <a href="../index.html#projects">Work</a>
+      <a href="../index.html#contact" class="nav-cta">Let's Talk</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <main id="main-content">
+
+  <!-- BLOG HERO -->
+  <section class="blog-hero reveal">
+    <div class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="sep">/</span>
+      <span>Blog</span>
+    </div>
+    <span class="blog-category">GoHighLevel Automation</span>
+    <h1>How to Automate MedSpa Bookings with GoHighLevel <em>(Step-by-Step)</em></h1>
+    <div class="blog-meta">
+      <span>Feb 21, 2026</span>
+      <span>&#183;</span>
+      <span>MedSpa Automation</span>
+      <span>&#183;</span>
+      <span>6 min read</span>
+    </div>
+  </section>
+
+  <!-- BLOG CONTENT -->
+  <article class="blog-content">
+
+    <h2>Most MedSpas Don't Have a Lead Problem &#8212; They Have a <em>Follow-Up Problem</em></h2>
+
+    <p>Here is the uncomfortable truth about most medical spa businesses: they are already generating enough leads. The Google Ads are running. The Instagram DMs are coming in. The website contact form is getting submissions. But the bookings still are not where they should be.</p>
+
+    <p>The gap is not in lead generation. It is in what happens in the 5 minutes, 5 hours, and 5 days <strong>after</strong> someone expresses interest. A lead fills out a form at 9 PM. Nobody responds until the next morning. By then, they have already booked with the clinic down the street that texted them back in 45 seconds.</p>
+
+    <p>That is the follow-up problem. And it is costing MedSpa owners thousands of dollars every single month in missed appointments, no-shows that never rebook, and past clients who simply forget to come back.</p>
+
+    <p>The fix is not hiring more front desk staff. It is building a system that handles follow-up automatically, consistently, and instantly &#8212; 24 hours a day, 7 days a week. That system is <strong>GoHighLevel</strong>, and here is exactly how to set it up for your MedSpa.</p>
+
+    <blockquote>
+      <p>I built this exact system for a MedSpa client as a complete 8-workflow automation suite. You can see the full case study and system flowchart in my <a href="../projects/medspa-ghl-automation.html">MedSpa GHL Automation case study</a>.</p>
+    </blockquote>
+
+    <h2>Step 1: Set Up Your <em>Booking Calendar</em></h2>
+
+    <div class="step-card reveal">
+      <h3><span class="step-num">01</span> GHL Calendar Configuration</h3>
+      <p>Inside GoHighLevel, navigate to <strong>Calendars &gt; Create Calendar</strong> and select the "Service Booking" type. This is purpose-built for appointment-based businesses like MedSpas.</p>
+      <p>Create individual service types for each treatment you offer &#8212; Botox, Dermal Fillers, Chemical Peels, Microneedling, Laser Hair Removal, and so on. For each service, configure:</p>
+      <ul>
+        <li><strong>Duration:</strong> Set the actual appointment length (e.g., 30 min for Botox, 60 min for a chemical peel)</li>
+        <li><strong>Buffer time:</strong> Add 15&#8211;30 minutes between appointments for room turnover and prep</li>
+        <li><strong>Availability:</strong> Define provider-specific hours, not just clinic hours</li>
+        <li><strong>Booking window:</strong> Allow bookings 1&#8211;60 days out to prevent same-day chaos</li>
+        <li><strong>Confirmation action:</strong> Set the calendar to "Auto-Confirm" so leads get instant confirmation</li>
+      </ul>
+      <p>Pro tip: enable the <strong>"Allow Reschedule"</strong> and <strong>"Allow Cancellation"</strong> links in your calendar settings. This reduces no-shows because clients will reschedule instead of ghosting.</p>
+    </div>
+
+    <h2>Step 2: Build a <em>Lead Capture Form</em></h2>
+
+    <div class="step-card reveal">
+      <h3><span class="step-num">02</span> Multi-Channel Lead Capture</h3>
+      <p>Go to <strong>Sites &gt; Forms</strong> and create a booking request form. Keep it short &#8212; name, phone, email, and a dropdown for the service they are interested in. Every extra field you add reduces conversion rates by roughly 10%.</p>
+      <p>The power of GHL forms is that they plug directly into the CRM and trigger workflows instantly. No Zapier. No middleware. The moment someone fills out the form, they become a contact, get tagged, enter a pipeline, and trigger your speed-to-lead automation &#8212; all in one action.</p>
+      <p>Embed this form in three places:</p>
+      <ul>
+        <li><strong>Your website</strong> &#8212; on the homepage, services pages, and a dedicated booking page (see my <a href="../projects/medspa-website-booking.html">MedSpa website case study</a> for how I structure these)</li>
+        <li><strong>Social media</strong> &#8212; link your Instagram bio and Facebook CTA buttons directly to the GHL form or a <a href="../projects/medspa-preview.html">landing page with the form embedded</a></li>
+        <li><strong>Google Ads landing pages</strong> &#8212; build dedicated GHL funnels for paid campaigns so the lead capture-to-automation pipeline is seamless</li>
+      </ul>
+    </div>
+
+    <h2>Step 3: Create <em>Speed-to-Lead</em> Automation</h2>
+
+    <div class="step-card reveal">
+      <h3><span class="step-num">03</span> Respond in Under 60 Seconds</h3>
+      <p>This is where the real money is. Research shows the odds of qualifying a lead drop by <strong>80%</strong> after the first 5 minutes. In the MedSpa industry &#8212; where clients are often comparison-shopping multiple clinics &#8212; the first to respond almost always wins the booking.</p>
+      <p>In GoHighLevel, go to <strong>Automation &gt; Workflows &gt; Create Workflow</strong>. Set your trigger to <strong>"Form Submitted"</strong> and select your lead capture form. Then build this sequence:</p>
+      <ol>
+        <li><strong>Trigger:</strong> Form Submitted (your booking form)</li>
+        <li><strong>Action 1 &#8212; Send SMS (immediate):</strong> "Hi {{contact.first_name}}, thanks for reaching out to [Clinic Name]! We got your inquiry about {{custom_field.service_interest}}. Would you like to book a consultation? Reply YES and we will get you scheduled today."</li>
+        <li><strong>Action 2 &#8212; Send Email (immediate):</strong> Branded email with service details, pricing overview, and a direct calendar booking link</li>
+        <li><strong>Action 3 &#8212; Add to Pipeline:</strong> Move contact to "New Lead" stage in your MedSpa pipeline</li>
+        <li><strong>Action 4 &#8212; Internal Notification:</strong> Send a Slack or email alert to the front desk so they can follow up personally if the lead replies</li>
+        <li><strong>Action 5 &#8212; Wait 10 min, then Send SMS:</strong> "Still thinking about it? Here is a direct link to book your {{custom_field.service_interest}} appointment: [calendar link]"</li>
+      </ol>
+      <p>This workflow fires within seconds of the form submission. The lead gets a personalized text and email before they even close the browser tab.</p>
+    </div>
+
+    <h2>Step 4: Set Up <em>Appointment Reminders</em></h2>
+
+    <div class="step-card reveal">
+      <h3><span class="step-num">04</span> Multi-Touch Reminder Sequence</h3>
+      <p>No-shows are one of the biggest revenue killers for MedSpas. A single missed Botox appointment can cost $400&#8211;$600 in lost revenue, and most clinics see no-show rates of 15&#8211;30% without proper reminder systems.</p>
+      <p>Create a new workflow with the trigger <strong>"Appointment Status Changed"</strong> set to "Confirmed." Then build a three-touch reminder sequence:</p>
+      <ul>
+        <li><strong>24 hours before:</strong> SMS reminder with appointment details, clinic address, and a "Reply C to Confirm or R to Reschedule" option. Include any prep instructions (e.g., "Avoid blood thinners 48 hours before your filler appointment")</li>
+        <li><strong>2 hours before:</strong> Short SMS &#8212; "See you in 2 hours, {{contact.first_name}}! Your {{appointment.service}} at [Clinic Name] is at {{appointment.time}}. Need to reschedule? [reschedule link]"</li>
+        <li><strong>Day-of morning (8 AM):</strong> Email with directions, parking info, intake form link, and what to expect during the visit</li>
+      </ul>
+      <p>Use the <strong>"Wait"</strong> action with the "until specific time before event" option in GHL so the timing is always relative to the appointment, not the booking date.</p>
+    </div>
+
+    <h2>Step 5: Automate <em>No-Show Recovery</em></h2>
+
+    <div class="step-card reveal">
+      <h3><span class="step-num">05</span> Turn Missed Appointments Into Rebooked Revenue</h3>
+      <p>When someone no-shows, the default response at most clinics is... nothing. Maybe someone remembers to call the next day. Maybe not. That is revenue left on the table.</p>
+      <p>Build a workflow triggered by <strong>"Appointment Status Changed"</strong> set to "No Show." Here is the recovery sequence:</p>
+      <ul>
+        <li><strong>30 minutes after missed time:</strong> SMS &#8212; "Hi {{contact.first_name}}, we missed you at your appointment today! No worries &#8212; would you like to reschedule? Here is a link: [calendar link]"</li>
+        <li><strong>24 hours later:</strong> Email with a rebooking CTA, a brief mention of the benefits of the service they missed, and a direct scheduling link</li>
+        <li><strong>3 days later:</strong> Final SMS &#8212; "Just checking in, {{contact.first_name}}. We would love to get your {{appointment.service}} rescheduled. Book here anytime: [calendar link]"</li>
+        <li><strong>Pipeline update:</strong> Move contact from "Booked" to "No-Show &#8212; Follow Up" stage so the team has visibility</li>
+      </ul>
+      <p>In my experience, this three-touch sequence recovers 25&#8211;40% of no-shows that would otherwise be completely lost.</p>
+    </div>
+
+    <h2>Step 6: Automate <em>Post-Visit Review Requests</em></h2>
+
+    <div class="step-card reveal">
+      <h3><span class="step-num">06</span> Build Social Proof on Autopilot</h3>
+      <p>Reviews are the lifeblood of local MedSpa marketing. A clinic with 200+ Google reviews at 4.8 stars will consistently outperform a competitor with 30 reviews &#8212; in both search rankings and conversion rates.</p>
+      <p>Create a workflow triggered by <strong>"Appointment Status Changed"</strong> set to "Completed" (or use a custom tag like "Visit Complete" that your staff applies after checkout). Build this sequence:</p>
+      <ul>
+        <li><strong>2 hours after visit:</strong> SMS &#8212; "Thanks for visiting [Clinic Name] today, {{contact.first_name}}! We would love your feedback. Would you leave us a quick Google review? [Google review link]"</li>
+        <li><strong>24 hours later (if no review):</strong> Email with a more detailed ask, including a direct one-click link to your Google Business Profile review page</li>
+        <li><strong>5 days later:</strong> Optional final SMS for high-value treatments &#8212; "How are you feeling after your {{appointment.service}}, {{contact.first_name}}? If you are loving the results, a quick review helps us so much: [review link]"</li>
+      </ul>
+      <p>Use GHL's <strong>"If/Else"</strong> condition to check whether the contact has already submitted a review (via a custom tag) before sending follow-ups. This prevents annoying clients who have already left feedback.</p>
+    </div>
+
+    <h2>The Full Picture: <em>How All 6 Steps Connect</em></h2>
+
+    <p>When these six workflows run together, they create a closed-loop system where no lead, appointment, or client interaction falls through the cracks:</p>
+
+    <ol>
+      <li>A potential client finds your MedSpa online and fills out a form</li>
+      <li>Within 60 seconds, they receive a personalized SMS and email (Speed-to-Lead)</li>
+      <li>They book an appointment through your GHL calendar</li>
+      <li>They get confirmation immediately, then reminders at 24h, day-of, and 2h before</li>
+      <li>If they show up, they get a review request sequence post-visit</li>
+      <li>If they do not show up, the no-show recovery sequence fires automatically</li>
+      <li>Every contact is tracked in your CRM pipeline with full visibility</li>
+    </ol>
+
+    <p>The result: faster response times, fewer no-shows, more Google reviews, and recovered revenue from missed appointments &#8212; all running on autopilot while your staff focuses on delivering great patient care.</p>
+
+    <p>This is exactly the kind of medical spa CRM automation system I build for clients. You can see the full architecture and flowchart in my <a href="../projects/medspa-ghl-automation.html">MedSpa GHL Automation case study</a>, and the website and booking page it connects to in the <a href="../projects/medspa-website-booking.html">MedSpa Website &amp; Booking case study</a>.</p>
+
+    <h2>Ready to Build This for <em>Your MedSpa?</em></h2>
+
+    <p>If you are running a MedSpa and still handling bookings, reminders, and follow-ups manually &#8212; or if you have GoHighLevel but it is not set up correctly &#8212; I can help.</p>
+
+    <p>I offer a <strong>free GHL audit</strong> where I review your current setup and show you exactly where leads are slipping through. No pitch. Just a clear report of what is working, what is not, and what to fix first.</p>
+
+    <a href="../index.html#free-audit" class="inline-cta">Get Your Free GHL Audit <span class="arrow">&#8594;</span></a>
+
+  </article>
+
+  <!-- CTA SECTION -->
+  <section class="blog-cta">
+    <div class="blog-cta-inner reveal">
+      <div class="section-label">Work With Me</div>
+      <h2>Let's automate your <em>MedSpa bookings.</em></h2>
+      <p>I build complete GoHighLevel automation systems for MedSpa clinics &#8212; booking calendars, lead capture, speed-to-lead, reminders, no-show recovery, and review collection. All in one system.</p>
+      <div class="blog-cta-buttons">
+        <a href="../index.html#contact" class="cta-btn">Start a Project <span class="arrow">&#8594;</span></a>
+        <a href="../index.html#free-audit" class="cta-btn-outline">Free GHL Audit <span class="arrow">&#8594;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="blog-faq">
+    <h2 class="reveal">Frequently Asked <em>Questions</em></h2>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        Is GoHighLevel worth it for a small MedSpa with only one location?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Absolutely. GoHighLevel is especially effective for single-location MedSpas because it replaces multiple tools &#8212; your booking software, email platform, SMS tool, CRM, and review management &#8212; with one system. Most single-location clinics see ROI within the first month just from reduced no-shows and faster lead response. The $97&#8211;$297/month cost pays for itself when you recover even two or three missed appointments.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal reveal-d1">
+      <button class="faq-question" aria-expanded="false">
+        How long does it take to set up a full MedSpa automation system in GHL?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>A complete system with booking calendar, lead capture forms, speed-to-lead automation, appointment reminders, no-show recovery, and review requests typically takes 7&#8211;10 business days to build and test. If you use a pre-built GHL snapshot designed for MedSpas, the setup can be as fast as 3&#8211;5 days since the workflows, pipelines, and templates are already configured and just need customization for your clinic.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal reveal-d2">
+      <button class="faq-question" aria-expanded="false">
+        Can GoHighLevel handle HIPAA compliance for medical spas?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>GoHighLevel offers a HIPAA-compliant version on their $497/month plan, which includes a signed Business Associate Agreement (BAA). For MedSpas that handle protected health information, this is the recommended tier. However, many MedSpa booking automations &#8212; appointment scheduling, reminders, review requests &#8212; deal with scheduling data rather than medical records, so the standard plan may suffice depending on your specific use case. Always consult your compliance officer to determine the right setup.</p>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <footer>
+    <div>
+      <span>&#169; 2026 Justine Seguido. All rights reserved.</span>
+      <p style="font-size:0.68rem;color:var(--text-muted);margin-top:0.35rem;">GoHighLevel Certified Admin &#183; Freelance Web Designer &amp; Developer &#183; Real Estate &amp; MedSpa Specialist</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/justine-seguido-1ba3b4132" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:jbseguido@gmail.com">Email</a>
+    </div>
+  </footer>
+
+  <script>
+    /* Nav scroll effect */
+    var nav = document.getElementById('navbar');
+    window.addEventListener('scroll', function() {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    /* Hamburger menu */
+    var hamburger = document.getElementById('hamburger');
+    var navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', function() {
+      var isOpen = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('active', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+    var anchors = navLinks.querySelectorAll('a');
+    for (var i = 0; i < anchors.length; i++) {
+      anchors[i].addEventListener('click', function() {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    /* Reveal on scroll */
+    var revealEls = document.querySelectorAll('.reveal');
+    var obs = new IntersectionObserver(function(entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].isIntersecting) entries[i].target.classList.add('visible');
+      }
+    }, { threshold: 0.08 });
+    for (var i = 0; i < revealEls.length; i++) obs.observe(revealEls[i]);
+
+    /* FAQ Accordion */
+    var faqItems = document.querySelectorAll('.faq-item');
+    for (var i = 0; i < faqItems.length; i++) {
+      (function(item) {
+        var btn = item.querySelector('.faq-question');
+        btn.addEventListener('click', function() {
+          var isOpen = item.classList.contains('open');
+          /* Close all other items */
+          for (var j = 0; j < faqItems.length; j++) {
+            faqItems[j].classList.remove('open');
+            faqItems[j].querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          }
+          /* Toggle clicked item */
+          if (!isOpen) {
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+          }
+        });
+      })(faqItems[i]);
+    }
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K22T0XCQ2K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-K22T0XCQ2K');
+  </script>
+
+</body>
+</html>
