@@ -1685,7 +1685,7 @@
   <!-- LEAD MAGNET BANNER -->
   <div class="lead-banner" id="leadBanner">
     <div class="lead-banner-text"><strong>Free GHL Audit</strong> &mdash; Only taking 3 audits this month</div>
-    <a href="#free-audit" class="lead-banner-cta">Claim Your Spot &#8594;</a>
+    <a href="#free-audit" class="lead-banner-cta" data-track="banner_cta">Claim Your Spot &#8594;</a>
     <button class="lead-banner-close" id="closeBanner" aria-label="Close banner">&times;</button>
   </div>
 
@@ -1699,7 +1699,7 @@
       <a href="#services">Services</a>
       <a href="#projects">Work</a>
       <a href="#blog">Blog</a>
-      <a href="#contact" class="nav-cta">Let's Talk</a>
+      <a href="#contact" class="nav-cta" data-track="nav_cta">Let's Talk</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
@@ -1726,8 +1726,8 @@
         <div>
           <p class="hero-intro">GoHighLevel certified freelancer building landing pages, sales funnels, and CRM automations for real estate agents, medspa owners, and service-based businesses ready to capture more leads on autopilot.</p>
           <div class="hero-cta-row">
-            <a href="#contact" class="cta-btn">Book a Free Call <span class="arrow">&#8594;</span></a>
-            <a href="#projects" class="cta-btn-outline">View My Work <span class="arrow">&#8594;</span></a>
+            <a href="#contact" class="cta-btn" data-track="hero_cta_primary">Book a Free Call <span class="arrow">&#8594;</span></a>
+            <a href="#free-audit" class="cta-btn-outline" data-track="hero_cta_audit">Get Your Free GHL Audit <span class="arrow">&#8594;</span></a>
           </div>
         </div>
         <div class="hero-stats-row">
@@ -1786,6 +1786,12 @@
       </div>
     </div>
   </section>
+
+  <!-- MID-PAGE CTA -->
+  <div style="text-align:center;padding:3rem 3rem 0;">
+    <a href="#contact" class="cta-btn reveal" data-track="mid_cta_about" style="font-size:0.88rem;">See How I Can Help Your Business <span class="arrow">&#8594;</span></a>
+    <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.75rem;" class="reveal">or <a href="#projects" style="color:var(--accent);font-weight:500;" data-track="mid_link_projects">browse case studies</a> first</p>
+  </div>
 
   <!-- WHY WORK WITH ME -->
   <section class="why-me">
@@ -1873,12 +1879,15 @@
       <p>GoHighLevel websites, funnels, and automations that turn visitors into booked appointments &#8212; not just pretty designs.</p>
     </div>
     <div class="services-list">
-      <div class="service-row reveal"><div class="service-num">01</div><div class="service-name">Landing Pages</div><div class="service-desc">High-converting landing pages built on GoHighLevel with clear CTAs, lead capture forms, and mobile-first design.</div><div class="service-arrow">&#8594;</div></div>
-      <div class="service-row reveal"><div class="service-num">02</div><div class="service-name">Website Design</div><div class="service-desc">Full multi-page websites with modern layouts, responsive design, and seamless user experience.</div><div class="service-arrow">&#8594;</div></div>
-      <div class="service-row reveal"><div class="service-num">03</div><div class="service-name">GHL Automations</div><div class="service-desc">Workflow automations, email/SMS sequences, pipeline setup, and follow-up systems inside GoHighLevel.</div><div class="service-arrow">&#8594;</div></div>
-      <div class="service-row reveal"><div class="service-num">04</div><div class="service-name">Sales Funnels</div><div class="service-desc">Seller pages, buyer pages, booking funnels, and opt-in flows designed to move leads through your pipeline.</div><div class="service-arrow">&#8594;</div></div>
-      <div class="service-row reveal"><div class="service-num">05</div><div class="service-name">Snapshots &amp; Templates</div><div class="service-desc">Ready-to-deploy GoHighLevel snapshots for real estate, medspa, and service businesses &#8212; fully customizable.</div><div class="service-arrow">&#8594;</div></div>
-      <div class="service-row reveal"><div class="service-num">06</div><div class="service-name">UI/UX Design</div><div class="service-desc">Clean, professional interface design focused on usability, brand consistency, and conversion optimization.</div><div class="service-arrow">&#8594;</div></div>
+      <a href="projects/real-estate-ghl-snapshot.html" class="service-row reveal" data-track="service_landing_pages"><div class="service-num">01</div><div class="service-name">Landing Pages</div><div class="service-desc">High-converting landing pages built on GoHighLevel with clear CTAs, lead capture forms, and mobile-first design.</div><div class="service-arrow">&#8594;</div></a>
+      <a href="projects/medspa-website-booking.html" class="service-row reveal" data-track="service_website_design"><div class="service-num">02</div><div class="service-name">Website Design</div><div class="service-desc">Full multi-page websites with modern layouts, responsive design, and seamless user experience.</div><div class="service-arrow">&#8594;</div></a>
+      <a href="projects/medspa-ghl-automation.html" class="service-row reveal" data-track="service_ghl_automations"><div class="service-num">03</div><div class="service-name">GHL Automations</div><div class="service-desc">Workflow automations, email/SMS sequences, pipeline setup, and follow-up systems inside GoHighLevel.</div><div class="service-arrow">&#8594;</div></a>
+      <a href="projects/real-estate-ghl-snapshot.html" class="service-row reveal" data-track="service_sales_funnels"><div class="service-num">04</div><div class="service-name">Sales Funnels</div><div class="service-desc">Seller pages, buyer pages, booking funnels, and opt-in flows designed to move leads through your pipeline.</div><div class="service-arrow">&#8594;</div></a>
+      <a href="projects/ghl-platform-migration.html" class="service-row reveal" data-track="service_snapshots"><div class="service-num">05</div><div class="service-name">Snapshots &amp; Templates</div><div class="service-desc">Ready-to-deploy GoHighLevel snapshots for real estate, medspa, and service businesses &#8212; fully customizable.</div><div class="service-arrow">&#8594;</div></a>
+      <a href="projects/crm-lead-routing.html" class="service-row reveal" data-track="service_uiux"><div class="service-num">06</div><div class="service-name">CRM &amp; Lead Routing</div><div class="service-desc">Automated CRM pipelines, lead scoring, round-robin assignment, and follow-up sequences inside GoHighLevel.</div><div class="service-arrow">&#8594;</div></a>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="#contact" class="cta-btn reveal" data-track="services_cta">Tell Me About Your Project <span class="arrow">&#8594;</span></a>
     </div>
   </section>
 
@@ -1911,7 +1920,7 @@
             <li>Basic SEO setup</li>
             <li>1 round of revisions</li>
           </ul>
-          <a href="#contact" class="pricing-cta">Get Started</a>
+          <a href="#contact" class="pricing-cta" data-track="pricing_starter">Get Started &#8212; $497</a>
         </div>
 
         <!-- Growth (Featured) -->
@@ -1933,7 +1942,7 @@
             <li>Appointment booking integration</li>
             <li>2 rounds of revisions</li>
           </ul>
-          <a href="#contact" class="pricing-cta">Get Started</a>
+          <a href="#contact" class="pricing-cta" data-track="pricing_growth">Get Started &#8212; $1,497</a>
         </div>
 
         <!-- Scale -->
@@ -1955,7 +1964,7 @@
             <li>GHL snapshot (portable template)</li>
             <li>Ongoing support (30 days)</li>
           </ul>
-          <a href="#contact" class="pricing-cta">Get Started</a>
+          <a href="#contact" class="pricing-cta" data-track="pricing_scale">Get Started &#8212; $2,997</a>
         </div>
       </div>
 
@@ -2178,7 +2187,7 @@
         <div class="lm-item"><span class="lm-check">&#10003;</span> Actionable fixes you can implement right away</div>
         <div class="lm-item"><span class="lm-check">&#10003;</span> Custom recommendations for your niche</div>
       </div>
-      <a href="#contact" class="cta-btn reveal">Claim Your Free Audit &#8212; 3 Spots Left <span class="arrow">&#8594;</span></a>
+      <a href="#contact" class="cta-btn reveal" data-track="audit_cta">Claim Your Free Audit &#8212; 3 Spots Left <span class="arrow">&#8594;</span></a>
     </div>
   </section>
 
@@ -2186,7 +2195,7 @@
   <section class="cta">
     <h2 class="reveal">Ready for a website<br>that actually<br><em>works?</em></h2>
     <p class="reveal reveal-d1">I take on a limited number of projects each month. If you need a site that converts, let's talk.</p>
-    <a href="#contact" class="cta-btn reveal reveal-d2">Start a Project <span class="arrow">&#8594;</span></a>
+    <a href="#contact" class="cta-btn reveal reveal-d2" data-track="main_cta">Start a Project <span class="arrow">&#8594;</span></a>
   </section>
 
   <!-- HOW IT WORKS -->
@@ -2435,6 +2444,46 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-K22T0XCQ2K');
+
+    // GA4 click tracking for all CTAs with data-track attribute
+    document.addEventListener('click', function(e) {
+      var el = e.target.closest('[data-track]');
+      if (el) {
+        gtag('event', 'cta_click', {
+          event_category: 'engagement',
+          event_label: el.getAttribute('data-track'),
+          link_url: el.href || '',
+          link_text: el.textContent.trim().substring(0, 50)
+        });
+      }
+    });
+
+    // Track case study and blog clicks
+    document.addEventListener('click', function(e) {
+      var link = e.target.closest('.project-link, .blog-card-link, .blog-card h3 a');
+      if (link && !link.hasAttribute('data-track')) {
+        gtag('event', 'content_click', {
+          event_category: 'navigation',
+          event_label: link.href || '',
+          link_text: link.textContent.trim().substring(0, 50)
+        });
+      }
+    });
+
+    // Track scroll depth milestones
+    var scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
+    window.addEventListener('scroll', function() {
+      var scrollPct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+      for (var milestone in scrollMilestones) {
+        if (scrollPct >= milestone && !scrollMilestones[milestone]) {
+          scrollMilestones[milestone] = true;
+          gtag('event', 'scroll_depth', {
+            event_category: 'engagement',
+            event_label: milestone + '%'
+          });
+        }
+      }
+    }, { passive: true });
   </script>
 
   <!-- GHL Chat Widget -->
