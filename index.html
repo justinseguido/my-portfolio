@@ -345,7 +345,7 @@
     @keyframes slideUp { to { transform: translateY(0); } }
 
     .hero-bottom {
-      display: flex; justify-content: space-between; align-items: flex-end;
+      display: flex; flex-direction: column; gap: 2rem;
       padding-top: 2rem;
       border-top: 1px solid var(--border-strong);
     }
@@ -362,7 +362,7 @@
 
     .hero-stats-row { display: flex; gap: 3rem; }
 
-    .hero-stat { text-align: right; }
+    .hero-stat { text-align: left; }
 
     .hero-stat .num {
       font-family: var(--serif);
@@ -1556,28 +1556,30 @@
       .not-for-grid { grid-template-columns: 1fr; }
     }
 
-    /* ===== ROI CALCULATOR ===== */
-    .roi-calc { padding: 6rem 3rem; background: var(--bg-warm); }
-
-    .roi-calc-inner { max-width: 1280px; margin: 0 auto; text-align: center; }
-
-    .roi-calc-inner h2 {
-      font-family: var(--serif);
-      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
-      line-height: 1.05; font-weight: 400;
-      margin-bottom: 1rem;
+    /* ===== HERO GRID (Calculator Opt-In) ===== */
+    .hero-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+      align-items: center; margin-top: 2rem;
     }
 
-    .roi-calc-inner h2 em { font-style: italic; color: var(--accent); }
-
-    .roi-calc-inner > p {
-      font-size: 0.95rem; color: var(--text-mid);
-      line-height: 1.7; max-width: 560px; margin: 0 auto 2.5rem;
+    .hero-calc {
+      background: rgba(255,255,255,0.7); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+      text-align: center;
     }
 
-    @media (max-width: 768px) {
-      .roi-calc { padding: 4rem 1.5rem; }
+    .hero-calc-label {
+      font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--accent); font-weight: 600; margin-bottom: 1rem;
     }
+
+    .hero-calc iframe {
+      border: none; max-width: 100%; display: block; margin: 0 auto;
+      border-radius: 8px;
+    }
+
+    .hero-calc .cta-btn { margin-top: 1.25rem; display: inline-block; }
 
     /* ===== CONTACT ===== */
     .contact { padding: 6rem 3rem 4rem; background: var(--bg-warm); }
@@ -1688,6 +1690,9 @@
       .hero-cta-row { flex-wrap: wrap; }
       .hero-stats-row { justify-content: flex-start; }
       .hero-stat { text-align: left; }
+      .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-calc { padding: 1rem; }
+      .hero-calc iframe { height: 600px; }
       .hero-top-row { flex-direction: column; align-items: flex-start; gap: 1rem; }
       .about-header { flex-direction: column; text-align: center; gap: 1.5rem; }
       .about-headshot { width: 130px; height: 130px; }
@@ -1740,23 +1745,32 @@
         <div class="hero-availability" style="margin-top:0.35rem;">&#127758; Working with clients worldwide</div>
         <div class="scroll-hint-text"><span class="bounce-arrow">&#8595;</span> Scroll to explore</div>
       </div>
-      <h1>
-        <span class="line"><span class="line-inner">I build GoHighLevel</span></span>
-        <span class="line"><span class="line-inner">systems that book</span></span>
-        <span class="line"><span class="line-inner">appointments <em>on autopilot.</em></span></span>
-      </h1>
-      <div class="hero-bottom">
-        <div>
-          <p class="hero-intro">GoHighLevel certified freelancer building landing pages, sales funnels, and CRM automations for real estate agents, medspa owners, and service-based businesses ready to capture more leads on autopilot.</p>
-          <div class="hero-cta-row">
-            <a href="#contact" class="cta-btn" data-track="hero_cta_primary">Book a Free Call <span class="arrow">&#8594;</span></a>
-            <a href="#free-audit" class="cta-btn-outline" data-track="hero_cta_audit">Get Your Free GHL Audit <span class="arrow">&#8594;</span></a>
+      <div class="hero-grid">
+        <div class="hero-text">
+          <h1>
+            <span class="line"><span class="line-inner">I build GoHighLevel</span></span>
+            <span class="line"><span class="line-inner">systems that book</span></span>
+            <span class="line"><span class="line-inner">appointments <em>on autopilot.</em></span></span>
+          </h1>
+          <div class="hero-bottom">
+            <div>
+              <p class="hero-intro">GoHighLevel certified freelancer building landing pages, sales funnels, and CRM automations for real estate agents, medspa owners, and service-based businesses ready to capture more leads on autopilot.</p>
+              <div class="hero-cta-row">
+                <a href="#contact" class="cta-btn" data-track="hero_cta_primary">Book a Free Call <span class="arrow">&#8594;</span></a>
+                <a href="#free-audit" class="cta-btn-outline" data-track="hero_cta_audit">Get Your Free GHL Audit <span class="arrow">&#8594;</span></a>
+              </div>
+            </div>
+            <div class="hero-stats-row">
+              <div class="hero-stat"><div class="num">100%</div><div class="label">On-Time Delivery</div></div>
+              <div class="hero-stat"><div class="num">GHL</div><div class="label">Certified</div></div>
+              <div class="hero-stat"><div class="num">24h</div><div class="label">Response Time</div></div>
+            </div>
           </div>
         </div>
-        <div class="hero-stats-row">
-          <div class="hero-stat"><div class="num">100%</div><div class="label">On-Time Delivery</div></div>
-          <div class="hero-stat"><div class="num">GHL</div><div class="label">Certified</div></div>
-          <div class="hero-stat"><div class="num">24h</div><div class="label">Response Time</div></div>
+        <div class="hero-calc" id="roi-calculator">
+          <div class="hero-calc-label">Try the ROI Calculator</div>
+          <iframe src="https://justinseguido.github.io/GHL-ROI-Calculator" width="100%" height="700" frameborder="0" title="GHL ROI Calculator" loading="lazy"></iframe>
+          <a href="#contact" class="cta-btn" data-track="roi_cta">Ready to Get That ROI? Let&#8217;s Talk <span class="arrow">&#8594;</span></a>
         </div>
       </div>
     </div>
@@ -1911,21 +1925,6 @@
     </div>
     <div style="text-align:center;margin-top:2.5rem;">
       <a href="#contact" class="cta-btn reveal" data-track="services_cta">Tell Me About Your Project <span class="arrow">&#8594;</span></a>
-    </div>
-  </section>
-
-  <!-- ROI CALCULATOR -->
-  <section class="roi-calc" id="roi-calculator">
-    <div class="roi-calc-inner">
-      <div class="section-label reveal">ROI Calculator</div>
-      <h2 class="reveal">See what GoHighLevel can <em>save you.</em></h2>
-      <p class="reveal">Plug in your numbers and see how much time and revenue a proper GHL setup can recover for your business.</p>
-      <div class="reveal">
-        <iframe src="https://justinseguido.github.io/GHL-ROI-Calculator" width="100%" height="850" frameborder="0" style="border:none;max-width:640px;margin:0 auto;display:block;" title="GHL ROI Calculator" loading="lazy"></iframe>
-      </div>
-      <div class="reveal" style="margin-top:2.5rem;">
-        <a href="#contact" class="cta-btn" data-track="roi_cta">Ready to Get That ROI? Let&#8217;s Talk <span class="arrow">&#8594;</span></a>
-      </div>
     </div>
   </section>
 
