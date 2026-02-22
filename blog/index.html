@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GoHighLevel tips, automation guides, and case studies for real estate agents, medspa owners, and service businesses. Written by GHL Certified Admin Justine Seguido.">
+  <meta name="keywords" content="GoHighLevel blog, GHL automation tips, real estate marketing, medspa booking automation, GHL developer insights">
+  <meta name="author" content="Justine Seguido">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#F4F1EB">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+
+  <meta property="og:title" content="Blog &#8212; GoHighLevel Tips &amp; Guides | Justine Seguido">
+  <meta property="og:description" content="GoHighLevel automation guides, case studies, and tips for real estate agents, medspa owners, and service businesses.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://justineportfolio.sapphirecarwash.com/blog/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Justine Seguido &#8212; Freelance Designer &amp; Developer">
+  <meta property="og:image" content="https://justineportfolio.sapphirecarwash.com/images/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="canonical" href="https://justineportfolio.sapphirecarwash.com/blog/">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Blog &#8212; GoHighLevel Tips &amp; Guides | Justine Seguido">
+  <meta name="twitter:description" content="GoHighLevel automation guides, case studies, and tips for real estate agents, medspa owners, and service businesses.">
+  <meta name="twitter:image" content="https://justineportfolio.sapphirecarwash.com/images/og-card.png">
+
+  <title>Blog &#8212; GoHighLevel Tips &amp; Guides | Justine Seguido</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #F4F1EB; --bg-warm: #ECEAE4; --text: #1a1a1a; --text-mid: #555;
+      --text-muted: #999; --accent: #C84B31; --border: rgba(0,0,0,0.06);
+      --serif: 'DM Serif Display', serif; --sans: 'Inter', sans-serif; --radius: 16px;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.7; }
+    a { color: inherit; text-decoration: none; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 3rem; background: transparent; transition: all 0.4s;
+    }
+    nav.scrolled { background: rgba(244,241,235,0.95); backdrop-filter: blur(12px); box-shadow: 0 1px 0 var(--border); }
+    .nav-logo { font-family: var(--serif); font-size: 1.5rem; font-style: italic; }
+    .nav-back { font-size: 0.8rem; font-weight: 500; color: var(--text-mid); letter-spacing: 0.06em; text-transform: uppercase; }
+    .nav-back:hover { color: var(--text); }
+
+    .hero {
+      padding: 10rem 3rem 4rem; max-width: 900px; margin: 0 auto; text-align: center;
+    }
+    .hero h1 {
+      font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 400; line-height: 1.1; margin-bottom: 1rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero p { font-size: 1rem; color: var(--text-mid); max-width: 560px; margin: 0 auto; }
+
+    .posts { max-width: 900px; margin: 0 auto; padding: 2rem 3rem 6rem; }
+
+    .post-card {
+      display: block; padding: 2.5rem 0; border-bottom: 1px solid var(--border);
+      transition: transform 0.2s;
+    }
+    .post-card:first-child { border-top: 1px solid var(--border); }
+    .post-card:hover { transform: translateX(6px); }
+
+    .post-meta {
+      display: flex; gap: 1rem; align-items: center;
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--text-muted); margin-bottom: 0.75rem;
+    }
+    .post-category { color: var(--accent); font-weight: 600; }
+
+    .post-card h2 {
+      font-family: var(--serif); font-size: 1.5rem; font-weight: 400;
+      line-height: 1.3; margin-bottom: 0.5rem;
+    }
+    .post-card p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.7; }
+    .post-card .read-more {
+      display: inline-block; margin-top: 1rem; font-size: 0.8rem; font-weight: 600;
+      color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .post-card:hover .read-more { text-decoration: underline; }
+
+    footer {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 2rem 3rem; border-top: 1px solid var(--border);
+      font-size: 0.75rem; color: var(--text-muted);
+    }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { color: var(--text-muted); transition: color 0.3s; }
+    .footer-links a:hover { color: var(--text); }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .hero { padding: 8rem 1.5rem 3rem; }
+      .posts { padding: 1.5rem 1.5rem 4rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <a href="../index.html" class="nav-logo">Justine.</a>
+    <a href="../index.html" class="nav-back">&#8592; Back to Home</a>
+  </nav>
+
+  <section class="hero">
+    <h1>GoHighLevel Tips &amp; <em>Guides</em></h1>
+    <p>Automation strategies, platform walkthroughs, and real-world case studies to help you get more from GoHighLevel.</p>
+  </section>
+
+  <div class="posts">
+    <a href="ghl-automations-real-estate.html" class="post-card">
+      <div class="post-meta">
+        <span class="post-category">Real Estate</span>
+        <span>Feb 21, 2026 &#183; 5 min read</span>
+      </div>
+      <h2>5 GoHighLevel Automations Every Real Estate Agent Needs in 2026</h2>
+      <p>Most agents lose deals because of slow follow-up, not bad leads. Here are the 5 GHL automations that capture, nurture, and close leads on autopilot &#8212; from speed-to-lead to post-close reviews.</p>
+      <span class="read-more">Read Article &#8594;</span>
+    </a>
+
+    <a href="automate-medspa-bookings-ghl.html" class="post-card">
+      <div class="post-meta">
+        <span class="post-category">MedSpa</span>
+        <span>Feb 21, 2026 &#183; 6 min read</span>
+      </div>
+      <h2>How to Automate MedSpa Bookings with GoHighLevel (Step-by-Step)</h2>
+      <p>Most medspas don&#8217;t have a lead problem &#8212; they have a follow-up problem. This step-by-step guide covers booking calendars, speed-to-lead, reminders, no-show recovery, and review automation.</p>
+      <span class="read-more">Read Article &#8594;</span>
+    </a>
+
+    <a href="why-hire-ghl-developer.html" class="post-card">
+      <div class="post-meta">
+        <span class="post-category">GoHighLevel</span>
+        <span>Feb 21, 2026 &#183; 5 min read</span>
+      </div>
+      <h2>Why Hire a GHL Developer Instead of Doing It Yourself</h2>
+      <p>GoHighLevel is powerful &#8212; but building a system that actually works takes more than dragging and dropping. Here&#8217;s why hiring a certified GHL developer saves time, money, and missed leads.</p>
+      <span class="read-more">Read Article &#8594;</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>&#169; 2026 Justine Seguido. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="../index.html">Home</a>
+      <a href="../privacy-policy.html">Privacy Policy</a>
+      <a href="../terms.html">Terms</a>
+    </div>
+  </footer>
+
+  <script>
+    var nav = document.getElementById('navbar');
+    window.addEventListener('scroll', function() {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
