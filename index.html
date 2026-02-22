@@ -129,8 +129,8 @@
   <link rel="preload" as="image" href="images/headshot.webp" type="image/webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" as="style">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
   <style>
     :root {
       --bg: #F4F1EB;
@@ -1799,7 +1799,7 @@
         </div>
         <div class="hero-calc" id="roi-calculator">
           <div class="hero-calc-label">Try the ROI Calculator</div>
-          <iframe src="https://justinseguido.github.io/GHL-ROI-Calculator/" width="100%" height="600" frameborder="0" style="min-height:600px;" title="GHL ROI Calculator" allow="clipboard-read; clipboard-write"></iframe>
+          <iframe data-src="https://justinseguido.github.io/GHL-ROI-Calculator/" width="100%" height="600" frameborder="0" style="min-height:600px;" title="GHL ROI Calculator" allow="clipboard-read; clipboard-write" loading="lazy"></iframe>
           <a href="#contact" class="cta-btn" data-track="roi_cta">Ready to Get That ROI? Let&#8217;s Talk <span class="arrow">&#8594;</span></a>
         </div>
       </div>
@@ -2249,7 +2249,7 @@
       <h2 class="reveal">Get a Free <em>GHL Audit</em></h2>
       <p class="reveal">Not sure if your GoHighLevel setup is costing you leads? Run the audit tool below and see exactly what to fix. Only taking <strong style="color:var(--accent);">3 audits per month</strong> &#8212; claim yours before spots fill up.</p>
       <div class="reveal" style="margin-bottom:2.5rem;">
-        <iframe src="https://ghlaudittool.sapphirecarwash.com" width="100%" height="700" frameborder="0" style="border:none;border-radius:12px;background:#fff;min-height:700px;" title="GHL Audit Tool" loading="lazy"></iframe>
+        <iframe data-src="https://ghlaudittool.sapphirecarwash.com" width="100%" height="700" frameborder="0" style="border:none;border-radius:12px;background:#fff;min-height:700px;" title="GHL Audit Tool" loading="lazy"></iframe>
       </div>
       <a href="#contact" class="cta-btn reveal" data-track="audit_cta">Want a Deeper Audit? Let&#8217;s Talk <span class="arrow">&#8594;</span></a>
     </div>
@@ -2386,7 +2386,8 @@
       </div>
       <div class="contact-form-embed reveal reveal-d1">
         <iframe
-          src="https://api.leadconnectorhq.com/widget/form/7xQGFhtIRS0BVkF6Gc1J"
+          data-src="https://api.leadconnectorhq.com/widget/form/7xQGFhtIRS0BVkF6Gc1J"
+          loading="lazy"
           style="width:100%;height:100%;border:none;border-radius:3px"
           id="inline-7xQGFhtIRS0BVkF6Gc1J"
           data-layout="{'id':'INLINE'}"
@@ -2501,55 +2502,64 @@
       }, { passive: true });
     }
   </script>
-  <script src="https://link.msgsndr.com/js/form_embed.js" defer></script>
-
-  <!-- Google Analytics (deferred to not block rendering) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K22T0XCQ2K"></script>
+  <!-- Form embed & GA (deferred until after page load) -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-K22T0XCQ2K');
+    window.addEventListener('load', function() {
+      // Load form embed script
+      var fe = document.createElement('script');
+      fe.src = 'https://link.msgsndr.com/js/form_embed.js';
+      document.body.appendChild(fe);
 
-    // GA4 click tracking for all CTAs with data-track attribute
-    document.addEventListener('click', function(e) {
-      var el = e.target.closest('[data-track]');
-      if (el) {
-        gtag('event', 'cta_click', {
-          event_category: 'engagement',
-          event_label: el.getAttribute('data-track'),
-          link_url: el.href || '',
-          link_text: el.textContent.trim().substring(0, 50)
+      // Load Google Analytics
+      var ga = document.createElement('script');
+      ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-K22T0XCQ2K';
+      ga.async = true;
+      ga.onload = function() {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-K22T0XCQ2K');
+
+        document.addEventListener('click', function(e) {
+          var el = e.target.closest('[data-track]');
+          if (el) {
+            gtag('event', 'cta_click', {
+              event_category: 'engagement',
+              event_label: el.getAttribute('data-track'),
+              link_url: el.href || '',
+              link_text: el.textContent.trim().substring(0, 50)
+            });
+          }
         });
-      }
-    });
 
-    // Track case study and blog clicks
-    document.addEventListener('click', function(e) {
-      var link = e.target.closest('.project-link, .blog-card-link, .blog-card h3 a');
-      if (link && !link.hasAttribute('data-track')) {
-        gtag('event', 'content_click', {
-          event_category: 'navigation',
-          event_label: link.href || '',
-          link_text: link.textContent.trim().substring(0, 50)
+        document.addEventListener('click', function(e) {
+          var link = e.target.closest('.project-link, .blog-card-link, .blog-card h3 a');
+          if (link && !link.hasAttribute('data-track')) {
+            gtag('event', 'content_click', {
+              event_category: 'navigation',
+              event_label: link.href || '',
+              link_text: link.textContent.trim().substring(0, 50)
+            });
+          }
         });
-      }
-    });
 
-    // Track scroll depth milestones
-    var scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
-    window.addEventListener('scroll', function() {
-      var scrollPct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-      for (var milestone in scrollMilestones) {
-        if (scrollPct >= milestone && !scrollMilestones[milestone]) {
-          scrollMilestones[milestone] = true;
-          gtag('event', 'scroll_depth', {
-            event_category: 'engagement',
-            event_label: milestone + '%'
-          });
-        }
-      }
-    }, { passive: true });
+        var scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
+        window.addEventListener('scroll', function() {
+          var scrollPct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+          for (var milestone in scrollMilestones) {
+            if (scrollPct >= milestone && !scrollMilestones[milestone]) {
+              scrollMilestones[milestone] = true;
+              gtag('event', 'scroll_depth', {
+                event_category: 'engagement',
+                event_label: milestone + '%'
+              });
+            }
+          }
+        }, { passive: true });
+      };
+      document.body.appendChild(ga);
+    });
   </script>
 
   <!-- Cookie Consent -->
@@ -2566,6 +2576,26 @@
           localStorage.setItem('cookie_consent', '1');
           banner.classList.remove('visible');
         });
+      }
+    })();
+  </script>
+
+  <!-- Lazy-load data-src iframes on scroll into view -->
+  <script>
+    (function() {
+      var iframes = document.querySelectorAll('iframe[data-src]');
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function(entries) {
+          entries.forEach(function(e) {
+            if (e.isIntersecting) {
+              e.target.src = e.target.getAttribute('data-src');
+              io.unobserve(e.target);
+            }
+          });
+        }, { rootMargin: '200px' });
+        iframes.forEach(function(f) { io.observe(f); });
+      } else {
+        iframes.forEach(function(f) { f.src = f.getAttribute('data-src'); });
       }
     })();
   </script>
