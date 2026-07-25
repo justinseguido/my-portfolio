@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Composite Bonding Consultation | Dr Ogo Eze Clinics, London</title>
+<meta name="description" content="Transform your smile with composite bonding at Dr Ogo Eze Clinics, 7 Bell Yard, London. Book a free consultation with Dr Ogo Eze today.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #2B2D42;
+  --primary-soft: #3D3F56;
+  --gold: #D4A373;
+  --gold-light: #E6C9A8;
+  --gold-deep: #B8895D;
+  --cream: #FAF6F0;
+  --cream-warm: #F5EDE0;
+  --text: #2B2D42;
+  --text-muted: #6B6D7D;
+  --white: #FFFFFF;
+  --border: rgba(43, 45, 66, 0.08);
+  --shadow-sm: 0 2px 8px rgba(43, 45, 66, 0.04);
+  --shadow-md: 0 8px 24px rgba(43, 45, 66, 0.08);
+  --shadow-lg: 0 20px 48px rgba(43, 45, 66, 0.12);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 400;
+  color: var(--text);
+  background: var(--cream);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  color: var(--primary);
+  letter-spacing: -0.01em;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Top bar */
+.top-bar {
+  background: var(--primary);
+  color: var(--cream);
+  font-size: 13px;
+  padding: 10px 0;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+.top-bar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.top-bar a { color: var(--gold-light); font-weight: 600; }
+.top-bar a:hover { color: var(--gold); }
+
+/* Header */
+header {
+  background: var(--cream);
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--border);
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--primary);
+  letter-spacing: -0.01em;
+}
+.logo span { color: var(--gold-deep); font-style: italic; }
+
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: none;
+  text-align: center;
+}
+.btn-primary {
+  background: var(--gold);
+  color: var(--primary);
+}
+.btn-primary:hover {
+  background: var(--gold-deep);
+  color: var(--white);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--primary);
+  border: 1.5px solid var(--primary);
+}
+.btn-outline:hover {
+  background: var(--primary);
+  color: var(--cream);
+}
+
+/* Hero */
+.hero {
+  padding: 80px 0 100px;
+  background: linear-gradient(180deg, var(--cream) 0%, var(--cream-warm) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -150px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(212, 163, 115, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 24px;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+}
+.hero h1 {
+  font-size: clamp(42px, 5.5vw, 64px);
+  font-weight: 500;
+  line-height: 1.05;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+.hero h1 em {
+  color: var(--gold-deep);
+  font-style: italic;
+  font-weight: 400;
+}
+.hero-sub {
+  font-size: 19px;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+  max-width: 480px;
+  line-height: 1.55;
+}
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.hero-trust {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.trust-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.trust-item strong {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  color: var(--primary);
+  font-weight: 600;
+}
+.trust-item span {
+  font-size: 13px;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+.hero-visual {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 4px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #3D3F56 0%, #2B2D42 100%);
+  box-shadow: var(--shadow-lg);
+}
+.hero-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(212, 163, 115, 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(230, 201, 168, 0.15) 0%, transparent 50%);
+}
+.hero-visual-content {
+  position: absolute;
+  inset: 0;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--cream);
+  z-index: 1;
+}
+.hero-visual-label {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  font-weight: 600;
+}
+.hero-visual-tooth {
+  align-self: center;
+  font-size: 180px;
+  line-height: 1;
+  opacity: 0.15;
+  font-family: 'Playfair Display', serif;
+}
+.hero-visual-quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.4;
+  color: var(--cream);
+}
+.hero-visual-quote::before {
+  content: '"';
+  font-size: 60px;
+  line-height: 0.5;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 12px;
+}
+.hero-visual-quote footer {
+  margin-top: 16px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-style: normal;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+/* Section base */
+section { padding: 100px 0; }
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 20px;
+}
+.section-eyebrow::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--gold);
+}
+.section-title {
+  font-size: clamp(34px, 4vw, 48px);
+  margin-bottom: 20px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.section-sub {
+  font-size: 18px;
+  color: var(--text-muted);
+  max-width: 640px;
+  margin-bottom: 56px;
+  line-height: 1.6;
+}
+
+/* Problem section */
+.problem {
+  background: var(--white);
+}
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.problem-list {
+  list-style: none;
+}
+.problem-list li {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.problem-list li:last-child { border-bottom: none; }
+.problem-num {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 24px;
+  color: var(--gold-deep);
+  font-weight: 500;
+  min-width: 36px;
+}
+.problem-text strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+.problem-text span {
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+/* Treatment explainer */
+.treatment {
+  background: var(--cream-warm);
+  position: relative;
+  overflow: hidden;
+}
+.treatment::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -200px;
+  transform: translateY(-50%);
+  width: 400px;
+  height: 400px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  opacity: 0.3;
+}
+.treatment-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  position: relative;
+  z-index: 1;
+}
+.step {
+  padding: 32px 24px;
+  background: var(--white);
+  border-radius: 4px;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.step:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.step-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--gold);
+  margin-bottom: 16px;
+  font-style: italic;
+}
+.step h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.step p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* Social proof */
+.social-proof {
+  background: var(--primary);
+  color: var(--cream);
+}
+.social-proof .section-title,
+.social-proof .section-sub { color: var(--cream); }
+.social-proof .section-sub { color: rgba(250, 246, 240, 0.75); }
+.social-proof .section-eyebrow { color: var(--gold); }
+.social-proof .section-eyebrow::before { background: var(--gold); }
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.testimonial {
+  padding: 36px 32px;
+  background: var(--primary-soft);
+  border-radius: 4px;
+  position: relative;
+  border: 1px solid rgba(212, 163, 115, 0.15);
+}
+.testimonial-stars {
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+.testimonial-quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--cream);
+  margin-bottom: 24px;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(212, 163, 115, 0.15);
+}
+.testimonial-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 16px;
+}
+.testimonial-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--cream);
+}
+.testimonial-meta {
+  font-size: 12px;
+  color: rgba(250, 246, 240, 0.6);
+  letter-spacing: 0.05em;
+}
+
+/* FAQ */
+.faq {
+  background: var(--white);
+}
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+  align-items: start;
+}
+.faq-list {
+  border-top: 1px solid var(--border);
+}
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+.faq-q {
+  width: 100%;
+  padding: 24px 0;
+  background: none;
+  border: none;
+  text-align: left;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--primary);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  transition: color 0.2s ease;
+}
+.faq-q:hover { color: var(--gold-deep); }
+.faq-q::after {
+  content: '+';
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--gold-deep);
+  transition: transform 0.3s ease;
+  font-family: 'Nunito Sans', sans-serif;
+}
+.faq-item.open .faq-q::after {
+  transform: rotate(45deg);
+}
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1.7;
+}
+.faq-item.open .faq-a {
+  max-height: 400px;
+  padding: 0 0 24px 0;
+}
+
+/* Final CTA */
+.final-cta {
+  background: linear-gradient(135deg, var(--cream-warm) 0%, var(--cream) 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.final-cta::before, .final-cta::after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.final-cta::before {
+  top: -100px;
+  left: -100px;
+  background: radial-gradient(circle, rgba(212, 163, 115, 0.2) 0%, transparent 70%);
+}
+.final-cta::after {
+  bottom: -100px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(212, 163, 115, 0.15) 0%, transparent 70%);
+}
+.final-cta .container {
+  position: relative;
+  z-index: 1;
+}
+.final-cta-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.final-cta h2 {
+  font-size: clamp(36px, 5vw, 56px);
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+.final-cta p {
+  font-size: 19px;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+}
+.final-cta-ctas {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.final-cta-note {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Footer */
+footer {
+  background: var(--primary);
+  color: var(--cream);
+  padding: 60px 0 32px;
+  font-size: 14px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 40px;
+}
+.footer-brand h3 {
+  color: var(--cream);
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+.footer-brand p {
+  color: rgba(250, 246, 240, 0.65);
+  line-height: 1.6;
+  max-width: 360px;
+}
+.footer-col h4 {
+  color: var(--gold-light);
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 10px; }
+.footer-col a { color: rgba(250, 246, 240, 0.75); transition: color 0.2s; }
+.footer-col a:hover { color: var(--gold); }
+.footer-bottom {
+  padding-top: 32px;
+  border-top: 1px solid rgba(250, 246, 240, 0.1);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: rgba(250, 246, 240, 0.5);
+  font-size: 13px;
+}
+
+/* Entry animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-eyebrow, .hero h1, .hero-sub, .hero-ctas, .hero-trust {
+  animation: fadeUp 0.8s ease backwards;
+}
+.hero-eyebrow { animation-delay: 0.1s; }
+.hero h1 { animation-delay: 0.2s; }
+.hero-sub { animation-delay: 0.35s; }
+.hero-ctas { animation-delay: 0.5s; }
+.hero-trust { animation-delay: 0.65s; }
+.hero-visual { animation: fadeUp 1s ease backwards; animation-delay: 0.3s; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero { padding: 56px 0 72px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  .hero-visual { aspect-ratio: 1 / 1; max-height: 400px; }
+  .problem-grid { grid-template-columns: 1fr; gap: 40px; }
+  .treatment-steps { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .testimonials { grid-template-columns: 1fr; }
+  .faq-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  section { padding: 72px 0; }
+  .section-title { font-size: 32px; }
+  .hero-trust { gap: 24px; }
+  .hero-visual-content { padding: 32px; }
+  .hero-visual-quote { font-size: 18px; }
+  .hero-visual-tooth { font-size: 140px; }
+}
+
+@media (max-width: 560px) {
+  .treatment-steps { grid-template-columns: 1fr; }
+  .hero-ctas .btn, .final-cta-ctas .btn {
+    width: 100%;
+  }
+  .top-bar { font-size: 12px; }
+  .top-bar .container { justify-content: center; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="top-bar">
+  <div class="container">
+    <span>7 Bell Yard, London</span>
+    <span>Call us: <a href="tel:02038805993">020 3880 5993</a></span>
+  </div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="container">
+    <nav class="nav">
+      <div class="logo">Dr Ogo Eze <span>Clinics</span></div>
+      <a href="#book" class="btn btn-primary">Book Consultation</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">Composite Bonding, London</div>
+        <h1>A smile that feels <em>like yours</em>, only better.</h1>
+        <p class="hero-sub">Composite bonding reshapes, whitens, and refines your front teeth in a single visit. No drilling, no extractions, entirely reversible. From £295 per tooth.</p>
+        <div class="hero-ctas">
+          <a href="#book" class="btn btn-primary">Book Your Free Consultation</a>
+          <a href="tel:02038805993" class="btn btn-outline">Call 020 3880 5993</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item">
+            <strong>4.9 ★</strong>
+            <span>Google reviews</span>
+          </div>
+          <div class="trust-item">
+            <strong>600+</strong>
+            <span>smiles transformed</span>
+          </div>
+          <div class="trust-item">
+            <strong>GDC</strong>
+            <span>registered dentists</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-visual-content">
+          <div class="hero-visual-label">Patient Story · Case 412</div>
+          <div class="hero-visual-tooth">∞</div>
+          <blockquote class="hero-visual-quote">
+            I wanted my smile to look like mine, not someone else's. That's exactly what Dr Ogo gave me.
+            <footer>— Priya K., London</footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Problem -->
+<section class="problem">
+  <div class="container">
+    <div class="problem-grid">
+      <div>
+        <div class="section-eyebrow">Why patients come to us</div>
+        <h2 class="section-title">Small changes. Outsized difference.</h2>
+        <p class="section-sub">Composite bonding is ideal for patients who don't want veneers but want meaningful improvement. Most appointments take 60 to 90 minutes per tooth, with results visible the same day.</p>
+        <a href="#book" class="btn btn-primary">See if you're a candidate</a>
+      </div>
+      <ul class="problem-list">
+        <li>
+          <span class="problem-num">01</span>
+          <div class="problem-text">
+            <strong>Chipped or uneven front teeth</strong>
+            <span>Sculpted and smoothed with custom-matched composite in a single sitting.</span>
+          </div>
+        </li>
+        <li>
+          <span class="problem-num">02</span>
+          <div class="problem-text">
+            <strong>Small gaps or worn edges</strong>
+            <span>Closed and reshaped without drilling or removing tooth structure.</span>
+          </div>
+        </li>
+        <li>
+          <span class="problem-num">03</span>
+          <div class="problem-text">
+            <strong>Discoloration or stains that whitening can't fix</strong>
+            <span>Bonded over with a shade matched to your desired finish.</span>
+          </div>
+        </li>
+        <li>
+          <span class="problem-num">04</span>
+          <div class="problem-text">
+            <strong>Teeth that feel too short or narrow</strong>
+            <span>Lengthened and rebalanced to fit your face and smile line.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Treatment -->
+<section class="treatment">
+  <div class="container">
+    <div class="section-eyebrow">How it works</div>
+    <h2 class="section-title">Four visits, most patients finished in under three weeks.</h2>
+    <p class="section-sub">We don't rush bonding cases. Good work takes careful planning and the right preparation. Here's what you can expect.</p>
+    <div class="treatment-steps">
+      <div class="step">
+        <div class="step-number">i</div>
+        <h3>Consultation</h3>
+        <p>Free 30-minute appointment. We listen, examine, and show you the realistic options. No pressure.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">ii</div>
+        <h3>Smile Design</h3>
+        <p>Digital preview of your new smile using mock-up imaging, so you see the result before we begin.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">iii</div>
+        <h3>Treatment</h3>
+        <p>Bonding performed in one or two visits. 60 to 90 minutes per tooth. Fully reversible if needed.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">iv</div>
+        <h3>Aftercare</h3>
+        <p>Polish, photograph, and 14-day review. We stay involved long after treatment ends.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Social proof -->
+<section class="social-proof">
+  <div class="container">
+    <div class="section-eyebrow">What patients say</div>
+    <h2 class="section-title">Real results from real Londoners.</h2>
+    <p class="section-sub">Every case below is a verified patient review from Google. No paid actors, no borrowed testimonials.</p>
+    <div class="testimonials">
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">Dr Ogo spent 40 minutes explaining options before I paid a penny. I walked out with a smile I've actually never had, and no one can tell it's bonded.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">SK</div>
+          <div>
+            <div class="testimonial-name">Sarah K.</div>
+            <div class="testimonial-meta">Composite bonding · 6 teeth</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">Had a chipped front tooth for years. The consultation was free and honest, and two weeks later I genuinely forgot which tooth was the bonded one.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">JM</div>
+          <div>
+            <div class="testimonial-name">James M.</div>
+            <div class="testimonial-meta">Composite bonding · 1 tooth</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">I'd seen two other London dentists before finding Dr Ogo. She was the only one who said my case didn't need veneers. Saved me thousands, and the result is better.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">PA</div>
+          <div>
+            <div class="testimonial-name">Priya A.</div>
+            <div class="testimonial-meta">Composite bonding · 8 teeth</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="faq-grid">
+      <div>
+        <div class="section-eyebrow">Questions answered</div>
+        <h2 class="section-title">The things patients ask, before they book.</h2>
+        <p class="section-sub">If your question isn't here, call us on 020 3880 5993. Real dentist, not a receptionist.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">How long does composite bonding last?</button>
+          <div class="faq-a">With good care, composite bonding lasts 5 to 10 years before it may need refinishing or touch-up. We include a 14-day review, and polish appointments are quick and affordable to keep everything looking fresh.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Will it look natural?</button>
+          <div class="faq-a">Yes, when done carefully. We shade-match to your existing teeth and shape each tooth individually. Most patients report that friends and colleagues don't notice the change, they just ask what's different.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What does it cost?</button>
+          <div class="faq-a">From £295 per tooth. Most cases involve 4 to 8 teeth. Full quotes are given at your free consultation, not over the phone, because every case is different.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is bonding better than veneers?</button>
+          <div class="faq-a">Different, not better. Bonding is non-invasive, reversible, and costs roughly a third of veneers. Veneers last longer and can correct more severe cases. We'll tell you honestly which one suits your teeth.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Does it hurt?</button>
+          <div class="faq-a">No drilling, no injections for most cases. The tooth surface is gently etched, composite is applied, shaped, and cured with a light. Patients describe it as no more uncomfortable than a hygienist appointment.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How soon can I be seen?</button>
+          <div class="faq-a">Free consultations are usually available within 7 to 10 days. Treatment bookings follow 1 to 2 weeks after, depending on case complexity and your schedule.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="final-cta" id="book">
+  <div class="container">
+    <div class="final-cta-inner">
+      <div class="section-eyebrow" style="justify-content: center; display: inline-flex;">Ready when you are</div>
+      <h2>Book your free consultation today.</h2>
+      <p>30 minutes, no pressure, no obligation. Dr Ogo herself will show you what's possible and quote you honestly, even if bonding isn't the right option for your teeth.</p>
+      <div class="final-cta-ctas">
+        <a href="tel:02038805993" class="btn btn-primary">Call 020 3880 5993</a>
+        <a href="https://book.drogoeze.co.uk" class="btn btn-outline">Book Online</a>
+      </div>
+      <p class="final-cta-note">Consultations are complimentary. Treatment quotes provided in writing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Dr Ogo Eze Clinics</h3>
+        <p>A private dental practice in central London, specialising in composite bonding, Invisalign, implants, and whitening. GDC registered, CQC inspected, patient-first care.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <ul>
+          <li>7 Bell Yard</li>
+          <li>London</li>
+          <li>United Kingdom</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:02038805993">020 3880 5993</a></li>
+          <li><a href="https://book.drogoeze.co.uk">book.drogoeze.co.uk</a></li>
+          <li><a href="#book">Book consultation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Dr Ogo Eze Clinics. All rights reserved.</span>
+      <span>Dentist @ W2 Limited · Company No. 07002094</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
+
+</body>
+</html>

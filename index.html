@@ -7,7 +7,7 @@
   <meta name="keywords" content="GoHighLevel expert, GHL certified admin, GoHighLevel developer, real estate website, medspa booking system, GHL automation, sales funnel builder, landing page designer">
   <meta name="author" content="Justine Seguido">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#F4F1EB">
+  <meta name="theme-color" content="#0A0A0F">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
@@ -133,20 +133,20 @@
   <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
   <style>
     :root {
-      --bg: #F4F1EB;
-      --bg-warm: #EDE8DF;
-      --surface: rgba(255,255,255,0.55);
-      --surface-solid: #FFFFFF;
-      --text: #1A1A17;
-      --text-mid: #4A4A42;
-      --text-muted: #8B8B80;
-      --accent: #C84B31;
-      --accent-light: rgba(200,75,49,0.08);
-      --accent-glow: rgba(200,75,49,0.15);
-      --border: rgba(26,26,23,0.08);
-      --border-strong: rgba(26,26,23,0.15);
-      --glass: rgba(255,255,255,0.45);
-      --glass-border: rgba(255,255,255,0.6);
+      --bg: #0A0A0F;
+      --bg-warm: #0E0E15;
+      --surface: rgba(255,255,255,0.035);
+      --surface-solid: #14141C;
+      --text: #ECEBF0;
+      --text-mid: #A2A2AF;
+      --text-muted: #6D6D7A;
+      --accent: #EE5D3C;
+      --accent-light: rgba(238,93,60,0.12);
+      --accent-glow: rgba(238,93,60,0.22);
+      --border: rgba(255,255,255,0.09);
+      --border-strong: rgba(255,255,255,0.17);
+      --glass: rgba(16,16,24,0.6);
+      --glass-border: rgba(255,255,255,0.1);
       --serif: 'DM Serif Display', Georgia, serif;
       --sans: 'Inter', system-ui, sans-serif;
       --radius: 16px;
@@ -179,7 +179,7 @@
 
     nav.scrolled {
       padding: 1rem 3rem;
-      background: rgba(244,241,235,0.85);
+      background: rgba(10,10,15,0.72);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
@@ -1048,6 +1048,87 @@
       color: var(--text-muted); margin-top: 1.5rem;
     }
 
+    /* ===== LANDING PAGES ===== */
+    .landing-pages { padding: 6rem 0; background: var(--bg-warm); }
+
+    .landing-pages-header {
+      max-width: 1280px; margin: 0 auto;
+      padding: 0 3rem; margin-bottom: 3rem;
+    }
+
+    .landing-pages-header h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      line-height: 1.05; font-weight: 400;
+    }
+
+    .landing-pages-header h2 em { font-style: italic; color: var(--accent); }
+
+    .landing-pages-grid {
+      max-width: 1280px; margin: 0 auto;
+      padding: 0 3rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .lp-card {
+      border-radius: var(--radius); overflow: hidden;
+      background: var(--surface-solid);
+      border: 1px solid var(--border);
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
+    }
+
+    .lp-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.08);
+    }
+
+    .lp-card-thumb {
+      height: 280px; position: relative; overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .lp-card-thumb iframe {
+      width: 200%; height: 200%;
+      transform: scale(0.5); transform-origin: top left;
+      border: none; pointer-events: none;
+    }
+
+    .lp-card-thumb .category-pill {
+      position: absolute; top: 1rem; left: 1rem;
+      font-size: 0.65rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      padding: 0.35rem 0.75rem; border-radius: 100px;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      z-index: 2;
+    }
+
+    .lp-card-body { padding: 1.5rem 1.75rem 1.75rem; }
+
+    .lp-card-body h3 {
+      font-family: var(--serif);
+      font-size: 1.25rem; font-weight: 400;
+      margin-bottom: 0.5rem; line-height: 1.3;
+    }
+
+    .lp-card-body p {
+      font-size: 0.88rem; color: var(--text-mid);
+      line-height: 1.55; margin-bottom: 0.75rem;
+    }
+
+    .lp-card-body .project-tags { margin-bottom: 0.75rem; }
+
+    .lp-card-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+    @media (max-width: 768px) {
+      .landing-pages-header { padding: 0 1.5rem; }
+      .landing-pages-grid { padding: 0 1.5rem; grid-template-columns: 1fr; }
+      .landing-pages { padding: 4rem 0; }
+    }
+
     /* ===== BLOG ===== */
     .blog { padding: 6rem 3rem; background: var(--bg-warm); }
 
@@ -1737,12 +1818,187 @@
     @media (max-width: 768px) {
       .cookie-banner { flex-direction: column; gap: 0.75rem; text-align: center; padding: 1rem 1.5rem; }
     }
+
+    /* ============================================================
+       DARK MODE REFINEMENTS
+       Re-skins inverted sections/cards/banners and adds the
+       sleek-SaaS ambient glow. Purely additive — no markup/JS change.
+       ============================================================ */
+
+    /* Ambient page glow */
+    body {
+      background:
+        radial-gradient(1100px circle at 12% -8%, rgba(238,93,60,0.10), transparent 55%),
+        radial-gradient(900px circle at 100% 4%, rgba(238,93,60,0.055), transparent 50%),
+        var(--bg);
+      background-attachment: fixed;
+    }
+
+    /* Softer, deeper selection + scrollbar tone */
+    ::selection { background: var(--accent); color: #0A0A0F; }
+
+    /* Nav: dark glass when scrolled */
+    nav.scrolled {
+      background: rgba(10,10,15,0.72);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Hero ambient glow behind the headline */
+    .hero { overflow: hidden; }
+    .hero::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(620px circle at 22% 42%, var(--accent-glow), transparent 62%),
+        radial-gradient(700px circle at 85% 75%, rgba(238,93,60,0.06), transparent 60%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-bg-text { opacity: 0.5; }
+
+    /* Hero ROI calculator: dark glass instead of white box */
+    .hero-calc {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      box-shadow: 0 24px 70px rgba(0,0,0,0.45);
+    }
+
+    /* Service rows: subtle light wash on hover (was a bright white flash) */
+    .service-row:hover { background: rgba(255,255,255,0.04); }
+
+    /* Card hover: swap dead black shadows for an accent glow ring */
+    .bento-card:hover, .pricing-card:hover, .project-card:hover,
+    .lp-card:hover, .blog-card:hover, .step-card:hover,
+    .testimonial-card:hover {
+      box-shadow: 0 24px 70px rgba(0,0,0,0.5), 0 0 0 1px rgba(238,93,60,0.16);
+      border-color: rgba(238,93,60,0.28);
+    }
+
+    /* Featured bento "dark card" -> accent-tinted glass */
+    .bento-card.dark-card {
+      background: linear-gradient(158deg, rgba(238,93,60,0.16), rgba(20,20,28,0.92));
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .bento-card.dark-card h3 { color: var(--text); }
+    .bento-card.dark-card p { color: rgba(236,235,240,0.66); }
+    .bento-card.dark-card .bento-big-num { color: var(--accent); }
+    .bento-card.dark-card .bento-icon { background: rgba(238,93,60,0.16); }
+
+    /* Full-width feature bands: elevated dark surfaces w/ light text */
+    .why-me, .not-for, .lead-magnet {
+      background:
+        radial-gradient(1100px circle at 50% -10%, rgba(238,93,60,0.07), transparent 60%),
+        #101018;
+      color: var(--text);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .why-me-inner h2, .not-for h2, .lead-magnet h2 { color: var(--text); }
+    .why-me-card h3 { color: var(--text); }
+    .why-me-card { background: rgba(255,255,255,0.035); border-color: var(--border); }
+    .why-me-card:hover { border-color: rgba(238,93,60,0.28); }
+
+    /* Featured pricing card: accent-tinted glass instead of inverted white */
+    .pricing-card.featured {
+      background: linear-gradient(165deg, rgba(238,93,60,0.15), rgba(18,18,26,0.96));
+      border: 1px solid rgba(238,93,60,0.35);
+      color: var(--text);
+    }
+    .pricing-card.featured .pricing-name,
+    .pricing-card.featured .pricing-amount { color: var(--text); }
+
+    /* Announcement + cookie bars: dark glass, not white */
+    .lead-banner {
+      background: rgba(15,15,22,0.94);
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .cookie-banner {
+      background: rgba(15,15,22,0.97);
+      color: var(--text);
+      border-top: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    /* Certifications badges: lift the image drop-shadow so it reads on dark */
+    .cert-main-badge img { filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5)); }
+    .skill-badge img {
+      background: rgba(255,255,255,0.04);
+      filter: drop-shadow(0 4px 14px rgba(0,0,0,0.4));
+    }
+
+    /* Contact form embed sits on dark; give the iframe a light-on-dark hint */
+    .contact-form-embed { color-scheme: light; }
+
+    /* ============================================================
+       3D HERO SCENE + TILT CARDS + ACCENT-GLASS CARDS
+       ============================================================ */
+
+    /* WebGL hero canvas sits behind the hero content */
+    .hero-canvas {
+      position: absolute; inset: 0; z-index: 0;
+      width: 100%; height: 100%; display: block;
+      pointer-events: none;
+    }
+    /* Keep the giant "Design" watermark, but let the 3D breathe through */
+    .hero-bg-text { z-index: 0; opacity: 0.28; }
+
+    /* Accent-gradient glass — cards stand out on the black background */
+    .bento-card, .pricing-card, .step-card, .project-card,
+    .lp-card, .blog-card, .testimonial-card, .why-me-card {
+      background:
+        radial-gradient(135% 135% at 0% 0%, rgba(238,93,60,0.11), transparent 46%),
+        linear-gradient(158deg, rgba(255,255,255,0.062), rgba(255,255,255,0.018));
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 16px 44px rgba(0,0,0,0.45);
+    }
+    /* Project / landing cards have image thumbs — push the glow to the body */
+    .project-card, .lp-card {
+      background:
+        radial-gradient(120% 90% at 100% 100%, rgba(238,93,60,0.10), transparent 50%),
+        linear-gradient(158deg, rgba(255,255,255,0.055), rgba(255,255,255,0.015));
+    }
+    .bento-card:hover, .pricing-card:hover, .step-card:hover,
+    .project-card:hover, .lp-card:hover, .blog-card:hover,
+    .testimonial-card:hover, .why-me-card:hover {
+      border-color: rgba(238,93,60,0.42);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.07),
+        0 24px 64px rgba(0,0,0,0.55),
+        0 0 34px rgba(238,93,60,0.16);
+    }
+
+    /* Interactive 3D tilt — snappier transform + cursor glare overlay */
+    .bento-card, .why-me-card, .pricing-card, .step-card,
+    .testimonial-card, .blog-card, .lp-card {
+      position: relative;
+      transition: transform 0.16s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s, border-color 0.4s;
+      will-change: transform;
+    }
+    .card-glare {
+      position: absolute; inset: 0; border-radius: inherit;
+      pointer-events: none; opacity: 0; z-index: 4;
+      transition: opacity 0.35s ease;
+      background: radial-gradient(220px circle at var(--gx,50%) var(--gy,50%),
+                  rgba(255,255,255,0.16), rgba(255,255,255,0.04) 34%, transparent 60%);
+      mix-blend-mode: screen;
+    }
+
+    @media (max-width: 768px) {
+      .hero-canvas { opacity: 0.75; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .card-glare { display: none; }
+    }
   </style>
 </head>
 <body class="has-banner">
   <!-- LEAD MAGNET BANNER -->
   <div class="lead-banner" id="leadBanner">
-    <div class="lead-banner-text"><strong>Free GHL Audit Call</strong> &mdash; Currently booked through March</div>
+    <div class="lead-banner-text"><strong>Free GHL Audit Call</strong> &mdash; Currently booked through <span id="bookedMonth"></span></div>
     <a href="#free-audit" class="lead-banner-cta" data-track="banner_cta">Book Your Spot &#8594;</a>
     <button class="lead-banner-close" id="closeBanner" aria-label="Close announcement banner">&times;</button>
   </div>
@@ -1768,6 +2024,7 @@
 
   <!-- HERO -->
   <section class="hero" id="hero">
+    <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
     <div class="hero-bg-text">Design</div>
     <div class="hero-content">
       <div class="hero-top-row">
@@ -2092,6 +2349,24 @@
     <div class="projects-track-wrapper" id="projectsTrack">
       <div class="projects-track">
         <div class="project-card">
+          <div class="project-thumb" style="background:linear-gradient(135deg,#0a0a0a 0%,#1c1712 100%);display:flex;align-items:center;justify-content:center;aspect-ratio:16/10;">
+            <div style="text-align:center;padding:2rem;">
+              <div style="font-size:3rem;margin-bottom:0.75rem;">&#129463;</div>
+              <div style="font-family:var(--serif);font-size:1.3rem;color:#F4F1EB;line-height:1.3;">Dr Ogo Eze Clinics<br><em style="color:#C9A84C;">London Dental</em></div>
+            </div>
+            <span class="category-pill">Dental / Healthcare</span>
+          </div>
+          <div class="project-body">
+            <h3>Full CRM &amp; WhatsApp Automation &#8212; Dr Ogo Eze Clinics</h3>
+            <p>End-to-end patient journey system for a London cosmetic dental clinic: GHL CRM, 48 WhatsApp templates, Dentally API integration via Make.com, and 9 monthly campaigns &#8212; built in 90 days.</p>
+            <div class="project-result">3,682 Leads Activated &#183; 48 Templates &#183; 100% Automated Journey</div>
+            <div class="project-tags"><span class="tag">GoHighLevel</span><span class="tag">Make.com</span><span class="tag">WhatsApp API</span><span class="tag">Healthcare</span></div>
+            <div class="project-card-links">
+              <a href="projects/dr-ogo-eze-clinics.html" class="project-link cs-link" aria-label="Case Study: Dr Ogo Eze Clinics CRM &amp; WhatsApp Automation">Case Study <span class="arrow">&#8594;</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
           <div class="project-thumb">
             <img src="images/re_gig_image_1.webp" alt="Real Estate Automation Snapshot — GoHighLevel template with lead capture, speed to lead, nurture campaigns, and pipeline tracking" loading="lazy">
             <span class="category-pill">Real Estate</span>
@@ -2253,6 +2528,31 @@
     <div class="scroll-hint-bottom">&#8592; Drag or scroll to explore &#8594;</div>
   </section>
 
+  <!-- LANDING PAGES -->
+  <section class="landing-pages" id="landing-pages">
+    <div class="landing-pages-header">
+      <div class="section-label reveal">Landing Pages</div>
+      <h2 class="reveal">Pages that <em>convert.</em></h2>
+    </div>
+    <div class="landing-pages-grid">
+      <div class="lp-card reveal">
+        <div class="lp-card-thumb">
+          <iframe src="projects/dr-ogo-eze-composite-bonding.html" title="Composite Bonding Landing Page — Dr Ogo Eze Clinics" loading="lazy"></iframe>
+          <span class="category-pill">Dental / Healthcare</span>
+        </div>
+        <div class="lp-card-body">
+          <h3>Composite Bonding &#8212; Dr Ogo Eze Clinics</h3>
+          <p>High-converting treatment landing page for a London cosmetic dental clinic. Trust signals, social proof, FAQ accordion, and dual CTA (call + book online).</p>
+          <div class="project-tags"><span class="tag">Landing Page</span><span class="tag">Healthcare</span><span class="tag">Conversion</span><span class="tag">London</span></div>
+          <div class="lp-card-links">
+            <a href="projects/dr-ogo-eze-composite-preview.html" class="project-link" aria-label="View Live Preview: Composite Bonding Landing Page">View Live Page <span class="arrow">&#8594;</span></a>
+            <a href="projects/dr-ogo-eze-clinics.html" class="project-link cs-link" aria-label="Case Study: Dr Ogo Eze Clinics">Case Study <span class="arrow">&#8594;</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- BLOG -->
   <section class="blog" id="blog">
     <div class="blog-inner">
@@ -2295,7 +2595,7 @@
     <div class="lead-magnet-inner" style="max-width:720px;">
       <div class="section-label reveal">Free Resource</div>
       <h2 class="reveal">Book a Free <em>GHL Audit Call</em></h2>
-      <p class="reveal">Not sure if your GoHighLevel setup is costing you leads? I'll review your workflows, funnels, pipelines, and automations on a 30-minute call and tell you exactly what to fix. <strong style="color:var(--accent);">Currently booked through March</strong> &#8212; reserve your April spot now.</p>
+      <p class="reveal">Not sure if your GoHighLevel setup is costing you leads? I'll review your workflows, funnels, pipelines, and automations on a 30-minute call and tell you exactly what to fix. <strong style="color:var(--accent);">Currently booked through <span class="bookedMonthText"></span></strong> &#8212; reserve your <span class="nextMonthText"></span> spot now.</p>
       <a href="#contact" class="cta-btn reveal" data-track="audit_cta">Book Your Free Audit Call <span class="arrow">&#8594;</span></a>
     </div>
   </section>
@@ -2648,6 +2948,18 @@
   <!-- GHL Chat Widget (lazy-loaded 3s after page load) -->
   <div data-chat-widget data-widget-id="69990e12d0b0e760dabdd129" data-location-id="f7WWynEVRm24Uu8diWtp"></div>
   <script>
+    (function() {
+      var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      var now = new Date();
+      var current = months[now.getMonth()];
+      var next = months[(now.getMonth() + 1) % 12];
+      var el = document.getElementById('bookedMonth');
+      if (el) el.textContent = current;
+      document.querySelectorAll('.bookedMonthText').forEach(function(e) { e.textContent = current; });
+      document.querySelectorAll('.nextMonthText').forEach(function(e) { e.textContent = next; });
+    })();
+  </script>
+  <script>
     window.addEventListener('load', function() {
       setTimeout(function() {
         var s = document.createElement('script');
@@ -2657,6 +2969,153 @@
         document.body.appendChild(s);
       }, 3000);
     });
+  </script>
+
+  <!-- 3D hero scene (Three.js) + interactive tilt cards -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script defer>
+    (function () {
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ---------- 3D HERO SCENE ---------- */
+      function initHero() {
+        var canvas = document.getElementById('hero-canvas');
+        if (!canvas || typeof THREE === 'undefined') return;
+        var hero = canvas.parentElement;
+
+        var renderer;
+        try {
+          renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+        } catch (e) { canvas.style.display = 'none'; return; }
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
+        camera.position.z = 26;
+
+        var group = new THREE.Group();
+        scene.add(group);
+
+        var ACCENT = 0xEE5D3C;
+
+        // Faceted wireframe icosahedron (two shells for depth)
+        function shell(radius, detail, color, opacity) {
+          var geo = new THREE.IcosahedronGeometry(radius, detail);
+          var wire = new THREE.WireframeGeometry(geo);
+          var mat = new THREE.LineBasicMaterial({ color: color, transparent: true, opacity: opacity });
+          return new THREE.LineSegments(wire, mat);
+        }
+        var outer = shell(9, 1, ACCENT, 0.55);
+        var inner = shell(5.4, 0, 0xECEBF0, 0.28);
+        group.add(outer);
+        group.add(inner);
+
+        // Glowing vertices on the outer shell
+        var dotGeo = new THREE.IcosahedronGeometry(9, 1);
+        var dots = new THREE.Points(dotGeo, new THREE.PointsMaterial({
+          color: ACCENT, size: 0.42, transparent: true, opacity: 0.9, sizeAttenuation: true
+        }));
+        group.add(dots);
+
+        // Ambient particle field
+        var COUNT = 420, positions = new Float32Array(COUNT * 3), colors = new Float32Array(COUNT * 3);
+        var cAccent = new THREE.Color(ACCENT), cLight = new THREE.Color(0xECEBF0);
+        for (var i = 0; i < COUNT; i++) {
+          var r = 14 + Math.pow(i / COUNT, 0.5) * 20;
+          var t = i * 2.399963; // golden-angle scatter (deterministic)
+          var phi = Math.acos(1 - 2 * ((i + 0.5) / COUNT));
+          positions[i*3]   = r * Math.sin(phi) * Math.cos(t);
+          positions[i*3+1] = r * Math.sin(phi) * Math.sin(t);
+          positions[i*3+2] = r * Math.cos(phi);
+          var c = (i % 4 === 0) ? cAccent : cLight;
+          colors[i*3] = c.r; colors[i*3+1] = c.g; colors[i*3+2] = c.b;
+        }
+        var pGeo = new THREE.BufferGeometry();
+        pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        pGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+        var field = new THREE.Points(pGeo, new THREE.PointsMaterial({
+          size: 0.11, transparent: true, opacity: 0.65, vertexColors: true, sizeAttenuation: true
+        }));
+        scene.add(field);
+
+        function resize() {
+          var w = hero.clientWidth, h = hero.clientHeight;
+          if (!w || !h) return;
+          renderer.setSize(w, h, false);
+          camera.aspect = w / h;
+          camera.updateProjectionMatrix();
+        }
+        resize();
+        window.addEventListener('resize', resize, { passive: true });
+
+        // Pointer parallax
+        var tx = 0, ty = 0, cx = 0, cy = 0;
+        window.addEventListener('pointermove', function (e) {
+          tx = (e.clientX / window.innerWidth - 0.5) * 2;
+          ty = (e.clientY / window.innerHeight - 0.5) * 2;
+        }, { passive: true });
+
+        if (reduce) { resize(); renderer.render(scene, camera); return; }
+
+        var running = true;
+        var io = new IntersectionObserver(function (en) { running = en[0].isIntersecting; }, { threshold: 0 });
+        io.observe(hero);
+
+        function tick() {
+          requestAnimationFrame(tick);
+          if (!running) return;
+          group.rotation.y += 0.0016;
+          group.rotation.x += 0.0008;
+          dots.rotation.copy(group.rotation);
+          field.rotation.y += 0.0004;
+          cx += (tx - cx) * 0.05; cy += (ty - cy) * 0.05;
+          group.rotation.y += cx * 0.0009;
+          camera.position.x = cx * 3.2;
+          camera.position.y = -cy * 2.2;
+          camera.lookAt(0, 0, 0);
+          renderer.render(scene, camera);
+        }
+        tick();
+      }
+
+      /* ---------- INTERACTIVE 3D TILT CARDS ---------- */
+      function initTilt() {
+        if (reduce) return;
+        if (!(window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches)) return;
+        var cards = document.querySelectorAll('.bento-card, .why-me-card, .pricing-card, .step-card, .testimonial-card, .blog-card, .lp-card');
+        var MAX = 7;
+        cards.forEach(function (card) {
+          var glare = document.createElement('div');
+          glare.className = 'card-glare';
+          card.insertBefore(glare, card.firstChild);
+          var frame = null;
+
+          card.addEventListener('pointermove', function (e) {
+            var r = card.getBoundingClientRect();
+            var px = (e.clientX - r.left) / r.width;
+            var py = (e.clientY - r.top) / r.height;
+            if (frame) return;
+            frame = requestAnimationFrame(function () {
+              frame = null;
+              var rotY = (px - 0.5) * (MAX * 2);
+              var rotX = (0.5 - py) * (MAX * 2);
+              card.style.transform = 'perspective(900px) rotateX(' + rotX.toFixed(2) + 'deg) rotateY(' + rotY.toFixed(2) + 'deg) translate3d(0,-6px,0)';
+              glare.style.setProperty('--gx', (px * 100).toFixed(1) + '%');
+              glare.style.setProperty('--gy', (py * 100).toFixed(1) + '%');
+            });
+          });
+          card.addEventListener('pointerenter', function () { glare.style.opacity = '1'; });
+          card.addEventListener('pointerleave', function () {
+            glare.style.opacity = '0';
+            card.style.transform = '';
+          });
+        });
+      }
+
+      function boot() { initHero(); initTilt(); }
+      if (document.readyState === 'complete') { boot(); }
+      else { window.addEventListener('load', boot); }
+    })();
   </script>
 
 </body>

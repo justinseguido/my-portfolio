@@ -7,7 +7,7 @@
   <meta name="keywords" content="medspa automation GoHighLevel, medspa booking system, GoHighLevel medspa, medical spa CRM automation, GHL medspa workflows, medspa appointment reminders, no-show recovery medspa">
   <meta name="author" content="Justine Seguido">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#F4F1EB">
+  <meta name="theme-color" content="#0A0A0F">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 
   <!-- Open Graph -->
@@ -96,20 +96,20 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #F4F1EB;
-      --bg-warm: #EDE8DF;
-      --surface: rgba(255,255,255,0.55);
-      --surface-solid: #FFFFFF;
-      --text: #1A1A17;
-      --text-mid: #4A4A42;
-      --text-muted: #8B8B80;
-      --accent: #C84B31;
-      --accent-light: rgba(200,75,49,0.08);
-      --accent-glow: rgba(200,75,49,0.15);
-      --border: rgba(26,26,23,0.08);
-      --border-strong: rgba(26,26,23,0.15);
-      --glass: rgba(255,255,255,0.45);
-      --glass-border: rgba(255,255,255,0.6);
+      --bg: #0A0A0F;
+      --bg-warm: #0E0E15;
+      --surface: rgba(255,255,255,0.035);
+      --surface-solid: #14141C;
+      --text: #ECEBF0;
+      --text-mid: #A2A2AF;
+      --text-muted: #6D6D7A;
+      --accent: #EE5D3C;
+      --accent-light: rgba(238,93,60,0.12);
+      --accent-glow: rgba(238,93,60,0.22);
+      --border: rgba(255,255,255,0.09);
+      --border-strong: rgba(255,255,255,0.17);
+      --glass: rgba(16,16,24,0.6);
+      --glass-border: rgba(255,255,255,0.1);
       --serif: 'DM Serif Display', Georgia, serif;
       --sans: 'Inter', system-ui, sans-serif;
       --radius: 16px;
@@ -118,11 +118,12 @@
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    ::selection { background: var(--accent); color: white; }
+    ::selection { background: #EE5D3C; color: #0A0A0F; }
 
     body {
       font-family: var(--sans);
-      background: var(--bg);
+      background: radial-gradient(1100px circle at 15% -8%, rgba(238,93,60,0.10), transparent 55%), var(--bg);
+      background-attachment: fixed;
       color: var(--text);
       line-height: 1.6;
       font-weight: 400;
@@ -142,7 +143,7 @@
 
     #navbar.scrolled {
       padding: 1rem 3rem;
-      background: rgba(244,241,235,0.85);
+      background: rgba(10,10,15,0.72);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
@@ -399,8 +400,8 @@
 
     /* ===== BLOG CTA SECTION ===== */
     .blog-cta {
-      background: var(--text);
-      color: var(--bg);
+      background: #101018;
+      color: var(--text);
       padding: 5rem 3rem;
       margin-top: 4rem;
       text-align: center;

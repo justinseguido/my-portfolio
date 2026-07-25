@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study — Dr Ogo Eze Clinics | Justine Seguido</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #F0D98A;
+    --gold-pale: #FBF6E9;
+    --ink: #0E0E0E;
+    --ink-soft: #3A3A3A;
+    --ink-muted: #6B6B6B;
+    --surface: #FAFAF8;
+    --surface-raised: #FFFFFF;
+    --border: rgba(0,0,0,0.08);
+    --border-strong: rgba(0,0,0,0.14);
+    --radius: 12px;
+    --radius-lg: 20px;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--surface); color: var(--ink); font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+  .hero { background: var(--ink); color: white; padding: 80px 40px 64px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 320px; height: 320px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.15); }
+  .hero::after { content: ''; position: absolute; bottom: -80px; left: -40px; width: 240px; height: 240px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.1); }
+  .hero-inner { max-width: 760px; margin: 0 auto; position: relative; z-index: 1; }
+
+  .hero-tag { display: inline-flex; align-items: center; gap: 8px; font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,168,76,0.3); padding: 6px 14px; border-radius: 100px; margin-bottom: 28px; }
+  .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+
+  .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; color: white; margin-bottom: 20px; }
+  .hero h1 span { color: var(--gold); }
+  .hero-sub { font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.65); max-width: 540px; line-height: 1.6; margin-bottom: 40px; }
+
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 24px; }
+  .meta-item { display: flex; flex-direction: column; gap: 3px; }
+  .meta-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+  .meta-value { font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.85); }
+
+  .stats-strip { background: var(--gold); padding: 28px 40px; }
+  .stats-inner { max-width: 760px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 24px; text-align: center; }
+  .stat-num { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; color: var(--ink); display: block; line-height: 1; margin-bottom: 4px; }
+  .stat-desc { font-size: 13px; font-weight: 500; color: rgba(14,14,14,0.65); }
+
+  .content { max-width: 760px; margin: 0 auto; padding: 64px 40px; }
+  .section { margin-bottom: 60px; }
+  .section-label { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  h2 { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 16px; line-height: 1.25; }
+  p { color: var(--ink-soft); margin-bottom: 16px; font-weight: 300; }
+  p:last-child { margin-bottom: 0; }
+  code { font-family: monospace; font-size: 14px; background: var(--gold-pale); padding: 2px 6px; border-radius: 4px; color: var(--ink); }
+
+  .challenge-card { background: #0E0E0E; border-radius: var(--radius-lg); padding: 36px; margin: 28px 0; }
+  .challenge-card p { color: rgba(255,255,255,0.65); font-size: 16px; }
+  .challenge-card h3 { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 600; color: white; margin-bottom: 12px; }
+
+  .deliverables { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin: 28px 0; }
+  .deliverable-card { background: var(--surface-raised); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: border-color 0.2s; }
+  .deliverable-card:hover { border-color: var(--gold); }
+  .deliverable-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--gold-pale); display: flex; align-items: center; justify-content: center; margin-bottom: 12px; font-size: 16px; }
+  .deliverable-card h4 { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+  .deliverable-card p { font-size: 13px; color: var(--ink-muted); line-height: 1.5; margin: 0; }
+
+  .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
+  .tech-tag { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; padding: 6px 14px; border-radius: 100px; border: 1px solid var(--border-strong); color: var(--ink-soft); background: var(--surface-raised); }
+
+  .quote-block { border-left: 3px solid var(--gold); padding: 20px 28px; background: var(--gold-pale); border-radius: 0 var(--radius) var(--radius) 0; margin: 32px 0; }
+  .quote-text { font-size: 18px; font-style: italic; color: var(--ink); font-weight: 300; line-height: 1.6; margin-bottom: 10px; }
+  .quote-attr { font-size: 13px; font-weight: 600; color: var(--ink-muted); letter-spacing: 0.04em; }
+
+  .results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin: 28px 0; }
+  .result-card { background: var(--surface-raised); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px 20px; text-align: center; }
+  .result-num { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; color: var(--ink); line-height: 1; margin-bottom: 6px; }
+  .result-num span { color: var(--gold); }
+  .result-label { font-size: 13px; color: var(--ink-muted); font-weight: 400; }
+
+  .timeline { margin: 28px 0; }
+  .timeline-item { display: flex; gap: 20px; padding-bottom: 28px; position: relative; }
+  .timeline-item:not(:last-child)::before { content: ''; position: absolute; left: 15px; top: 32px; bottom: 0; width: 1px; background: var(--border); }
+  .timeline-dot { width: 32px; height: 32px; border-radius: 50%; background: var(--gold-pale); border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; color: var(--gold); }
+  .timeline-body { padding-top: 4px; }
+  .timeline-title { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+  .timeline-desc { font-size: 14px; color: var(--ink-muted); font-weight: 300; margin: 0; }
+
+  .back-link { display: inline-flex; align-items: center; gap: 8px; font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 32px; letter-spacing: 0.04em; transition: color 0.2s; }
+  .back-link:hover { color: var(--gold); }
+  .back-link::before { content: '&#8592;'; }
+
+  .cta-block { background: var(--ink); border-radius: var(--radius-lg); padding: 48px 40px; text-align: center; margin-top: 64px; }
+  .cta-block h2 { color: white; font-size: 28px; margin-bottom: 12px; }
+  .cta-block p { color: rgba(255,255,255,0.55); font-size: 16px; margin-bottom: 28px; max-width: 400px; margin-left: auto; margin-right: auto; }
+  .cta-btn { display: inline-block; background: var(--gold); color: var(--ink); font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.05em; padding: 14px 32px; border-radius: 100px; text-decoration: none; }
+  .cta-btn:hover { opacity: 0.85; }
+
+  .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+  @media (max-width: 600px) {
+    .hero, .content { padding-left: 24px; padding-right: 24px; }
+    .stats-strip { padding: 24px; }
+    .cta-block { padding: 36px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-inner">
+    <a href="../index.html#projects" class="back-link">Back to Portfolio</a>
+    <div class="hero-tag">Case Study</div>
+    <h1>Full CRM and WhatsApp Automation for <span>Dr Ogo Eze Clinics</span></h1>
+    <p class="hero-sub">How a London cosmetic dental clinic went from zero automation to a fully integrated patient journey, built end to end in 90 days.</p>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">Client</span>
+        <span class="meta-value">Dr Ogo Eze Clinics, London</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Industry</span>
+        <span class="meta-value">Cosmetic Dentistry</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Timeline</span>
+        <span class="meta-value">90 days</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Platform</span>
+        <span class="meta-value">GHL + Make.com + Meta</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div>
+      <span class="stat-num">3,682</span>
+      <span class="stat-desc">Meta leads imported and activated</span>
+    </div>
+    <div>
+      <span class="stat-num">48</span>
+      <span class="stat-desc">WhatsApp templates approved by Meta</span>
+    </div>
+    <div>
+      <span class="stat-num">9</span>
+      <span class="stat-desc">Monthly marketing campaigns built</span>
+    </div>
+    <div>
+      <span class="stat-num">100%</span>
+      <span class="stat-desc">Automated patient journey, end to end</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="section">
+    <p class="section-label">The Challenge</p>
+    <h2>A growing clinic with no system behind it</h2>
+    <p>Dr Ogo Eze Clinics is a cosmetic dental practice in London offering Composite Bonding, Invisalign, Dental Implants, Teeth Whitening, and General Dentistry. The clinic had strong demand and an active Meta advertising presence, but no automation connecting leads to follow-up, no patient communication system, and no visibility into where enquiries were dropping off.</p>
+    <div class="challenge-card">
+      <h3>What was broken before we started</h3>
+      <p>Over 3,600 Meta leads had come in with no systematic follow-up. Appointment confirmations and reminders were manual. Staff were managing conversations across separate tools with no central view. There was no way to see which leads had booked, which were stale, and which had gone cold.</p>
+    </div>
+    <p>The practice management software (Dentally) was the source of truth for appointments, but it had no native integration with GHL. Every patient event, bookings, completions, cancellations, and no-shows, required a custom API connection to flow through to the CRM.</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section">
+    <p class="section-label">The Build</p>
+    <h2>A complete patient journey system, built from scratch</h2>
+    <p>The project was delivered across three milestones over 90 days, covering CRM architecture, WhatsApp automation via the Meta Business API, a full Dentally integration through Make.com, and monthly marketing campaign infrastructure.</p>
+    <div class="deliverables">
+      <div class="deliverable-card">
+        <div class="deliverable-icon">&#9881;</div>
+        <h4>GHL CRM Setup</h4>
+        <p>9-stage Patient Journey pipeline, custom fields, tags, and smart lists for every segment</p>
+      </div>
+      <div class="deliverable-card">
+        <div class="deliverable-icon">&#128172;</div>
+        <h4>WhatsApp Automation</h4>
+        <p>48 Meta-approved templates covering confirmations, reminders, follow-ups, and re-engagement</p>
+      </div>
+      <div class="deliverable-card">
+        <div class="deliverable-icon">&#128279;</div>
+        <h4>Dentally Integration</h4>
+        <p>Make.com scenarios connecting Dentally webhooks to GHL for all appointment events</p>
+      </div>
+      <div class="deliverable-card">
+        <div class="deliverable-icon">&#128203;</div>
+        <h4>Treatment Workflows</h4>
+        <p>5 treatment branches with tailored messaging for each service type, plus a generic fallback</p>
+      </div>
+      <div class="deliverable-card">
+        <div class="deliverable-icon">&#128227;</div>
+        <h4>Marketing Campaigns</h4>
+        <p>9 monthly WhatsApp campaigns (April through December) targeting 3,682 consented leads</p>
+      </div>
+      <div class="deliverable-card">
+        <div class="deliverable-icon">&#128680;</div>
+        <h4>Stale Lead System</h4>
+        <p>Internal escalation alerts at day 2 and day 4, with automated re-engagement at day 7</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section">
+    <p class="section-label">Technical Approach</p>
+    <h2>The integration that made it all work</h2>
+    <p>The core technical challenge was Dentally. Unlike most booking platforms, Dentally fires every webhook as a single <code>appointment.updated</code> event regardless of what changed. Determining whether an appointment was completed, cancelled, or a DNA required reading which timestamp field was populated, not the event name itself.</p>
+    <p>A Make.com scenario was built to handle this: the webhook payload routes through a custom logic layer that reads <code>completed_at</code>, <code>cancelled_at</code>, and <code>did_not_attend_at</code> to determine the correct path, then fetches the full appointment and patient record via API before writing to GHL. Every module was built with <code>ifempty()</code> wrappers to prevent crashes on null fields.</p>
+    <div class="tech-stack">
+      <span class="tech-tag">GoHighLevel</span>
+      <span class="tech-tag">Make.com</span>
+      <span class="tech-tag">Dentally API</span>
+      <span class="tech-tag">Meta WhatsApp Business API</span>
+      <span class="tech-tag">LC Phone</span>
+      <span class="tech-tag">GHL Workflows</span>
+      <span class="tech-tag">Custom Webhooks</span>
+      <span class="tech-tag">UK GDPR Compliance</span>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section">
+    <p class="section-label">Delivery</p>
+    <h2>How the project was delivered</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot">M1</div>
+        <div class="timeline-body">
+          <p class="timeline-title">CRM Foundation and WhatsApp Setup</p>
+          <p class="timeline-desc">GHL sub-account configured, 9-stage pipeline built, custom fields created, Meta Business verification completed, WhatsApp sender connected, first batch of templates submitted and approved.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">M2</div>
+        <div class="timeline-body">
+          <p class="timeline-title">Dentally Integration and Workflow Automation</p>
+          <p class="timeline-desc">Make.com Appointment Events Router built and tested, all 48 templates approved, confirmation and reminder workflows live across all 5 treatment branches, stale lead system active, 3,682 leads imported and tagged.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">M3</div>
+        <div class="timeline-body">
+          <p class="timeline-title">Marketing Infrastructure and Launch</p>
+          <p class="timeline-desc">9 monthly marketing campaigns built with drip delay logic, re-enrollment check workflow built, treatment completion automation live, front desk staff trained, system live and running.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section">
+    <p class="section-label">The Results</p>
+    <h2>What the clinic has now</h2>
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="result-num">3,682<span>+</span></div>
+        <div class="result-label">Leads now in an active WhatsApp sequence</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num">48</div>
+        <div class="result-label">Meta-approved templates across every journey stage</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num">0</div>
+        <div class="result-label">Manual confirmation messages sent by staff</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num">9</div>
+        <div class="result-label">Months of marketing campaigns ready to run</div>
+      </div>
+    </div>
+    <p>Every patient who books now receives a WhatsApp confirmation within minutes, treatment-specific reminders at 24 hours and 2 hours before their appointment, and a post-visit follow-up automatically. Leads that go cold are caught by the stale lead system and re-engaged before they fall off completely.</p>
+    <p>The clinic's front desk team was trained on the system and can manage it without technical support. The CRM gives them a live view of every patient, where they are in the journey, and what action is needed.</p>
+  </div>
+
+  <div class="quote-block">
+    <p class="quote-text">"The system Justine built means our patients are always informed before they arrive, and no enquiry gets missed. It runs in the background while the team focuses on patient care."</p>
+    <p class="quote-attr">Dr Ogo Eze, Director, Dr Ogo Eze Clinics, London</p>
+  </div>
+
+  <div class="cta-block">
+    <h2>Building something similar?</h2>
+    <p>Whether you're in healthcare, dental, or any service business, I can build the same level of automation for your team.</p>
+    <a href="mailto:jbseguido@gmail.com" class="cta-btn">Let's talk about your project</a>
+  </div>
+
+</div>
+</body>
+</html>

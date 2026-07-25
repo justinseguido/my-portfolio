@@ -7,7 +7,7 @@
   <meta name="keywords" content="GoHighLevel blog, GHL automation tips, real estate marketing, medspa booking automation, GHL developer insights">
   <meta name="author" content="Justine Seguido">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#F4F1EB">
+  <meta name="theme-color" content="#0A0A0F">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 
   <meta property="og:title" content="Blog &#8212; GoHighLevel Tips &amp; Guides | Justine Seguido">
@@ -34,12 +34,19 @@
 
   <style>
     :root {
-      --bg: #F4F1EB; --bg-warm: #ECEAE4; --text: #1a1a1a; --text-mid: #555;
-      --text-muted: #999; --accent: #C84B31; --border: rgba(0,0,0,0.06);
+      --bg: #0A0A0F; --bg-warm: #0E0E15; --text: #ECEBF0; --text-mid: #A2A2AF;
+      --text-muted: #6D6D7A; --accent: #EE5D3C; --border: rgba(255,255,255,0.09);
       --serif: 'DM Serif Display', serif; --sans: 'Inter', sans-serif; --radius: 16px;
     }
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.7; }
+    ::selection { background: var(--accent); color: #0A0A0F; }
+    body {
+      font-family: var(--sans); color: var(--text); line-height: 1.7;
+      background:
+        radial-gradient(1100px circle at 15% -8%, rgba(238,93,60,0.10), transparent 55%),
+        var(--bg);
+      background-attachment: fixed; min-height: 100vh;
+    }
     a { color: inherit; text-decoration: none; }
 
     nav {
@@ -47,7 +54,7 @@
       display: flex; justify-content: space-between; align-items: center;
       padding: 1.2rem 3rem; background: transparent; transition: all 0.4s;
     }
-    nav.scrolled { background: rgba(244,241,235,0.95); backdrop-filter: blur(12px); box-shadow: 0 1px 0 var(--border); }
+    nav.scrolled { background: rgba(10,10,15,0.8); backdrop-filter: blur(12px); box-shadow: 0 1px 0 var(--border); }
     .nav-logo { font-family: var(--serif); font-size: 1.5rem; font-style: italic; }
     .nav-back { font-size: 0.8rem; font-weight: 500; color: var(--text-mid); letter-spacing: 0.06em; text-transform: uppercase; }
     .nav-back:hover { color: var(--text); }
