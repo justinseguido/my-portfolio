@@ -2332,9 +2332,34 @@
     @media (prefers-reduced-motion: reduce) {
       .card-glare { display: none; }
     }
+
+    /* ============================================================
+       GLOBAL 3D BACKGROUND — one fixed WebGL field behind all sections
+       ============================================================ */
+    #bg-canvas {
+      position: fixed; inset: 0; width: 100%; height: 100%;
+      z-index: -1; pointer-events: none; display: block;
+    }
+
+    /* Make section backgrounds slightly translucent so the 3D field
+       drifts through them subtly (readability preserved). */
+    .services, .landing-pages, .blog, .faq, .contact, .certifications {
+      background: rgba(14, 14, 21, 0.60);
+    }
+    .why-me, .not-for, .lead-magnet {
+      background:
+        radial-gradient(1100px circle at 50% -10%, rgba(238,93,60,0.07), transparent 60%),
+        rgba(16, 16, 24, 0.64);
+    }
+    footer { background: rgba(14, 14, 21, 0.60); }
+    /* Contact already positions a glow; keep it above the field */
+    .contact > * { position: relative; z-index: 1; }
   </style>
 </head>
 <body class="has-banner">
+  <!-- GLOBAL 3D BACKGROUND (fixed, behind all sections) -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
   <!-- LEAD MAGNET BANNER -->
   <div class="lead-banner" id="leadBanner">
     <div class="lead-banner-text"><strong>Free GHL Audit Call</strong> &mdash; Currently booked through <span id="bookedMonth"></span></div>
@@ -3565,7 +3590,109 @@
         });
       }
 
-      function boot() { initHero(); initTilt(); }
+      /* ---------- GLOBAL 3D BACKGROUND FIELD ---------- */
+      function initBg() {
+        var canvas = document.getElementById('bg-canvas');
+        if (!canvas || typeof THREE === 'undefined') return;
+
+        var renderer;
+        try {
+          renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+        } catch (e) { canvas.style.display = 'none'; return; }
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
+
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(60, 1, 0.1, 200);
+        camera.position.z = 30;
+
+        var ACCENT = 0xEE5D3C;
+        var world = new THREE.Group();
+        scene.add(world);
+
+        // Ambient particle field (golden-angle scatter, deterministic)
+        var COUNT = 850, positions = new Float32Array(COUNT * 3), colors = new Float32Array(COUNT * 3);
+        var cAccent = new THREE.Color(ACCENT), cLight = new THREE.Color(0xECEBF0);
+        for (var i = 0; i < COUNT; i++) {
+          var r = 14 + Math.pow(i / COUNT, 0.5) * 38;
+          var t = i * 2.399963;
+          var phi = Math.acos(1 - 2 * ((i + 0.5) / COUNT));
+          positions[i*3]   = r * Math.sin(phi) * Math.cos(t);
+          positions[i*3+1] = r * Math.sin(phi) * Math.sin(t);
+          positions[i*3+2] = r * Math.cos(phi) * 0.7;
+          var c = (i % 4 === 0) ? cAccent : cLight;
+          colors[i*3] = c.r; colors[i*3+1] = c.g; colors[i*3+2] = c.b;
+        }
+        var pGeo = new THREE.BufferGeometry();
+        pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        pGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+        var field = new THREE.Points(pGeo, new THREE.PointsMaterial({
+          size: 0.32, transparent: true, opacity: 0.85, vertexColors: true,
+          sizeAttenuation: true, blending: THREE.AdditiveBlending, depthWrite: false
+        }));
+        world.add(field);
+
+        // Drifting wireframe shells for visible structure/depth
+        var shells = [];
+        function shell(radius, detail, color, opacity, x, y, z) {
+          var wire = new THREE.WireframeGeometry(new THREE.IcosahedronGeometry(radius, detail));
+          var mesh = new THREE.LineSegments(wire, new THREE.LineBasicMaterial({
+            color: color, transparent: true, opacity: opacity,
+            blending: THREE.AdditiveBlending, depthWrite: false
+          }));
+          mesh.position.set(x, y, z);
+          world.add(mesh); shells.push(mesh); return mesh;
+        }
+        shell(7.5, 0, ACCENT, 0.34, -20, 10, -10);
+        shell(5.5, 0, 0xECEBF0, 0.20, 22, -8, -4);
+        shell(11,  1, ACCENT, 0.16, 6, 18, -24);
+        shell(6,   0, ACCENT, 0.24, 18, 20, -14);
+
+        function resize() {
+          var w = window.innerWidth, h = window.innerHeight;
+          renderer.setSize(w, h, false);
+          camera.aspect = w / h;
+          camera.updateProjectionMatrix();
+        }
+        resize();
+        window.addEventListener('resize', resize, { passive: true });
+
+        // Scroll + pointer parallax targets
+        var scrollY = window.pageYOffset || 0;
+        window.addEventListener('scroll', function () { scrollY = window.pageYOffset || 0; }, { passive: true });
+        var tx = 0, ty = 0, cx = 0, cy = 0;
+        window.addEventListener('pointermove', function (e) {
+          tx = (e.clientX / window.innerWidth - 0.5) * 2;
+          ty = (e.clientY / window.innerHeight - 0.5) * 2;
+        }, { passive: true });
+
+        if (reduce) { resize(); renderer.render(scene, camera); return; }
+
+        var sy = 0;
+        function tick() {
+          requestAnimationFrame(tick);
+          if (document.hidden) return;
+          // Continuous gentle drift
+          field.rotation.y += 0.0003;
+          field.rotation.x += 0.00012;
+          for (var s = 0; s < shells.length; s++) {
+            shells[s].rotation.y += 0.0006 + s * 0.0002;
+            shells[s].rotation.x += 0.0004;
+          }
+          // Smoothed scroll parallax (fly gently through the field)
+          sy += (scrollY - sy) * 0.06;
+          world.position.y = sy * 0.004;
+          world.rotation.z = sy * 0.00012;
+          // Pointer parallax
+          cx += (tx - cx) * 0.04; cy += (ty - cy) * 0.04;
+          camera.position.x = cx * 3;
+          camera.position.y = -cy * 2;
+          camera.lookAt(0, world.position.y * 0.4, 0);
+          renderer.render(scene, camera);
+        }
+        tick();
+      }
+
+      function boot() { initBg(); initHero(); initTilt(); }
       if (document.readyState === 'complete') { boot(); }
       else { window.addEventListener('load', boot); }
     })();
