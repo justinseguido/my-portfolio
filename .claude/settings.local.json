@@ -19,7 +19,13 @@
       "Bash(git branch:*)",
       "Bash(git push:*)",
       "Bash(cd:*)",
-      "WebFetch(domain:realstatesample.sapphirecarwash.com)"
+      "WebFetch(domain:realstatesample.sapphirecarwash.com)",
+      "Bash(ls:*)",
+      "Bash(npx --yes sharp-cli:*)",
+      "WebFetch(domain:justineportfolio.sapphirecarwash.com)",
+      "WebFetch(domain:justinseguido.github.io)",
+      "Bash(through March\" for authentic urgency that doesn''t read as fake.:*)",
+      "WebFetch(domain:hvac.sapphirecarwash.com)"
     ]
   }
 }
