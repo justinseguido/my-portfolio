@@ -486,18 +486,54 @@
     }
 
     .about-headshot {
-      flex-shrink: 0;
+      flex-shrink: 0; position: relative;
       width: 180px; height: 180px;
       border-radius: 50%;
-      overflow: hidden;
-      border: 3px solid var(--border);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+      animation: headshotFloat 6s ease-in-out infinite;
+    }
+
+    /* Rotating accent ring */
+    .about-headshot::before {
+      content: ''; position: absolute; inset: -7px; border-radius: 50%; z-index: 0;
+      background: conic-gradient(from 0deg, var(--accent), transparent 28%, transparent 72%, var(--accent));
+      animation: headshotSpin 6s linear infinite;
+      -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 3px));
+              mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 3px));
+    }
+
+    /* Soft breathing glow */
+    .about-headshot::after {
+      content: ''; position: absolute; inset: -2px; border-radius: 50%; z-index: -1;
+      box-shadow: 0 0 45px var(--accent-glow);
+      animation: headshotGlow 4s ease-in-out infinite;
     }
 
     .about-headshot img {
       width: 100%; height: 100%;
+      border-radius: 50%;
       object-fit: cover;
       object-position: center top;
+      position: relative; z-index: 1;
+      border: 3px solid var(--surface-solid);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+      transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .about-headshot:hover img { transform: scale(1.06); }
+
+    @keyframes headshotFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes headshotSpin { to { transform: rotate(360deg); } }
+    @keyframes headshotGlow {
+      0%, 100% { opacity: 0.45; }
+      50% { opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .about-headshot { animation: none; }
+      .about-headshot::before { animation: none; }
+      .about-headshot::after { animation: none; opacity: 0.7; }
     }
 
     .about-header h2 {
@@ -735,6 +771,53 @@
       .cert-main-badge img { width: 110px; }
       .skill-badge img { width: 64px; height: 64px; }
       .skills-badges { gap: 1rem; }
+    }
+
+    /* ===== CERTIFICATIONS — ANIMATIONS ===== */
+    /* Main badge: gentle float + pulsing accent glow behind it */
+    .cert-main-badge > div { position: relative; animation: certFloat 5s ease-in-out infinite; }
+    .cert-main-badge > div::before {
+      content: ''; position: absolute; top: 70px; left: 50%;
+      width: 190px; height: 190px; border-radius: 50%; z-index: 0; pointer-events: none;
+      background: radial-gradient(circle, var(--accent-glow), transparent 65%);
+      animation: certGlow 3.5s ease-in-out infinite;
+    }
+    .cert-main-badge img { position: relative; z-index: 1; }
+
+    @keyframes certFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @keyframes certGlow {
+      0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(0.85); }
+      50%      { opacity: 0.9; transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    /* Skills badges: staggered entrance (via reveal .visible) */
+    .skills-badges .skill-badge {
+      opacity: 0; transform: translateY(18px);
+      transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1),
+                  transform 0.6s cubic-bezier(0.16,1,0.3,1);
+    }
+    .skills-badges.visible .skill-badge { opacity: 1; transform: translateY(0); }
+    .skills-badges.visible .skill-badge:nth-child(1) { transition-delay: 0.05s; }
+    .skills-badges.visible .skill-badge:nth-child(2) { transition-delay: 0.11s; }
+    .skills-badges.visible .skill-badge:nth-child(3) { transition-delay: 0.17s; }
+    .skills-badges.visible .skill-badge:nth-child(4) { transition-delay: 0.23s; }
+    .skills-badges.visible .skill-badge:nth-child(5) { transition-delay: 0.29s; }
+    .skills-badges.visible .skill-badge:nth-child(6) { transition-delay: 0.35s; }
+    .skills-badges.visible .skill-badge:nth-child(7) { transition-delay: 0.41s; }
+    .skill-badge:hover { transition-delay: 0s; }
+
+    /* Continuous gentle float on each badge icon (staggered phases) */
+    .skill-badge img { animation: certFloat 4.5s ease-in-out infinite; }
+    .skill-badge:nth-child(even) img { animation-delay: -2.25s; }
+    .skill-badge:nth-child(3n) img { animation-duration: 5.2s; }
+    .skill-badge:hover img { filter: drop-shadow(0 12px 26px var(--accent-glow)); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cert-main-badge > div,
+      .cert-main-badge > div::before,
+      .skill-badge img { animation: none; }
+      .cert-main-badge > div::before { transform: translate(-50%, -50%); opacity: 0.55; }
+      .skills-badges .skill-badge { opacity: 1; transform: none; transition: none; }
     }
 
     /* ===== SERVICES ===== */
@@ -1670,21 +1753,54 @@
       line-height: 1.7; max-width: 600px; margin-bottom: 2.5rem;
     }
 
-    .not-for-grid {
+    /* Two-panel contrast: not a fit / perfect fit */
+    .not-for-cols {
       display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      gap: 1.5rem; align-items: start;
     }
 
-    .not-for-item {
-      display: flex; align-items: flex-start; gap: 0.75rem;
-      font-size: 0.9rem; color: rgba(244,241,235,0.6);
-      line-height: 1.6;
+    .nf-card {
+      border-radius: var(--radius); padding: 1.85rem;
+      border: 1px solid var(--border); background: var(--surface);
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1),
+                  border-color 0.4s, box-shadow 0.4s;
+    }
+    .nf-card:hover { transform: translateY(-4px); }
+    .nf-card.no:hover { border-color: var(--border-strong); }
+    .nf-card.yes {
+      background: linear-gradient(158deg, rgba(238,93,60,0.14), rgba(20,20,28,0.9));
+      border-color: rgba(238,93,60,0.3);
+    }
+    .nf-card.yes:hover {
+      border-color: var(--accent);
+      box-shadow: 0 24px 60px rgba(238,93,60,0.18);
     }
 
-    .not-for-icon {
-      color: var(--accent); font-weight: 700;
-      flex-shrink: 0; margin-top: 0.1rem;
+    .nf-head {
+      font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.12em; margin-bottom: 1.6rem;
+      padding-bottom: 1.1rem; border-bottom: 1px solid var(--border);
     }
+    .nf-card.no .nf-head { color: var(--text-mid); }
+    .nf-card.yes .nf-head { color: var(--accent); }
+
+    .nf-list { display: flex; flex-direction: column; gap: 1.05rem; }
+
+    .nf-item {
+      display: flex; align-items: flex-start; gap: 0.8rem;
+      font-size: 0.9rem; line-height: 1.5; color: var(--text-mid);
+    }
+    .nf-card.yes .nf-item { color: var(--text); }
+
+    .nf-ic {
+      flex-shrink: 0; width: 22px; height: 22px; border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.68rem; font-weight: 700; margin-top: 0.05rem;
+      transition: transform 0.3s, background 0.3s;
+    }
+    .nf-card.no .nf-ic { background: rgba(255,255,255,0.06); color: var(--text-muted); }
+    .nf-card.yes .nf-ic { background: var(--accent); color: #fff; }
+    .nf-item:hover .nf-ic { transform: scale(1.12) rotate(-6deg); }
 
     .not-for-cta {
       margin-top: 3rem;
@@ -1696,7 +1812,7 @@
 
     @media (max-width: 768px) {
       .not-for { padding: 4rem 1.5rem; }
-      .not-for-grid { grid-template-columns: 1fr; }
+      .not-for-cols { grid-template-columns: 1fr; }
     }
 
     /* ===== HERO GRID (Calculator Opt-In) ===== */
@@ -2044,6 +2160,72 @@
     .bento-card.dark-card .bento-big-num { color: var(--accent); }
     .bento-card.dark-card .bento-icon { background: rgba(238,93,60,0.16); }
 
+    /* ===== ABOUT REFINEMENTS: line icons, proof chips, credential strip ===== */
+    .bento-card { display: flex; flex-direction: column; }
+
+    .bento-icon svg {
+      width: 24px; height: 24px; fill: none;
+      stroke: var(--accent); stroke-width: 1.75;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    .bento-icon { transition: transform 0.45s cubic-bezier(0.16,1,0.3,1), background 0.4s; }
+    .bento-card:hover .bento-icon {
+      transform: translateY(-2px) rotate(-5deg) scale(1.07);
+      background: var(--accent-light);
+    }
+
+    /* Official certification badge inside the GHL card */
+    .bento-cert-badge {
+      width: 84px; height: 84px; object-fit: contain;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 8px 22px rgba(0,0,0,0.45));
+    }
+
+    /* Proof chip pinned to the bottom of each card */
+    .bento-tag {
+      margin-top: auto; align-self: flex-start;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.42rem 0.9rem; border-radius: 100px;
+      background: var(--accent-light);
+      border: 1px solid rgba(238,93,60,0.22);
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.01em;
+      color: var(--text); white-space: nowrap;
+    }
+    .bento-tag { margin-top: 1.5rem; }
+    .bento-card.large .bento-tag,
+    .bento-card.medium .bento-tag,
+    .bento-card.third .bento-tag { margin-top: auto; }
+    .bento-tag::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+      background: var(--accent); box-shadow: 0 0 8px var(--accent-glow);
+    }
+    .bento-card.dark-card .bento-tag {
+      background: rgba(255,255,255,0.06);
+      border-color: var(--border-strong);
+    }
+
+    /* Credential strip under the about header */
+    .about-creds {
+      max-width: 1280px; margin: 2.25rem auto 0;
+      display: flex; flex-wrap: wrap; gap: 0.6rem;
+    }
+    .about-cred {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.5rem 0.95rem; border-radius: 100px;
+      background: var(--surface); border: 1px solid var(--border);
+      font-size: 0.76rem; font-weight: 500; color: var(--text-mid);
+      transition: color 0.3s, border-color 0.3s, transform 0.3s;
+    }
+    .about-cred:hover {
+      color: var(--text); border-color: rgba(238,93,60,0.4);
+      transform: translateY(-2px);
+    }
+    .about-cred svg {
+      width: 15px; height: 15px; fill: none;
+      stroke: var(--accent); stroke-width: 2;
+      stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0;
+    }
+
     /* Full-width feature bands: elevated dark surfaces w/ light text */
     .why-me, .not-for, .lead-magnet {
       background:
@@ -2241,31 +2423,53 @@
         <h2>GoHighLevel expert helping real estate &amp; medspa businesses <em>stand out and scale.</em></h2>
       </div>
     </div>
+
+    <div class="about-creds reveal reveal-d1">
+      <span class="about-cred"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg> GoHighLevel Certified Admin</span>
+      <span class="about-cred"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg> A2P 10DLC Registered</span>
+      <span class="about-cred"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg> HIPAA-Aware Builds</span>
+      <span class="about-cred"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg> 3&#8211;10 Day Delivery</span>
+      <span class="about-cred"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg> Real Estate &amp; MedSpa Focus</span>
+    </div>
+
     <div class="bento-grid">
       <div class="bento-card large reveal">
-        <div class="bento-icon">&#9889;</div>
+        <div class="bento-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 12l10 5 10-5"/><path d="M2 17l10 5 10-5"/></svg>
+        </div>
         <h3>I don't just design &#8212; I build the whole GoHighLevel system.</h3>
         <p>From wireframe to live site, I handle everything. Landing pages, seller funnels, buyer pages, CRM pipelines, and the workflow automations that tie them together &#8212; all built inside GoHighLevel so you own every piece.</p>
+        <div class="bento-tag">You own 100% of your build</div>
       </div>
       <div class="bento-card medium dark-card reveal reveal-d1">
-        <div class="bento-big-num">GHL</div>
+        <img class="bento-cert-badge" src="images/BD_Certified_Admin_Main_Badge.webp" alt="GoHighLevel Certified Admin Badge" width="84" height="84" loading="lazy">
         <h3>GHL Certified Admin with full-stack builds</h3>
         <p>GoHighLevel snapshots, CRM pipelines, automated follow-ups, and appointment booking flows &#8212; all in one platform.</p>
+        <div class="bento-tag">Official GoHighLevel Certification</div>
       </div>
       <div class="bento-card third reveal">
-        <div class="bento-icon">&#127919;</div>
+        <div class="bento-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/></svg>
+        </div>
         <h3>Conversion-focused</h3>
         <p>Every landing page and funnel is designed to capture leads. Clean layouts, clear CTAs, and mobile-first responsive design.</p>
+        <div class="bento-tag">Mobile-first, built to convert</div>
       </div>
       <div class="bento-card third reveal reveal-d1">
-        <div class="bento-icon">&#128295;</div>
+        <div class="bento-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="14.5" y="13.5" width="6.5" height="6.5" rx="1.5"/><path d="M9.5 7.25H13a3 3 0 0 1 3 3v3.25"/></svg>
+        </div>
         <h3>Automation builder</h3>
         <p>I build GoHighLevel workflows, email/SMS sequences, and automated follow-up systems so leads never slip through the cracks.</p>
+        <div class="bento-tag">Zero leads slip through</div>
       </div>
       <div class="bento-card third reveal reveal-d2">
-        <div class="bento-icon">&#129309;</div>
+        <div class="bento-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg>
+        </div>
         <h3>Fast turnaround</h3>
         <p>Async-first, self-directed, and built for speed. Most projects delivered within days, not weeks.</p>
+        <div class="bento-tag">3&#8211;10 day delivery</div>
       </div>
     </div>
   </section>
@@ -2461,13 +2665,29 @@
       <div class="section-label reveal">Honest Take</div>
       <h2 class="reveal">Who this is <em>not for.</em></h2>
       <p class="reveal">I&#8217;d rather be upfront than waste your time. This isn&#8217;t a fit for everyone &#8212; and that&#8217;s okay.</p>
-      <div class="not-for-grid">
-        <div class="not-for-item reveal"><span class="not-for-icon">&#10007;</span> You just want the cheapest option, not the right one</div>
-        <div class="not-for-item reveal reveal-d1"><span class="not-for-icon">&#10007;</span> You need a full-time in-house hire, not a freelancer</div>
-        <div class="not-for-item reveal"><span class="not-for-icon">&#10007;</span> You&#8217;re looking for a generic WordPress site, not a GHL build</div>
-        <div class="not-for-item reveal reveal-d1"><span class="not-for-icon">&#10007;</span> You don&#8217;t have a clear offer or service to sell yet</div>
-        <div class="not-for-item reveal"><span class="not-for-icon">&#10007;</span> You want to micromanage every pixel instead of trusting the process</div>
-        <div class="not-for-item reveal reveal-d1"><span class="not-for-icon">&#10007;</span> You need ongoing daily maintenance, not a build-and-handoff project</div>
+      <div class="not-for-cols">
+        <div class="nf-card no reveal">
+          <div class="nf-head">Probably not your guy if&#8230;</div>
+          <div class="nf-list">
+            <div class="nf-item"><span class="nf-ic">&#10007;</span> You just want the cheapest option, not the right one</div>
+            <div class="nf-item"><span class="nf-ic">&#10007;</span> You&#8217;re looking for a generic WordPress site, not a GHL build</div>
+            <div class="nf-item"><span class="nf-ic">&#10007;</span> You want to micromanage every pixel instead of trusting the process</div>
+            <div class="nf-item"><span class="nf-ic">&#10007;</span> You need a full-time in-house hire, not a freelancer</div>
+            <div class="nf-item"><span class="nf-ic">&#10007;</span> You don&#8217;t have a clear offer or service to sell yet</div>
+            <div class="nf-item"><span class="nf-ic">&#10007;</span> You need ongoing daily maintenance, not a build-and-handoff project</div>
+          </div>
+        </div>
+        <div class="nf-card yes reveal reveal-d1">
+          <div class="nf-head">But a perfect fit if&#8230;</div>
+          <div class="nf-list">
+            <div class="nf-item"><span class="nf-ic">&#10003;</span> You want it done right &#8212; not just done cheap</div>
+            <div class="nf-item"><span class="nf-ic">&#10003;</span> You want a full GoHighLevel build: funnels, CRM &amp; automations</div>
+            <div class="nf-item"><span class="nf-ic">&#10003;</span> You&#8217;d rather trust a proven process than manage every pixel</div>
+            <div class="nf-item"><span class="nf-ic">&#10003;</span> You want a specialist on-demand, not another full-time salary</div>
+            <div class="nf-item"><span class="nf-ic">&#10003;</span> You have a clear offer and you&#8217;re ready to scale it</div>
+            <div class="nf-item"><span class="nf-ic">&#10003;</span> You want a clean build-and-handoff you fully own</div>
+          </div>
+        </div>
       </div>
       <p class="not-for-cta reveal">But if you&#8217;re a business owner who wants a <strong>done-right GHL system</strong> that captures leads and books appointments on autopilot &#8212; <a href="#contact" style="color:var(--accent);font-weight:600;">let&#8217;s talk</a>.</p>
     </div>
