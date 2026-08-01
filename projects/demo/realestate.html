@@ -101,12 +101,14 @@
       linear-gradient(160deg,var(--navy-deep),var(--navy) 55%,var(--navy-2));
   }
   .hero::after{
-    content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
+    content:"";position:absolute;inset:0;opacity:.3;pointer-events:none;z-index:0;
     background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
     background-size:64px 64px;
     -webkit-mask-image:radial-gradient(700px 400px at 75% 30%,#000,transparent 80%);
             mask-image:radial-gradient(700px 400px at 75% 30%,#000,transparent 80%);
   }
+  .hero-3d{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+  @media(max-width:900px){.hero-3d{opacity:.5}}
   .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
   .hero h1{color:var(--white);font-size:clamp(2.4rem,5vw,3.9rem);font-weight:800;letter-spacing:-.5px}
   .hero h1 em{font-style:italic;color:var(--gold-2)}
@@ -161,8 +163,13 @@
     transition:transform .2s ease,box-shadow .2s ease;
   }
   .card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
-  .card-photo{height:210px;position:relative;display:grid;place-items:center}
+  .card-photo{height:210px;position:relative;display:grid;place-items:center;overflow:hidden}
   .card-photo svg.house{color:rgba(255,255,255,.55);width:70px;height:70px}
+  .card-photo svg.prop{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .card-photo img.prop{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:#dfe7ef}
+  .card-photo .tag{z-index:2}
+  .card-photo svg.prop,.card-photo img.prop{transition:transform .5s cubic-bezier(.16,1,.3,1)}
+  .card:hover .card-photo svg.prop,.card:hover .card-photo img.prop{transform:scale(1.05)}
   .g1{background:linear-gradient(135deg,#1f4068,#2a5a96)}
   .g2{background:linear-gradient(135deg,#3a6073,#16222a)}
   .g3{background:linear-gradient(135deg,#4b6cb7,#182848)}
@@ -344,6 +351,7 @@
 
 <!-- ===== HERO ===== -->
 <section class="hero" style="padding-top:80px">
+  <canvas class="hero-3d" id="re3d" aria-hidden="true"></canvas>
   <div class="wrap hero-grid">
     <div>
       <span class="eyebrow">Summit &amp; Shore Realty</span>
@@ -660,10 +668,59 @@
     {g:'g6', tag:'For Sale', cls:'', price:'$975,000', addr:'510 Bayfront Ave, Lakeside', beds:3, baths:3, sqft:'2,180'}
   ];
 
+  // Sample property illustrations (self-contained SVG — no external images)
+  var palettes = [
+    {skyA:'#bcd7f0',skyB:'#eef5fc',orb:'#f6d97a',glow:'#fff4cf',hill:'#a9c6e0',wall:'#f4efe6',roof:'#244766',door:'#c9a227'},
+    {skyA:'#f7c9a0',skyB:'#fde7cf',orb:'#f2a65a',glow:'#ffe3c2',hill:'#e6b48a',wall:'#efe7db',roof:'#7c4a3a',door:'#c9a227'},
+    {skyA:'#6f83b3',skyB:'#c9d1e8',orb:'#f4f1e6',glow:'#ffffff',hill:'#5f6f9c',wall:'#eef0f6',roof:'#2b3a67',door:'#c9a227'},
+    {skyA:'#ecd9a0',skyB:'#f9f0d7',orb:'#d4af37',glow:'#f6e6a6',hill:'#d8c281',wall:'#fbf7ee',roof:'#8a6d16',door:'#244766'},
+    {skyA:'#a4c6cc',skyB:'#e7f2f1',orb:'#f0e0a0',glow:'#fbf4d6',hill:'#8fb4b8',wall:'#f2f4f2',roof:'#2c4a4f',door:'#c9a227'},
+    {skyA:'#b1c2cb',skyB:'#e9eff2',orb:'#e8dca0',glow:'#f7efc9',hill:'#98adb8',wall:'#eef1f0',roof:'#34505a',door:'#c9a227'}
+  ];
+  function propScene(i){
+    var p = palettes[i % palettes.length], id = 'sky' + i;
+    var roof = (i % 2 === 0)
+      ? '<polygon points="124,142 144,104 256,104 276,142" fill="' + p.roof + '"/>'
+      : '<polygon points="120,142 200,98 280,142" fill="' + p.roof + '"/>';
+    var trees = (i % 3 !== 1)
+      ? '<g><rect x="66" y="150" width="7" height="26" fill="#7a5a34"/><circle cx="69" cy="146" r="20" fill="#8fae74"/><circle cx="53" cy="153" r="13" fill="#a2bd88"/></g>'
+      : '';
+    return '<svg class="prop" viewBox="0 0 400 210" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sample property illustration">'
+      + '<defs><linearGradient id="' + id + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + p.skyA + '"/><stop offset="1" stop-color="' + p.skyB + '"/></linearGradient></defs>'
+      + '<rect width="400" height="210" fill="url(#' + id + ')"/>'
+      + '<circle cx="332" cy="50" r="40" fill="' + p.glow + '" opacity="0.5"/>'
+      + '<circle cx="332" cy="50" r="21" fill="' + p.orb + '"/>'
+      + '<path d="M0,166 Q100,134 210,158 T400,150 V210 H0 Z" fill="' + p.hill + '" opacity="0.7"/>'
+      + '<rect y="176" width="400" height="34" fill="#cbd7c0"/>'
+      + '<polygon points="186,210 214,210 210,180 190,180" fill="#d9cdb4"/>'
+      + trees
+      + '<rect x="132" y="140" width="136" height="40" fill="' + p.wall + '"/>'
+      + '<rect x="238" y="106" width="15" height="36" fill="' + p.roof + '"/>'
+      + roof
+      + '<rect x="189" y="152" width="22" height="28" fill="' + p.door + '"/><circle cx="205" cy="167" r="1.6" fill="#fff"/>'
+      + '<rect x="146" y="150" width="24" height="20" fill="#cfe4f5" stroke="' + p.door + '" stroke-width="2"/>'
+      + '<rect x="230" y="150" width="24" height="20" fill="#cfe4f5" stroke="' + p.door + '" stroke-width="2"/>'
+      + '<line x1="158" y1="150" x2="158" y2="170" stroke="' + p.door + '" stroke-width="1.4"/><line x1="146" y1="160" x2="170" y2="160" stroke="' + p.door + '" stroke-width="1.4"/>'
+      + '<line x1="242" y1="150" x2="242" y2="170" stroke="' + p.door + '" stroke-width="1.4"/><line x1="230" y1="160" x2="254" y2="160" stroke="' + p.door + '" stroke-width="1.4"/>'
+      + '</svg>';
+  }
+
+  // Realistic listing photos (matched to each property), with SVG illustration fallback
+  var PIMG = '?ixlib=rb-4.0.3&w=800&h=460&fit=crop&crop=edges&q=62&auto=format';
+  var photos = [
+    'https://images.unsplash.com/photo-1570129477492-45c003edd2be' + PIMG, // white coastal home — Harbor View
+    'https://images.unsplash.com/photo-1449844908441-8829872d2607' + PIMG,  // wooded cabin — Cedar Ridge
+    'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9' + PIMG,  // modern luxury villa — Summit Crest
+    'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00' + PIMG,     // condo building — Marina Blvd
+    'https://images.unsplash.com/photo-1568605114967-8130f3a36994' + PIMG,  // lit family home — Willow Bend
+    'https://images.unsplash.com/photo-1564013799919-ab600027ffc6' + PIMG   // coastal home + pool — Bayfront Ave
+  ];
+
   var grid = document.getElementById('listingsGrid');
-  var html = listings.map(function(l){
+  var html = listings.map(function(l, idx){
+    var photo = '<img class="prop" src="' + photos[idx] + '" alt="' + l.addr + '" loading="lazy" decoding="async" data-i="' + idx + '">';
     return '<article class="card">'
-      + '<div class="card-photo ' + l.g + '"><span class="tag ' + l.cls + '">' + l.tag + '</span>' + houseSVG + '</div>'
+      + '<div class="card-photo ' + l.g + '"><span class="tag ' + l.cls + '">' + l.tag + '</span>' + photo + '</div>'
       + '<div class="card-body">'
       + '<div class="card-price">' + l.price + '</div>'
       + '<div class="card-addr">' + l.addr + '</div>'
@@ -674,6 +731,15 @@
       + '</div></div></article>';
   }).join('');
   grid.innerHTML = html;
+
+  // If any photo fails to load, swap in the matching SVG illustration (never broken)
+  Array.prototype.forEach.call(grid.querySelectorAll('img.prop'), function(im){
+    im.addEventListener('error', function(){
+      var i = parseInt(im.getAttribute('data-i'), 10) || 0;
+      im.insertAdjacentHTML('afterend', propScene(i));
+      im.remove();
+    });
+  });
 
   // ---- Forms: never submit; show inline confirmation ----
   function wireForm(formId, msgId){
@@ -692,6 +758,135 @@
   }
   wireForm('valForm','valMsg');
   wireForm('contactForm','contactMsg');
+})();
+</script>
+
+<!-- ===== 3D REAL-ESTATE HERO SCENE ===== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function init(){
+    var canvas = document.getElementById('re3d');
+    if(!canvas || typeof THREE === 'undefined') return;
+    var hero = canvas.parentElement;
+
+    var renderer;
+    try { renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true }); }
+    catch(e){ canvas.style.display = 'none'; return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(50, 1, 0.1, 200);
+    camera.position.set(0, 9, 23);
+
+    var GOLD = 0xd4af37, GOLD_HI = 0xead27a, NAVY_FACE = 0x1a3555;
+    var town = new THREE.Group();
+    scene.add(town);
+
+    // Blueprint ground grid
+    var grid = new THREE.GridHelper(80, 32, GOLD, 0x24466a);
+    grid.material.transparent = true;
+    grid.material.opacity = 0.16;
+    grid.position.y = -2.4;
+    town.add(grid);
+
+    // House factory: translucent navy faces + glowing gold edges
+    function house(w, h, d, x, z, s){
+      var g = new THREE.Group();
+      var faceMat = new THREE.MeshBasicMaterial({ color: NAVY_FACE, transparent: true, opacity: 0.32 });
+
+      var bodyGeo = new THREE.BoxGeometry(w, h, d);
+      var body = new THREE.Mesh(bodyGeo, faceMat); body.position.y = h/2;
+      var bodyEdges = new THREE.LineSegments(new THREE.EdgesGeometry(bodyGeo),
+        new THREE.LineBasicMaterial({ color: GOLD, transparent: true, opacity: 0.9 }));
+      bodyEdges.position.y = h/2;
+
+      var roofH = h * 0.75;
+      var roofGeo = new THREE.ConeGeometry(Math.max(w, d) * 0.8, roofH, 4);
+      var roof = new THREE.Mesh(roofGeo, faceMat.clone());
+      roof.rotation.y = Math.PI/4; roof.position.y = h + roofH/2;
+      var roofEdges = new THREE.LineSegments(new THREE.EdgesGeometry(roofGeo),
+        new THREE.LineBasicMaterial({ color: GOLD_HI, transparent: true, opacity: 0.95 }));
+      roofEdges.rotation.y = Math.PI/4; roofEdges.position.y = h + roofH/2;
+
+      g.add(body, bodyEdges, roof, roofEdges);
+      g.position.set(x, 0, z);
+      s = s || 1; g.scale.set(s, s, s);
+      return g;
+    }
+
+    [ [4,3.2,4,   0,  0,  1.15],
+      [3,2.4,3,  -8, -3,  0.95],
+      [3.4,2.8,3.2, 7.5,-4, 1.0],
+      [2.6,2,2.6, -6,  6,  0.85],
+      [3,2.4,3,   6,  7,  0.9],
+      [2.4,1.8,2.4, 13, 2, 0.75],
+      [2.4,1.8,2.4,-13, 1, 0.75] ].forEach(function(d){
+      town.add(house(d[0],d[1],d[2],d[3],d[4],d[5]));
+    });
+
+    // Floating location pins
+    var pins = [];
+    function pin(x, z){
+      var g = new THREE.Group();
+      var head = new THREE.Mesh(new THREE.SphereGeometry(0.6, 18, 18),
+        new THREE.MeshBasicMaterial({ color: GOLD_HI }));
+      var tail = new THREE.Mesh(new THREE.ConeGeometry(0.42, 1, 18),
+        new THREE.MeshBasicMaterial({ color: GOLD }));
+      tail.position.y = -0.75; tail.rotation.x = Math.PI;
+      var dot = new THREE.Mesh(new THREE.SphereGeometry(0.22, 12, 12),
+        new THREE.MeshBasicMaterial({ color: 0x0f2540 }));
+      dot.position.y = 0.05;
+      g.add(head, tail, dot);
+      g.position.set(x, 7, z);
+      town.add(g); pins.push(g); return g;
+    }
+    pin(0, 0); pin(7.5, -4); pin(-8, -3);
+
+    function resize(){
+      var w = hero.clientWidth, h = hero.clientHeight;
+      if(!w || !h) return;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h; camera.updateProjectionMatrix();
+    }
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+
+    // Pointer parallax
+    var tx = 0, ty = 0, cx = 0, cy = 0;
+    window.addEventListener('pointermove', function(e){
+      tx = (e.clientX / window.innerWidth - 0.5) * 2;
+      ty = (e.clientY / window.innerHeight - 0.5) * 2;
+    }, { passive: true });
+
+    if(reduce){ town.rotation.y = -0.5; resize(); renderer.render(scene, camera); return; }
+
+    var visible = true;
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(en){ visible = en[0].isIntersecting; }, { threshold: 0 }).observe(hero);
+    }
+
+    function tick(now){
+      requestAnimationFrame(tick);
+      if(document.hidden || !visible) return;
+      town.rotation.y += 0.0024;
+      for(var i=0;i<pins.length;i++){
+        pins[i].position.y = 7 + Math.sin(now * 0.0016 + i * 1.7) * 0.55;
+        pins[i].rotation.y += 0.02;
+      }
+      cx += (tx - cx) * 0.04; cy += (ty - cy) * 0.04;
+      camera.position.x = cx * 4.5;
+      camera.position.y = 9 - cy * 2.5;
+      camera.lookAt(0, 2.5, 0);
+      renderer.render(scene, camera);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  if(document.readyState === 'complete') init();
+  else window.addEventListener('load', init);
 })();
 </script>
 </body>
