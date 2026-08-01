@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ComfortPro Heating &amp; Air — HVAC Maintenance Plan</title>
+<meta name="description" content="Protect your home comfort year-round with the ComfortPro Maintenance Plan. Priority service, two tune-ups a year, and no surprise breakdowns — from $27/mo." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#0d3b66;
+    --navy-deep:#082a4a;
+    --navy-light:#12508c;
+    --orange:#f26419;
+    --orange-dark:#d8500c;
+    --red:#ee5d3c;
+    --ink:#182430;
+    --slate:#5a6b7b;
+    --light:#f4f7fa;
+    --line:#e2e8ef;
+    --white:#ffffff;
+    --green:#1f9d55;
+    --radius:14px;
+    --shadow:0 10px 30px rgba(13,59,102,.12);
+    --shadow-lg:0 20px 50px rgba(13,59,102,.20);
+    --wrap:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Poppins',sans-serif;line-height:1.15;color:var(--navy)}
+  a{color:inherit;text-decoration:none}
+  img,svg{max-width:100%}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
+  section{padding:72px 0}
+  .eyebrow{
+    display:inline-block;font-family:'Inter';font-weight:700;letter-spacing:.12em;
+    text-transform:uppercase;font-size:.75rem;color:var(--orange);margin-bottom:14px;
+  }
+  h2.title{font-size:clamp(1.7rem,4vw,2.6rem);margin-bottom:14px;font-weight:800}
+  .lead{font-size:1.05rem;color:var(--slate);max-width:620px}
+  .center{text-align:center}
+  .center .lead{margin-left:auto;margin-right:auto}
+
+  /* Buttons */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    font-family:'Poppins';font-weight:700;font-size:1rem;
+    padding:15px 28px;border-radius:50px;border:none;cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    text-align:center;line-height:1.2;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--orange),var(--red));
+    color:#fff;box-shadow:0 8px 20px rgba(242,100,25,.35);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(242,100,25,.45)}
+  .btn-ghost{background:#fff;color:var(--navy);border:2px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--navy);transform:translateY(-2px)}
+  .btn-navy{background:var(--navy);color:#fff}
+  .btn-navy:hover{background:var(--navy-light);transform:translateY(-2px)}
+  .btn-lg{padding:18px 36px;font-size:1.1rem}
+  .btn-block{width:100%}
+
+  /* ===== Top bar ===== */
+  .topbar{
+    position:sticky;top:0;z-index:100;background:var(--navy);color:#fff;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:14px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Poppins';font-weight:800;font-size:1.2rem;color:#fff}
+  .brand .logo{
+    width:38px;height:38px;border-radius:9px;flex:0 0 auto;
+    background:linear-gradient(135deg,var(--orange),var(--red));
+    display:grid;place-items:center;
+  }
+  .brand small{display:block;font-family:'Inter';font-weight:500;font-size:.62rem;letter-spacing:.14em;color:#a9c5e0;text-transform:uppercase}
+  .topbar-right{display:flex;align-items:center;gap:18px}
+  .phone-link{display:flex;align-items:center;gap:8px;color:#fff;font-weight:700;font-size:1.02rem;white-space:nowrap}
+  .phone-link small{display:block;font-weight:500;font-size:.62rem;color:#a9c5e0;letter-spacing:.05em}
+  .phone-link:hover{color:var(--orange)}
+
+  /* ===== Hero ===== */
+  .hero{
+    background:
+      radial-gradient(1000px 480px at 85% -10%, rgba(242,100,25,.30), transparent 60%),
+      linear-gradient(160deg,var(--navy-deep),var(--navy) 55%,var(--navy-light));
+    color:#fff;position:relative;overflow:hidden;padding:70px 0 84px;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(600px 300px at 15% 110%, rgba(18,80,140,.6), transparent 60%);
+  }
+  .hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+  .hero h1{color:#fff;font-size:clamp(2rem,5vw,3.35rem);font-weight:800;margin-bottom:18px}
+  .hero h1 .hl{color:#ffd9a8;position:relative}
+  .hero p.sub{font-size:1.15rem;color:#d7e6f4;max-width:560px;margin-bottom:26px}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:22px}
+  .price-note{color:#bcd4ea;font-size:.9rem}
+  .price-note b{color:#fff}
+  .urgency{
+    display:inline-flex;align-items:center;gap:9px;margin-bottom:24px;
+    background:rgba(242,100,25,.16);border:1px solid rgba(242,100,25,.5);
+    color:#ffcfa6;padding:9px 16px;border-radius:50px;font-size:.86rem;font-weight:600;
+  }
+  .pulse{width:9px;height:9px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 rgba(242,100,25,.6);animation:pulse 1.8s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(242,100,25,.55)}70%{box-shadow:0 0 0 12px rgba(242,100,25,0)}100%{box-shadow:0 0 0 0 rgba(242,100,25,0)}}
+  .trust-row{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 20px;max-width:520px}
+  .trust-item{display:flex;align-items:center;gap:10px;font-size:.92rem;color:#e5eef7;font-weight:500}
+  .trust-item .ti-ic{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.1);display:grid;place-items:center;flex:0 0 auto;font-size:1.05rem}
+
+  /* Hero card / unit illustration */
+  .hero-card{
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);
+    border-radius:20px;padding:26px;backdrop-filter:blur(4px);box-shadow:var(--shadow-lg);
+  }
+  .unit{
+    background:linear-gradient(150deg,#e9f1f8,#cdd9e6);border-radius:14px;padding:22px;
+    display:grid;place-items:center;margin-bottom:18px;position:relative;overflow:hidden;
+  }
+  .season-badge{
+    display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--navy);
+    font-weight:700;font-size:.82rem;padding:8px 14px;border-radius:50px;box-shadow:var(--shadow);
+    position:absolute;top:14px;left:14px;
+  }
+  .hero-card h4{color:#fff;font-size:1.1rem;margin-bottom:6px}
+  .hero-card .hc-price{display:flex;align-items:baseline;gap:8px;color:#fff;margin:8px 0 4px}
+  .hero-card .hc-price b{font-family:'Poppins';font-size:2.1rem}
+  .hero-card .hc-price span{color:#bcd4ea;font-size:.95rem}
+  .hero-card ul{list-style:none;margin:14px 0 0;display:grid;gap:9px}
+  .hero-card li{display:flex;gap:9px;align-items:center;color:#e5eef7;font-size:.92rem}
+  .hero-card li svg{flex:0 0 auto}
+
+  /* logos strip */
+  .assurance{background:var(--light);border-bottom:1px solid var(--line);padding:20px 0}
+  .assurance .wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 34px;align-items:center}
+  .assurance .a-item{display:flex;align-items:center;gap:9px;color:var(--slate);font-weight:600;font-size:.9rem}
+  .stars{color:#f5a623;letter-spacing:2px}
+
+  /* ===== Problem ===== */
+  .prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+  .prob-card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;
+    box-shadow:var(--shadow);border-top:4px solid var(--red);
+  }
+  .prob-card .p-ic{width:52px;height:52px;border-radius:12px;background:#fdece6;display:grid;place-items:center;margin-bottom:16px}
+  .prob-card h3{font-size:1.15rem;margin-bottom:8px}
+  .prob-card p{color:var(--slate);font-size:.95rem}
+  .prob-note{margin-top:34px;text-align:center;font-size:1.05rem;color:var(--navy);font-weight:600}
+
+  /* ===== Included ===== */
+  .included{background:var(--light)}
+  .inc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+  .inc-item{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;
+    display:flex;gap:14px;box-shadow:0 6px 18px rgba(13,59,102,.06);transition:transform .15s,box-shadow .15s;
+  }
+  .inc-item:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .check{width:30px;height:30px;flex:0 0 auto;border-radius:50%;background:var(--green);display:grid;place-items:center}
+  .inc-item h4{font-size:1.02rem;margin-bottom:4px}
+  .inc-item p{color:var(--slate);font-size:.9rem}
+
+  /* ===== Comparison ===== */
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px;max-width:860px;margin-left:auto;margin-right:auto}
+  .cmp{border-radius:18px;padding:30px;border:1px solid var(--line)}
+  .cmp.bad{background:#fff}
+  .cmp.good{background:linear-gradient(160deg,var(--navy),var(--navy-light));color:#fff;box-shadow:var(--shadow-lg);position:relative;border:none}
+  .cmp h3{margin-bottom:6px;font-size:1.3rem}
+  .cmp.good h3{color:#fff}
+  .cmp .tag{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:18px;display:inline-block}
+  .cmp.bad .tag{color:var(--red)}
+  .cmp.good .tag{color:#ffd9a8}
+  .cmp ul{list-style:none;display:grid;gap:13px}
+  .cmp li{display:flex;gap:11px;align-items:flex-start;font-size:.95rem}
+  .cmp.bad li{color:var(--slate)}
+  .cmp.good li{color:#e5eef7}
+  .cmp .mk{flex:0 0 auto;margin-top:2px}
+  .cmp .cost{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);font-family:'Poppins';font-weight:700;font-size:1.35rem;color:var(--navy)}
+  .cmp.good .cost{border-top:1px solid rgba(255,255,255,.2);color:#fff}
+  .cmp .cost small{display:block;font-family:'Inter';font-weight:500;font-size:.82rem;color:var(--slate);margin-top:3px}
+  .cmp.good .cost small{color:#bcd4ea}
+
+  /* ===== Pricing tiers ===== */
+  .pricing{background:var(--light)}
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px;align-items:stretch}
+  .tier{
+    background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px 26px;
+    display:flex;flex-direction:column;box-shadow:var(--shadow);position:relative;
+  }
+  .tier.pop{border:2px solid var(--orange);box-shadow:var(--shadow-lg);transform:scale(1.03)}
+  .tier .pop-badge{
+    position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+    background:linear-gradient(135deg,var(--orange),var(--red));color:#fff;
+    font-family:'Poppins';font-weight:700;font-size:.75rem;letter-spacing:.05em;
+    padding:6px 16px;border-radius:50px;white-space:nowrap;box-shadow:0 6px 14px rgba(242,100,25,.4);
+  }
+  .tier h3{font-size:1.3rem;margin-bottom:4px}
+  .tier .t-desc{color:var(--slate);font-size:.9rem;min-height:40px}
+  .tier .t-price{display:flex;align-items:baseline;gap:6px;margin:14px 0 4px}
+  .tier .t-price b{font-family:'Poppins';font-size:2.4rem;color:var(--navy)}
+  .tier .t-price span{color:var(--slate);font-size:.95rem}
+  .tier .t-sub{color:var(--slate);font-size:.85rem;margin-bottom:20px}
+  .tier ul{list-style:none;display:grid;gap:11px;margin-bottom:24px;flex:1}
+  .tier li{display:flex;gap:10px;align-items:flex-start;font-size:.92rem;color:var(--ink)}
+  .tier li.off{color:#a9b6c2}
+  .tier li svg{flex:0 0 auto;margin-top:2px}
+
+  /* ===== Testimonials ===== */
+  .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:42px}
+  .test-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
+  .test-card .stars{font-size:1.05rem;margin-bottom:12px}
+  .test-card blockquote{font-size:1rem;color:var(--ink);margin-bottom:18px;font-style:italic}
+  .test-person{display:flex;align-items:center;gap:12px}
+  .avatar{width:46px;height:46px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;color:#fff;font-family:'Poppins';font-weight:700;font-size:1.05rem}
+  .test-person b{display:block;color:var(--navy);font-size:.95rem}
+  .test-person small{color:var(--slate);font-size:.82rem}
+
+  /* ===== FAQ ===== */
+  .faq{background:var(--light)}
+  .faq-list{max-width:780px;margin:40px auto 0;display:grid;gap:12px}
+  .faq-item{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .faq-q{
+    width:100%;text-align:left;background:none;border:none;cursor:pointer;
+    padding:20px 22px;font-family:'Poppins';font-weight:600;font-size:1.02rem;color:var(--navy);
+    display:flex;justify-content:space-between;align-items:center;gap:16px;
+  }
+  .faq-q:hover{color:var(--orange)}
+  .faq-q .ic{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--light);display:grid;place-items:center;transition:transform .25s,background .2s;font-weight:700;color:var(--navy)}
+  .faq-item.open .faq-q .ic{transform:rotate(45deg);background:var(--orange);color:#fff}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+  .faq-a p{padding:0 22px 20px;color:var(--slate);font-size:.96rem}
+
+  /* ===== Final CTA ===== */
+  .final{
+    background:
+      radial-gradient(800px 400px at 80% 0%, rgba(242,100,25,.28), transparent 60%),
+      linear-gradient(160deg,var(--navy-deep),var(--navy));
+    color:#fff;
+  }
+  .final .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .final h2{color:#fff;font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:14px}
+  .final p.sub{color:#d7e6f4;font-size:1.08rem;margin-bottom:22px}
+  .final .urgency{margin-bottom:22px}
+  .final ul{list-style:none;display:grid;gap:12px}
+  .final ul li{display:flex;gap:11px;align-items:center;color:#e5eef7}
+  .form-card{background:#fff;border-radius:18px;padding:30px;box-shadow:var(--shadow-lg);color:var(--ink)}
+  .form-card h3{font-size:1.3rem;margin-bottom:4px}
+  .form-card .fc-sub{color:var(--slate);font-size:.92rem;margin-bottom:20px}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:.82rem;font-weight:600;color:var(--navy);margin-bottom:6px}
+  .field input{
+    width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:10px;
+    font-family:'Inter';font-size:.98rem;color:var(--ink);transition:border .15s,box-shadow .15s;background:#fff;
+  }
+  .field input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(242,100,25,.15)}
+  .form-note{font-size:.78rem;color:var(--slate);text-align:center;margin-top:12px}
+  .form-success{
+    display:none;background:#e7f6ee;border:1.5px solid var(--green);color:#136b3a;
+    border-radius:12px;padding:22px;text-align:center;font-weight:600;
+  }
+  .form-success.show{display:block}
+  .form-success svg{margin-bottom:8px}
+
+  /* ===== Footer ===== */
+  footer{background:var(--navy-deep);color:#c3d5e6;padding:52px 0 90px}
+  footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr;gap:34px}
+  footer .brand{margin-bottom:14px}
+  footer p{font-size:.9rem;line-height:1.7}
+  footer h5{color:#fff;font-family:'Poppins';font-size:.95rem;margin-bottom:12px;letter-spacing:.03em}
+  footer a:hover{color:var(--orange)}
+  footer .fcol p{margin-bottom:6px}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:36px;padding-top:20px;font-size:.8rem;color:#8ba7c2;text-align:center}
+  .demo-flag{display:inline-block;background:rgba(242,100,25,.18);color:#ffcfa6;border:1px solid rgba(242,100,25,.4);padding:3px 12px;border-radius:50px;font-size:.72rem;font-weight:600;margin-top:10px}
+
+  /* ===== Floating CTA ===== */
+  .float-cta{
+    position:fixed;bottom:18px;right:18px;z-index:120;
+    box-shadow:0 12px 30px rgba(242,100,25,.5);
+    opacity:0;transform:translateY(20px);pointer-events:none;transition:opacity .3s,transform .3s;
+  }
+  .float-cta.show{opacity:1;transform:translateY(0);pointer-events:auto}
+
+  /* ===== Mobile nav / responsive ===== */
+  .menu-btn{display:none;background:none;border:none;cursor:pointer;padding:6px;color:#fff}
+  @media(max-width:900px){
+    section{padding:56px 0}
+    .hero .wrap,.final .wrap{grid-template-columns:1fr;gap:34px}
+    .hero-card{order:2}
+    .prob-grid,.inc-grid,.test-grid,.tiers{grid-template-columns:1fr}
+    .compare-grid{grid-template-columns:1fr;max-width:480px}
+    .tier.pop{transform:none}
+    footer .wrap{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:600px){
+    .topbar-right .phone-link small{display:none}
+    .topbar .btn{padding:11px 18px;font-size:.88rem}
+    .trust-row{grid-template-columns:1fr}
+    footer .wrap{grid-template-columns:1fr}
+    .float-cta{left:14px;right:14px;bottom:14px}
+    .float-cta.btn{width:auto}
+  }
+  @media(max-width:480px){
+    .brand{font-size:1.02rem}
+    .brand small{display:none}
+    .assurance .wrap{gap:12px 20px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<header class="topbar">
+  <div class="wrap">
+    <a href="#top" class="brand" aria-label="ComfortPro Heating and Air home">
+      <span class="logo" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2c1.7 2 3 4 3 6a3 3 0 11-6 0c0-2 1.3-4 3-6z" fill="#fff"/><path d="M4 15a4 4 0 004 4h8a4 4 0 100-8 5 5 0 00-9.6-1.3A4 4 0 004 15z" fill="#fff" opacity=".85"/></svg>
+      </span>
+      <span>ComfortPro<small>Heating &amp; Air</small></span>
+    </a>
+    <div class="topbar-right">
+      <a class="phone-link" href="tel:+15550123297" aria-label="Call ComfortPro at 555-012-3297">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8a15 15 0 006.6 6.6l2.2-2.2a1 1 0 011-.24 11 11 0 003.5.56 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.2.2 2.4.56 3.5a1 1 0 01-.24 1l-2.22 2.3z" fill="currentColor"/></svg>
+        <span>(555) 012-3297<small>Mon–Sat 7a–7p</small></span>
+      </a>
+      <a href="#enroll" class="btn btn-primary">Get the Plan</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="urgency"><span class="pulse" aria-hidden="true"></span> Enrollment for winter closes soon — limited priority slots</div>
+      <h1>Never Get Caught Without <span class="hl">Heat or AC</span> Again.</h1>
+      <p class="sub">The ComfortPro Maintenance Plan keeps your heating and cooling running at peak performance all year — with priority service, two pro tune-ups, and no surprise breakdowns when you need comfort most.</p>
+      <div class="hero-cta">
+        <a href="#enroll" class="btn btn-primary btn-lg">Get the Plan — $297/yr</a>
+        <a href="#included" class="btn btn-ghost">See What's Included</a>
+      </div>
+      <p class="price-note">Or just <b>$27/mo</b> · Cancel anytime · No long-term contract</p>
+      <div class="trust-row" style="margin-top:26px">
+        <div class="trust-item"><span class="ti-ic" aria-hidden="true">🛡️</span> Licensed &amp; Insured</div>
+        <div class="trust-item"><span class="ti-ic" aria-hidden="true">⭐</span> 5-Star Rated (900+ reviews)</div>
+        <div class="trust-item"><span class="ti-ic" aria-hidden="true">🕐</span> 24/7 Emergency Service</div>
+        <div class="trust-item"><span class="ti-ic" aria-hidden="true">🏠</span> 12,000+ Homes Served</div>
+      </div>
+    </div>
+
+    <aside class="hero-card" aria-label="Plan summary">
+      <div class="unit">
+        <span class="season-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M4.5 7.5l15 9M19.5 7.5l-15 9" stroke="#0d3b66" stroke-width="2" stroke-linecap="round"/></svg> Winter-Ready</span>
+        <svg width="180" height="130" viewBox="0 0 180 130" fill="none" role="img" aria-label="HVAC condenser unit illustration">
+          <rect x="24" y="20" width="132" height="96" rx="10" fill="#0d3b66"/>
+          <rect x="24" y="20" width="132" height="96" rx="10" fill="url(#g)" opacity=".25"/>
+          <circle cx="90" cy="68" r="34" fill="#082a4a"/>
+          <circle cx="90" cy="68" r="30" fill="none" stroke="#12508c" stroke-width="2"/>
+          <g stroke="#4d7bb0" stroke-width="6" stroke-linecap="round">
+            <path d="M90 68l0-24M90 68l21 12M90 68l-21 12"/>
+          </g>
+          <circle cx="90" cy="68" r="6" fill="#f26419"/>
+          <rect x="36" y="30" width="108" height="7" rx="3.5" fill="#12508c"/>
+          <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+        </svg>
+      </div>
+      <h4>ComfortPro Maintenance Plan</h4>
+      <div class="hc-price"><b>$297</b><span>/year · or $27/mo</span></div>
+      <ul>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f9d55"/><path d="M7 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 2 pro tune-ups per year</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f9d55"/><path d="M7 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Front-of-line priority scheduling</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f9d55"/><path d="M7 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 15% off all repairs</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f9d55"/><path d="M7 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> No overtime or diagnostic fees</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ ASSURANCE STRIP ============ -->
+<div class="assurance">
+  <div class="wrap">
+    <div class="a-item"><span class="stars">★★★★★</span> 4.9 / 5 average rating</div>
+    <div class="a-item">✅ NATE-Certified Technicians</div>
+    <div class="a-item">🛠️ 100% Satisfaction Guarantee</div>
+    <div class="a-item">🔧 Serving the Tri-County area since 2009</div>
+  </div>
+</div>
+
+<!-- ============ PROBLEM / AGITATION ============ -->
+<section id="problem">
+  <div class="wrap center">
+    <span class="eyebrow">The Real Cost of Skipping Maintenance</span>
+    <h2 class="title">Small problems don't stay small.</h2>
+    <p class="lead">Most HVAC failures are avoidable. Without a maintenance plan, wear and tear quietly builds until your system quits — usually on the coldest night or hottest afternoon of the year.</p>
+    <div class="prob-grid">
+      <div class="prob-card">
+        <div class="p-ic" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2l10 18H2L12 2z" fill="#ee5d3c"/><path d="M12 9v5" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17" r="1.3" fill="#fff"/></svg>
+        </div>
+        <h3>Surprise Breakdowns</h3>
+        <p>Emergency no-heat and no-cool repairs routinely run $600–$2,500 — and always seem to happen at the worst possible moment, at premium after-hours rates.</p>
+      </div>
+      <div class="prob-card">
+        <div class="p-ic" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 20h16M6 20V10m4 10V6m4 14v-8m4 8V4" stroke="#ee5d3c" stroke-width="2.2" stroke-linecap="round"/><path d="M4 6l6 4 4-6 6 4" stroke="#f26419" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        </div>
+        <h3>Higher Energy Bills</h3>
+        <p>A neglected system works harder and burns more energy. A dirty coil or clogged filter can add 20–30% to your monthly heating and cooling costs.</p>
+      </div>
+      <div class="prob-card">
+        <div class="p-ic" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" fill="#ee5d3c"/><path d="M8.5 8.5l7 7M15.5 8.5l-7 7" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Voided Warranties</h3>
+        <p>Most manufacturers require documented annual maintenance. Skip it and a $3,000+ compressor or heat-exchanger claim can be denied when you need it most.</p>
+      </div>
+    </div>
+    <p class="prob-note">A maintenance plan turns unpredictable emergencies into a small, planned expense.</p>
+  </div>
+</section>
+
+<!-- ============ WHAT'S INCLUDED ============ -->
+<section id="included" class="included">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">Everything In Your Plan</span>
+      <h2 class="title">Total peace of mind, all year long.</h2>
+      <p class="lead">One membership covers the care your system needs to run efficiently, last longer, and keep your family comfortable in every season.</p>
+    </div>
+    <div class="inc-grid">
+      <div class="inc-item">
+        <span class="check" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4 10-10" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div><h4>2 Annual Tune-Ups</h4><p>A full heating check in fall and a full cooling check in spring — 25-point inspection each visit.</p></div>
+      </div>
+      <div class="inc-item">
+        <span class="check" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4 10-10" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div><h4>Priority Scheduling</h4><p>Members go to the front of the line — same-day or next-day service, even in peak season.</p></div>
+      </div>
+      <div class="inc-item">
+        <span class="check" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4 10-10" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div><h4>15% Off All Repairs</h4><p>Every repair, every part, all year — automatically discounted for the life of your membership.</p></div>
+      </div>
+      <div class="inc-item">
+        <span class="check" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4 10-10" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div><h4>No Overtime Fees</h4><p>Nights, weekends, holidays — members never pay after-hours or emergency surcharges.</p></div>
+      </div>
+      <div class="inc-item">
+        <span class="check" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4 10-10" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div><h4>Extended Equipment Life</h4><p>Regular care can add years to your system and protects your manufacturer's warranty.</p></div>
+      </div>
+      <div class="inc-item">
+        <span class="check" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4 10-10" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div><h4>Waived Diagnostic Fee</h4><p>The standard $99 service-call diagnostic fee is waived on every visit as a member.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPARISON ============ -->
+<section id="compare">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">Do The Math</span>
+      <h2 class="title">Without a plan vs. with the plan</h2>
+      <p class="lead">Here's what a typical year looks like for a homeowner who skips maintenance — versus a ComfortPro member.</p>
+    </div>
+    <div class="compare-grid">
+      <div class="cmp bad">
+        <span class="tag">Without a Plan</span>
+        <h3>Pay-as-it-breaks</h3>
+        <ul>
+          <li><span class="mk"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#fdecec"/><path d="M8 8l8 8M16 8l-8 8" stroke="#ee5d3c" stroke-width="2" stroke-linecap="round"/></svg></span> No routine inspections — problems found too late</li>
+          <li><span class="mk"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#fdecec"/><path d="M8 8l8 8M16 8l-8 8" stroke="#ee5d3c" stroke-width="2" stroke-linecap="round"/></svg></span> Full price on repairs + $99 diagnostic each visit</li>
+          <li><span class="mk"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#fdecec"/><path d="M8 8l8 8M16 8l-8 8" stroke="#ee5d3c" stroke-width="2" stroke-linecap="round"/></svg></span> After-hours overtime surcharges</li>
+          <li><span class="mk"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#fdecec"/><path d="M8 8l8 8M16 8l-8 8" stroke="#ee5d3c" stroke-width="2" stroke-linecap="round"/></svg></span> Higher energy bills from a strained system</li>
+          <li><span class="mk"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#fdecec"/><path d="M8 8l8 8M16 8l-8 8" stroke="#ee5d3c" stroke-width="2" stroke-linecap="round"/></svg></span> Risk of denied warranty claims</li>
+        </ul>
+        <div class="cost">~$1,400+ / yr <small>Unpredictable, often at the worst time</small></div>
+      </div>
+      <div class="cmp good">
+        <span class="tag">With the Maintenance Plan</span>
+        <h3>Protected &amp; predictable</h3>
+        <ul>
+          <li><span class="mk"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f9d55"/><path d="M7 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 2 proactive tune-ups catch issues early</li>
+          <li><span class="mk"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f9d55"/><path d="M7 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 15% off repairs + diagnostic fee waived</li>
+          <li><span class="mk"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f9d55"/><path d="M7 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Zero overtime fees, ever</li>
+          <li><span class="mk"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f9d55"/><path d="M7 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Lower bills from a clean, efficient system</li>
+          <li><span class="mk"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f9d55"/><path d="M7 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Documented service keeps warranty valid</li>
+        </ul>
+        <div class="cost">$297 / yr <small>Flat, predictable, priority service included</small></div>
+      </div>
+    </div>
+    <p class="center" style="margin-top:30px"><a href="#enroll" class="btn btn-primary btn-lg">Lock In Your Plan Today</a></p>
+  </div>
+</section>
+
+<!-- ============ PRICING TIERS ============ -->
+<section id="pricing" class="pricing">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">Choose Your Coverage</span>
+      <h2 class="title">Simple plans for every home.</h2>
+      <p class="lead">Every plan includes NATE-certified technicians and our 100% satisfaction guarantee. Upgrade or cancel anytime.</p>
+    </div>
+    <div class="tiers">
+      <div class="tier">
+        <h3>Basic</h3>
+        <p class="t-desc">Essential seasonal care for a single system.</p>
+        <div class="t-price"><b>$197</b><span>/yr</span></div>
+        <p class="t-sub">or $18/mo</p>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f9d55"/><path d="M7 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 1 annual tune-up</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f9d55"/><path d="M7 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 10% off repairs</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f9d55"/><path d="M7 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Waived diagnostic fee</li>
+          <li class="off"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#e2e8ef"/><path d="M8 8l8 8M16 8l-8 8" stroke="#a9b6c2" stroke-width="2" stroke-linecap="round"/></svg> Priority scheduling</li>
+          <li class="off"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#e2e8ef"/><path d="M8 8l8 8M16 8l-8 8" stroke="#a9b6c2" stroke-width="2" stroke-linecap="round"/></svg> No overtime fees</li>
+        </ul>
+        <a href="#enroll" class="btn btn-ghost btn-block">Choose Basic</a>
+      </div>
+
+      <div class="tier pop">
+        <span class="pop-badge">★ Most Popular</span>
+        <h3>Comfort</h3>
+        <p class="t-desc">Complete year-round protection for heating &amp; cooling.</p>
+        <div class="t-price"><b>$297</b><span>/yr</span></div>
+        <p class="t-sub">or $27/mo</p>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f9d55"/><path d="M7 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 2 annual tune-ups</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f9d55"/><path d="M7 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 15% off repairs</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f9d55"/><path d="M7 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Priority scheduling</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f9d55"/><path d="M7 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> No overtime fees</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f9d55"/><path d="M7 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Waived diagnostic fee</li>
+        </ul>
+        <a href="#enroll" class="btn btn-primary btn-block">Choose Comfort</a>
+      </div>
+
+      <div class="tier">
+        <h3>Total Care</h3>
+        <p class="t-desc">Maximum coverage for multi-system or older homes.</p>
+        <div class="t-price"><b>$447</b><span>/yr</span></div>
+        <p class="t-sub">or $39/mo</p>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f9d55"/><path d="M7 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Everything in Comfort</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f9d55"/><path d="M7 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Covers up to 2 systems</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f9d55"/><path d="M7 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 20% off repairs</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f9d55"/><path d="M7 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Free annual filter set</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f9d55"/><path d="M7 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 24/7 dedicated priority line</li>
+        </ul>
+        <a href="#enroll" class="btn btn-ghost btn-block">Choose Total Care</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">What Members Say</span>
+      <h2 class="title">Homeowners who stopped worrying.</h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>"Our furnace died two winters ago and cost us a fortune. Since joining ComfortPro, they catch everything early. The priority scheduling alone is worth it."</blockquote>
+        <div class="test-person">
+          <span class="avatar" style="background:#0d3b66" aria-hidden="true">DR</span>
+          <div><b>Dana R.</b><small>Maple Grove neighborhood</small></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>"A tech spotted a cracked part during a routine tune-up before it became a $2,000 emergency. Professional, on time, and no pushy upsells. Highly recommend."</blockquote>
+        <div class="test-person">
+          <span class="avatar" style="background:#f26419" aria-hidden="true">MT</span>
+          <div><b>Marcus T.</b><small>Riverside Heights</small></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>"I love not thinking about it. Two visits a year, my bills are lower, and when I did need a repair the member discount more than paid for the plan."</blockquote>
+        <div class="test-person">
+          <span class="avatar" style="background:#1f9d55" aria-hidden="true">PL</span>
+          <div><b>Priya L.</b><small>Oakwood Estates</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="faq">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">Questions? Answered.</span>
+      <h2 class="title">Frequently asked questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span>Can I cancel my plan anytime?</span><span class="ic" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p>Yes. There are no long-term contracts. You can cancel anytime and, if you're on the annual plan, we'll prorate and refund any unused tune-ups you haven't received.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span>What exactly is covered?</span><span class="ic" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p>Your plan covers scheduled tune-ups, a 25-point inspection each visit, priority scheduling, waived diagnostic fees, and a discount on any repairs. Parts and major repairs are billed at your member discount rate — the plan is preventative maintenance, not an insurance policy.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span>How does scheduling work?</span><span class="ic" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p>We'll reach out each season to book your tune-ups at a time that works for you. Members always go to the front of the line, so even during peak demand you get same-day or next-day service.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span>Will you service my existing system?</span><span class="ic" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p>Absolutely. We service all major brands and system types, regardless of age or who installed it. Your first tune-up includes a baseline health check so we know exactly what your equipment needs.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span>Is the plan transferable if I move or sell?</span><span class="ic" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p>Yes. Your plan can transfer to the new homeowner as a great selling point, or you can move it to your new address if it's within our service area — just let us know.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span>How does billing work?</span><span class="ic" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p>Choose annual billing ($297/yr) for the best value, or spread it out monthly ($27/mo) with no hidden fees. Your plan renews automatically each year, and we'll always notify you before any renewal.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA + FORM ============ -->
+<section id="enroll" class="final">
+  <div class="wrap">
+    <div class="final-copy">
+      <div class="urgency"><span class="pulse" aria-hidden="true"></span> Winter enrollment closing — priority slots are limited</div>
+      <h2>Get comfort you can count on.</h2>
+      <p class="sub">Join thousands of local homeowners who never worry about a surprise breakdown. Enroll in two minutes and lock in this year's pricing.</p>
+      <ul>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#f26419"/><path d="M7 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> No contracts — cancel anytime</li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#f26419"/><path d="M7 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 100% satisfaction guarantee</li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#f26419"/><path d="M7 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Talk to a real, local technician</li>
+      </ul>
+    </div>
+
+    <div class="form-card">
+      <h3>Reserve Your Plan</h3>
+      <p class="fc-sub">Tell us where to reach you — we'll confirm your enrollment and schedule your first tune-up.</p>
+      <form id="enrollForm" novalidate>
+        <div class="field">
+          <label for="name">Full name</label>
+          <input type="text" id="name" name="name" autocomplete="name" placeholder="Jordan Smith" required />
+        </div>
+        <div class="field">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" autocomplete="email" placeholder="you@email.com" required />
+        </div>
+        <div class="field">
+          <label for="phone">Phone number</label>
+          <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(555) 000-0000" required />
+        </div>
+        <div class="field">
+          <label for="address">Home address</label>
+          <input type="text" id="address" name="address" autocomplete="street-address" placeholder="123 Main St, Your Town" required />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-lg">Get the Plan — $297/yr</button>
+        <p class="form-note">This is a demo form — no information is sent or stored.</p>
+      </form>
+      <div class="form-success" id="formSuccess" role="status" aria-live="polite">
+        <svg width="42" height="42" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#1f9d55"/><path d="M7 12.5l3 3 7-7.5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div>Thanks! We'll call you within 1 business day.</div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="fcol">
+      <div class="brand">
+        <span class="logo" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2c1.7 2 3 4 3 6a3 3 0 11-6 0c0-2 1.3-4 3-6z" fill="#fff"/><path d="M4 15a4 4 0 004 4h8a4 4 0 100-8 5 5 0 00-9.6-1.3A4 4 0 004 15z" fill="#fff" opacity=".85"/></svg>
+        </span>
+        <span>ComfortPro<small>Heating &amp; Air</small></span>
+      </div>
+      <p>Trusted home comfort for the Tri-County area since 2009. Licensed &amp; insured. NATE-certified technicians on every call.</p>
+      <span class="demo-flag">Fictional demo — sample business, not a real company</span>
+    </div>
+    <div class="fcol">
+      <h5>Visit / Hours</h5>
+      <p>1420 Comfort Way, Suite 3<br />Springfield, ST 00000</p>
+      <p>Mon–Sat: 7:00a – 7:00p<br />24/7 Emergency Service</p>
+    </div>
+    <div class="fcol">
+      <h5>Contact</h5>
+      <p><a href="tel:+15550123297">(555) 012-3297</a></p>
+      <p><a href="mailto:hello@comfortpro.example">hello@comfortpro.example</a></p>
+      <p><a href="#enroll">Get the Maintenance Plan</a></p>
+    </div>
+  </div>
+  <div class="wrap"><p class="foot-bottom">© 2026 ComfortPro Heating &amp; Air (fictional). Portfolio demo landing page. All names, reviews, and details are illustrative.</p></div>
+</footer>
+
+<!-- Floating CTA -->
+<a href="#enroll" class="btn btn-primary float-cta" id="floatCta">Get the Plan — $297/yr</a>
+
+<script>
+(function(){
+  // ---- FAQ accordion ----
+  var items = document.querySelectorAll('.faq-item');
+  items.forEach(function(item){
+    var btn = item.querySelector('.faq-q');
+    var ans = item.querySelector('.faq-a');
+    btn.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      // close all
+      items.forEach(function(other){
+        other.classList.remove('open');
+        other.querySelector('.faq-a').style.maxHeight = null;
+        other.querySelector('.faq-q').setAttribute('aria-expanded','false');
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+        btn.setAttribute('aria-expanded','true');
+      }
+    });
+  });
+
+  // ---- Demo form ----
+  var form = document.getElementById('enrollForm');
+  var success = document.getElementById('formSuccess');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+    form.style.display = 'none';
+    success.classList.add('show');
+    success.scrollIntoView({behavior:'smooth', block:'center'});
+  });
+
+  // ---- Floating CTA visibility ----
+  var floatCta = document.getElementById('floatCta');
+  var enroll = document.getElementById('enroll');
+  function toggleFloat(){
+    var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+    var enrollTop = enroll.getBoundingClientRect().top + scrolled;
+    var nearEnroll = scrolled + window.innerHeight > enrollTop + 60;
+    if(scrolled > 640 && !nearEnroll){ floatCta.classList.add('show'); }
+    else { floatCta.classList.remove('show'); }
+  }
+  window.addEventListener('scroll', toggleFloat, {passive:true});
+  window.addEventListener('resize', toggleFloat);
+  toggleFloat();
+})();
+</script>
+</body>
+</html>

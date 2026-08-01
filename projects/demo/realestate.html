@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Summit &amp; Shore Realty — Jordan Avery | Demo</title>
+<meta name="description" content="Summit & Shore Realty — a demo real estate lead-capture site. Find your next home or sell for more with agent Jordan Avery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0f2540;
+    --navy-2:#13293d;
+    --navy-deep:#0a1a30;
+    --gold:#c9a227;
+    --gold-2:#d4af37;
+    --cream:#f7f3ea;
+    --cream-2:#fbf9f4;
+    --white:#ffffff;
+    --ink:#1c2733;
+    --muted:#5d6b7a;
+    --line:#e6e0d4;
+    --shadow:0 10px 30px rgba(15,37,64,.12);
+    --shadow-lg:0 24px 60px rgba(10,26,48,.22);
+    --radius:16px;
+    --serif:'Playfair Display',Georgia,serif;
+    --sans:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--cream-2);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:var(--serif);line-height:1.15;color:var(--navy);font-weight:700}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-family:var(--sans);font-weight:600;letter-spacing:.18em;
+    text-transform:uppercase;font-size:.72rem;color:var(--gold);
+  }
+  section{padding:84px 0}
+  .btn{
+    display:inline-flex;align-items:center;gap:.5rem;
+    font-family:var(--sans);font-weight:600;font-size:.95rem;
+    padding:14px 26px;border-radius:999px;border:1.5px solid transparent;
+    cursor:pointer;transition:transform .15s ease,box-shadow .2s ease,background .2s ease;
+    white-space:nowrap;
+  }
+  .btn-gold{background:linear-gradient(135deg,var(--gold-2),var(--gold));color:var(--navy-deep);box-shadow:0 8px 22px rgba(201,162,39,.35)}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(201,162,39,.45)}
+  .btn-outline{background:transparent;border-color:rgba(255,255,255,.5);color:var(--white)}
+  .btn-outline:hover{background:rgba(255,255,255,.12)}
+  .btn-navy{background:var(--navy);color:var(--white)}
+  .btn-navy:hover{transform:translateY(-2px);background:var(--navy-2)}
+  .btn-ghost{background:transparent;border-color:var(--navy);color:var(--navy)}
+  .btn-ghost:hover{background:var(--navy);color:var(--white)}
+
+  /* ===== NAV ===== */
+  header.nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(15,37,64,.96);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(201,162,39,.25);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{display:flex;align-items:center;gap:12px;color:var(--white)}
+  .brand-mark{
+    width:40px;height:40px;border-radius:10px;flex:0 0 auto;
+    background:linear-gradient(135deg,var(--gold-2),var(--gold));
+    display:grid;place-items:center;color:var(--navy-deep);
+    font-family:var(--serif);font-weight:800;font-size:1.15rem;
+  }
+  .brand-name{font-family:var(--serif);font-weight:700;font-size:1.15rem;line-height:1.05;color:var(--white)}
+  .brand-name small{display:block;font-family:var(--sans);font-weight:500;font-size:.62rem;letter-spacing:.22em;color:var(--gold-2);text-transform:uppercase}
+  .nav-links{display:flex;align-items:center;gap:30px;list-style:none}
+  .nav-links a{color:rgba(255,255,255,.85);font-weight:500;font-size:.95rem;transition:color .15s}
+  .nav-links a:hover{color:var(--gold-2)}
+  .nav-cta{display:flex;align-items:center;gap:14px}
+  .hamburger{
+    display:none;background:none;border:none;cursor:pointer;padding:8px;
+    flex-direction:column;gap:5px;
+  }
+  .hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:.25s}
+  .hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .hamburger[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;color:var(--white);overflow:hidden;
+    padding:96px 0 110px;
+    background:
+      radial-gradient(1200px 500px at 80% -10%,rgba(201,162,39,.22),transparent 60%),
+      radial-gradient(900px 600px at 0% 110%,rgba(43,90,150,.35),transparent 55%),
+      linear-gradient(160deg,var(--navy-deep),var(--navy) 55%,var(--navy-2));
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
+    background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(700px 400px at 75% 30%,#000,transparent 80%);
+            mask-image:radial-gradient(700px 400px at 75% 30%,#000,transparent 80%);
+  }
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  .hero h1{color:var(--white);font-size:clamp(2.4rem,5vw,3.9rem);font-weight:800;letter-spacing:-.5px}
+  .hero h1 em{font-style:italic;color:var(--gold-2)}
+  .hero p.sub{margin:22px 0 30px;font-size:1.12rem;color:rgba(255,255,255,.82);max-width:520px}
+  .hero-badges{display:flex;gap:22px;margin-top:34px;flex-wrap:wrap}
+  .hero-badge{display:flex;align-items:center;gap:9px;font-size:.9rem;color:rgba(255,255,255,.85)}
+  .hero-badge svg{color:var(--gold-2);flex:0 0 auto}
+
+  .valuation-card{
+    background:rgba(255,255,255,.98);color:var(--ink);
+    border-radius:20px;padding:30px;box-shadow:var(--shadow-lg);
+    border:1px solid rgba(201,162,39,.3);
+  }
+  .valuation-card h3{font-size:1.4rem;margin-bottom:4px}
+  .valuation-card .vc-sub{font-size:.9rem;color:var(--muted);margin-bottom:20px}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:.8rem;font-weight:600;color:var(--navy);margin-bottom:6px}
+  .field input,.field select,.field textarea{
+    width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;
+    font-family:var(--sans);font-size:.95rem;color:var(--ink);background:var(--white);transition:border .15s,box-shadow .15s;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{
+    outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,162,39,.18);
+  }
+  .vc-note{font-size:.75rem;color:var(--muted);margin-top:12px;text-align:center}
+  .form-msg{
+    display:none;margin-top:14px;padding:13px 16px;border-radius:12px;
+    background:rgba(201,162,39,.14);border:1px solid rgba(201,162,39,.5);
+    color:var(--navy);font-size:.9rem;font-weight:600;
+  }
+  .form-msg.show{display:block;animation:pop .3s ease}
+  @keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  /* ===== STAT BAR ===== */
+  .stats{background:var(--navy);color:var(--white);padding:0}
+  .stats-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .stat{padding:38px 24px;text-align:center;border-right:1px solid rgba(255,255,255,.09)}
+  .stat:last-child{border-right:none}
+  .stat .num{font-family:var(--serif);font-size:2.1rem;font-weight:700;color:var(--gold-2);line-height:1}
+  .stat .lab{font-size:.85rem;color:rgba(255,255,255,.75);margin-top:8px;letter-spacing:.03em}
+
+  /* ===== SECTION HEADER ===== */
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 50px}
+  .sec-head h2{font-size:clamp(1.9rem,3.5vw,2.7rem);margin:10px 0}
+  .sec-head p{color:var(--muted);font-size:1.05rem}
+
+  /* ===== LISTINGS ===== */
+  .listings-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .card{
+    background:var(--white);border-radius:var(--radius);overflow:hidden;
+    box-shadow:var(--shadow);border:1px solid var(--line);
+    transition:transform .2s ease,box-shadow .2s ease;
+  }
+  .card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+  .card-photo{height:210px;position:relative;display:grid;place-items:center}
+  .card-photo svg.house{color:rgba(255,255,255,.55);width:70px;height:70px}
+  .g1{background:linear-gradient(135deg,#1f4068,#2a5a96)}
+  .g2{background:linear-gradient(135deg,#3a6073,#16222a)}
+  .g3{background:linear-gradient(135deg,#4b6cb7,#182848)}
+  .g4{background:linear-gradient(135deg,#c9a227,#8a6d16)}
+  .g5{background:linear-gradient(135deg,#355c7d,#6c5b7b)}
+  .g6{background:linear-gradient(135deg,#2c3e50,#4ca1af)}
+  .tag{
+    position:absolute;top:14px;left:14px;font-size:.72rem;font-weight:700;
+    letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px;
+    background:var(--white);color:var(--navy);box-shadow:0 4px 12px rgba(0,0,0,.15);
+  }
+  .tag.new{background:var(--gold-2);color:var(--navy-deep)}
+  .tag.pending{background:var(--navy);color:var(--white)}
+  .card-body{padding:20px}
+  .card-price{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--navy)}
+  .card-addr{color:var(--muted);font-size:.92rem;margin:4px 0 16px}
+  .card-specs{display:flex;gap:18px;padding-top:14px;border-top:1px solid var(--line)}
+  .spec{display:flex;align-items:center;gap:6px;font-size:.86rem;color:var(--ink);font-weight:500}
+  .spec svg{color:var(--gold);flex:0 0 auto}
+  .listings-cta{text-align:center;margin-top:44px}
+
+  /* ===== BUY / SELL ===== */
+  .buysell{background:var(--cream)}
+  .bs-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .bs-card{
+    border-radius:var(--radius);padding:42px;position:relative;overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  .bs-buy{background:linear-gradient(160deg,var(--navy-deep),var(--navy-2));color:var(--white)}
+  .bs-sell{background:var(--white);border:1px solid var(--line)}
+  .bs-card h3{font-size:1.8rem;margin-bottom:6px}
+  .bs-buy h3{color:var(--white)}
+  .bs-icon{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;margin-bottom:18px}
+  .bs-buy .bs-icon{background:rgba(201,162,39,.2);color:var(--gold-2)}
+  .bs-sell .bs-icon{background:rgba(15,37,64,.08);color:var(--navy)}
+  .bs-card ul{list-style:none;margin:20px 0 26px}
+  .bs-card li{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;font-size:.98rem}
+  .bs-card li svg{flex:0 0 auto;margin-top:3px}
+  .bs-buy li{color:rgba(255,255,255,.88)}.bs-buy li svg{color:var(--gold-2)}
+  .bs-sell li{color:var(--ink)}.bs-sell li svg{color:var(--gold)}
+  .bs-buy p.lead{color:rgba(255,255,255,.8)}
+  .bs-sell p.lead{color:var(--muted)}
+
+  /* ===== ABOUT ===== */
+  .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center}
+  .headshot{
+    width:260px;height:260px;border-radius:50%;margin:0 auto;
+    background:linear-gradient(145deg,var(--navy),var(--navy-2));
+    display:grid;place-items:center;color:var(--gold-2);
+    font-family:var(--serif);font-size:4.6rem;font-weight:700;
+    box-shadow:var(--shadow-lg);border:4px solid var(--white);
+    position:relative;
+  }
+  .headshot::after{content:"";position:absolute;inset:-12px;border-radius:50%;border:1px solid rgba(201,162,39,.4)}
+  .about h2{font-size:clamp(1.9rem,3.5vw,2.7rem);margin:10px 0 16px}
+  .about p{color:var(--muted);margin-bottom:16px;font-size:1.03rem}
+  .creds{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 26px}
+  .cred{font-size:.82rem;font-weight:600;color:var(--navy);background:var(--cream);border:1px solid var(--line);padding:8px 14px;border-radius:999px}
+  .about-stats{display:flex;gap:40px;margin-top:8px}
+  .about-stat .num{font-family:var(--serif);font-size:1.9rem;font-weight:700;color:var(--navy)}
+  .about-stat .lab{font-size:.82rem;color:var(--muted)}
+
+  /* ===== TESTIMONIALS ===== */
+  .testi{background:var(--navy);color:var(--white)}
+  .testi .sec-head h2{color:var(--white)}
+  .testi .sec-head p{color:rgba(255,255,255,.7)}
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .quote{
+    background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+    border-radius:var(--radius);padding:30px;position:relative;
+  }
+  .quote .stars{color:var(--gold-2);letter-spacing:2px;margin-bottom:14px;font-size:1rem}
+  .quote p{color:rgba(255,255,255,.9);font-size:1rem;font-style:italic;margin-bottom:22px}
+  .quote .who{display:flex;align-items:center;gap:12px}
+  .avatar{
+    width:44px;height:44px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;
+    font-weight:700;color:var(--navy-deep);font-size:.95rem;
+    background:linear-gradient(135deg,var(--gold-2),var(--gold));
+  }
+  .who .name{font-weight:600;color:var(--white);font-size:.95rem;line-height:1.2}
+  .who .role{font-size:.8rem;color:var(--gold-2)}
+
+  /* ===== CONTACT ===== */
+  .contact{background:var(--cream)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+  .contact-info h2{font-size:clamp(1.9rem,3.5vw,2.7rem);margin:10px 0 16px}
+  .contact-info p{color:var(--muted);margin-bottom:24px;font-size:1.05rem}
+  .contact-list{list-style:none}
+  .contact-list li{display:flex;gap:14px;align-items:center;margin-bottom:18px}
+  .contact-list .ci-ic{width:44px;height:44px;border-radius:12px;flex:0 0 auto;display:grid;place-items:center;background:var(--white);color:var(--gold);box-shadow:var(--shadow)}
+  .contact-list .ci-t{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+  .contact-list .ci-v{font-weight:600;color:var(--navy)}
+  .contact-form{background:var(--white);border-radius:var(--radius);padding:34px;box-shadow:var(--shadow);border:1px solid var(--line)}
+  .contact-form h3{font-size:1.4rem;margin-bottom:20px}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--navy-deep);color:rgba(255,255,255,.75);padding:64px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;margin-bottom:44px}
+  footer h4{color:var(--white);font-family:var(--sans);font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px;font-weight:600}
+  footer ul{list-style:none}
+  footer li{margin-bottom:10px;font-size:.92rem}
+  footer a:hover{color:var(--gold-2)}
+  .foot-brand .brand{margin-bottom:16px}
+  .foot-brand p{font-size:.92rem;line-height:1.7}
+  .socials{display:flex;gap:12px;margin-top:18px}
+  .socials a{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:rgba(255,255,255,.08);color:var(--white);transition:.2s}
+  .socials a:hover{background:var(--gold);color:var(--navy-deep)}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.82rem;color:rgba(255,255,255,.55)}
+  .demo-note{background:rgba(201,162,39,.15);border:1px solid rgba(201,162,39,.4);color:var(--gold-2);text-align:center;padding:9px;font-size:.78rem;letter-spacing:.04em;font-weight:500}
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:960px){
+    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .about-grid{grid-template-columns:1fr;gap:36px}
+    .listings-grid,.testi-grid{grid-template-columns:repeat(2,1fr)}
+    .contact-grid{grid-template-columns:1fr;gap:36px}
+    .foot-grid{grid-template-columns:1fr 1fr;gap:30px}
+  }
+  @media(max-width:760px){
+    section{padding:60px 0}
+    .nav-links{
+      position:fixed;top:74px;left:0;right:0;
+      flex-direction:column;gap:0;align-items:stretch;
+      background:var(--navy-deep);
+      max-height:0;overflow:hidden;transition:max-height .3s ease;
+      border-bottom:1px solid rgba(201,162,39,.25);
+    }
+    .nav-links.open{max-height:340px}
+    .nav-links li{border-top:1px solid rgba(255,255,255,.08)}
+    .nav-links a{display:block;padding:16px 24px}
+    .nav-cta .btn-gold{display:none}
+    .hamburger{display:flex}
+    .stats-inner{grid-template-columns:1fr 1fr}
+    .stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.09)}
+    .bs-grid{grid-template-columns:1fr}
+    .about-stats{gap:28px}
+    .headshot{width:200px;height:200px;font-size:3.6rem}
+  }
+  @media(max-width:520px){
+    .wrap{padding:0 18px}
+    .listings-grid,.testi-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+    .row2{grid-template-columns:1fr}
+    .stats-inner{grid-template-columns:1fr 1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-note">Demo site for portfolio — Summit &amp; Shore Realty and Jordan Avery are fictional. No real listings or data.</div>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand" aria-label="Summit and Shore Realty home">
+      <span class="brand-mark">S</span>
+      <span class="brand-name">Summit &amp; Shore<small>Realty</small></span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#listings">Listings</a></li>
+        <li><a href="#buysell">Buy</a></li>
+        <li><a href="#buysell">Sell</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="#valuation" class="btn btn-gold">Get a Free Home Valuation</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- ===== HERO ===== -->
+<section class="hero" style="padding-top:80px">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Summit &amp; Shore Realty</span>
+      <h1>Find your next home. <em>Sell for more.</em></h1>
+      <p class="sub">Boutique real estate guidance from Jordan Avery — data-driven pricing, standout marketing, and a smooth close from first showing to sold sign.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap">
+        <a href="#listings" class="btn btn-gold">Browse Listings</a>
+        <a href="#contact" class="btn btn-outline">Talk to Jordan</a>
+      </div>
+      <div class="hero-badges">
+        <span class="hero-badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+          Local market experts
+        </span>
+        <span class="hero-badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+          No-pressure guidance
+        </span>
+        <span class="hero-badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+          4.9★ client rating
+        </span>
+      </div>
+    </div>
+
+    <!-- Lead-capture valuation mini form -->
+    <div class="valuation-card" id="valuation">
+      <h3>What's my home worth?</h3>
+      <p class="vc-sub">Get a free, no-obligation estimate in your inbox.</p>
+      <form id="valForm" novalidate>
+        <div class="field">
+          <label for="valAddr">Property address</label>
+          <input type="text" id="valAddr" name="address" placeholder="123 Harbor View Dr, Lakeside" required autocomplete="street-address">
+        </div>
+        <div class="field">
+          <label for="valEmail">Email address</label>
+          <input type="email" id="valEmail" name="email" placeholder="you@email.com" required autocomplete="email">
+        </div>
+        <button type="submit" class="btn btn-navy" style="width:100%;justify-content:center">Get My Free Estimate</button>
+        <p class="vc-note">🔒 Demo only — no data is sent or stored.</p>
+        <div class="form-msg" id="valMsg" role="status" aria-live="polite">Thanks! Your sample valuation is on its way — Jordan will follow up within 24 hours.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STAT BAR ===== -->
+<section class="stats" aria-label="Track record">
+  <div class="wrap stats-inner">
+    <div class="stat"><div class="num">$120M+</div><div class="lab">In homes sold</div></div>
+    <div class="stat"><div class="num">250+</div><div class="lab">Homes closed</div></div>
+    <div class="stat"><div class="num">4.9★</div><div class="lab">Average rating</div></div>
+    <div class="stat"><div class="num">12 days</div><div class="lab">Avg. on market</div></div>
+  </div>
+</section>
+
+<!-- ===== LISTINGS ===== -->
+<section id="listings">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Featured Listings</span>
+      <h2>Homes people are talking about</h2>
+      <p>A sample of standout properties across the coast and hills. New listings added weekly.</p>
+    </div>
+    <div class="listings-grid" id="listingsGrid"></div>
+    <div class="listings-cta">
+      <a href="#contact" class="btn btn-ghost">See All Listings</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BUY / SELL ===== -->
+<section class="buysell" id="buysell">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">How I Can Help</span>
+      <h2>Whether you're buying or selling</h2>
+      <p>A tailored plan for wherever you are in your move.</p>
+    </div>
+    <div class="bs-grid">
+      <div class="bs-card bs-buy">
+        <div class="bs-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        </div>
+        <h3>Buying?</h3>
+        <p class="lead">Find the right home without the overwhelm — with early access and sharp negotiation.</p>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> First look at new &amp; off-market listings</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Guidance on offers that actually win</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Trusted lenders &amp; inspectors on call</li>
+        </ul>
+        <a href="#contact" class="btn btn-gold">Start Your Home Search</a>
+      </div>
+      <div class="bs-card bs-sell">
+        <div class="bs-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+        </div>
+        <h3>Selling?</h3>
+        <p class="lead">Position your home to attract more buyers and stronger offers, faster.</p>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Data-driven pricing strategy</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Pro photography &amp; staging advice</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Full-funnel digital marketing</li>
+        </ul>
+        <a href="#valuation" class="btn btn-ghost">Get a Free Valuation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="headshot" aria-label="Jordan Avery headshot placeholder">JA</div>
+    </div>
+    <div>
+      <span class="eyebrow">Meet Your Agent</span>
+      <h2>Jordan Avery</h2>
+      <p>For over a decade, Jordan has helped families, first-time buyers, and investors navigate the coast-to-hills market with clarity and calm. The approach is simple: listen first, price with data, and market like it matters — because for you, it does.</p>
+      <p>From your first walkthrough to closing day, you get a responsive partner who sweats the details so you don't have to.</p>
+      <div class="creds">
+        <span class="cred">Licensed Realtor®</span>
+        <span class="cred">Certified Negotiation Expert</span>
+        <span class="cred">Luxury Home Specialist</span>
+        <span class="cred">Relocation Certified</span>
+      </div>
+      <div class="about-stats">
+        <div class="about-stat"><div class="num">10+ yrs</div><div class="lab">Experience</div></div>
+        <div class="about-stat"><div class="num">98%</div><div class="lab">List-to-sale price</div></div>
+        <div class="about-stat"><div class="num">4.9★</div><div class="lab">Client rating</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testi">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Client Stories</span>
+      <h2>Trusted by buyers &amp; sellers</h2>
+      <p>A few words from people who moved with Summit &amp; Shore.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="quote">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p>"Jordan got us into a home we thought was out of reach — and negotiated below asking. Every step was explained, nothing was rushed."</p>
+        <div class="who">
+          <span class="avatar">MC</span>
+          <span><span class="name">Maya &amp; Chris T.</span><span class="role">Home Buyers</span></span>
+        </div>
+      </div>
+      <div class="quote">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p>"Our house sold in nine days for over asking. The pricing strategy and marketing were on another level. We felt looked after the whole time."</p>
+        <div class="who">
+          <span class="avatar">DR</span>
+          <span><span class="name">Daniel R.</span><span class="role">Home Seller</span></span>
+        </div>
+      </div>
+      <div class="quote">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p>"As a first-time buyer I had a hundred questions. Jordan answered all of them patiently and made the whole thing feel doable. Forever grateful."</p>
+        <div class="who">
+          <span class="avatar">SP</span>
+          <span><span class="name">Sofia P.</span><span class="role">First-Time Buyer</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <span class="eyebrow">Let's Talk</span>
+      <h2>Ready to make your move?</h2>
+      <p>Tell me a little about your goals and I'll reach out with next steps. No pressure, no obligation.</p>
+      <ul class="contact-list">
+        <li>
+          <span class="ci-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <span><span class="ci-t">Phone</span><br><span class="ci-v">(555) 014-2200</span></span>
+        </li>
+        <li>
+          <span class="ci-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+          <span><span class="ci-t">Email</span><br><span class="ci-v">jordan@summitandshore.demo</span></span>
+        </li>
+        <li>
+          <span class="ci-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <span><span class="ci-t">Office</span><br><span class="ci-v">18 Harborline Ave, Suite 200, Lakeside</span></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="contact-form">
+      <h3>Request a callback</h3>
+      <form id="contactForm" novalidate>
+        <div class="row2">
+          <div class="field">
+            <label for="cName">Full name</label>
+            <input type="text" id="cName" name="name" placeholder="Your name" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="cPhone">Phone</label>
+            <input type="tel" id="cPhone" name="phone" placeholder="(555) 000-0000" autocomplete="tel">
+          </div>
+        </div>
+        <div class="field">
+          <label for="cEmail">Email</label>
+          <input type="email" id="cEmail" name="email" placeholder="you@email.com" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="cInterest">I'm interested in</label>
+          <select id="cInterest" name="interest" required>
+            <option value="" disabled selected>Select an option…</option>
+            <option value="buying">Buying</option>
+            <option value="selling">Selling</option>
+            <option value="both">Both</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="cMsg">Message (optional)</label>
+          <textarea id="cMsg" name="message" rows="3" placeholder="Tell me about your goals…"></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center">Send Request</button>
+        <div class="form-msg" id="contactMsg" role="status" aria-live="polite">Thanks! Jordan will reach out within 24 hours.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand">
+          <span class="brand-mark">S</span>
+          <span class="brand-name">Summit &amp; Shore<small>Realty</small></span>
+        </div>
+        <p>Boutique real estate with Jordan Avery.<br>Helping you buy smart and sell for more across the coast and hills.</p>
+        <div class="socials">
+          <a href="#contact" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.75-1.6 1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg></a>
+          <a href="#contact" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#contact" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM.5 8h4V24h-4zM8 8h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4 0 4.75 2.65 4.75 6.1V24h-4v-7.1c0-1.7 0-3.9-2.37-3.9s-2.75 1.85-2.75 3.77V24H8z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#listings">Listings</a></li>
+          <li><a href="#buysell">Buy a Home</a></li>
+          <li><a href="#buysell">Sell a Home</a></li>
+          <li><a href="#valuation">Home Valuation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Jordan</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#listings">Featured Homes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Office</h4>
+        <ul>
+          <li>18 Harborline Ave, Suite 200</li>
+          <li>Lakeside</li>
+          <li>(555) 014-2200</li>
+          <li>License #DRE-0000000 (sample)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Summit &amp; Shore Realty (fictional). Demo site for portfolio use.</span>
+      <span>Equal Housing Opportunity · All listings &amp; data are sample content.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  // ---- Mobile nav ----
+  var hamburger = document.getElementById('hamburger');
+  var navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', function(){
+    var open = navLinks.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  navLinks.addEventListener('click', function(e){
+    if(e.target.tagName === 'A'){
+      navLinks.classList.remove('open');
+      hamburger.setAttribute('aria-expanded','false');
+    }
+  });
+
+  // ---- Featured listings (rendered from data) ----
+  var houseSVG = '<svg class="house" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>';
+  var bedSVG = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8V5a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v3"/></svg>';
+  var bathSVG = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12V5a2 2 0 0 1 2-2 2 2 0 0 1 2 2"/><line x1="8" y1="7" x2="4" y2="7"/><path d="M2 12h20v3a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z"/><line x1="7" y1="19" x2="6" y2="22"/><line x1="18" y1="19" x2="17" y2="22"/></svg>';
+  var areaSVG = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h18"/></svg>';
+
+  var listings = [
+    {g:'g1', tag:'For Sale', cls:'', price:'$1,245,000', addr:'42 Harbor View Dr, Lakeside', beds:4, baths:3, sqft:'2,940'},
+    {g:'g2', tag:'New', cls:'new', price:'$689,000', addr:'118 Cedar Ridge Ln, Northgate', beds:3, baths:2, sqft:'1,780'},
+    {g:'g3', tag:'For Sale', cls:'', price:'$2,150,000', addr:'7 Summit Crest Ct, Highlands', beds:5, baths:5, sqft:'4,320'},
+    {g:'g4', tag:'Pending', cls:'pending', price:'$525,000', addr:'260 Marina Blvd #4B, Shoreline', beds:2, baths:2, sqft:'1,150'},
+    {g:'g5', tag:'New', cls:'new', price:'$845,000', addr:'33 Willow Bend Rd, Eastfield', beds:4, baths:3, sqft:'2,410'},
+    {g:'g6', tag:'For Sale', cls:'', price:'$975,000', addr:'510 Bayfront Ave, Lakeside', beds:3, baths:3, sqft:'2,180'}
+  ];
+
+  var grid = document.getElementById('listingsGrid');
+  var html = listings.map(function(l){
+    return '<article class="card">'
+      + '<div class="card-photo ' + l.g + '"><span class="tag ' + l.cls + '">' + l.tag + '</span>' + houseSVG + '</div>'
+      + '<div class="card-body">'
+      + '<div class="card-price">' + l.price + '</div>'
+      + '<div class="card-addr">' + l.addr + '</div>'
+      + '<div class="card-specs">'
+      + '<span class="spec">' + bedSVG + l.beds + ' bd</span>'
+      + '<span class="spec">' + bathSVG + l.baths + ' ba</span>'
+      + '<span class="spec">' + areaSVG + l.sqft + ' sqft</span>'
+      + '</div></div></article>';
+  }).join('');
+  grid.innerHTML = html;
+
+  // ---- Forms: never submit; show inline confirmation ----
+  function wireForm(formId, msgId){
+    var form = document.getElementById(formId);
+    var msg = document.getElementById(msgId);
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(!form.checkValidity()){
+        form.reportValidity();
+        return;
+      }
+      msg.classList.add('show');
+      form.querySelector('button[type="submit"]').disabled = true;
+      form.querySelector('button[type="submit"]').textContent = 'Received ✓';
+    });
+  }
+  wireForm('valForm','valMsg');
+  wireForm('contactForm','contactMsg');
+})();
+</script>
+</body>
+</html>
