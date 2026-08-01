@@ -167,9 +167,10 @@
       linear-gradient(150deg, var(--blush) 0%, var(--mauve) 55%, var(--gold-soft) 120%);
   }
   .hero-card.main::after {
-    content: ""; position: absolute; inset: 0;
+    content: ""; position: absolute; inset: 0; pointer-events: none;
     background: radial-gradient(90% 70% at 78% 82%, rgba(255,255,255,.28), transparent 55%);
   }
+  .hero-card.main .hero-3d { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 1; }
   .hero-card.badge {
     right: 0; bottom: 0; width: 190px; height: 150px; background: var(--white);
     display: flex; flex-direction: column; justify-content: center; padding: 20px 22px; gap: 2px;
@@ -177,7 +178,7 @@
   .hero-card.badge .big { font-family: var(--serif); font-size: 2.6rem; color: var(--gold); font-weight: 700; line-height: 1; }
   .hero-card.badge .lbl { font-size: 0.78rem; color: var(--ink-soft); font-weight: 600; }
   .hero-card.pill {
-    top: 26px; left: -14px; background: var(--white); padding: 12px 18px; border-radius: 999px;
+    top: 20px; left: 18px; z-index: 2; background: var(--white); padding: 12px 18px; border-radius: 999px;
     display: flex; align-items: center; gap: 10px; font-size: 0.84rem; font-weight: 700; box-shadow: var(--shadow-sm);
   }
   .hero-card.pill .dot { width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg,var(--blush),var(--gold-soft)); display:grid; place-items:center; }
@@ -217,8 +218,10 @@
   .about-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 60px; align-items: center; }
   .about-visual { position: relative; height: 440px; }
   .about-visual .block {
-    position:absolute; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);
+    position:absolute; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); overflow: hidden;
   }
+  .about-visual .av-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s cubic-bezier(.16,1,.3,1); }
+  .about-visual .block:hover .av-img { transform: scale(1.05); }
   .about-visual .b1 { inset: 0 34% 34% 0; background: linear-gradient(150deg, var(--mauve), var(--mauve-deep)); }
   .about-visual .b2 { right: 0; top: 22%; width: 46%; height: 46%; background: linear-gradient(150deg, var(--blush), var(--gold-soft)); }
   .about-visual .b3 { left: 18%; bottom: 0; width: 52%; height: 40%; background: linear-gradient(150deg, var(--cream-deep), var(--blush-soft)); border: 1px solid rgba(176,141,87,.2); }
@@ -238,6 +241,10 @@
   .ba-row { display: grid; grid-template-columns: 1fr 1fr; }
   .ba { height: 190px; position: relative; display: flex; align-items: flex-end; padding: 12px; }
   .ba .tag { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.14em; background: rgba(255,255,255,.85); color: var(--ink); padding: 4px 10px; border-radius: 999px; }
+  .rc-photo { height: 220px; position: relative; overflow: hidden; background: linear-gradient(160deg, var(--blush-soft), var(--gold-soft)); }
+  .rc-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s cubic-bezier(.16,1,.3,1); }
+  .result-card:hover .rc-photo img { transform: scale(1.06); }
+  .rc-photo .tag { position: absolute; left: 12px; bottom: 12px; font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; background: rgba(255,255,255,.9); color: var(--ink); padding: 5px 12px; border-radius: 999px; }
   .ba.before { background: linear-gradient(160deg, #cdbcc0, #a68d95); }
   .ba.after { background: linear-gradient(160deg, var(--blush), var(--gold-soft)); }
   .ba.before2 { background: linear-gradient(160deg, #c7bfb2, #a89a82); }
@@ -390,7 +397,7 @@
       </div>
     </div>
     <div class="hero-visual" aria-hidden="true">
-      <div class="hero-card main"></div>
+      <div class="hero-card main"><canvas class="hero-3d" id="ms3d" aria-hidden="true"></canvas></div>
       <div class="hero-card pill">
         <span class="dot">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 3 5 6.5 5 9 5 12 8 12 8s3-3 5.5-3C21 5 23.5 8.5 21.5 12.5 19 16.65 12 21 12 21z"/></svg>
@@ -499,9 +506,9 @@
 <section id="about" aria-labelledby="about-title">
   <div class="wrap about-grid">
     <div class="about-visual" aria-hidden="true">
-      <div class="block b1"></div>
-      <div class="block b2"></div>
-      <div class="block b3"></div>
+      <div class="block b1"><img class="av-img" src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?ixlib=rb-4.0.3&w=800&h=900&fit=crop&crop=faces&q=62&auto=format" alt="" loading="lazy" onerror="this.remove()"></div>
+      <div class="block b2"><img class="av-img" src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?ixlib=rb-4.0.3&w=600&h=600&fit=crop&crop=edges&q=62&auto=format" alt="" loading="lazy" onerror="this.remove()"></div>
+      <div class="block b3"><img class="av-img" src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-4.0.3&w=700&h=520&fit=crop&crop=edges&q=62&auto=format" alt="" loading="lazy" onerror="this.remove()"></div>
     </div>
     <div class="about-text">
       <span class="eyebrow">Why Lumière</span>
@@ -542,31 +549,31 @@
     <div class="results-grid">
 
       <article class="result-card">
-        <div class="ba-row">
-          <div class="ba before"><span class="tag">Before</span></div>
-          <div class="ba after"><span class="tag">After</span></div>
+        <div class="rc-photo">
+          <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?ixlib=rb-4.0.3&w=760&h=560&fit=crop&crop=faces&q=62&auto=format" alt="Lip enhancement treatment" loading="lazy" onerror="this.style.display='none'">
+          <span class="tag">Lips</span>
         </div>
         <div class="meta"><h4>Lip Filler</h4><p>Subtle volume &amp; definition</p></div>
       </article>
 
       <article class="result-card">
-        <div class="ba-row">
-          <div class="ba before2"><span class="tag">Before</span></div>
-          <div class="ba after2"><span class="tag">After</span></div>
+        <div class="rc-photo">
+          <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&w=760&h=560&fit=crop&crop=faces&q=62&auto=format" alt="HydraFacial glow treatment" loading="lazy" onerror="this.style.display='none'">
+          <span class="tag">Skin</span>
         </div>
         <div class="meta"><h4>HydraFacial Glow</h4><p>Brighter, hydrated skin</p></div>
       </article>
 
       <article class="result-card">
-        <div class="ba-row">
-          <div class="ba before3"><span class="tag">Before</span></div>
-          <div class="ba after3"><span class="tag">After</span></div>
+        <div class="rc-photo">
+          <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?ixlib=rb-4.0.3&w=760&h=560&fit=crop&crop=faces&q=62&auto=format" alt="Refined, smoother complexion" loading="lazy" onerror="this.style.display='none'">
+          <span class="tag">Refined</span>
         </div>
         <div class="meta"><h4>Wrinkle Relaxer</h4><p>Smoother forehead lines</p></div>
       </article>
 
     </div>
-    <p class="results-disclaimer">Illustrative stylized placeholders for demonstration only — not actual patient photos. Individual results vary.</p>
+    <p class="results-disclaimer">Stock imagery for illustration only — not actual patients or clinical results. Individual results vary.</p>
   </div>
 </section>
 
@@ -806,6 +813,178 @@
       dateInput.min = iso;
     }
   })();
+</script>
+
+<!-- ===== 3D MEDSPA HERO SCENE (floating skincare products) ===== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function init(){
+    var canvas = document.getElementById('ms3d');
+    if(!canvas || typeof THREE === 'undefined') return;
+    var host = canvas.parentElement;
+
+    var renderer;
+    try { renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true }); }
+    catch(e){ canvas.style.display = 'none'; return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    if('outputEncoding' in renderer) renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.05;
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
+    camera.position.set(0, 2.6, 8.2);
+
+    var GOLD = 0xcaa15e, GOLD_SOFT = 0xd8b579, BLUSH = 0xecc3c2, ROSE = 0xd9a79a, CREAM = 0xf5efe9;
+
+    // ---- Canvas texture helpers ----
+    function gradTex(cols){
+      var c = document.createElement('canvas'); c.width = 16; c.height = 256;
+      var x = c.getContext('2d'); var g = x.createLinearGradient(0, 0, 0, 256);
+      for(var i=0;i<cols.length;i++) g.addColorStop(i/(cols.length-1), cols[i]);
+      x.fillStyle = g; x.fillRect(0, 0, 16, 256);
+      return new THREE.CanvasTexture(c);
+    }
+    function shadowTex(){
+      var s = 128, c = document.createElement('canvas'); c.width = c.height = s;
+      var x = c.getContext('2d');
+      var g = x.createRadialGradient(s/2, s/2, 2, s/2, s/2, s/2);
+      g.addColorStop(0, 'rgba(60,40,44,0.5)'); g.addColorStop(0.55, 'rgba(60,40,44,0.2)'); g.addColorStop(1, 'rgba(60,40,44,0)');
+      x.fillStyle = g; x.fillRect(0, 0, s, s);
+      return new THREE.CanvasTexture(c);
+    }
+
+    // ---- Environment (soft studio reflections) ----
+    var pmrem = new THREE.PMREMGenerator(renderer);
+    var envScene = new THREE.Scene();
+    envScene.add(new THREE.Mesh(
+      new THREE.SphereGeometry(60, 40, 20),
+      new THREE.MeshBasicMaterial({ map: gradTex(['#fff7f1', '#f3d8d3', '#c6a29c', '#6d565a']), side: THREE.BackSide })
+    ));
+    var soft = new THREE.Mesh(new THREE.PlaneGeometry(34, 20), new THREE.MeshBasicMaterial({ color: 0xffffff }));
+    soft.position.set(-16, 17, 12); soft.lookAt(0, 0, 0); envScene.add(soft);
+    var soft2 = new THREE.Mesh(new THREE.PlaneGeometry(16, 10), new THREE.MeshBasicMaterial({ color: 0xffe9de }));
+    soft2.position.set(14, 8, 10); soft2.lookAt(0, 0, 0); envScene.add(soft2);
+    scene.environment = pmrem.fromScene(envScene, 0.05).texture;
+    pmrem.dispose();
+
+    // ---- Lighting ----
+    scene.add(new THREE.AmbientLight(0xffffff, 0.22));
+    var key = new THREE.DirectionalLight(0xfff1e6, 1.15); key.position.set(-5, 7, 5); scene.add(key);
+    var fill = new THREE.DirectionalLight(0xf3d9d6, 0.45); fill.position.set(6, 2, 4); scene.add(fill);
+    var rim = new THREE.DirectionalLight(0xffffff, 0.6); rim.position.set(3, 4, -6); scene.add(rim);
+
+    // ---- Materials ----
+    function frost(color){ return new THREE.MeshPhysicalMaterial({ color: color, metalness: 0, roughness: 0.34, clearcoat: 0.9, clearcoatRoughness: 0.22, envMapIntensity: 0.95 }); }
+    function goldMat(color){ return new THREE.MeshPhysicalMaterial({ color: color, metalness: 1.0, roughness: 0.24, clearcoat: 0.5, clearcoatRoughness: 0.18, envMapIntensity: 1.15 }); }
+    function rubber(color){ return new THREE.MeshStandardMaterial({ color: color, roughness: 0.55, metalness: 0 }); }
+    function dew(){ return new THREE.MeshPhysicalMaterial({ color: 0xfff2f0, metalness: 0, roughness: 0.05, clearcoat: 1, clearcoatRoughness: 0.05, envMapIntensity: 1.3, transparent: true, opacity: 0.92 }); }
+
+    var stage = new THREE.Group();
+    scene.add(stage);
+    var items = [];
+    var sTex = shadowTex();
+
+    function lathe(pts, mat){
+      var v = pts.map(function(p){ return new THREE.Vector2(p[0], p[1]); });
+      return new THREE.Mesh(new THREE.LatheGeometry(v, 56), mat);
+    }
+    function addShadow(g, size){
+      var m = new THREE.Mesh(new THREE.PlaneGeometry(size, size),
+        new THREE.MeshBasicMaterial({ map: sTex, transparent: true, depthWrite: false }));
+      m.rotation.x = -Math.PI/2; m.position.y = 0.012; g.add(m);
+    }
+
+    // Serum dropper bottle
+    function bottle(color, x, s){
+      var g = new THREE.Group();
+      var body = lathe([[0,0],[0.62,0],[0.66,0.06],[0.66,1.5],[0.58,1.74],[0.4,1.98],[0.38,2.24]], frost(color));
+      var ring = new THREE.Mesh(new THREE.CylinderGeometry(0.42,0.42,0.16,44), goldMat(GOLD)); ring.position.y = 2.2;
+      var cap  = new THREE.Mesh(new THREE.CylinderGeometry(0.44,0.44,0.62,44), goldMat(GOLD)); cap.position.y = 2.55;
+      var bulb = new THREE.Mesh(new THREE.SphereGeometry(0.3,26,26), rubber(ROSE)); bulb.scale.y = 0.85; bulb.position.y = 3.02;
+      g.add(body, ring, cap, bulb);
+      addShadow(g, 2.0 * (s||1));
+      g.position.set(x, 0, 0); g.scale.setScalar(s || 1);
+      return g;
+    }
+    // Cream jar
+    function jar(color, x, s){
+      var g = new THREE.Group();
+      var body = lathe([[0,0],[0.95,0],[0.98,0.12],[0.95,0.82],[0.88,0.92]], frost(color));
+      var lid  = new THREE.Mesh(new THREE.CylinderGeometry(1.02,1.02,0.5,56), goldMat(GOLD_SOFT)); lid.position.y = 1.12;
+      var top  = new THREE.Mesh(new THREE.CylinderGeometry(1.0,1.02,0.06,56), goldMat(GOLD_SOFT)); top.position.y = 1.38;
+      g.add(body, lid, top);
+      addShadow(g, 2.8 * (s||1));
+      g.position.set(x, 0, 0); g.scale.setScalar(s || 1);
+      return g;
+    }
+
+    var b1 = bottle(BLUSH, -2.45, 1.0);
+    var jr = jar(CREAM, 0.2, 1.02);
+    var b2 = bottle(ROSE, 2.5, 0.82);
+    [b1, jr, b2].forEach(function(o, i){ o.userData.ph = i * 1.5; stage.add(o); items.push(o); });
+
+    // Dewy floating droplets
+    var drops = [], dm = dew();
+    var dpos = [[-3.2,3.2,0.4],[-1.2,4.0,-0.6],[1.5,3.9,0.6],[3.1,3.0,-0.3],[0.1,4.5,0.2],[2.3,2.2,1.0]];
+    dpos.forEach(function(p, i){
+      var r = 0.15 + (i % 3) * 0.05;
+      var d = new THREE.Mesh(new THREE.SphereGeometry(r, 22, 22), dm);
+      d.position.set(p[0], p[1], p[2]); d.userData.ph = i * 0.9; d.userData.base = p[1];
+      stage.add(d); drops.push(d);
+    });
+
+    function resize(){
+      var w = host.clientWidth, h = host.clientHeight;
+      if(!w || !h) return;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h; camera.updateProjectionMatrix();
+    }
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+
+    var tx = 0, ty = 0, cx = 0, cy = 0;
+    window.addEventListener('pointermove', function(e){
+      tx = (e.clientX / window.innerWidth - 0.5) * 2;
+      ty = (e.clientY / window.innerHeight - 0.5) * 2;
+    }, { passive: true });
+
+    if(reduce){ stage.rotation.y = -0.2; resize(); renderer.render(scene, camera); return; }
+
+    var visible = true;
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(en){ visible = en[0].isIntersecting; }, { threshold: 0 }).observe(host);
+    }
+
+    function tick(now){
+      requestAnimationFrame(tick);
+      if(document.hidden || !visible) return;
+      var t = now * 0.001;
+      // Gentle sway + slow self-rotation = elegant product showcase
+      stage.rotation.y = Math.sin(t * 0.28) * 0.16;
+      for(var i=0;i<items.length;i++){
+        items[i].rotation.y += 0.0038;
+        items[i].position.y = Math.sin(t * 0.9 + items[i].userData.ph) * 0.05;
+      }
+      for(var j=0;j<drops.length;j++){
+        drops[j].position.y = drops[j].userData.base + Math.sin(t * 1.0 + drops[j].userData.ph) * 0.22;
+        drops[j].rotation.y += 0.01;
+      }
+      cx += (tx - cx) * 0.045; cy += (ty - cy) * 0.045;
+      camera.position.x = cx * 1.8;
+      camera.position.y = 2.6 - cy * 1.1;
+      camera.lookAt(0, 1.15, 0);
+      renderer.render(scene, camera);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  if(document.readyState === 'complete') init();
+  else window.addEventListener('load', init);
+})();
 </script>
 
 </body>
