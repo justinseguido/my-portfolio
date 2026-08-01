@@ -138,6 +138,22 @@
   .hero-card ul{list-style:none;margin:14px 0 0;display:grid;gap:9px}
   .hero-card li{display:flex;gap:9px;align-items:center;color:#e5eef7;font-size:.92rem}
   .hero-card li svg{flex:0 0 auto}
+  /* Portfolio-style 3D field behind the hero */
+  .hero-3d{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+
+  /* Expert / real-photo band */
+  .expert{background:#fff}
+  .expert .wrap{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+  .expert-visual{position:relative;height:430px}
+  .expert-visual img{position:absolute;object-fit:cover;border-radius:16px;box-shadow:var(--shadow-lg);background:#e6edf4}
+  .expert-visual .ev1{inset:0 30% 22% 0}
+  .expert-visual .ev2{right:0;bottom:0;width:54%;height:52%;border:5px solid #fff;border-radius:18px}
+  .expert-visual .ev-badge{position:absolute;left:10px;bottom:10px;z-index:2;background:var(--navy);color:#fff;border-radius:14px;padding:14px 18px;box-shadow:var(--shadow-lg)}
+  .expert-visual .ev-badge b{font-family:'Poppins';font-size:1.5rem;display:block;line-height:1}
+  .expert-visual .ev-badge span{font-size:.74rem;color:#bcd4ea}
+  .ex-points{list-style:none;margin:20px 0 26px;display:grid;gap:12px}
+  .ex-points li{display:flex;gap:11px;align-items:flex-start;color:#41505f;font-size:.98rem}
+  .ex-points .ck{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:var(--orange);display:grid;place-items:center;margin-top:1px}
 
   /* logos strip */
   .assurance{background:var(--light);border-bottom:1px solid var(--line);padding:20px 0}
@@ -297,6 +313,8 @@
     .prob-grid,.inc-grid,.test-grid,.tiers{grid-template-columns:1fr}
     .compare-grid{grid-template-columns:1fr;max-width:480px}
     .tier.pop{transform:none}
+    .expert .wrap{grid-template-columns:1fr;gap:32px}
+    .expert-visual{height:340px;max-width:480px}
     footer .wrap{grid-template-columns:1fr 1fr}
   }
   @media(max-width:600px){
@@ -338,6 +356,7 @@
 <!-- ============ HERO ============ -->
 <main id="top">
 <section class="hero">
+  <canvas class="hero-3d" id="hvacHero3d" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="hero-copy">
       <div class="urgency"><span class="pulse" aria-hidden="true"></span> Enrollment for winter closes soon — limited priority slots</div>
@@ -460,6 +479,28 @@
         <span class="check" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4 10-10" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <div><h4>Waived Diagnostic Fee</h4><p>The standard $99 service-call diagnostic fee is waived on every visit as a member.</p></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERT / REAL PHOTOS ============ -->
+<section id="expert" class="expert">
+  <div class="wrap">
+    <div class="expert-visual">
+      <img class="ev1" src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-4.0.3&w=900&h=900&fit=crop&crop=edges&q=64&auto=format" alt="A certified ComfortPro technician servicing HVAC equipment" loading="lazy" onerror="this.style.display='none'">
+      <img class="ev2" src="https://images.unsplash.com/photo-1613545325278-f24b0cae1224?ixlib=rb-4.0.3&w=800&h=800&fit=crop&crop=edges&q=64&auto=format" alt="A comfortable, climate-controlled living room" loading="lazy" onerror="this.style.display='none'">
+      <div class="ev-badge"><b>15 yrs</b><span>avg. tech experience</span></div>
+    </div>
+    <div>
+      <span class="eyebrow">Real People, Real Comfort</span>
+      <h2 class="title">Certified technicians — never a call center.</h2>
+      <p class="lead">Every visit is handled by a NATE-certified ComfortPro technician who shows up on time, in uniform, and treats your home like their own — shoe covers, clean workspace, and a clear explanation before any work begins.</p>
+      <ul class="ex-points">
+        <li><span class="ck" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4 10-10" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Background-checked, factory-trained technicians</li>
+        <li><span class="ck" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4 10-10" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Upfront, flat-rate pricing — approved before we start</li>
+        <li><span class="ck" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4 10-10" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 100% satisfaction guarantee on every visit</li>
+      </ul>
+      <a href="#enroll" class="btn btn-primary btn-lg">Get the Plan — $297/yr</a>
     </div>
   </div>
 </section>
@@ -756,6 +797,135 @@
   window.addEventListener('scroll', toggleFloat, {passive:true});
   window.addEventListener('resize', toggleFloat);
   toggleFloat();
+})();
+</script>
+
+<!-- ===== 3D HERO FIELD (portfolio-style wireframe + particles) ===== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function init(){
+    var canvas = document.getElementById('hvacHero3d');
+    if(!canvas || typeof THREE === 'undefined') return;
+    var host = canvas.parentElement; // the .hero section
+
+    var renderer;
+    try { renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true }); }
+    catch(e){ canvas.style.display = 'none'; return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
+    camera.position.z = 30;
+
+    var ACCENT = 0xf26419, LIGHT = 0xd7e6f4;
+    var group = new THREE.Group();
+    scene.add(group);
+
+    // Circle outline helper (for fan guard rings)
+    function ring(r, seg, color, op){
+      var pts = [];
+      for(var i=0;i<=seg;i++){ var a = i/seg*Math.PI*2; pts.push(new THREE.Vector3(Math.cos(a)*r, 0, Math.sin(a)*r)); }
+      return new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),
+        new THREE.LineBasicMaterial({ color: color, transparent: true, opacity: op }));
+    }
+
+    // --- Wireframe condenser "gem" (portfolio line-art style) ---
+    var unit = new THREE.Group(); group.add(unit);
+    var housing = new THREE.BoxGeometry(9, 8, 7);
+    unit.add(new THREE.LineSegments(new THREE.EdgesGeometry(housing),
+      new THREE.LineBasicMaterial({ color: ACCENT, transparent: true, opacity: 0.6 })));
+    unit.add(new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(5.6, 4.8, 4.4)),
+      new THREE.LineBasicMaterial({ color: LIGHT, transparent: true, opacity: 0.22 })));
+    // Glowing vertices on the housing
+    unit.add(new THREE.Points(housing, new THREE.PointsMaterial({
+      color: ACCENT, size: 0.34, transparent: true, opacity: 0.95, sizeAttenuation: true })));
+    // Front-face louver lines
+    for(var i=0;i<7;i++){
+      var y = -2.6 + i*0.9;
+      var geo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-4.2, y, 3.51), new THREE.Vector3(4.2, y, 3.51)]);
+      unit.add(new THREE.Line(geo, new THREE.LineBasicMaterial({ color: ACCENT, transparent: true, opacity: 0.32 })));
+    }
+
+    // --- Spinning fan on top ---
+    var fan = new THREE.Group(); fan.position.y = 4; unit.add(fan);
+    fan.add(ring(3.0, 64, ACCENT, 0.55));
+    fan.add(ring(1.9, 48, LIGHT, 0.3));
+    for(var b=0;b<3;b++){
+      var a = b * (Math.PI*2/3);
+      var blade = new THREE.BufferGeometry().setFromPoints([
+        new THREE.Vector3(0,0,0), new THREE.Vector3(Math.cos(a)*3, 0, Math.sin(a)*3) ]);
+      fan.add(new THREE.Line(blade, new THREE.LineBasicMaterial({ color: ACCENT, transparent: true, opacity: 0.7 })));
+    }
+    fan.add(new THREE.Points(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,0,0)]),
+      new THREE.PointsMaterial({ color: ACCENT, size: 0.6, transparent: true, opacity: 1, sizeAttenuation: true })));
+    // Fan guard rings just above
+    var guard = new THREE.Group(); guard.position.y = 4.2; unit.add(guard);
+    [1.1, 2.0, 2.9].forEach(function(rr){ guard.add(ring(rr, 56, LIGHT, 0.18)); });
+
+    // --- Ambient particle field (golden-angle scatter, like the portfolio) ---
+    var COUNT = 460, positions = new Float32Array(COUNT*3), colors = new Float32Array(COUNT*3);
+    var cA = new THREE.Color(ACCENT), cL = new THREE.Color(LIGHT);
+    for(var p=0;p<COUNT;p++){
+      var r = 13 + Math.pow(p/COUNT, 0.5) * 22;
+      var t = p * 2.399963;
+      var phi = Math.acos(1 - 2 * ((p + 0.5) / COUNT));
+      positions[p*3]   = r * Math.sin(phi) * Math.cos(t);
+      positions[p*3+1] = r * Math.sin(phi) * Math.sin(t);
+      positions[p*3+2] = r * Math.cos(phi) * 0.7;
+      var c = (p % 4 === 0) ? cA : cL;
+      colors[p*3] = c.r; colors[p*3+1] = c.g; colors[p*3+2] = c.b;
+    }
+    var pGeo = new THREE.BufferGeometry();
+    pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    pGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    var field = new THREE.Points(pGeo, new THREE.PointsMaterial({
+      size: 0.13, transparent: true, opacity: 0.7, vertexColors: true, sizeAttenuation: true }));
+    scene.add(field);
+
+    function resize(){
+      var w = host.clientWidth, h = host.clientHeight;
+      if(!w || !h) return;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h; camera.updateProjectionMatrix();
+    }
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+
+    var tx = 0, ty = 0, cx = 0, cy = 0;
+    window.addEventListener('pointermove', function(e){
+      tx = (e.clientX / window.innerWidth - 0.5) * 2;
+      ty = (e.clientY / window.innerHeight - 0.5) * 2;
+    }, { passive: true });
+
+    if(reduce){ resize(); renderer.render(scene, camera); return; }
+
+    var visible = true;
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(en){ visible = en[0].isIntersecting; }, { threshold: 0 }).observe(host);
+    }
+
+    function tick(){
+      requestAnimationFrame(tick);
+      if(document.hidden || !visible) return;
+      group.rotation.y += 0.0016;
+      group.rotation.x += 0.0008;
+      fan.rotation.y -= 0.16;          // spinning fan
+      field.rotation.y += 0.0004;
+      cx += (tx - cx) * 0.05; cy += (ty - cy) * 0.05;
+      group.rotation.y += cx * 0.0009;
+      camera.position.x = cx * 3.2;
+      camera.position.y = -cy * 2.2;
+      camera.lookAt(0, 0, 0);
+      renderer.render(scene, camera);
+    }
+    tick();
+  }
+
+  if(document.readyState === 'complete') init();
+  else window.addEventListener('load', init);
 })();
 </script>
 </body>
