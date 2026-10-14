@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://justineportfolio.sapphirecarwash.com/sitemap.xml
+Sitemap: https://www.justineseguido.com/sitemap.xml
