@@ -74,7 +74,7 @@
   </url>
   <url>
     <loc>https://www.justineseguido.com/blog/</loc>
-    <lastmod>2026-02-22</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -143,5 +143,11 @@
     <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.justineseguido.com/blog/gohighlevel-whatsapp-dental-clinics.html</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How to connect WhatsApp to GoHighLevel for a dental clinic: Meta verification, message templates, booking confirmations, reminders and reactivating old leads. From a real London clinic build.">
+  <meta name="author" content="Justine Seguido">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0A0A0F">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="How to Set Up WhatsApp Automation for Dental Clinics in GoHighLevel">
+  <meta property="og:description" content="How to connect WhatsApp to GoHighLevel for a dental clinic: Meta verification, message templates, booking confirmations, reminders and reactivating old leads. From a real London clinic build.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.justineseguido.com/blog/gohighlevel-whatsapp-dental-clinics.html">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Justine Seguido — GoHighLevel Developer">
+  <meta property="og:image" content="https://www.justineseguido.com/images/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="canonical" href="https://www.justineseguido.com/blog/gohighlevel-whatsapp-dental-clinics.html">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Set Up WhatsApp Automation for Dental Clinics in GoHighLevel">
+  <meta name="twitter:description" content="How to connect WhatsApp to GoHighLevel for a dental clinic: Meta verification, message templates, booking confirmations, reminders and reactivating old leads. From a real London clinic build.">
+  <meta name="twitter:image" content="https://www.justineseguido.com/images/og-card.png">
+
+  <title>WhatsApp Automation for Dental Clinics in GoHighLevel | Justine Seguido</title>
+
+  <!-- Structured Data: Article -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Set Up WhatsApp Automation for Dental Clinics in GoHighLevel",
+  "description": "How to connect WhatsApp to GoHighLevel for a dental clinic: Meta verification, message templates, booking confirmations, reminders and reactivating old leads. From a real London clinic build.",
+  "author": {
+    "@type": "Person",
+    "name": "Justine Seguido",
+    "url": "https://www.justineseguido.com/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Justine Seguido"
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "url": "https://www.justineseguido.com/blog/gohighlevel-whatsapp-dental-clinics.html",
+  "image": "https://www.justineseguido.com/images/og-card.png",
+  "keywords": [
+    "GoHighLevel WhatsApp",
+    "dental clinic WhatsApp automation",
+    "GHL dental",
+    "Dentally GoHighLevel integration"
+  ],
+  "articleSection": "GoHighLevel Automation",
+  "wordCount": 969
+}
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need a separate phone number for WhatsApp in GoHighLevel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, in most cases. The number you connect to the WhatsApp Business API can't be active in the regular WhatsApp or WhatsApp Business app at the same time. Many clinics use a new number for this, or move their existing number off the app first."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do WhatsApp templates need Meta approval?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Outside of a 24-hour window after a patient messages you, WhatsApp only lets businesses send pre-approved templates. That's how Meta keeps spam off the platform. Reminders, confirmations and campaigns all need an approved template."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I send marketing campaigns to old leads on WhatsApp?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only to people who agreed to hear from you. For UK and EU clinics that means consent you can prove under GDPR. With consent in place, you can run marketing templates to old leads. Dr Ogo Eze Clinics did this with 3,682 consented Meta leads."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can GoHighLevel know when a patient books in my practice software?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If your software has webhooks or an API, yes. For Dentally I built a Make.com scenario that reads each appointment update, works out whether it was booked, completed, cancelled or a no-show, and passes that into GHL to trigger the right WhatsApp message."
+      }
+    }
+  ]
+}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0A0A0F;
+      --bg-warm: #0E0E15;
+      --surface: rgba(255,255,255,0.035);
+      --surface-solid: #14141C;
+      --text: #ECEBF0;
+      --text-mid: #A2A2AF;
+      --text-muted: #6D6D7A;
+      --accent: #EE5D3C;
+      --accent-light: rgba(238,93,60,0.12);
+      --accent-glow: rgba(238,93,60,0.22);
+      --border: rgba(255,255,255,0.09);
+      --border-strong: rgba(255,255,255,0.17);
+      --glass: rgba(16,16,24,0.6);
+      --glass-border: rgba(255,255,255,0.1);
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    ::selection { background: #EE5D3C; color: #0A0A0F; }
+
+    body {
+      font-family: var(--sans);
+      background: radial-gradient(1100px circle at 15% -8%, rgba(238,93,60,0.10), transparent 55%), var(--bg);
+      background-attachment: fixed;
+      color: var(--text);
+      line-height: 1.6;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== NAV ===== */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.5rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: all 0.4s ease;
+    }
+
+    #navbar.scrolled {
+      padding: 1rem 3rem;
+      background: rgba(10,10,15,0.72);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-style: italic;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+
+    .nav-links a {
+      font-size: 0.8rem; font-weight: 500;
+      color: var(--text-mid);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 1.5px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      font-size: 0.8rem !important; font-weight: 500 !important;
+      background: var(--text); color: var(--bg) !important;
+      padding: 0.6rem 1.4rem; border-radius: 100px;
+      transition: background 0.3s, transform 0.2s !important;
+    }
+
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
+
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      background: var(--text); color: var(--bg);
+      padding: 0.6rem 1.2rem; border-radius: 0 0 8px 8px;
+      font-size: 0.85rem; font-weight: 500; z-index: 200;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 0; }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+
+    .hamburger span { width: 24px; height: 2px; background: var(--text); transition: 0.3s; display: block; }
+
+    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .section-label {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-size: 0.7rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.18em;
+      color: var(--text-muted); margin-bottom: 1.5rem;
+    }
+
+    .section-label::before {
+      content: ''; width: 24px; height: 1px; background: var(--accent);
+    }
+
+    /* ===== BLOG HERO ===== */
+    .blog-hero {
+      padding: 9rem 3rem 4rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .blog-breadcrumb {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.75rem; font-weight: 500;
+      color: var(--text-muted); margin-bottom: 2rem;
+    }
+
+    .blog-breadcrumb a { transition: color 0.3s; }
+    .blog-breadcrumb a:hover { color: var(--accent); }
+    .blog-breadcrumb .sep { color: var(--border-strong); }
+
+    .blog-category {
+      display: inline-block;
+      font-size: 0.65rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      padding: 0.35rem 0.75rem; border-radius: 100px;
+      background: var(--accent-light); color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .blog-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      line-height: 1.1; font-weight: 400;
+      margin-bottom: 1.25rem;
+    }
+
+    .blog-hero h1 em { font-style: italic; color: var(--accent); }
+
+    .blog-meta {
+      display: flex; align-items: center; gap: 1.5rem;
+      font-size: 0.78rem; color: var(--text-muted);
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border-strong);
+    }
+
+    .blog-meta span { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+    /* ===== BLOG CONTENT ===== */
+    .blog-content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 3rem;
+    }
+
+    .blog-content h2 {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .blog-content h2 em { font-style: italic; color: var(--accent); }
+
+    .blog-content h3 {
+      font-family: var(--sans);
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .blog-content p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text-mid);
+      margin-bottom: 1.5rem;
+    }
+
+    .blog-content a {
+      color: var(--accent);
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: opacity 0.3s;
+    }
+
+    .blog-content a:hover { opacity: 0.75; }
+
+    .blog-content ul,
+    .blog-content ol {
+      margin: 0 0 1.5rem 1.5rem;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text-mid);
+    }
+
+    .blog-content ul li,
+    .blog-content ol li {
+      margin-bottom: 0.5rem;
+      padding-left: 0.25rem;
+    }
+
+    .blog-content ul li::marker {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .blog-content ol li::marker {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .blog-content blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      background: var(--accent-light);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text-mid);
+    }
+
+    .blog-content blockquote p { margin-bottom: 0; }
+
+    .blog-content strong { color: var(--text); font-weight: 600; }
+
+    .blog-content .step-card {
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .blog-content .step-card h3 {
+      margin-top: 0;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+
+    .blog-content .step-card .step-num {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--accent);
+      opacity: 0.5;
+      line-height: 1;
+    }
+
+    .blog-content .step-card p:last-child { margin-bottom: 0; }
+
+    .blog-content .inline-cta {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--text); color: var(--bg);
+      padding: 0.65rem 1.5rem; border-radius: 100px;
+      font-weight: 500; font-size: 0.85rem;
+      transition: background 0.3s, transform 0.2s;
+      text-decoration: none;
+      margin-top: 0.5rem;
+    }
+
+    .blog-content .inline-cta:hover {
+      background: var(--accent); transform: translateY(-2px);
+      opacity: 1;
+    }
+
+    /* ===== BLOG CTA SECTION ===== */
+    .blog-cta {
+      background: #101018;
+      color: var(--text);
+      padding: 5rem 3rem;
+      margin-top: 4rem;
+      text-align: center;
+    }
+
+    .blog-cta-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .blog-cta .section-label { color: rgba(244,241,235,0.4); }
+    .blog-cta .section-label::before { background: var(--accent); }
+
+    .blog-cta h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 400; line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .blog-cta h2 em { font-style: italic; color: var(--accent); }
+
+    .blog-cta p {
+      font-size: 0.95rem;
+      color: rgba(244,241,235,0.65);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .blog-cta-buttons {
+      display: flex; gap: 1rem;
+      justify-content: center; flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: var(--accent); color: var(--bg);
+      padding: 1rem 2.25rem; border-radius: 100px;
+      font-weight: 500; font-size: 0.95rem;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+      border: none; cursor: pointer; font-family: var(--sans);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 50px rgba(200,75,49,0.3);
+    }
+
+    .cta-btn .arrow { transition: transform 0.3s; }
+    .cta-btn:hover .arrow { transform: translateX(4px); }
+
+    .cta-btn-outline {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: transparent; color: rgba(244,241,235,0.8);
+      padding: 1rem 2.25rem; border-radius: 100px;
+      font-weight: 500; font-size: 0.95rem;
+      border: 1.5px solid rgba(244,241,235,0.25);
+      transition: transform 0.3s, border-color 0.3s, color 0.3s;
+      font-family: var(--sans);
+    }
+
+    .cta-btn-outline:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent); color: var(--accent);
+    }
+
+    .cta-btn-outline .arrow { transition: transform 0.3s; }
+    .cta-btn-outline:hover .arrow { transform: translateX(4px); }
+
+    /* ===== FAQ SECTION ===== */
+    .blog-faq {
+      padding: 5rem 3rem;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .blog-faq h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 400; line-height: 1.15;
+      margin-bottom: 2rem;
+    }
+
+    .blog-faq h2 em { font-style: italic; color: var(--accent); }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border-strong);
+    }
+
+    .faq-question {
+      display: flex; justify-content: space-between; align-items: center;
+      width: 100%; padding: 1.25rem 0;
+      background: none; border: none; cursor: pointer;
+      font-family: var(--sans);
+      font-size: 0.95rem; font-weight: 600;
+      color: var(--text); text-align: left;
+      line-height: 1.5;
+      transition: color 0.3s;
+    }
+
+    .faq-question:hover { color: var(--accent); }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: var(--accent);
+      transition: transform 0.3s;
+      margin-left: 1rem;
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16,1,0.3,1), padding 0.4s;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 400px;
+      padding-bottom: 1.25rem;
+    }
+
+    .faq-answer p {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--text-mid);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      padding: 2.5rem 3rem; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.78rem; color: var(--text-muted); background: var(--bg-warm);
+    }
+
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { transition: color 0.25s; }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ===== REVEAL ===== */
+    .reveal {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      #navbar { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: var(--bg); padding: 1.5rem;
+        border-bottom: 1px solid var(--border); gap: 1rem;
+      }
+      .nav-cta { align-self: flex-start; }
+
+      .blog-hero { padding: 7rem 1.5rem 3rem; }
+      .blog-meta { flex-wrap: wrap; gap: 1rem; }
+      .blog-content { padding: 0 1.5rem; }
+      .blog-cta { padding: 4rem 1.5rem; }
+      .blog-cta-buttons { flex-direction: column; align-items: center; }
+      .blog-faq { padding: 3rem 1.5rem; }
+
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav id="navbar" aria-label="Main navigation">
+    <a href="../index.html" class="nav-logo">Justine.</a>
+    <div class="nav-links" id="navLinks">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#services">Services</a>
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#contact" class="nav-cta">Let's Talk</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <main id="main-content">
+
+  <!-- BLOG HERO -->
+  <section class="blog-hero reveal">
+    <div class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="sep">/</span>
+      <a href="index.html">Blog</a>
+    </div>
+    <span class="blog-category">Dental Clinics</span>
+    <h1>How to Set Up WhatsApp Automation for Dental Clinics in <em>GoHighLevel</em></h1>
+    <div class="blog-meta">
+      <span>Oct 16, 2026</span>
+      <span>&#183;</span>
+      <span>Dental Automation</span>
+      <span>&#183;</span>
+      <span>4 min read</span>
+    </div>
+  </section>
+
+  <!-- BLOG CONTENT -->
+  <article class="blog-content">
+
+    <h2>Your patients already <em>live on WhatsApp</em></h2>
+
+    <p>Text a UK patient a reminder and there's a fair chance they'll skim it. Send the same reminder on WhatsApp and they'll read it, reply to it and sometimes send back a thumbs up.</p>
+
+    <p>That's why more dental clinics want WhatsApp inside GoHighLevel. The catch is that it isn't a switch you flip. There's Meta verification, template approval, and getting your practice software to tell GHL when a patient books, cancels or doesn't show up.</p>
+
+    <p>I built this end to end for <a href="../projects/dr-ogo-eze-clinics.html">Dr Ogo Eze Clinics</a>, a cosmetic dental practice in London, over 90 days. Here's the setup in the order I'd do it again.</p>
+
+    <div class="step-card reveal">
+      <h3><span class="step-num">01</span> Get Meta Business verification done first</h3>
+      <p>This is the slow part, so start it on day one. WhatsApp runs through the Meta Business API, and Meta wants to see that your clinic is a real business before it lets you message patients at scale.</p>
+      <p>You'll need the clinic's legal name, address and website to match across your Meta Business account and your documents. A mismatch between the trading name and the registered company name is the most common reason verification gets rejected.</p>
+      <p>Then decide on the phone number. The number you connect can't also be running in the normal WhatsApp app. Most clinics either get a new number or move their existing one off the app.</p>
+    </div>
+    <div class="step-card reveal">
+      <h3><span class="step-num">02</span> Connect WhatsApp inside GoHighLevel</h3>
+      <p>In the sub-account, go to <strong>Settings &gt; WhatsApp</strong> and follow the connection flow. GHL walks you through linking your Meta Business account and the phone number.</p>
+      <p>Once it's connected, WhatsApp shows up in Conversations next to SMS and email. Your front desk replies to patients from one inbox instead of a phone on the reception desk.</p>
+    </div>
+    <div class="step-card reveal">
+      <h3><span class="step-num">03</span> Write your templates around the patient journey</h3>
+      <p>Here's the part most setups get wrong. They write three generic templates and call it done. Then every patient gets the same reminder whether they're coming in for a check-up or an implant consultation.</p>
+      <p>Map the journey first, then write a template for each step:</p>
+      <ul>
+        <li><strong>Booking confirmation</strong>, sent within minutes of the booking</li>
+        <li><strong>Reminders</strong> at 24 hours and 2 hours before, with prep notes for the treatment</li>
+        <li><strong>Post-visit follow-up</strong> and review request</li>
+        <li><strong>No-show and cancellation</strong> messages with a rebooking link</li>
+        <li><strong>Re-engagement</strong> for enquiries that went quiet</li>
+        <li><strong>Monthly marketing</strong> messages for patients who opted in</li>
+      </ul>
+      <p>For Dr Ogo Eze Clinics in London that came to <strong>48 templates</strong>. That sounds like a lot. But the clinic offers composite bonding, Invisalign, implants, whitening and general dentistry, and each treatment needed its own wording. A whitening patient and an implant patient don't need the same message the night before.</p>
+      <p>Keep templates short and use variables like first name, treatment and appointment time. Meta rejects templates that look like spam or that get the category wrong, so label confirmations and reminders as <strong>utility</strong> and promotions as <strong>marketing</strong>.</p>
+    </div>
+    <div class="step-card reveal">
+      <h3><span class="step-num">04</span> Connect your practice software</h3>
+      <p>WhatsApp reminders are only as good as the appointment data behind them. If your bookings live in practice software and not in a GHL calendar, GHL needs to know when something changes.</p>
+      <p>Dentally was the tricky one on this project. It sends every change as the same <code>appointment.updated</code> event, whether the patient booked, cancelled or didn't turn up. So the Make.com scenario I built checks which field was filled in (<code>completed_at</code>, <code>cancelled_at</code> or <code>did_not_attend_at</code>), pulls the full appointment and patient record, then updates GHL so the right workflow fires.</p>
+      <p>Honestly, this step took longer than the WhatsApp setup itself. If your software has a clean webhook for each event, it'll be much quicker.</p>
+    </div>
+    <div class="step-card reveal">
+      <h3><span class="step-num">05</span> Build the workflows</h3>
+      <p>Now wire it together in <strong>Automation &gt; Workflows</strong>. Each workflow starts from an appointment event or pipeline stage and uses the <strong>Send WhatsApp</strong> action with the matching template.</p>
+      <p>Branch by treatment. On the London build there are 5 treatment branches plus a general fallback, so every patient gets messages that match what they actually booked.</p>
+      <p>Add a stale lead check too. If an enquiry hasn't booked, the team gets an internal alert on day 2 and day 4, and the patient gets a re-engagement message on day 7. That one rule catches a lot of enquiries that would otherwise just disappear.</p>
+    </div>
+    <div class="step-card reveal">
+      <h3><span class="step-num">06</span> Reactivate the leads you already have</h3>
+      <p>Most clinics running Meta ads are sitting on a list of people who enquired and never booked. Dr Ogo Eze Clinics had over 3,600 of them with no follow-up at all.</p>
+      <p>We imported <strong>3,682 consented leads</strong>, tagged them by treatment interest and put them into a schedule of 9 monthly WhatsApp campaigns. A re-enrolment check stops anyone getting the same campaign twice.</p>
+      <p>Consent matters here. In the UK and EU you need proof that each person agreed to marketing messages. If you can't show it, leave them out of the campaigns.</p>
+    </div>
+
+    <h2>What the clinic <em>has now</em></h2>
+
+    <p>Every patient who books gets a WhatsApp confirmation within minutes, treatment-specific reminders at 24 hours and 2 hours, and a follow-up after the visit. Staff send <strong>zero</strong> confirmation messages by hand. Cold enquiries get caught by the stale lead rule before they're gone for good.</p>
+
+    <blockquote>
+      <p>"The system Justine built means our patients are always informed before they arrive, and no enquiry gets missed." &#8212; Dr Ogo Eze, Director, Dr Ogo Eze Clinics, London</p>
+    </blockquote>
+
+    <p>This won't be the right size for every practice. A single-dentist clinic might need 10 templates, not 48. But the order is the same: verification, templates, data connection, workflows, then campaigns.</p>
+
+    <h2>Want this for <em>your clinic?</em></h2>
+
+    <p>I set up GoHighLevel and WhatsApp for dental and cosmetic dental clinics, including the practice software connection. See what's included on the <a href="../services/gohighlevel-dental-clinics.html">GoHighLevel for dental clinics</a> page, or book a free audit call and I'll look at your current setup.</p>
+
+    <a href="../index.html#contact" class="inline-cta">Book a Free GHL Audit <span class="arrow">&#8594;</span></a>
+
+  </article>
+
+  <!-- CTA SECTION -->
+  <section class="blog-cta">
+    <div class="blog-cta-inner reveal">
+      <div class="section-label">Work With Me</div>
+      <h2>Let's put your clinic on <em>WhatsApp.</em></h2>
+      <p>Confirmations, reminders, follow-ups and campaigns, connected to your practice software and running in GoHighLevel.</p>
+      <div class="blog-cta-buttons">
+        <a href="../index.html#contact" class="cta-btn">Start a Project <span class="arrow">&#8594;</span></a>
+        <a href="../projects/dr-ogo-eze-clinics.html" class="cta-btn-outline">Read the Case Study <span class="arrow">&#8594;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="blog-faq">
+    <h2 class="reveal">Frequently Asked <em>Questions</em></h2>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        Do I need a separate phone number for WhatsApp in GoHighLevel?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Yes, in most cases. The number you connect to the WhatsApp Business API can't be active in the regular WhatsApp or WhatsApp Business app at the same time. Many clinics use a new number for this, or move their existing number off the app first.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal reveal-d1">
+      <button class="faq-question" aria-expanded="false">
+        Why do WhatsApp templates need Meta approval?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Outside of a 24-hour window after a patient messages you, WhatsApp only lets businesses send pre-approved templates. That's how Meta keeps spam off the platform. Reminders, confirmations and campaigns all need an approved template.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal reveal-d2">
+      <button class="faq-question" aria-expanded="false">
+        Can I send marketing campaigns to old leads on WhatsApp?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Only to people who agreed to hear from you. For UK and EU clinics that means consent you can prove under GDPR. With consent in place, you can run marketing templates to old leads. Dr Ogo Eze Clinics did this with 3,682 consented Meta leads.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal reveal-d2">
+      <button class="faq-question" aria-expanded="false">
+        Can GoHighLevel know when a patient books in my practice software?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>If your software has webhooks or an API, yes. For Dentally I built a Make.com scenario that reads each appointment update, works out whether it was booked, completed, cancelled or a no-show, and passes that into GHL to trigger the right WhatsApp message.</p>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <footer>
+    <div>
+      <span>&#169; 2026 Justine Seguido. All rights reserved.</span>
+      <p style="font-size:0.68rem;color:var(--text-muted);margin-top:0.35rem;">GoHighLevel Certified Admin &#183; GoHighLevel Developer &#183; Real Estate &amp; MedSpa Specialist</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/justine-seguido-1ba3b4132" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:jbseguido@gmail.com">Email</a>
+    </div>
+  </footer>
+
+  <script>
+    /* Nav scroll effect */
+    var nav = document.getElementById('navbar');
+    window.addEventListener('scroll', function() {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    /* Hamburger menu */
+    var hamburger = document.getElementById('hamburger');
+    var navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', function() {
+      var isOpen = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('active', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+    var anchors = navLinks.querySelectorAll('a');
+    for (var i = 0; i < anchors.length; i++) {
+      anchors[i].addEventListener('click', function() {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    /* Reveal on scroll */
+    var revealEls = document.querySelectorAll('.reveal');
+    var obs = new IntersectionObserver(function(entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].isIntersecting) entries[i].target.classList.add('visible');
+      }
+    }, { threshold: 0.08 });
+    for (var i = 0; i < revealEls.length; i++) obs.observe(revealEls[i]);
+
+    /* FAQ Accordion */
+    var faqItems = document.querySelectorAll('.faq-item');
+    for (var i = 0; i < faqItems.length; i++) {
+      (function(item) {
+        var btn = item.querySelector('.faq-question');
+        btn.addEventListener('click', function() {
+          var isOpen = item.classList.contains('open');
+          /* Close all other items */
+          for (var j = 0; j < faqItems.length; j++) {
+            faqItems[j].classList.remove('open');
+            faqItems[j].querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          }
+          /* Toggle clicked item */
+          if (!isOpen) {
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+          }
+        });
+      })(faqItems[i]);
+    }
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K22T0XCQ2K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-K22T0XCQ2K');
+  </script>
+
+</body>
+</html>
