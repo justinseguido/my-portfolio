@@ -435,6 +435,9 @@
     .channels a { display: flex; align-items: center; justify-content: center; min-height: 50px; border-radius: 12px; border: 1.5px solid rgba(10,10,15,0.32); font-size: 14px; font-weight: 600; transition: background .2s, color .2s; }
     .channels a:hover { background: #0A0A0F; color: var(--text); }
     .cta small { font-size: 14px; color: var(--accent-ink); }
+    .cta-book { grid-column: 1 / -1; scroll-margin-top: 96px; }
+    .cta-book iframe { display: block; width: 100%; min-height: 700px; border: 0; border-radius: 18px; background: #fff; overflow: hidden; }
+    .cta-book a { display: inline-block; margin-top: 12px; font-size: 14px; color: var(--accent-ink); text-decoration: underline; }
     .cta-net { position: absolute; right: -60px; top: -120px; width: 440px; opacity: .16; pointer-events: none; }
 
     /* FOOTER */
@@ -891,7 +894,7 @@
         <p>Free 30-minute call. I&rsquo;ll review your current setup, show you where leads are leaking, and give you a plan &mdash; whether or not we work together.</p>
       </div>
       <div class="cta-actions reveal d1">
-        <a href="https://api.leadconnectorhq.com/widget/booking/2S9cZU7fnHCbR7jHdWbt" class="cta-main" target="_blank" rel="noopener noreferrer" data-track="contact_book_call">Book your free call<i aria-hidden="true">&#8594;</i><span class="sr-only"> (opens in new tab)</span></a>
+        <a href="#book" class="cta-main" data-track="contact_book_call">Book your free call<i aria-hidden="true">&#8595;</i></a>
         <div class="channels">
           <a href="mailto:jbseguido@gmail.com" data-track="contact_email">Email</a>
           <a href="https://www.linkedin.com/in/justine-seguido-1ba3b4132" target="_blank" rel="me noopener noreferrer" data-track="contact_linkedin">LinkedIn<span class="sr-only"> (opens in new tab)</span></a>
@@ -899,6 +902,10 @@
           <a href="https://www.fiverr.com/s/ZmrLzDj" target="_blank" rel="me noopener noreferrer" data-track="contact_fiverr">Fiverr<span class="sr-only"> (opens in new tab)</span></a>
         </div>
         <small>Replies within 24 hours, Monday&ndash;Saturday &middot; Based in the Philippines, working worldwide.</small>
+      </div>
+      <div class="cta-book reveal" id="book">
+        <iframe src="https://api.leadconnectorhq.com/widget/booking/2S9cZU7fnHCbR7jHdWbt" id="2S9cZU7fnHCbR7jHdWbt_booking" title="Book a free GHL discovery call" scrolling="no"></iframe>
+        <a href="https://api.leadconnectorhq.com/widget/booking/2S9cZU7fnHCbR7jHdWbt" target="_blank" rel="noopener noreferrer" data-track="contact_book_newtab">Calendar not loading? Open it in a new tab<span class="sr-only"> (opens in new tab)</span></a>
       </div>
     </div>
   </section>
@@ -917,7 +924,7 @@
   </footer>
 
   <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie notice">
-    <span>This site uses Google Analytics, Google Fonts and GoHighLevel, which may set cookies. <a href="privacy-policy.html">Privacy Policy</a></span>
+    <span>This site uses Google Analytics, Google Fonts, GoHighLevel and Apollo.io, which may set cookies. <a href="privacy-policy.html">Privacy Policy</a></span>
     <button id="cookieAccept" type="button">Got it</button>
   </div>
 
