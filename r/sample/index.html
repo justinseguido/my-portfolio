@@ -125,5 +125,30 @@ footer a{color:var(--accent)}
     <a href="https://justineseguido.com" target="_blank" rel="noopener">justineseguido.com</a> · <a href="https://directory.gohighlevel.com/philippines/san-miguel/certified-admins/justine-seguido" target="_blank" rel="noopener">HighLevel Directory profile</a>
   </footer>
 </main>
+<script>
+(function () {
+  var host = "justineseguido.com";
+  if (!host || (location.hostname !== host && location.hostname !== 'www.' + host)) return;
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-K22T0XCQ2K';
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  var internal = false;
+  try { internal = localStorage.getItem('ga_internal') === '1'; } catch (e) {}
+  gtag('config', 'G-K22T0XCQ2K', internal ? { traffic_type: 'internal' } : {});
+  var info = { report_id: "sample", practice: "Example Dental Studio" };
+  gtag('event', 'report_view', info);
+  var read = false;
+  addEventListener('scroll', function () {
+    if (!read && innerHeight + scrollY >= document.body.scrollHeight - 200) { read = true; gtag('event', 'report_read', info); }
+  }, { passive: true });
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('.btn')) gtag('event', 'report_book_click', info);
+  });
+})();
+</script>
 </body>
 </html>
