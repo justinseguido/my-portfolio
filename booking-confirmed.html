@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Your discovery call with Justine Seguido is booked.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0A0A0F">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <title>Call Booked &#8212; Justine Seguido</title>
+  <style>
+    :root { --bg: #0A0A0F; --text: #ECEBF0; --text-mid: #A2A2AF; --accent: #EE5D3C; --serif: 'DM Serif Display', serif; --sans: 'Inter', sans-serif; --radius: 16px; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    ::selection { background: var(--accent); color: #0A0A0F; }
+    body {
+      font-family: var(--sans); color: var(--text); line-height: 1.8;
+      background:
+        radial-gradient(1000px circle at 15% -10%, rgba(238,93,60,0.10), transparent 55%),
+        var(--bg);
+      background-attachment: fixed; min-height: 100vh;
+    }
+    .container { max-width: 780px; margin: 0 auto; padding: 5rem 2rem 4rem; }
+    .check { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; background: var(--accent); color: #0A0A0F; font-size: 28px; font-weight: 600; margin-bottom: 1.5rem; }
+    h1 { font-family: var(--serif); font-size: clamp(2.2rem, 6vw, 3.2rem); font-weight: 400; line-height: 1.1; margin-bottom: 1rem; }
+    h1 em { color: var(--accent); }
+    h2 { font-family: var(--serif); font-size: 1.4rem; font-weight: 400; margin: 2.5rem 0 0.75rem; }
+    p, li { font-size: 0.95rem; color: var(--text-mid); margin-bottom: 1rem; }
+    ol { padding-left: 1.5rem; }
+    li strong { color: var(--text); font-weight: 500; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 2.5rem; }
+    .btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 12px; border: 1px solid rgba(236,235,240,0.18); color: var(--text); font-weight: 500; font-size: 0.95rem; }
+    .btn:hover { text-decoration: none; border-color: var(--accent); }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: #0A0A0F; }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Apollo website visitor tracking -->
+  <script>function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,o.onload=function(){window.trackingFunctions.onLoad({appId:"6ac5e3830b6e0800107c3c8a"})},document.head.appendChild(o)}initApollo();</script>
+</head>
+<body>
+  <main class="container">
+    <div class="check" aria-hidden="true">&#10003;</div>
+    <h1>Your call is <em>booked.</em></h1>
+    <p>Thanks for booking a free discovery call. A calendar invite and confirmation are on their way to your email.</p>
+
+    <h2>Before the call</h2>
+    <ol>
+      <li><strong>Check your inbox</strong> for the invite and add it to your calendar.</li>
+      <li><strong>Jot down what you want fixed or built</strong> in GoHighLevel, plus anything that&rsquo;s already broken.</li>
+      <li><strong>Have access to your GHL account handy</strong> if you&rsquo;d like me to look at your current setup live.</li>
+    </ol>
+
+    <p>Need to reschedule or add details? Reply to the confirmation email or write to <a href="mailto:jbseguido@gmail.com">jbseguido@gmail.com</a>.</p>
+
+    <div class="actions">
+      <a href="index.html#work" class="btn primary">See recent work</a>
+      <a href="blog/index.html" class="btn">Read the blog</a>
+    </div>
+  </main>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K22T0XCQ2K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    // Visit any page with ?internal=1 to mark this browser as internal (?internal=0 undoes it)
+    var gaInternal = false;
+    try { var m = location.search.match(/[?&]internal=([01])/); if (m) localStorage.setItem('ga_internal', m[1]); gaInternal = localStorage.getItem('ga_internal') === '1'; } catch (e) {}
+    // GHL can append contact details to the redirect URL; keep them out of GA and the address bar
+    var cleanUrl = location.origin + location.pathname;
+    try { history.replaceState(null, '', cleanUrl); } catch (e) {}
+    var gaConfig = { page_location: cleanUrl };
+    if (gaInternal) gaConfig.traffic_type = 'internal';
+    gtag('config', 'G-K22T0XCQ2K', gaConfig);
+
+    // Key event in GA4: count each booking once, even if the page is reloaded
+    var alreadyTracked = false;
+    try { alreadyTracked = sessionStorage.getItem('booking_tracked') === '1'; sessionStorage.setItem('booking_tracked', '1'); } catch (e) {}
+    if (!alreadyTracked) gtag('event', 'booking_completed', { booking_type: 'ghl_discovery_call' });
+  </script>
+
+</body>
+</html>
