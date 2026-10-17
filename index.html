@@ -1073,7 +1073,10 @@
         function gtag(){dataLayer.push(arguments);}
         window.gtag = gtag;
         gtag('js', new Date());
-        gtag('config', 'G-K22T0XCQ2K');
+        // Visit any page with ?internal=1 to mark this browser as internal (?internal=0 undoes it)
+        var gaInternal = false;
+        try { var m = location.search.match(/[?&]internal=([01])/); if (m) localStorage.setItem('ga_internal', m[1]); gaInternal = localStorage.getItem('ga_internal') === '1'; } catch (e) {}
+        gtag('config', 'G-K22T0XCQ2K', gaInternal ? { traffic_type: 'internal' } : {});
 
         document.addEventListener('click', function(e) {
           var el = e.target.closest('[data-track]');
