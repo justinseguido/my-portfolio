@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /r/
 
 Sitemap: https://www.justineseguido.com/sitemap.xml
