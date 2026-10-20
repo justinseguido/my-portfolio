@@ -1087,10 +1087,7 @@
               link_url: el.href || '',
               link_text: el.textContent.trim().substring(0, 50)
             });
-            // Key event in GA4: clicks on the booking calendar link
-            if (el.getAttribute('data-track') === 'contact_book_call') {
-              gtag('event', 'book_call_click', { link_url: el.href || '' });
-            }
+            // book_call_click and contact_click are sent by js/track.js
           }
         });
 
@@ -1136,5 +1133,6 @@
       }, 3000);
     });
   </script>
+  <script src="/js/track.js" defer></script>
 </body>
 </html>
