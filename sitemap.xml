@@ -61,18 +61,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.justineseguido.com/privacy-policy.html</loc>
-    <lastmod>2026-02-22</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://www.justineseguido.com/terms.html</loc>
-    <lastmod>2026-02-22</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
     <loc>https://www.justineseguido.com/blog/</loc>
     <lastmod>2026-10-16</lastmod>
     <changefreq>weekly</changefreq>
