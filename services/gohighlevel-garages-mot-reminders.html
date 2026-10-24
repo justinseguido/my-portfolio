@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Automatic MOT and service reminder texts for UK garages, built in GoHighLevel from the customer data you already have. Plus missed call text back and reviews.">
+  <meta name="author" content="Justine Seguido">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0A0A0F">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="MOT and Service Reminders for UK Garages, built in GoHighLevel">
+  <meta property="og:description" content="Automatic MOT and service reminder texts for UK garages, built in GoHighLevel from the customer data you already have. Plus missed call text back and reviews.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.justineseguido.com/services/gohighlevel-garages-mot-reminders.html">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:site_name" content="Justine Seguido, GoHighLevel Developer">
+  <meta property="og:image" content="https://www.justineseguido.com/images/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="canonical" href="https://www.justineseguido.com/services/gohighlevel-garages-mot-reminders.html">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MOT and Service Reminders for UK Garages, built in GoHighLevel">
+  <meta name="twitter:description" content="Automatic MOT and service reminder texts for UK garages, built in GoHighLevel from the customer data you already have. Plus missed call text back and reviews.">
+  <meta name="twitter:image" content="https://www.justineseguido.com/images/og-card.png">
+
+  <title>MOT Reminders and GoHighLevel for Garages | Justine Seguido</title>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "MOT and Service Reminders for Garages",
+  "serviceType": "GoHighLevel automation for garages and MOT centres",
+  "description": "Automatic MOT and service reminder texts for UK garages, built in GoHighLevel from the customer data you already have. Plus missed call text back and reviews.",
+  "url": "https://www.justineseguido.com/services/gohighlevel-garages-mot-reminders.html",
+  "areaServed": [
+    {
+      "@type": "Country",
+      "name": "United Kingdom"
+    }
+  ],
+  "provider": {
+    "@type": "Person",
+    "@id": "https://www.justineseguido.com/#justine",
+    "name": "Justine Seguido",
+    "jobTitle": "GoHighLevel Developer and HighLevel Certified Admin",
+    "url": "https://www.justineseguido.com/"
+  }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does it work with my garage management software?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If your software can export customers and vehicles to a spreadsheet or CSV, yes. I sync that export into GoHighLevel through Make.com. If your software has an API, the sync can run without any manual export."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if a customer has more than one car?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Each vehicle is its own record linked to the owner, so each car gets its own reminder with the right registration and due date."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can customers stop the texts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Every text includes an opt-out, and anyone who opts out is never texted again."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does setup take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A typical single site build takes about 10 to 14 days, including data cleanup and testing. Messy or very large data sets can take longer, and I tell you up front after checking a sample."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I have to be on GoHighLevel already?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. I can set up a new GoHighLevel account for you, or build inside the account your agency already manages."
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.justineseguido.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "MOT and Service Reminders for Garages",
+      "item": "https://www.justineseguido.com/services/gohighlevel-garages-mot-reminders.html"
+    }
+  ]
+}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0A0A0F;
+      --bg-warm: #0E0E15;
+      --surface: rgba(255,255,255,0.035);
+      --surface-solid: #14141C;
+      --text: #ECEBF0;
+      --text-mid: #A2A2AF;
+      --text-muted: #6D6D7A;
+      --accent: #EE5D3C;
+      --accent-light: rgba(238,93,60,0.12);
+      --accent-glow: rgba(238,93,60,0.22);
+      --border: rgba(255,255,255,0.09);
+      --border-strong: rgba(255,255,255,0.17);
+      --glass: rgba(16,16,24,0.6);
+      --glass-border: rgba(255,255,255,0.1);
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    ::selection { background: #EE5D3C; color: #0A0A0F; }
+
+    body {
+      font-family: var(--sans);
+      background: radial-gradient(1100px circle at 15% -8%, rgba(238,93,60,0.10), transparent 55%), var(--bg);
+      background-attachment: fixed;
+      color: var(--text);
+      line-height: 1.6;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== NAV ===== */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.5rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: all 0.4s ease;
+    }
+
+    #navbar.scrolled {
+      padding: 1rem 3rem;
+      background: rgba(10,10,15,0.72);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-style: italic;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+
+    .nav-links a {
+      font-size: 0.8rem; font-weight: 500;
+      color: var(--text-mid);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 1.5px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      font-size: 0.8rem !important; font-weight: 500 !important;
+      background: var(--text); color: var(--bg) !important;
+      padding: 0.6rem 1.4rem; border-radius: 100px;
+      transition: background 0.3s, transform 0.2s !important;
+    }
+
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
+
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      background: var(--text); color: var(--bg);
+      padding: 0.6rem 1.2rem; border-radius: 0 0 8px 8px;
+      font-size: 0.85rem; font-weight: 500; z-index: 200;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 0; }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+
+    .hamburger span { width: 24px; height: 2px; background: var(--text); transition: 0.3s; display: block; }
+
+    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .section-label {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-size: 0.7rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.18em;
+      color: var(--text-muted); margin-bottom: 1.5rem;
+    }
+
+    .section-label::before {
+      content: ''; width: 24px; height: 1px; background: var(--accent);
+    }
+
+    /* ===== BLOG HERO ===== */
+    .blog-hero {
+      padding: 9rem 3rem 4rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .blog-breadcrumb {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.75rem; font-weight: 500;
+      color: var(--text-muted); margin-bottom: 2rem;
+    }
+
+    .blog-breadcrumb a { transition: color 0.3s; }
+    .blog-breadcrumb a:hover { color: var(--accent); }
+    .blog-breadcrumb .sep { color: var(--border-strong); }
+
+    .blog-category {
+      display: inline-block;
+      font-size: 0.65rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      padding: 0.35rem 0.75rem; border-radius: 100px;
+      background: var(--accent-light); color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .blog-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      line-height: 1.1; font-weight: 400;
+      margin-bottom: 1.25rem;
+    }
+
+    .blog-hero h1 em { font-style: italic; color: var(--accent); }
+
+    .blog-meta {
+      display: flex; align-items: center; gap: 1.5rem;
+      font-size: 0.78rem; color: var(--text-muted);
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border-strong);
+    }
+
+    .blog-meta span { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+    /* ===== BLOG CONTENT ===== */
+    .blog-content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 3rem;
+    }
+
+    .blog-content h2 {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .blog-content h2 em { font-style: italic; color: var(--accent); }
+
+    .blog-content h3 {
+      font-family: var(--sans);
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .blog-content p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text-mid);
+      margin-bottom: 1.5rem;
+    }
+
+    .blog-content a {
+      color: var(--accent);
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: opacity 0.3s;
+    }
+
+    .blog-content a:hover { opacity: 0.75; }
+
+    .blog-content ul,
+    .blog-content ol {
+      margin: 0 0 1.5rem 1.5rem;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text-mid);
+    }
+
+    .blog-content ul li,
+    .blog-content ol li {
+      margin-bottom: 0.5rem;
+      padding-left: 0.25rem;
+    }
+
+    .blog-content ul li::marker {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .blog-content ol li::marker {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .blog-content blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      background: var(--accent-light);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text-mid);
+    }
+
+    .blog-content blockquote p { margin-bottom: 0; }
+
+    .blog-content strong { color: var(--text); font-weight: 600; }
+
+    .blog-content .step-card {
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .blog-content .step-card h3 {
+      margin-top: 0;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+
+    .blog-content .step-card .step-num {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--accent);
+      opacity: 0.5;
+      line-height: 1;
+    }
+
+    .blog-content .step-card p:last-child { margin-bottom: 0; }
+
+    .blog-content .inline-cta {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--text); color: var(--bg);
+      padding: 0.65rem 1.5rem; border-radius: 100px;
+      font-weight: 500; font-size: 0.85rem;
+      transition: background 0.3s, transform 0.2s;
+      text-decoration: none;
+      margin-top: 0.5rem;
+    }
+
+    .blog-content .inline-cta:hover {
+      background: var(--accent); transform: translateY(-2px);
+      opacity: 1;
+    }
+
+    /* ===== BLOG CTA SECTION ===== */
+    .blog-cta {
+      background: #101018;
+      color: var(--text);
+      padding: 5rem 3rem;
+      margin-top: 4rem;
+      text-align: center;
+    }
+
+    .blog-cta-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .blog-cta .section-label { color: rgba(244,241,235,0.4); }
+    .blog-cta .section-label::before { background: var(--accent); }
+
+    .blog-cta h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 400; line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .blog-cta h2 em { font-style: italic; color: var(--accent); }
+
+    .blog-cta p {
+      font-size: 0.95rem;
+      color: rgba(244,241,235,0.65);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .blog-cta-buttons {
+      display: flex; gap: 1rem;
+      justify-content: center; flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: var(--accent); color: var(--bg);
+      padding: 1rem 2.25rem; border-radius: 100px;
+      font-weight: 500; font-size: 0.95rem;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+      border: none; cursor: pointer; font-family: var(--sans);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 50px rgba(200,75,49,0.3);
+    }
+
+    .cta-btn .arrow { transition: transform 0.3s; }
+    .cta-btn:hover .arrow { transform: translateX(4px); }
+
+    .cta-btn-outline {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: transparent; color: rgba(244,241,235,0.8);
+      padding: 1rem 2.25rem; border-radius: 100px;
+      font-weight: 500; font-size: 0.95rem;
+      border: 1.5px solid rgba(244,241,235,0.25);
+      transition: transform 0.3s, border-color 0.3s, color 0.3s;
+      font-family: var(--sans);
+    }
+
+    .cta-btn-outline:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent); color: var(--accent);
+    }
+
+    .cta-btn-outline .arrow { transition: transform 0.3s; }
+    .cta-btn-outline:hover .arrow { transform: translateX(4px); }
+
+    /* ===== FAQ SECTION ===== */
+    .blog-faq {
+      padding: 5rem 3rem;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .blog-faq h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 400; line-height: 1.15;
+      margin-bottom: 2rem;
+    }
+
+    .blog-faq h2 em { font-style: italic; color: var(--accent); }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border-strong);
+    }
+
+    .faq-question {
+      display: flex; justify-content: space-between; align-items: center;
+      width: 100%; padding: 1.25rem 0;
+      background: none; border: none; cursor: pointer;
+      font-family: var(--sans);
+      font-size: 0.95rem; font-weight: 600;
+      color: var(--text); text-align: left;
+      line-height: 1.5;
+      transition: color 0.3s;
+    }
+
+    .faq-question:hover { color: var(--accent); }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: var(--accent);
+      transition: transform 0.3s;
+      margin-left: 1rem;
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16,1,0.3,1), padding 0.4s;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 400px;
+      padding-bottom: 1.25rem;
+    }
+
+    .faq-answer p {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--text-mid);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      padding: 2.5rem 3rem; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.78rem; color: var(--text-muted); background: var(--bg-warm);
+    }
+
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { transition: color 0.25s; }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ===== REVEAL ===== */
+    .reveal {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      #navbar { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: var(--bg); padding: 1.5rem;
+        border-bottom: 1px solid var(--border); gap: 1rem;
+      }
+      .nav-cta { align-self: flex-start; }
+
+      .blog-hero { padding: 7rem 1.5rem 3rem; }
+      .blog-meta { flex-wrap: wrap; gap: 1rem; }
+      .blog-content { padding: 0 1.5rem; }
+      .blog-cta { padding: 4rem 1.5rem; }
+      .blog-cta-buttons { flex-direction: column; align-items: center; }
+      .blog-faq { padding: 3rem 1.5rem; }
+
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+    }
+  </style>
+  <!-- Apollo website visitor tracking -->
+  <script>function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,o.onload=function(){window.trackingFunctions.onLoad({appId:"6ac5e3830b6e0800107c3c8a"})},document.head.appendChild(o)}initApollo();</script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav id="navbar" aria-label="Main navigation">
+    <a href="../index.html" class="nav-logo">Justine.</a>
+    <div class="nav-links" id="navLinks">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#services">Services</a>
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#contact" class="nav-cta">Let's Talk</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <main id="main-content">
+
+  <!-- SERVICE HERO -->
+  <section class="blog-hero reveal">
+    <div class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="sep">/</span>
+      <a href="../index.html#services">Services</a>
+      <span class="sep">/</span>
+      <span>Garages &amp; MOT Centres</span>
+    </div>
+    <span class="blog-category">Garages &amp; MOT Centres</span>
+    <h1>MOT and service reminders for <em>UK garages</em></h1>
+    <div class="blog-meta">
+      <span>HighLevel Certified Admin</span>
+      <span>&#183;</span>
+      <span>Built from your existing customer data</span>
+    </div>
+  </section>
+
+  <!-- SERVICE CONTENT -->
+  <article class="blog-content">
+
+    <p><strong>Short answer:</strong> I build MOT and service reminder systems in GoHighLevel for independent garages and MOT centres. Every customer gets a text 30, 14 and 7 days before their MOT is due, with a link to book, using the customer and vehicle data you already have. Nobody at the garage has to remember to send anything.</p>
+
+    <p>Most garages already hold years of MOT dates. The problem is that nothing uses them. When a customer forgets, they book with whichever garage reminds them first. A reminder system turns this year&rsquo;s MOT into next year&rsquo;s booking.</p>
+
+    <h2>What I build for <em>garages</em></h2>
+
+    <ul>
+      <li><strong>MOT reminders</strong> by text at 30, 14 and 7 days before the due date, each with a link to book.</li>
+      <li><strong>Service reminders</strong> from each vehicle&rsquo;s service due date, with one combined message when the MOT and service fall close together, so customers never get two overlapping texts.</li>
+      <li><strong>Automatic data sync</strong> from your garage software export or spreadsheet into GoHighLevel through Make.com, so new MOT dates flow in without anyone retyping them.</li>
+      <li><strong>One vehicle, one record</strong>, linked to its owner, so a two car household gets the right reminder for each car.</li>
+      <li><strong>Missed call text back</strong>: when the phone isn&rsquo;t answered during a busy shift, the caller gets a text within seconds with a booking link.</li>
+      <li><strong>Online booking</strong> into a calendar that matches your bays and opening hours.</li>
+      <li><strong>Review requests</strong> after the job, to grow your Google reviews.</li>
+      <li><strong>Advisory follow up</strong> (optional): a text a few weeks after the MOT for work that was advised but not booked.</li>
+    </ul>
+
+    <h2>How the <em>build works</em></h2>
+
+    <div class="step-card">
+      <h3><span class="step-num">01</span> Data audit</h3>
+      <p>I check your customer and vehicle export first: duplicates, missing phone numbers, date formats and vehicles with more than one owner. Clean data is what makes every reminder name the right car.</p>
+    </div>
+    <div class="step-card">
+      <h3><span class="step-num">02</span> Sync</h3>
+      <p>A Make.com scenario reads your export, matches each vehicle (by VIN where registrations repeat), then updates or creates it in GoHighLevel and marks it as synced so nothing is processed twice.</p>
+    </div>
+    <div class="step-card">
+      <h3><span class="step-num">03</span> Controller workflow</h3>
+      <p>One workflow reads each vehicle&rsquo;s dates and routes it to the MOT, service or combined reminder.</p>
+    </div>
+    <div class="step-card">
+      <h3><span class="step-num">04</span> Reminders, opt-outs and testing</h3>
+      <p>Texts go out at 30, 14 and 7 days with a booking link and an opt-out on every message. Everything is tested on internal numbers before a single customer is texted.</p>
+    </div>
+
+    <h2>Proof: <em>a UK garage group, two sites</em></h2>
+
+    <p>Delivered as a white label build for a UK agency partner:</p>
+
+    <ul>
+      <li>8,778 vehicle records checked and cleaned.</li>
+      <li>2,386 customers enrolled.</li>
+      <li>2,600+ reminders scheduled.</li>
+      <li>3 reminders per MOT, plus service and combined reminders. <a href="../projects/mot-service-reminders.html">Read the full case study</a>.</li>
+    </ul>
+
+    <h2>What you need to <em>get started</em></h2>
+
+    <ul>
+      <li>An export of customers and vehicles with registration, MOT due date, service due date and mobile number. A spreadsheet is fine.</li>
+      <li>A UK texting number in GoHighLevel. UK numbers need a regulatory bundle with your business details, and I walk you through it.</li>
+      <li>Your booking link or the hours you want customers to book into.</li>
+      <li>Agreement on message wording. I write the first draft and you approve it before anything sends.</li>
+    </ul>
+
+    <h2>Pricing</h2>
+
+    <p>Builds are priced once, with no retainer required. How much depends on how many sites you run and how your data arrives, so I give you a fixed price after a 30 minute call. See the <a href="../index.html#pricing">current packages</a>, or book a free audit call.</p>
+
+    <a href="../index.html#contact" class="inline-cta">Book a Free Call <span class="arrow">&#8594;</span></a>
+
+  </article>
+
+  <!-- CTA SECTION -->
+  <section class="blog-cta">
+    <div class="blog-cta-inner reveal">
+      <div class="section-label">Work With Me</div>
+      <h2>Bring customers back <em>before their MOT is due.</em></h2>
+      <p>Send me a sample of your customer export and tell me how many sites you run. I&rsquo;ll reply with a plan and a fixed price.</p>
+      <div class="blog-cta-buttons">
+        <a href="../index.html#contact" class="cta-btn">Start a Project <span class="arrow">&#8594;</span></a>
+        <a href="../index.html#work" class="cta-btn-outline">See All Work <span class="arrow">&#8594;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="blog-faq">
+    <h2 class="reveal">Frequently Asked <em>Questions</em></h2>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        Does it work with my garage management software?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>If your software can export customers and vehicles to a spreadsheet or CSV, yes. I sync that export into GoHighLevel through Make.com. If your software has an API, the sync can run without any manual export.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal reveal-d1">
+      <button class="faq-question" aria-expanded="false">
+        What if a customer has more than one car?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Each vehicle is its own record linked to the owner, so each car gets its own reminder with the right registration and due date.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal reveal-d2">
+      <button class="faq-question" aria-expanded="false">
+        Can customers stop the texts?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Yes. Every text includes an opt-out, and anyone who opts out is never texted again.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        How long does setup take?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>A typical single site build takes about 10 to 14 days, including data cleanup and testing. Messy or very large data sets can take longer, and I tell you up front after checking a sample.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal reveal-d1">
+      <button class="faq-question" aria-expanded="false">
+        Do I have to be on GoHighLevel already?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>No. I can set up a new GoHighLevel account for you, or build inside the account your agency already manages.</p>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <footer>
+    <div>
+      <span>&#169; 2026 Justine Seguido. All rights reserved.</span>
+      <p style="font-size:0.68rem;color:var(--text-muted);margin-top:0.35rem;">HighLevel Certified Admin &#183; GoHighLevel Developer &#183; Dental, MedSpa &amp; Automotive Specialist</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/justine-seguido-1ba3b4132" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:jbseguido@gmail.com">Email</a>
+    </div>
+  </footer>
+
+  <script>
+    /* Nav scroll effect */
+    var nav = document.getElementById('navbar');
+    window.addEventListener('scroll', function() {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    /* Hamburger menu */
+    var hamburger = document.getElementById('hamburger');
+    var navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', function() {
+      var isOpen = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('active', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+    var anchors = navLinks.querySelectorAll('a');
+    for (var i = 0; i < anchors.length; i++) {
+      anchors[i].addEventListener('click', function() {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    /* Reveal on scroll */
+    var revealEls = document.querySelectorAll('.reveal');
+    var obs = new IntersectionObserver(function(entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].isIntersecting) entries[i].target.classList.add('visible');
+      }
+    }, { threshold: 0.08 });
+    for (var i = 0; i < revealEls.length; i++) obs.observe(revealEls[i]);
+
+    /* FAQ Accordion */
+    var faqItems = document.querySelectorAll('.faq-item');
+    for (var i = 0; i < faqItems.length; i++) {
+      (function(item) {
+        var btn = item.querySelector('.faq-question');
+        btn.addEventListener('click', function() {
+          var isOpen = item.classList.contains('open');
+          /* Close all other items */
+          for (var j = 0; j < faqItems.length; j++) {
+            faqItems[j].classList.remove('open');
+            faqItems[j].querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          }
+          /* Toggle clicked item */
+          if (!isOpen) {
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+          }
+        });
+      })(faqItems[i]);
+    }
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K22T0XCQ2K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    // Visit any page with ?internal=1 to mark this browser as internal (?internal=0 undoes it)
+        var gaInternal = false;
+        try { var m = location.search.match(/[?&]internal=([01])/); if (m) localStorage.setItem('ga_internal', m[1]); gaInternal = localStorage.getItem('ga_internal') === '1'; } catch (e) {}
+        gtag('config', 'G-K22T0XCQ2K', gaInternal ? { traffic_type: 'internal' } : {});
+  </script>
+
+  <script src="/js/track.js" defer></script>
+</body>
+</html>
