@@ -1,0 +1,52 @@
+# Justine Seguido, GoHighLevel Developer
+
+> HighLevel Certified Admin based in San Miguel, Leyte, Philippines (GMT+8). Builds GoHighLevel (GHL) systems that turn enquiries into booked appointments for dental practices, med spas and aesthetics clinics, and garages and MOT centres, plus white label GoHighLevel builds for marketing agencies. Clients are mainly in the UK, the US and New Zealand.
+
+## Services
+
+- Speed to lead: instant text replies to new enquiries, and missed call text back
+- Appointment booking, reminders, confirmations and no-show follow-up
+- Voice AI receptionists that answer calls and book into the calendar, with SMS fallback
+- MOT and service reminders for garages
+- Review requests and customer reactivation
+- WhatsApp automation with Meta approved templates
+- Integrations through Make.com, Zapier and APIs (Dentally, Shopify, Klaviyo, Xero, Ascora, OwnerRez)
+- CRM migrations to GoHighLevel, and snapshots
+- White label builds delivered under the agency's own brand
+
+## Pricing (one-time, no retainer required)
+
+- Landing Page: $497, 3 to 5 days
+- Website + Automations: $1,497, 7 to 10 days
+- Full GHL System: $2,997, 10 to 14 days, includes 30 days of support
+- Custom builds (migrations, API integrations, WhatsApp, IVR call routing): quoted after a discovery call
+- Monthly retainers are available after launch
+
+## Case studies
+
+- [Dental clinic, London: CRM and WhatsApp automation, Dentally to GoHighLevel through Make.com](https://www.justineseguido.com/projects/dr-ogo-eze-clinics.html)
+- [MOT and service reminders for a UK garage group, 2,386 customers enrolled](https://www.justineseguido.com/projects/mot-service-reminders.html)
+- [Voice AI appointment booking and confirmation for a US laser studio](https://www.justineseguido.com/projects/voice-ai-appointment-confirmation.html)
+- [Shopify abandoned checkout SMS for a UK e-commerce brand](https://www.justineseguido.com/projects/shopify-sms-recovery.html)
+- [Xero to GoHighLevel review requests for a New Zealand service business](https://www.justineseguido.com/projects/xero-review-requests.html)
+- [MarketMyStr to GoHighLevel migration](https://www.justineseguido.com/projects/ghl-platform-migration.html)
+
+## Service pages
+
+- [GoHighLevel for dental practices](https://www.justineseguido.com/services/gohighlevel-dental-clinics.html)
+- [GoHighLevel for med spas and aesthetics clinics](https://www.justineseguido.com/services/gohighlevel-medspa.html)
+- [GoHighLevel for real estate agents](https://www.justineseguido.com/services/gohighlevel-real-estate.html)
+
+## Guides
+
+- [WhatsApp automation for dental clinics in GoHighLevel](https://www.justineseguido.com/blog/gohighlevel-whatsapp-dental-clinics.html)
+- [How to automate med spa bookings with GoHighLevel](https://www.justineseguido.com/blog/automate-medspa-bookings-ghl.html)
+- [Why hire a GHL developer](https://www.justineseguido.com/blog/why-hire-ghl-developer.html)
+
+## Profiles and contact
+
+- Website: https://www.justineseguido.com/
+- HighLevel Certified Admin directory: https://directory.gohighlevel.com/philippines/san-miguel/certified-admins/justine-seguido
+- LinkedIn: https://www.linkedin.com/in/justine-seguido-1ba3b4132
+- Upwork: https://www.upwork.com/freelancers/~013fa6155231d76659
+- Email: justineseguido@justineseguido.com
